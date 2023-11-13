@@ -1,0 +1,86 @@
+/*============================================================================================
+	Privacy Policy Area
+==============================================================================================*/
+.policy-terms-section {
+  padding: 72px 0px;
+}
+.policy-terms-content {
+  background: var(--white-color);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px rgba(26, 26, 46, 0.12);
+}
+.policy-terms-content-widget {
+  margin-bottom: 32px;
+}
+.policy-terms-content-widget:last-child {
+  margin: 0;
+}
+.policy-terms-content-widget h3 {
+  font-size: 24px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  text-transform: capitalize;
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+.policy-terms-content-widget h3::before {
+  position: absolute;
+  content: "";
+  width: 30%;
+  height: 4px;
+  background: var(--secondary-color);
+  bottom: -1.5px;
+  left: 0;
+}
+.policy-terms-content-widget p {
+  margin-bottom: 12px;
+  line-height: 28px;
+  color: var(--hints-color);
+}
+.policy-terms-content-widget ul {
+  margin-left: 12px;
+}
+.policy-terms-content-widget ul li {
+  display: block;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--hints-color);
+}
+.policy-terms-content-widget ul li::before {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--secondary-color);
+  border-radius: 100%;
+  left: 0;
+  top: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .policy-terms-content-widget h3 {
+    font-size: 20px;
+  }
+  .policy-terms-content-widget p {
+    line-height: 27px;
+  }
+  .policy-terms-content {
+    padding: 24px;
+  }
+  .policy-terms-content-widget ul {
+    margin-left: 0;
+  }
+
+  .policy-terms-section {
+    padding: 56px 0px;
+  }
+}
+
+/*============================================================================================
+    End Privacy Policy Area
+==============================================================================================*/

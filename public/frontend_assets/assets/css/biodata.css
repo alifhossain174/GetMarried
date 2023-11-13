@@ -1,0 +1,888 @@
+/*============================================================================================
+	BioData Area
+==============================================================================================*/
+.biodata-area {
+  padding: 48px 0px 72px;
+}
+.biodata-card {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-top: 24px;
+}
+.biodata-card-top {
+  text-align: center;
+  background: #fff4f4;
+  padding: 24px;
+  position: relative;
+  border-radius: 12px 12px 0px 0px;
+}
+.biodata-card-top-info {
+  margin-top: 18px;
+}
+.biodata-card-top-info h4 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+.biodata-card-top-info p {
+  margin: 0;
+  font-size: 20px;
+  color: var(--secondary-color);
+  font-weight: 700;
+  line-height: 120%;
+}
+.biodata-card-icon img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+.wishlist-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--white-color);
+  border-radius: 100%;
+  line-height: 43px;
+  color: var(--primary-color);
+  box-shadow: 0 2px 2px 0 rgba(32, 38, 46, 0.08) !important;
+  padding: 0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+.wishlist-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+.biodata-card-each-item {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color);
+}
+.biodata-card-each-item label,
+.biodata-card-each-item p {
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 5px;
+  color: #434343;
+  margin: 0;
+}
+.biodata-card-each-item:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
+.biodata-card-each-item label {
+  border-right: 1px solid var(--border-color);
+}
+.biodata-card-bottom {
+  padding: 24px;
+}
+.biodata-card-btn {
+  margin-top: 24px;
+}
+.biodata-card-btn .theme-btn {
+  text-align: center;
+  font-size: ;
+  display: block;
+  margin-top: 24px;
+  height: 48px;
+  line-height: 23px;
+}
+
+/* Biodata Sidebar */
+.biodata-sidebar {
+  margin-top: 24px;
+  position: sticky;
+  top: 14%;
+}
+.biodata-sidebar-tab-menu {
+  background: var(--secondary-color);
+  border-radius: 8px;
+  padding: 15px 12px;
+}
+.biodata-sidebar-tab-menu .list-group {
+  display: flex;
+  flex-direction: initial;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+  justify-content: center;
+}
+.biodata-sidebar-tab-menu .list-group-item {
+  position: relative;
+  display: block;
+  align-items: center;
+  text-decoration: none;
+  color: var(--secondary-color);
+  box-sizing: border-box;
+  margin-right: 0px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 119%;
+  background: transparent;
+  text-align: center;
+  height: auto;
+  text-transform: capitalize;
+  padding: 12px 32px;
+  border-radius: 4px !important;
+  border: 1px solid transparent;
+  background: var(--white-color);
+  margin-right: 8px;
+}
+.biodata-sidebar-tab-menu .list-group-item:last-child {
+  margin: 0;
+}
+.biodata-sidebar-tab-menu .list-group-item.active {
+  z-index: 2;
+  color: var(--white-color);
+  background-color: var(--secondary-color);
+  border: 1px solid transparent !important;
+}
+.biodata-sidebar-tab-menu .list-group-item + .list-group-item.active {
+  margin-top: 0;
+  border-top-width: 0;
+}
+.biodata-filter {
+  margin-top: 16px;
+}
+.biodata-accordion-item {
+  margin-top: 16px;
+}
+.biodata-accordion-item .accordion-button {
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: none !important;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.4s ease;
+  border: 1px solid transparent !important;
+  background: #f0eaf5e0;
+}
+.biodata-accordion-item .accordion-button::after {
+  background-image: none;
+  transform: none;
+  position: absolute;
+  right: 16px;
+  content: "\f11a";
+  font-family: "uicons-solid-straight";
+  border-radius: 100%;
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 18px;
+  transition: all 0.4s ease;
+  top: 16px;
+}
+.biodata-accordion-item .accordion-button:not(.collapsed)::after {
+  content: "\f11d";
+}
+.biodata-accordion-item .accordion-button:not(.collapsed) {
+  box-shadow: none !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px 8px 0px 0px !important;
+}
+.biodata-accordion-body {
+  padding: 16px 12px;
+  background: var(--white-color);
+  border-radius: 0px 0px 8px 8px;
+  border: 1px solid var(--border-color);
+  border-top: none !important;
+}
+.biodata-accordion-body .form-group {
+  margin-bottom: 12px;
+}
+.biodata-accordion-body .form-group:last-child {
+  margin: 0;
+}
+.biodata-accordion-body .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--paragraph-color);
+  line-height: 120%;
+  margin-left: 12px;
+}
+.biodata-accordion-body .form-group .select2-container {
+  width: 100% !important;
+}
+.biodata-accordion-body
+  .select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: var(--hints-color);
+}
+
+.age-range {
+  margin-right: 22px !important;
+  margin-left: 2px !important;
+  margin-bottom: 12px !important;
+}
+
+.age-range input {
+  border: none;
+  height: 45px;
+  padding: 0;
+}
+
+.age-range .form-range::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: var(--secondary-color);
+}
+
+.age-range .form-range::-moz-range-thumb {
+  background: #fff;
+  border: 3px solid var(--secondary-color);
+}
+
+.age-range .age-filter {
+  display: block;
+  margin-left: 4px;
+}
+.age-range .slider-range {
+  box-shadow: none;
+  border: none;
+  height: 8px;
+  background: var(--secondary-color);
+  border-radius: 0;
+}
+.age-range .slider-range .ui-slider-range {
+  box-shadow: none;
+  background: var(--secondary-color);
+  border-radius: 0px;
+  border: none;
+  left: 6px !important;
+}
+.age-range .ui-slider-handle.ui-state-default.ui-corner-all {
+  width: 18px;
+  height: 18px;
+  background: var(--white-color);
+  border-radius: 4px;
+  top: -5px;
+  border: 5px solid var(--secondary-color);
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.ui-corner-all::before {
+  left: 6px;
+}
+.ui-corner-all::after {
+  right: 6px;
+}
+.age-range .label-input {
+  margin-top: 0;
+}
+.age-range .label-input span {
+  margin-right: 5px;
+  color: #282828;
+}
+.age-range .label-input input {
+  border: none !important;
+  margin: 0;
+  font-weight: normal;
+  font-size: 14px;
+  color: var(--hints-color);
+  font-weight: 500;
+  height: 16px !important;
+  margin-bottom: 14px;
+  background: transparent !important;
+}
+
+.biodata-check-list {
+  margin-bottom: 16px;
+}
+.biodata-check-list:last-child {
+  margin: 0;
+}
+.biodata-check-list span {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+}
+.form-check-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 12px;
+  justify-items: left;
+}
+.biodata-check-box {
+  color: var(--hints-color);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+.form-check-input {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+}
+.form-check-group .form-check {
+  cursor: pointer;
+}
+.form-check-group .form-check-input:checked {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+.form-check-group .form-check-input:checked[type="checkbox"] {
+  box-shadow: none !important;
+  border-color: 2px solid var(--secondary-color);
+}
+.form-check-group .form-check-input:focus {
+  border-color: 2px solid var(--border-color) !important;
+  outline: 0;
+  box-shadow: none;
+}
+.form-group.age-range.range.height-range {
+  margin-bottom: 22px !important;
+}
+.biodata-filter-searchbar {
+  padding: 0px 12px;
+}
+.biodata-filter-btn {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.biodata-filter-btn .theme-btn {
+  background: var(--secondary-color);
+  margin: 0;
+  width: 42%;
+  text-align: center;
+  font-size: 15px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+.biodata-filter-btn .theme-btn i {
+  margin: 0;
+  margin-right: 8px;
+  font-size: 18px;
+  top: 3px;
+}
+.biodata-filter-btn .theme-btn:hover {
+  background: var(--primary-color);
+}
+.biodata-filter-btn .theme-btn.filter-remove {
+  background: transparent;
+  border: 2px solid var(--secondary-color) !important;
+  color: var(--secondary-color);
+}
+.biodata-filter-btn .theme-btn.filter-remove:hover {
+  border: 2px solid transparent !important;
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+.biodata-filter-searchbar .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: var(--paragraph-color);
+  line-height: 120%;
+  margin-left: 12px;
+}
+.biodata-filter-searchbar .form-group input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+}
+.biodata-filter-searchbar .form-group input:focus {
+  border: 1px solid var(--secondary-color);
+}
+.biodata-pagination {
+  text-align: center;
+  margin-top: 32px;
+}
+.pagination-list li {
+  display: inline-block;
+  margin-right: 12px;
+}
+.pagination-list li.active a,
+.pagination-list li a:hover {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+.pagination-list li:last-child {
+  margin: 0;
+}
+.pagination-list li a {
+  width: 40px;
+  height: 40px;
+  background: var(--white-color);
+  box-shadow: 0 2px 2px 0 rgba(32, 38, 46, 0.08) !important;
+  border-radius: 100%;
+  line-height: 40px;
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 14px;
+}
+.pagination-list li a i {
+  font-size: 20px;
+  position: relative;
+  top: 3px;
+}
+.biodata-number-widget {
+  margin-top: 24px;
+}
+.biodata-number-searchbar .form-group {
+  position: relative;
+  width: 350px;
+}
+.biodata-number-searchbar .form-group input {
+  width: 350px;
+  height: 48px;
+  border: 1px solid var(--border-color);
+  background: #faf8fc;
+  padding: 12px 116px 12px 12px;
+}
+.biodata-number-searchbar .form-group input:focus {
+  border: 1px solid var(--secondary-color);
+}
+.biodata-number-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+.biodata-number-btn .theme-btn {
+  padding: 10px 24px;
+  font-size: 15px;
+}
+.biodata-number-btn .theme-btn i {
+  margin: 0;
+  margin-right: 6px;
+  font-size: 16px;
+  position: relative;
+  top: 2px;
+}
+/* BioData Details Area */
+.biodata-details-area {
+  padding: 32px 0px 72px;
+}
+.biodata-general-widget-box {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+.biodata-general-img img {
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.biodata-general-head {
+  text-align: center;
+  background: #f0eaf5;
+  padding: 24px;
+  border-radius: 12px 12px 0px 0px;
+}
+.biodata-general-head-info {
+  margin-top: 12px;
+}
+.biodata-general-head-info h4 {
+  font-size: 24px;
+  margin: 0;
+}
+.biodata-general-content {
+  margin-top: 20px;
+  padding: 0px 16px 16px 16px;
+}
+.biodata-general-widget {
+  margin-top: 40px;
+  position: sticky;
+  top: 14%;
+}
+
+.biodata-general-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.biodata-general-links .theme-btn {
+  margin: 0;
+  width: 50%;
+  text-align: center;
+  display: block;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.biodata-general-links .theme-btn i {
+  margin: 0;
+  margin-left: ;
+  margin-right: 8px;
+  font-size: 18px;
+  position: relative;
+  top: 2px;
+}
+.theme-btn.shortlist-btn {
+  background: transparent;
+  border-radius: 30px;
+  border: 1px solid var(--success-color);
+  color: var(--success-color);
+}
+.theme-btn.shortlist-btn:hover {
+  background: var(--success-color);
+  color: var(--white-color);
+}
+.theme-btn.ignore-btn {
+  border-radius: 30px;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+}
+.theme-btn.ignore-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+.theme-btn.copy-btn {
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 20px !important;
+}
+.biodata-details-main {
+  margin-top: 40px;
+}
+.biodata-general-each-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+}
+.biodata-general-each-item label,
+.biodata-general-each-item p {
+  flex: 0 0 50%;
+  max-width: 50%;
+  text-align: center;
+  margin: 0;
+  color: var(--paragraph-color);
+  padding: 5px 0;
+  font-size: 15px;
+  color: var(--hints-color);
+}
+.biodata-general-each-item p {
+  border-left: 1px solid var(--border-color);
+}
+.biodata-general-each-item label {
+  font-weight: 600;
+  color: var(--title-color);
+}
+.biodata-general-links {
+  margin-top: 32px;
+  padding: 0px 24px;
+}
+.single-biodata-details {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.single-biodata-details:last-child {
+  margin: 0;
+}
+.single-biodata-details h4 {
+  text-align: center;
+  background: #f0eaf5;
+  border-radius: 12px 12px 0px 0px;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 16px;
+  margin: 0;
+  color: var(--secondary-color);
+}
+.biodata-details-info-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color);
+}
+.biodata-details-info-item:last-child {
+  border: none;
+}
+.biodata-details-info-item label {
+  max-width: 50%;
+  flex: 0 0 50%;
+  padding: 8px 15px;
+  font-weight: 700;
+  font-size: 15px;
+  border-right: 1px solid var(--border-color);
+}
+.biodata-details-info-item p {
+  padding: 8px 15px;
+  max-width: 50%;
+  flex: 0 0 50%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  font-size: 15px;
+  margin: 0;
+}
+.biodata-details-info-item a {
+  color: var(--secondary-color) !important;
+  font-weight: 600;
+}
+.biodata-details-info-item p b {
+  font-weight: 600;
+  margin-right: 4px;
+}
+.biodata-details-info-group.single-biodata-contact {
+  padding: 24px;
+  text-align: center;
+}
+.single-biodata-contact p {
+  font-style: italic;
+  font-size: 14px;
+}
+.single-biodata-contact span {
+  font-size: 22px;
+  line-height: 140%;
+  display: block;
+}
+.biodata-details-contact-link {
+  margin-top: 24px;
+}
+
+.biodata-details-contact-link .theme-btn {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  line-height: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: var(--white-color) !important;
+}
+.biodata-details-contact-link .theme-btn i {
+  margin: 0;
+  margin-right: 8px;
+}
+.biodata-details-contact-link {
+  display: flex;
+  align-items: center;
+  padding: 0px 54px;
+  white-space: nowrap;
+}
+.theme-btn.tutorial-btn {
+  background: var(--secondary-color);
+}
+.theme-btn.tutorial-btn:hover {
+  background: var(--primary-color);
+}
+.biodata-top-filter {
+  float: right;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.biodata-top-filter .theme-btn.secondary i {
+  margin: 0;
+  margin-right: 6px;
+}
+
+.biodata-sidebar.filter-open {
+  position: fixed;
+  top: initial;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background: var(--white-color);
+  padding: 12px;
+  z-index: 99999;
+  border-radius: 24px 24px 0px 0px;
+  transition: all 0.4s ease;
+  display: block;
+}
+.biodata-sidebar.filter-open .biodata-sidebar-tab {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 500px;
+}
+.biodata-sidebar.filter-open .biodata-sidebar-tab::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: block;
+}
+.biodata-sidebar.filter-open .biodata-sidebar-tab::-moz-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: block;
+}
+.biodata-sidebar.filter-open .biodata-sidebar-tab::-ms-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+}
+.filter-overlay {
+  background: var(--secondary-color);
+  z-index: 9999;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.biodata-sidebar-close {
+  text-align: center;
+  margin-top: -32px;
+  margin-bottom: 16px;
+  display: none;
+}
+.biodata-sidebar-close .close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background: var(--primary-color);
+  color: var(--white-color);
+  line-height: 40px;
+  font-size: 14px;
+}
+.biodata-sidebar-close .close-btn:hover {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+.biodata-sidebar-tab-menu .list-group-item {
+  padding: 0px;
+}
+.biodata-top-filter-btn {
+  display: none;
+}
+.biodata-main-inner-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media only screen and (min-width: 1540px) and (max-width: 2300px) {
+  .biodata-main-inner-card {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199.9px) {
+  .biodata-top-filter {
+    float: initial;
+    justify-content: center;
+    margin: 0;
+  }
+  .biodata-general-img img {
+    width: 100px;
+    height: 100px;
+  }
+  .biodata-sidebar {
+    display: none;
+  }
+  .biodata-sidebar-close {
+    display: block;
+  }
+  .biodata-top-filter-btn {
+    display: block;
+  }
+  .biodata-number-widget {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 24px !important;
+  }
+  .biodata-number-searchbar .form-group input {
+    width: 100%;
+  }
+  .biodata-number-searchbar .form-group {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .biodata-top-filter {
+    float: initial;
+    justify-content: center;
+    margin: 0;
+  }
+  .biodata-general-img img {
+    width: 100px;
+    height: 100px;
+  }
+  .biodata-sidebar {
+    display: none;
+  }
+  .biodata-sidebar-close {
+    display: block;
+  }
+  .biodata-top-filter-btn {
+    display: block;
+  }
+  .biodata-number-widget {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 24px !important;
+  }
+  .biodata-number-searchbar .form-group input {
+    width: 100%;
+  }
+  .biodata-number-searchbar .form-group {
+    width: 100%;
+  }
+  .biodata-main-inner-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .biodata-top-filter {
+    float: initial;
+    justify-content: center;
+    margin: 0;
+  }
+  .biodata-general-img img {
+    width: 100px;
+    height: 100px;
+  }
+  .biodata-sidebar {
+    display: none;
+  }
+  .biodata-sidebar-close {
+    display: block;
+  }
+  .biodata-top-filter-btn {
+    display: block;
+  }
+  .pagination-list li {
+    margin-right: 4px;
+  }
+  .biodata-number-searchbar .form-group input {
+    width: 100%;
+    height: 44px;
+  }
+  .biodata-number-searchbar .form-group {
+    width: 100%;
+  }
+  .biodata-number-btn .theme-btn {
+    padding: 8px 24px;
+    font-size: 14px;
+  }
+  .biodata-number-widget {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  .biodata-sidebar-tab-menu .list-group-item {
+    padding: 4px;
+  }
+  .biodata-main-inner-card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*============================================================================================
+	End BioData Area
+==============================================================================================*/

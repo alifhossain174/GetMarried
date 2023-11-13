@@ -1,0 +1,85 @@
+/*============================================================================================
+	Download App Area
+==============================================================================================*/
+.app-download-area {
+  padding: 80px 0px;
+}
+.app-download-img {
+  float: right;
+}
+.app-download-img img {
+  width: 100%;
+  height: 480px;
+  object-fit: contain;
+}
+.app-download-content h3 {
+  margin-bottom: 16px;
+  line-height: 140%;
+}
+.app-download-content p {
+  margin: 0;
+}
+.app-download-btn {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.app-download-btn img {
+  width: 164px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .app-download-area {
+    padding: 80px 0px;
+  }
+  .app-download-area .order-class {
+    order: -1;
+  }
+  .app-download-img {
+    float: initial;
+  }
+  .app-download-content h3 {
+    font-size: 34px;
+    line-height: 130%;
+  }
+  .app-download-img img {
+    height: 420px;
+  }
+  .app-download-content {
+    margin-top: 24px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .app-download-area {
+    padding: 56px 0px;
+  }
+  .app-download-content h3 {
+    font-size: 24px;
+  }
+  .app-download-btn {
+    margin-top: 24px;
+  }
+  .app-download-img img {
+    height: 280px;
+  }
+  .app-download-img {
+    float: initial;
+  }
+  .app-download-area .order-class {
+    order: -1;
+  }
+  .app-download-content {
+    margin-top: 24px;
+  }
+  .app-download-btn img {
+    width: 148px;
+    height: 44px;
+  }
+}
+
+/*============================================================================================
+	End Download App Area
+==============================================================================================*/

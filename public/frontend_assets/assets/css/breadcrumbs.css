@@ -1,0 +1,54 @@
+/*============================================================================================
+	Breadcrumbs Area
+==============================================================================================*/
+.breadcrumbs-area {
+  padding: 80px 0px;
+  background: #fff4f4;
+}
+.breadcrumbs-content {
+  text-align: center;
+}
+.breadcrumbs-title {
+  margin-bottom: 12px;
+}
+.breadcrumbs-text {
+  color: var(--hints-color);
+  margin-bottom: 8px;
+}
+.breadcrumbs-menu li {
+  display: inline-block;
+  margin-right: 2px;
+}
+.breadcrumbs-menu li:last-child {
+  margin: 0;
+}
+.breadcrumbs-menu li a {
+  font-weight: 500;
+}
+.breadcrumbs-menu li i {
+  margin-left: 2px;
+  position: relative;
+  top: 3px;
+}
+.breadcrumbs-menu li.active a,
+.breadcrumbs-menu li:hover a {
+  color: var(--primary-color);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .breadcrumbs-title {
+    font-size: 34px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .breadcrumbs-area {
+    padding: 56px 0px;
+  }
+  .breadcrumbs-title {
+    font-size: 28px;
+  }
+}
+
+/*============================================================================================
+	End Breadcrumbs Area
+==============================================================================================*/

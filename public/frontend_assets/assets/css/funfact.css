@@ -1,0 +1,81 @@
+/*============================================================================================
+	Funfact Area
+==============================================================================================*/
+.funfact-area {
+  padding: 120px 0px;
+}
+.funfact-card {
+  margin-top: 32px;
+  padding: 32px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 8px 24px #20262e12;
+  transition: all 0.4s ease;
+}
+.funfact-card:hover {
+  box-shadow: 0px 8px 32px #20262e26;
+}
+.funfact-card-icon {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border: 2px solid var(--secondary-color);
+  border-radius: 100%;
+  line-height: 94px;
+  transition: all 0.4s ease;
+}
+.funfact-card:hover .funfact-card-icon {
+  background: var(--secondary-color);
+}
+.funfact-card:hover .funfact-card-icon img {
+  filter: brightness(0) invert(1);
+}
+.funfact-card-icon img {
+  width: 54px;
+  height: 54px;
+}
+.funfact-card-info {
+  margin-top: 20px;
+}
+.funfact-card-info p {
+  margin-bottom: 8px;
+  color: var(--hints-color);
+}
+.funfact-card-info h4 {
+  font-size: 34px;
+  margin: 0;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .funfact-area {
+    padding: 80px 0px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .funfact-area {
+    padding: 80px 0px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .funfact-area {
+    padding: 56px 0px;
+  }
+  .funfact-card-icon {
+    width: 80px;
+    height: 80px;
+    line-height: 76px;
+  }
+  .funfact-card-icon img {
+    width: 40px;
+    height: 40px;
+  }
+  .funfact-card-info h4 {
+    font-size: 30px;
+  }
+}
+
+/*============================================================================================
+	End Funfact Area
+==============================================================================================*/

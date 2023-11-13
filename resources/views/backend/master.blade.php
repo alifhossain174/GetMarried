@@ -22,14 +22,10 @@
     @endif
 
     <link href="{{ url('backend_assets') }}/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ url('backend_assets') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css"
-        id="bs-default-stylesheet" />
-    <link href="{{ url('backend_assets') }}/css/app.min.css" rel="stylesheet" type="text/css"
-        id="app-default-stylesheet" />
-    <link href="{{ url('backend_assets') }}/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css"
-        id="bs-dark-stylesheet" disabled />
-    <link href="{{ url('backend_assets') }}/css/app-dark.min.css" rel="stylesheet" type="text/css"
-        id="app-dark-stylesheet" disabled />
+    <link href="{{ url('backend_assets') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="{{ url('backend_assets') }}/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="{{ url('backend_assets') }}/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
+    <link href="{{ url('backend_assets') }}/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
     <link href="{{ url('backend_assets') }}/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ url('backend_assets') }}/css/toastr.min.css" rel="stylesheet" type="text/css" />
 
@@ -201,16 +197,14 @@
                 <div class="logo-box">
                     <a href="{{ url('/home') }}" class="logo logo-dark">
                         <span class="logo-sm text-left">
-                            <span class="logo-lg-text-dark">SC</span>
+                            <span class="logo-lg-text-dark">GM</span>
                         </span>
                         <span class="logo-lg text-center">
                             @if ($logoFavicon->logo && file_exists(public_path($logoFavicon->logo)))
-                                <img src="{{ url($logoFavicon->logo) }}" height="40" alt="Image Not Found" />
+                                <img src="{{ url($logoFavicon->logo) }}" style="width: 90%; max-height: 40px;" alt="Logo" />
                             @else
-                                <img src="{{ url('backend_assets') }}/images/logo.svg" height="40"
-                                    alt="Image Not Found" />
+                                <img src="{{ url('backend_assets') }}/images/logo.svg" style="width: 90%; max-height: 40px;" alt="Logo" />
                             @endif
-                            <!-- <span class="logo-lg-text-light">SoftifyBd</span> -->
                         </span>
                     </a>
 
