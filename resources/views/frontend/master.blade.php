@@ -39,6 +39,7 @@
     </div>
     <!-- Back to top end -->
 
+
     <!-- Mobile Menu Modal -->
     <div class="modal mobile-menu-modal offcanvas-modal fade" id="offcanvas-modal">
         <div class="modal-dialog offcanvas-dialog">
@@ -54,6 +55,7 @@
                     </button>
                 </div>
                 <div class="mobile-menu-modal-main-body">
+
                     <!-- offcanvas-menu start -->
                     <nav id="offcanvas-menu" class="navigation offcanvas-menu">
                         <ul id="nav mobile-nav" class="list-none offcanvas-men-list">
@@ -74,6 +76,7 @@
                             </li>
                         </ul>
                     </nav>
+
                     <!-- offcanvas-menu end -->
                     <div class="mobile-menu-modal-main-bottom">
                         <!-- offcanvas-menu end -->
@@ -81,11 +84,13 @@
                             <a href="{{url('/user-login')}}" class="theme-btn">লগইন</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
     <!-- End Mobile Menu Modal -->
+
 
     <!-- Header Area -->
     <header id="active-sticky" class="header-area @if(request()->route()->uri == 'user-login' || request()->route()->uri == 'user-register') no_sticky @endif">
