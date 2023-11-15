@@ -263,7 +263,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mt-0 mb-0 header-title">View Current Notices</h5>
+                    <h5 class="card-title mt-0 mb-0 header-title">Recent Biodata Requests</h5>
 
                     <div class="table-responsive mt-2">
                         <table class="table table-hover table-nowrap mb-0">

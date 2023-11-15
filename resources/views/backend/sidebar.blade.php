@@ -28,6 +28,8 @@
 
 
         <li class="menu-title mt-2">Website Content Modules</li>
+        <li><a href="{{url('homepage/banner')}}"><i data-feather="airplay"></i><span> Homepage Banner </span></a></li>
+        <li><a href="{{url('homepage/biodata')}}"><i data-feather="columns"></i><span> Homepage Biodata </span></a></li>
         <li><a href="{{url('contact/us/page')}}"><i data-feather="phone-call"></i><span> Contact Us Page </span></a></li>
 
 

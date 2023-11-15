@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2023 at 05:06 AM
+-- Generation Time: Nov 15, 2023 at 11:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -60,6 +60,32 @@ CREATE TABLE `about_us` (
 
 INSERT INTO `about_us` (`id`, `page_title`, `image`, `title`, `description`, `statistics_section_title`, `total_students`, `total_teachers`, `total_employees`, `total_rooms`, `total_buildings`, `total_students_label`, `total_teachers_label`, `total_employees_label`, `total_rooms_label`, `total_buildings_label`, `mission_title`, `mission_image`, `mission_description`, `vision_title`, `vision_image`, `vision_description`, `created_at`, `updated_at`) VALUES
 (1, 'প্রতিষ্ঠান পরিচিতি 1', '/storage/files/1/AboutUs/about-img-2.png', 'প্রতিষ্ঠান সম্পর্কে 2', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজ এর অতীত গৌরবোজ্জ্বল বর্তমান প্রশংসনীয়। ২০২৩ ইংরেজীর ২০ শে জানুয়ারী এক্সওয়াইজেধ স্কুল এবং কলেজ এর স্থানীয় ম্যাজিষ্ট্রেট অফিসের তৎকালীন প্রধান কারণিক মি: এক্সওয়াইজেধ কর্তৃক প্রতিষ্ঠিত। তখন এটা এক্সওয়াইজেধ গভর্ণমেন্ট স্কুল নামে পরিচিত ছিল। ৯ জন বাংলাদেশী, ১ জন হিন্দু ও ৮ জন মুসলমান বিদ্যোৎসাহী ব্যক্তির একটি কমিটির উপর এর পরিচালনার দায়িত্ব ন্যাস্ত ছিল। এদেশের অধিবাসীদের বাংলায় শিক্ষায় শিক্ষিত করার জন্য এ বিদ্যালয় চালু করা হয়। ২০২৩ ইংরেজির ১ ই মে মি: এক্সওয়াইজেধ বিদ্যালয়ের প্রধান শিক্ষক নিযুক্ত হন।</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজ তার উচ্চমানের শিক্ষা, দক্ষ শিক্ষক এবং আধুনিক সুযোগ-সুবিধার জন্য পরিচিত। স্কুলটিতে একটি শক্তিশালী পাঠ্যক্রম রয়েছে যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। কলেজটিতে একটি বিস্তৃত কোর্স অফার রয়েছে যা শিক্ষার্থীদেরকে তাদের ভবিষ্যতের ক্যারিয়ারের জন্য প্রস্তুত করে। এক্সওয়াইজেধ স্কুল এবং কলেজ বাংলাদেশের একটি অন্যতম সেরা শিক্ষা প্রতিষ্ঠান। এটি শিক্ষার্থীদেরকে একটি উচ্চমানের শিক্ষা প্রদান করে যা তাদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। 123</p>', 'প্রতিষ্ঠানের পরিসংখান 5', 520, 20, 4, 15, 2, 'সর্বোমোট শিক্ষার্থী', 'শিক্ষক/শিক্ষিকা', 'অফিশ কর্মচারী', 'সর্বোমোট কক্ষ', 'বিদ্যালয় ভবন', 'প্রতিষ্ঠানের মিশন 3', '/storage/files/1/AboutUs/about-mission-img.png', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজের মিশন হল শিক্ষার্থীদেরকে একটি উচ্চমানের শিক্ষা প্রদান করা যা তাদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটি বিশ্বাস করে যে প্রতিটি শিক্ষার্থীরই সম্ভাবনা রয়েছে এবং তাদেরকে সেই সম্ভাবনাকে অর্জনের জন্য প্রস্তুত করতে চায়।</p>\r\n\r\n<p><strong>স্কুলের মিশনকে বাস্তবায়নের জন্য, স্কুলটি নিম্নলিখিত মূল্যবোধগুলিকে অনুসরণ করে:</strong></p>\r\n\r\n<ul>\r\n	<li>উচ্চমানের শিক্ষা: স্কুলটি একটি শক্তিশালী পাঠ্যক্রম প্রদান করে যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটিতে একটি দক্ষ শিক্ষক মন্ডলী রয়েছে যারা শিক্ষার্থীদেরকে তাদের শেখার ক্ষেত্রে সর্বোত্তম সাপোর্ট প্রদান করে।</li>\r\n	<li>ব্যক্তিত্ব বিকাশ: স্কুলটি শিক্ষার্থীদেরকে তাদের ব্যক্তিত্ব বিকাশে সহায়তা করে। স্কুলটি বিভিন্ন সহ-পাঠ্যক্রমিক কার্যক্রমের ব্যবস্থা করে যা শিক্ষার্থীদেরকে তাদের দক্ষতা এবং আগ্রহ বিকাশে সাহায্য করে।</li>\r\n	<li>সামাজিক দায়বদ্ধতা: স্কুলটি শিক্ষার্থীদেরকে সামাজিক দায়বদ্ধতা সম্পর্কে সচেতন করে। স্কুলটি বিভিন্ন সামাজিক কার্যক্রমের আয়োজন করে যা শিক্ষার্থীদেরকে সমাজের জন্য কিছু করার জন্য অনুপ্রাণিত করে। এক্সওয়াইজেধ স্কুল এবং কলেজ বিশ্বাস করে যে এই মূল্যবোধগুলি শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করবে।</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজ বিশ্বাস করে যে এই মূল্যবোধগুলি শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করবে।</p>', 'প্রতিষ্ঠানের ভিশন 7', '/storage/files/1/AboutUs/about-mission-img.png', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজের ভিশন হল একটি বিশ্বমানের শিক্ষা প্রতিষ্ঠান হিসাবে গড়ে তোলা যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটি বিশ্বাস করে যে শিক্ষার মাধ্যমে শিক্ষার্থীরা একটি উন্নত ভবিষ্যৎ গড়ে তুলতে পারে এবং একটি উন্নত সমাজ গড়তে অবদান রাখতে পারে।</p>\r\n\r\n<p><strong>স্কুলের ভিশনকে বাস্তবায়নের জন্য, স্কুলটি নিম্নলিখিত লক্ষ্যগুলি অর্জনে প্রতিশ্রুতিবদ্ধ:</strong></p>\r\n\r\n<ul>\r\n	<li>উচ্চমানের শিক্ষা প্রদান: স্কুলটি একটি শক্তিশালী পাঠ্যক্রম এবং দক্ষ শিক্ষক মন্ডলীর মাধ্যমে শিক্ষার্থীদেরকে উচ্চমানের শিক্ষা প্রদান করতে চায়।</li>\r\n	<li>ব্যক্তিত্ব বিকাশ: স্কুলটি শিক্ষার্থীদেরকে তাদের ব্যক্তিত্ব বিকাশে সহায়তা করতে চায়। স্কুলটি বিভিন্ন সহ-পাঠ্যক্রমিক কার্যক্রমের ব্যবস্থা করে যা শিক্ষার্থীদেরকে তাদের দক্ষতা এবং আগ্রহ বিকাশে সাহায্য করে।</li>\r\n	<li>সামাজিক দায়বদ্ধতা: স্কুলটি শিক্ষার্থীদেরকে সামাজিক দায়বদ্ধতা সম্পর্কে সচেতন করতে চায়। স্কুলটি বিভিন্ন সামাজিক কার্যক্রমের আয়োজন করে যা শিক্ষার্থীদেরকে সমাজের জন্য কিছু করার জন্য অনুপ্রাণিত করে।</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজের ভিশন হল একটি উচ্চাভিলাষী লক্ষ্য, তবে এটি একটি লক্ষ্য যা স্কুলটি অর্জনে প্রতিশ্রুতিবদ্ধ। স্কুলটি বিশ্বাস করে যে শিক্ষার মাধ্যমে শিক্ষার্থীরা একটি উন্নত ভবিষ্যৎ গড়ে তুলতে পারে এবং একটি উন্নত সমাজ গড়তে অবদান রাখতে পারে।</p>', '2023-10-08 08:13:56', '2023-10-25 10:08:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banners`
+--
+
+CREATE TABLE `banners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `banner_title` varchar(255) DEFAULT NULL,
+  `banner_title_bn` varchar(255) DEFAULT NULL,
+  `banner_description` varchar(255) DEFAULT NULL,
+  `banner_description_bn` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `background_image`, `background_color`, `banner_title`, `banner_title_bn`, `banner_description`, `banner_description_bn`, `priority`, `created_at`, `updated_at`) VALUES
+(1, '/storage/files/1/hero-bg.png', '#c27ba0', 'Trusted Platform for Bride & Groom', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', 'Find from your own area', 'আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই।', 1, NULL, '2023-11-15 02:57:13');
 
 -- --------------------------------------------------------
 
@@ -140,7 +166,7 @@ CREATE TABLE `custom_css_js` (
 --
 
 INSERT INTO `custom_css_js` (`id`, `custom_css`, `custom_js`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'console.log(\"Working\");', NULL, '2023-10-25 08:13:21');
+(1, NULL, 'console.log(\"Working\");', NULL, '2023-11-15 00:40:51');
 
 -- --------------------------------------------------------
 
@@ -292,7 +318,39 @@ CREATE TABLE `google_recaptchas` (
 --
 
 INSERT INTO `google_recaptchas` (`id`, `recaptcha_key`, `recaptcha_secret`, `status`, `created_at`, `updated_at`) VALUES
-(1, '6LcAaecoAAAAAGCr2ixy1wg4TMRNuMb_Sk3oxkHP', '6LcAaecoAAAAAC1icwC8YCH1yUoPBKwZqdSmgNcT', 1, NULL, '2023-11-01 10:08:41');
+(1, '6LcAaecoAAAAAGCr2ixy1wg4TMRMb_Sk3oxkHP', '6LcAaecoAAAAAC1icwC8YCH1yUowZqdSmgNcT', 0, NULL, '2023-11-15 01:04:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `homepage_bio_data`
+--
+
+CREATE TABLE `homepage_bio_data` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `button1_text` varchar(255) DEFAULT NULL,
+  `button1_text_bn` varchar(255) DEFAULT NULL,
+  `button1_url` varchar(255) DEFAULT NULL,
+  `button2_text` varchar(255) DEFAULT NULL,
+  `button2_text_bn` varchar(255) DEFAULT NULL,
+  `button2_url` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `homepage_bio_data`
+--
+
+INSERT INTO `homepage_bio_data` (`id`, `background_color`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
+(1, '#fff2cc', '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-15 04:15:58');
 
 -- --------------------------------------------------------
 
@@ -315,7 +373,7 @@ CREATE TABLE `logo_favicons` (
 --
 
 INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `payment_banner`, `created_at`, `updated_at`) VALUES
-(1, '/storage/files/1/Logo & Favicon/Getmarried-primary-logo.svg', '/storage/files/1/Logo & Favicon/Getmarried-Favicon.svg', 'সাদিকরুন - Get Married', NULL, '2023-10-08 03:35:45', '2023-11-14 21:36:33');
+(1, '/storage/files/1/Logo & Favicon/Getmarried-primary-logo.svg', '/storage/files/1/Logo & Favicon/Getmarried-Favicon.svg', 'সাদিকরুন - Get Married', '/storage/files/1/Logo & Favicon/sslcommraze-img.svg', '2023-10-08 03:35:45', '2023-11-15 00:49:52');
 
 -- --------------------------------------------------------
 
@@ -369,7 +427,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (53, '2023_10_10_072105_create_school_exam_results_table', 30),
 (54, '2023_10_10_074833_create_school_exam_result_configs_table', 31),
 (65, '2023_10_19_115129_create_contact_configs_table', 42),
-(67, '2023_11_01_151126_create_google_recaptchas_table', 43);
+(67, '2023_11_01_151126_create_google_recaptchas_table', 43),
+(70, '2023_11_15_070545_create_banners_table', 44),
+(73, '2023_11_15_085958_create_homepage_bio_data_table', 45);
 
 -- --------------------------------------------------------
 
@@ -717,7 +777,7 @@ CREATE TABLE `seos` (
 --
 
 INSERT INTO `seos` (`id`, `meta_title`, `meta_keywords`, `meta_description`, `sitemap_generate_time`, `created_at`, `updated_at`) VALUES
-(1, 'XYZ School', 'xyz,school', 'এক্সওয়াইজেধ স্কুল এবং কলেজ এর অতীত গৌরবোজ্জ্বল বর্তমান প্রশংসনীয়।', '2023-10-23 17:39:44', NULL, '2023-10-25 08:41:57');
+(1, 'সাদিকরুন - Get Married', 'সাদিকরুন ,Get Married', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', '2023-11-15 07:04:09', NULL, '2023-11-15 01:04:09');
 
 -- --------------------------------------------------------
 
@@ -5940,6 +6000,12 @@ ALTER TABLE `about_us`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact_configs`
 --
 ALTER TABLE `contact_configs`
@@ -5981,6 +6047,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `google_recaptchas`
 --
 ALTER TABLE `google_recaptchas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `homepage_bio_data`
+--
+ALTER TABLE `homepage_bio_data`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6083,6 +6155,12 @@ ALTER TABLE `about_us`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `contact_configs`
 --
 ALTER TABLE `contact_configs`
@@ -6125,6 +6203,12 @@ ALTER TABLE `google_recaptchas`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `homepage_bio_data`
+--
+ALTER TABLE `homepage_bio_data`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `logo_favicons`
 --
 ALTER TABLE `logo_favicons`
@@ -6134,7 +6218,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`

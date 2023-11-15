@@ -195,7 +195,7 @@
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .hero-area {
-    background: #fff4f4;
+    /* background: #fff4f4; */
     padding: 80px 0px;
   }
   .hero-cont-title {

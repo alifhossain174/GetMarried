@@ -7,7 +7,7 @@
 
 /* Custom Variable CSS */
 :root {
-  --primary-color: #ff4949;
+  /* --primary-color: #ff4949;
   --secondary-color: #541690;
   --tertiary-color: #400082;
   --white-color: #ffffff;
@@ -15,7 +15,7 @@
   --title-color: #20262e;
   --paragraph-color: #2c3333;
   --hints-color: #767a7a;
-  --border-color: #e9e9ea;
+  --border-color: #e9e9ea; */
   --danger-color: #f14c4d;
   --warning-color: #fd841f;
   --success-color: #21bf73;

@@ -6,21 +6,11 @@ use App\Http\Controllers\WesbiteThemeColorController;
 use App\Http\Controllers\SocialMediaLinksController;
 use App\Http\Controllers\LogoFaviconController;
 use App\Http\Controllers\CustomCssJsController;
-use App\Http\Controllers\SliderController;
-use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\SchoolInfoController;
-use App\Http\Controllers\PersonnelMessageController;
-use App\Http\Controllers\NoticeController;
-use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SeoController;
-use App\Http\Controllers\ExternalController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\SchoolCommitteeController;
-use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\HomepageBiodataController;
 
 // Auth::routes();
 Auth::routes([
@@ -78,6 +68,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     // contact us routes
     Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
     Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
+
+    // homepage banner
+    Route::get('homepage/banner', [BannerController::class, 'homePageBanner'])->name('HomePageBanner');
+    Route::post('update/homepage/banner', [BannerController::class, 'updateHomePageBanner'])->name('UpdateHomePageBanner');
+
+    // homepage biodata
+    Route::get('homepage/biodata', [HomepageBiodataController::class, 'homePageBiodata'])->name('HomePageBiodata');
+    Route::post('update/homepage/biodata', [HomepageBiodataController::class, 'updateHomePageBiodata'])->name('UpdateHomePageBiodata');
+
 
 });
 
