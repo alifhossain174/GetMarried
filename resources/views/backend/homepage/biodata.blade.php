@@ -99,7 +99,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="description" class="col-form-label">Description</label>
-                                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Write Description Here">{{$data->description}}</textarea>
+                                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="3" id="description" placeholder="Write Description Here">{{$data->description}}</textarea>
                                             @error('description')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="description_bn" class="col-form-label">Description (BN)</label>
-                                            <textarea name="description_bn" class="form-control @error('description_bn') is-invalid @enderror" id="description_bn" placeholder="অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে...">{{$data->description_bn}}</textarea>
+                                            <textarea name="description_bn" class="form-control @error('description_bn') is-invalid @enderror" rows="3" id="description_bn" placeholder="অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে...">{{$data->description_bn}}</textarea>
                                             @error('description_bn')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

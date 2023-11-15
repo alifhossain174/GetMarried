@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="ZXX">
+<html class="no-js" lang="en">
 
 @php
     $logoFavicon = App\Models\Logofavicon::where('id', 1)->first();
@@ -17,10 +17,10 @@
 
     <!-- Site Title -->
     <title>{{ $logoFavicon->tab_title }}</title>
-    @if($logoFavicon->favicon && file_exists(public_path($logoFavicon->favicon)))
-    <link rel="icon" href="{{url($logoFavicon->favicon)}}" />
+    @if ($logoFavicon->favicon && file_exists(public_path($logoFavicon->favicon)))
+        <link rel="icon" href="{{ url($logoFavicon->favicon) }}" />
     @else
-    <link rel="icon" href="{{ url('frontend_assets') }}/assets/images/favicon.svg" />
+        <link rel="icon" href="{{ url('frontend_assets') }}/assets/images/favicon.svg" />
     @endif
 
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/bootstrap.min.css" />
@@ -40,6 +40,52 @@
             position: relative !important;
         }
 
+        /* Language Chaneg Toggle Switch */
+        .header-languague-switch {
+            position: relative;
+        }
+
+        .language-change-toggle {
+            width: 64px;
+            height: 32px;
+            background: var(--primary-color);
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .language-change-toggle::before {
+            position: absolute;
+            content: "BN";
+            font-size: 12px;
+            color: var(--hints-color);
+            right: 0;
+            width: 26px;
+            height: 26px;
+            background: var(--white-color);
+            border-radius: 100%;
+            line-height: 26px;
+            font-weight: 600;
+            text-align: center;
+            top: 3px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+        }
+
+        .language-change .language-change-toggle {
+            background: var(--secondary-color);
+        }
+
+        .language-change .language-change-toggle::before {
+            content: "EN";
+            -webkit-transform: translateX(-27px);
+            transform: translateX(-34px);
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+        /* dynamically setting up color variable */
         :root {
             --primary-color: {{ $websiteThemeColor->primary_color }};
             --secondary-color: {{ $websiteThemeColor->secondary_color }};
@@ -152,14 +198,16 @@
                             </nav>
                         </div>
                         <div class="header-right">
+
                             <!-- Language Change Switch -->
                             <div class="header-languague-switch">
                                 <div class="language-change-toggle theme-switch" onclick="languageToggle()"></div>
                             </div>
                             <div class="header-login">
-                                <a href="{{ url('/user/login') }}" class="theme-btn">লগইন</a>
+                                <a href="{{ url('/user/login') }}" class="theme-btn"> {{ __('message.welcome') }} লগইন</a>
                             </div>
                             <!-- Mobile Menu Button -->
+                            
                             <button type="button" class="mobile-menu-offcanvas-toggler" data-bs-toggle="modal"
                                 data-bs-target="#offcanvas-modal">
                                 <span class="line"></span>
@@ -193,17 +241,18 @@
                         </ul>
                     </div>
                     <p class="footer-copyright-text">
-                        © {{date("Y")}} All Rights Reserved | Design & Developed by
+                        © {{ date('Y') }} All Rights Reserved | Design & Developed by
                         <a href="https://getup.com.bd" target="_blank">GetUp</a>
-                        | Powered by <a href="{{url('/')}}" target="_blank">{{$logoFavicon ? $logoFavicon->tab_title : ''}}</a>
+                        | Powered by <a href="{{ url('/') }}"
+                            target="_blank">{{ $logoFavicon ? $logoFavicon->tab_title : '' }}</a>
                     </p>
                 </div>
                 <div class="col-lg-12 col-xl-5 col-12">
                     <div class="footer-menu style-2">
                         <ul class="footer-menu-list">
-                            <li><a href="{{url('privacy-policy')}}">Privacy Notice</a></li>
-                            <li><a href="{{url('terms-condition')}}">Terms & Conditions</a></li>
-                            <li><a href="{{url('refund-policy')}}">Refund Policy</a></li>
+                            <li><a href="{{ url('privacy-policy') }}">Privacy Notice</a></li>
+                            <li><a href="{{ url('terms-condition') }}">Terms & Conditions</a></li>
+                            <li><a href="{{ url('refund-policy') }}">Refund Policy</a></li>
                         </ul>
                     </div>
                     <div class="footer-social">
@@ -269,14 +318,14 @@
                 </div>
             </div>
 
-            @if($logoFavicon->payment_banner && file_exists(public_path($logoFavicon->payment_banner)))
-            <div class="row">
-                <div class="col-12">
-                    <div class="footer-sslcommerze-img">
-                        <img src="{{ url($logoFavicon->payment_banner) }}" alt="Payment Banner" />
+            @if ($logoFavicon->payment_banner && file_exists(public_path($logoFavicon->payment_banner)))
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer-sslcommerze-img">
+                            <img src="{{ url($logoFavicon->payment_banner) }}" alt="Payment Banner" />
+                        </div>
                     </div>
                 </div>
-            </div>
             @endif
         </div>
     </footer>
@@ -295,6 +344,21 @@
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/waypoints.min.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/select2.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/active.js"></script>
+
+    <script>
+        function languageToggle() {
+            let element = document.body;
+            element.classList.toggle("language-change");
+
+            let systemChange = localStorage.getItem("systemChange");
+            if (systemChange && systemChange === "language-change") {
+                localStorage.setItem("systemChange", "");
+            } else {
+                localStorage.setItem("systemChange", "language-change");
+            }
+
+        }
+    </script>
 
     @yield('footer_js')
 

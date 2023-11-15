@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Brian2694\Toastr\Facades\Toastr;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\GoogleRecaptcha;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
 
 class FrontendController extends Controller
 {
@@ -42,6 +38,23 @@ class FrontendController extends Controller
 
     public function refundPolicy(){
         return view('frontend.refund_policy');
+    }
+
+    public function langChange(Request $request){
+
+        // App::setLocale('bn'); //$request->lang
+        // session()->put('locale', 'bn'); //$request->lang
+
+        // config([
+        //     'app.locale' => 'bn',
+        // ]);
+
+        App::setLocale('bn');
+
+        echo $locale = App::currentLocale();
+        exit();
+
+        return back();
     }
 
 }

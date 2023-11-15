@@ -178,17 +178,17 @@
 		Language Change Switch JS
 ================================================================================*/
 
-function languageToggle() {
-  let element = document.body;
-  element.classList.toggle("language-change");
+// function languageToggle() {
+//     let element = document.body;
+//     element.classList.toggle("language-change");
 
-  let systemChange = localStorage.getItem("systemChange");
-  if (systemChange && systemChange === "language-change") {
-    localStorage.setItem("systemChange", "");
-  } else {
-    localStorage.setItem("systemChange", "language-change");
-  }
-}
+//     let systemChange = localStorage.getItem("systemChange");
+//     if (systemChange && systemChange === "language-change") {
+//         localStorage.setItem("systemChange", "");
+//     } else {
+//         localStorage.setItem("systemChange", "language-change");
+//     }
+// }
 
 // (function () {
 //   let onpageLoad = localStorage.getItem("systemChange") || "";

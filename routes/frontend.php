@@ -16,6 +16,7 @@ Route::get('/contact', [FrontendController::class, 'contact'])->name('Frontend.C
 Route::get('/privacy-policy', [FrontendController::class, 'privacyPolicy'])->name('Frontend.PrivacyPolicy');
 Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('Frontend.TermsCondition');
 Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
+Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
 
 // user login dashboard
 Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
