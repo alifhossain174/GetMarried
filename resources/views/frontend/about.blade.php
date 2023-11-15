@@ -1,5 +1,14 @@
 @extends('frontend.master')
 
+@push('site-seo')
+    @php
+        $homePageSeo = App\Models\Seo::where('id', 1)->first();
+    @endphp
+    <meta name="title" content="{{$homePageSeo->meta_title}}" />
+    <meta name="description" content="{{$homePageSeo->meta_description}}" />
+    <meta name="keywords" content="{{str_replace(",",", ",$homePageSeo->meta_keywords)}}" />
+@endpush
+
 @section('content')
     <!-- Breadcrumbs Area -->
     <section class="breadcrumbs-area">
@@ -12,7 +21,7 @@
                             <li>
                                 <a href="{{url('/')}}">হোম</a><i class="fi fi-rs-angle-small-right"></i>
                             </li>
-                            <li class="active"><a href="about.html">আমাদের সম্পর্কে</a></li>
+                            <li class="active"><a href="{{url('/about')}}">আমাদের সম্পর্কে</a></li>
                         </ul>
                     </div>
                 </div>

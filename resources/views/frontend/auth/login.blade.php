@@ -37,7 +37,7 @@
                                     </div>
                                     <a href="forget-password.html">Forgotten password?</a>
                                 </div>
-                                <a type="submit" href="./dashboard/dashboard.html"
+                                <a type="submit" href="{{url('user/dashboard')}}"
                                     class="auth-card-form-btn theme-btn btn btn-primary">
                                     Sign in
                                 </a>
@@ -49,7 +49,7 @@
                                             alt="#" />Sign in with Google</a>
                                 </div>
                                 <p class="auth-card-bottom-link">
-                                    Don’t have any account?<a href="{{url('user-register')}}">Register account</a>
+                                    Don’t have any account?<a href="{{url('user/register')}}">Register account</a>
                                 </p>
                             </div>
                         </div>

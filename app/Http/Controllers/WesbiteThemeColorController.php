@@ -23,7 +23,7 @@ class WesbiteThemeColorController extends Controller
             'tertiary_color' => $request->tertiary_color,
             'white_color_1' => $request->white_color_1,
             'white_color_2' => $request->white_color_2,
-            'white_color_3' => $request->white_color_3,
+            // 'white_color_3' => $request->white_color_3,
             'title_color' => $request->title_color,
             'paragraph_color' => $request->paragraph_color,
             'hints_color' => $request->hints_color,

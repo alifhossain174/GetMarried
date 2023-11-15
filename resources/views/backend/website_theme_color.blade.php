@@ -23,6 +23,7 @@
     </div>
     <!-- end page title -->
 
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -78,24 +79,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center pt-3">
+                        <div class="row justify-content-center pt-2">
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="white_color_2" class="col-form-label">White Color 2 :</label>
                                     <input type="text" name="white_color_2" class="form-control" value="{{$data->white_color_2}}" id="white_color_2">
                                     <div class="invalid-feedback" style="display: block;">
                                         @error('white_color_2')
-                                            {{ $message }}
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="white_color_3" class="col-form-label">White Color 3 :</label>
-                                    <input type="text" name="white_color_3" class="form-control" value="{{$data->white_color_3}}" id="white_color_3">
-                                    <div class="invalid-feedback" style="display: block;">
-                                        @error('white_color_3')
                                             {{ $message }}
                                         @enderror
                                     </div>
@@ -123,8 +113,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-center pt-3">
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="hints_color" class="col-form-label">Hints Color :</label>
@@ -136,6 +124,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row pt-2">
+                            {{-- justify-content-center --}}
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="border_color" class="col-form-label">Border Color :</label>

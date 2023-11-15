@@ -47,14 +47,14 @@
                                             <i class="fi fi-rr-picture"></i> Upload Logo
                                         </a>
                                     </span>
-                                    <input id="thumbnail" @if($data->logo && file_exists(public_path($data->logo))) value="{{url($data->logo)}}" @endif class="form-control" type="text" name="logo" readonly>
+                                    <input id="thumbnail" @if($data->logo && file_exists(public_path($data->logo))) value="{{url($data->logo)}}" @endif class="form-control @error('logo') is-invalid @enderror" type="text" name="logo" readonly>
+                                    @error('logo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <small class="form-text text-muted">[ Please upload jpg, jpeg, png file of 285px * 56px ]</small>
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <small class="form-text text-muted">[ Please upload jpg, jpeg, png file of 258px * 48px ]</small>
 
                                 @if ($data->logo && file_exists(public_path($data->logo)))
                                     <label for="image" class="d-block col-form-label">Current Logo :</label>
@@ -74,26 +74,54 @@
                                             <i class="fi fi-rr-picture"></i> Upload Favicon
                                         </a>
                                     </span>
-                                    <input id="thumbnail2" @if($data->favicon && file_exists(public_path($data->favicon))) value="{{url($data->favicon)}}" @endif class="form-control" type="text" name="favicon" readonly>
+                                    <input id="thumbnail2" @if($data->favicon && file_exists(public_path($data->favicon))) value="{{url($data->favicon)}}" @endif class="form-control @error('favicon') is-invalid @enderror" type="text" name="favicon" readonly>
+                                    @error('favicon')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <small class="form-text text-muted">[ Please upload jpg, jpeg, png file of 32px * 32px ]</small>
-                                @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
 
                                 @if ($data->favicon && file_exists(public_path($data->favicon)))
                                     <label for="image" class="d-block col-form-label">Current Favicon :</label>
                                     <div class="w-75">
-                                        <img src="{{ url($data->favicon) }}" class="img-fluid w-25">
+                                        <img src="{{ url($data->favicon) }}" class="img-fluid" style="width: 60px;">
                                     </div>
                                 @endif
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="image" class="col-lg-2 col-md-2 col-form-label">Footer Payment Banner</label>
+                            <div class="form-group col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <a id="lfm3" data-input="thumbnail3" data-preview="holder" class="btn btn-success text-white">
+                                            <i class="fi fi-rr-picture"></i> Upload Banner
+                                        </a>
+                                    </span>
+                                    <input id="thumbnail3" @if($data->payment_banner && file_exists(public_path($data->payment_banner))) value="{{url($data->payment_banner)}}" @endif class="form-control @error('payment_banner') is-invalid @enderror" type="text" name="payment_banner" readonly>
+                                    @error('payment_banner')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <small class="form-text text-muted">[ Please upload jpg, jpeg, png file of 1676px * 84px ]</small>
+
+                                @if ($data->payment_banner && file_exists(public_path($data->payment_banner)))
+                                    <label for="payment_banner" class="d-block col-form-label">Current Payment Banner :</label>
+                                    <div class="w-75">
+                                        <img src="{{ url($data->payment_banner) }}" class="img-fluid">
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="row mb-0 justify-content-end">
                             <div class="col-lg-10 col-md-10">
-                                <button type="submit" class="btn btn-success">Update Info</button>
+                                <button type="submit" class="btn btn-success">✅︎ Update Info</button>
                             </div>
                         </div>
                     </form>
@@ -114,6 +142,7 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
         $('#lfm').filemanager('file', {prefix: route_prefix});
         $('#lfm2').filemanager('file', {prefix: route_prefix});
+        $('#lfm3').filemanager('file', {prefix: route_prefix});
     </script>
 
 @endsection

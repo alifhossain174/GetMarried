@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ZXX">
 
+@php
+    $logoFavicon = App\Models\Logofavicon::where('id', 1)->first();
+    $websiteThemeColor = App\Models\WesbiteThemeColor::where('id', 1)->first();
+    $socialMediaLinks = App\Models\SocialMediaLinks::where('id', 1)->first();
+    $customCssJs = App\Models\CustomCssJs::where('id', 1)->first();
+@endphp
+
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="keywords" content="Site keywords here" />
-    <meta name="description" content="Matrimonial Website HTML" />
+    @stack('site-seo')
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Site Title -->
-    <title>Matrimonial Website HTML</title>
-    <link rel="icon" href="{{url('frontend_assets')}}/assets/images/favicon.svg" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/animate.min.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/maginific-popup.min.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/fancybox.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/select2.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/icofont.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/assets/plugins/css/uicons.css" />
-    <link rel="stylesheet" href="{{url('frontend_assets')}}/style.css" />
+    <title>{{ $logoFavicon->tab_title }}</title>
+    @if($logoFavicon->favicon && file_exists(public_path($logoFavicon->favicon)))
+    <link rel="icon" href="{{url($logoFavicon->favicon)}}" />
+    @else
+    <link rel="icon" href="{{ url('frontend_assets') }}/assets/images/favicon.svg" />
+    @endif
+
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/animate.min.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/maginific-popup.min.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/fancybox.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/select2.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/icofont.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/uicons.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/style.css" />
+
+    @yield('header_css')
 
     <style>
-        .no_sticky{
+        .no_sticky {
             position: relative !important;
         }
+
+        :root {
+            --primary-color: {{ $websiteThemeColor->primary_color }};
+            --secondary-color: {{ $websiteThemeColor->secondary_color }};
+            --tertiary-color: {{ $websiteThemeColor->tertiary_color }};
+            --white-color: {{ $websiteThemeColor->white_color_1 }};
+            --white-color-2: {{ $websiteThemeColor->white_color_2 }};
+            --title-color: {{ $websiteThemeColor->title_color }};
+            --paragraph-color: {{ $websiteThemeColor->paragraph_color }};
+            --hints-color: {{ $websiteThemeColor->hints_color }};
+            --border-color: {{ $websiteThemeColor->border_color }};
+        }
+
+        {!! $customCssJs->custom_css !!}
     </style>
 </head>
 
@@ -47,7 +74,8 @@
                 <div class="modal-header offcanvas-header">
                     <!-- offcanvas-logo-start -->
                     <div class="offcanvas-logo">
-                        <a href="{{url('/')}}"><img src="{{url('frontend_assets')}}/assets/images/logo.svg" alt="#" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg"
+                                alt="#" /></a>
                     </div>
                     <!-- offcanvas-logo-end -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -60,19 +88,19 @@
                     <nav id="offcanvas-menu" class="navigation offcanvas-menu">
                         <ul id="nav mobile-nav" class="list-none offcanvas-men-list">
                             <li class="active">
-                                <a href="{{url('/')}}">হোম</a>
+                                <a href="{{ url('/') }}">হোম</a>
                             </li>
                             <li>
-                                <a href="{{url('/about')}}">আমাদের সম্পর্কে</a>
+                                <a href="{{ url('/about') }}">আমাদের সম্পর্কে</a>
                             </li>
                             <li>
-                                <a href="{{url('/faq')}}">জিজ্ঞাসা </a>
+                                <a href="{{ url('/faq') }}">জিজ্ঞাসা </a>
                             </li>
                             <li>
-                                <a href="{{url('/direction')}}">নির্দেশনা </a>
+                                <a href="{{ url('/direction') }}">নির্দেশনা </a>
                             </li>
                             <li>
-                                <a href="{{url('/contact')}}">যোগাযোগ </a>
+                                <a href="{{ url('/contact') }}">যোগাযোগ </a>
                             </li>
                         </ul>
                     </nav>
@@ -81,7 +109,7 @@
                     <div class="mobile-menu-modal-main-bottom">
                         <!-- offcanvas-menu end -->
                         <div class="mobile-menu-modal-bottom header-menu-btn">
-                            <a href="{{url('/user-login')}}" class="theme-btn">লগইন</a>
+                            <a href="{{ url('/user/login') }}" class="theme-btn">লগইন</a>
                         </div>
                     </div>
 
@@ -93,31 +121,32 @@
 
 
     <!-- Header Area -->
-    <header id="active-sticky" class="header-area @if(request()->route()->uri == 'user-login' || request()->route()->uri == 'user-register') no_sticky @endif">
+    <header id="active-sticky" class="header-area @if (request()->route()->uri == 'user/login' || request()->route()->uri == 'user/register') no_sticky @endif">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="header-inner">
                         <div class="header-logo">
-                            <a href="{{url('/')}}"><img src="{{url('frontend_assets')}}/assets/images/logo.svg" alt="#" /></a>
+                            <a href="{{ url('/') }}"><img
+                                    src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
                         </div>
                         <div class="header-menu">
                             <nav class="navigation">
                                 <ul class="header-menu-list">
                                     <li class="active">
-                                        <a href="{{url('/')}}">হোম</a>
+                                        <a href="{{ url('/') }}">হোম</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/about')}}">আমাদের সম্পর্কে</a>
+                                        <a href="{{ url('/about') }}">আমাদের সম্পর্কে</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/faq')}}">জিজ্ঞাসা</a>
+                                        <a href="{{ url('/faq') }}">জিজ্ঞাসা</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/direction')}}">নির্দেশনা</a>
+                                        <a href="{{ url('/direction') }}">নির্দেশনা</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/contact')}}">যোগাযোগ</a>
+                                        <a href="{{ url('/contact') }}">যোগাযোগ</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -128,7 +157,7 @@
                                 <div class="language-change-toggle theme-switch" onclick="languageToggle()"></div>
                             </div>
                             <div class="header-login">
-                                <a href="{{url('/user-login')}}" class="theme-btn">লগইন</a>
+                                <a href="{{ url('/user/login') }}" class="theme-btn">লগইন</a>
                             </div>
                             <!-- Mobile Menu Button -->
                             <button type="button" class="mobile-menu-offcanvas-toggler" data-bs-toggle="modal"
@@ -157,72 +186,121 @@
                 <div class="col-lg-12 col-xl-7 col-12">
                     <div class="footer-menu">
                         <ul class="footer-menu-list">
-                            <li><a href="{{url('/about')}}">আমাদের সম্পর্কে</a></li>
-                            <li><a href="{{url('/faq')}}">জিজ্ঞাসা</a></li>
-                            <li><a href="{{url('/direction')}}">নির্দেশনা</a></li>
-                            <li><a href="{{url('/contact')}}">যোগাযোগ</a></li>
+                            <li><a href="{{ url('/about') }}">আমাদের সম্পর্কে</a></li>
+                            <li><a href="{{ url('/faq') }}">জিজ্ঞাসা</a></li>
+                            <li><a href="{{ url('/direction') }}">নির্দেশনা</a></li>
+                            <li><a href="{{ url('/contact') }}">যোগাযোগ</a></li>
                         </ul>
                     </div>
                     <p class="footer-copyright-text">
-                        © 2023 All Rights Reserved | Design & Developed by
-                        <a href="#" target="_blank">GetUp</a>
-                        | Powered by <a href="#" target="_blank">Shadikorun</a>
+                        © {{date("Y")}} All Rights Reserved | Design & Developed by
+                        <a href="https://getup.com.bd" target="_blank">GetUp</a>
+                        | Powered by <a href="{{url('/')}}" target="_blank">{{$logoFavicon ? $logoFavicon->tab_title : ''}}</a>
                     </p>
                 </div>
                 <div class="col-lg-12 col-xl-5 col-12">
                     <div class="footer-menu style-2">
                         <ul class="footer-menu-list">
-                            <li><a href="privacy-policy.html">Privacy Notice</a></li>
-                            <li><a href="terms-condition.html">Terms & Conditions</a></li>
-                            <li><a href="refund-policy.html">Refund Policy</a></li>
+                            <li><a href="{{url('privacy-policy')}}">Privacy Notice</a></li>
+                            <li><a href="{{url('terms-condition')}}">Terms & Conditions</a></li>
+                            <li><a href="{{url('refund-policy')}}">Refund Policy</a></li>
                         </ul>
                     </div>
                     <div class="footer-social">
                         <ul class="footer-social-list">
-                            <li>
-                                <a target="_blank" href="#">
-                                    <i class="icofont-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#">
-                                    <i class="icofont-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#">
-                                    <i class="icofont-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="#">
-                                    <i class="icofont-youtube-play"></i></a>
-                            </li>
+                            @if ($socialMediaLinks->facebook)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->facebook }}" target="_blank">
+                                        <i class="icofont-facebook"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->messenger)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->messenger }}" target="_blank">
+                                        <i class="icofont-facebook-messenger"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->twitter)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->twitter }}" target="_blank">
+                                        <i class="icofont-twitter"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->instagram)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->instagram }}" target="_blank">
+                                        <i class="icofont-instagram"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->linkedin)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->linkedin }}" target="_blank">
+                                        <i class="icofont-linkedin"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->whatsapp)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->whatsapp }}" target="_blank">
+                                        <i class="icofont-brand-whatsapp"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->telegram)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->telegram }}" target="_blank">
+                                        <i class="icofont-telegram"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($socialMediaLinks->youtube)
+                                <li>
+                                    <a href="{{ $socialMediaLinks->youtube }}" target="_blank">
+                                        <i class="icofont-youtube-play"></i>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
             </div>
+
+            @if($logoFavicon->payment_banner && file_exists(public_path($logoFavicon->payment_banner)))
             <div class="row">
                 <div class="col-12">
                     <div class="footer-sslcommerze-img">
-                        <img src="{{url('frontend_assets')}}/assets/images/sslcommraze-img.svg" alt="#" />
+                        <img src="{{ url($logoFavicon->payment_banner) }}" alt="Payment Banner" />
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </footer>
     <!-- End Footer Area -->
 
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/jquery.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/jquery-migrate.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/modernizer.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/bootstrap.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/owl.carousel.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/magnific-popup.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/backToTop.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/wow.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/jquery-fancybox.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/jquery.counterup.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/waypoints.min.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/select2.js"></script>
-    <script src="{{url('frontend_assets')}}/assets/plugins/js/active.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery-migrate.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/modernizer.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/bootstrap.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/owl.carousel.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/magnific-popup.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/backToTop.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/wow.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery-fancybox.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery.counterup.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/waypoints.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/select2.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/active.js"></script>
+
+    @yield('footer_js')
+
+    <script>
+        {!! $customCssJs->custom_js !!}
+    </script>
 </body>
 
 </html>

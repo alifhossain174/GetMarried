@@ -1,5 +1,14 @@
 @extends('frontend.master')
 
+@push('site-seo')
+    @php
+        $homePageSeo = App\Models\Seo::where('id', 1)->first();
+    @endphp
+    <meta name="title" content="{{$homePageSeo->meta_title}}" />
+    <meta name="description" content="{{$homePageSeo->meta_description}}" />
+    <meta name="keywords" content="{{str_replace(",",", ",$homePageSeo->meta_keywords)}}" />
+@endpush
+
 @section('content')
     <!-- Breadcrumbs Area -->
     <section class="breadcrumbs-area">

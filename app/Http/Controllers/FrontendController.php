@@ -32,12 +32,16 @@ class FrontendController extends Controller
         return view('frontend.contact');
     }
 
-    public function userLogin(){
-        return view('frontend.auth.login');
+    public function privacyPolicy(){
+        return view('frontend.privacy_policy');
     }
 
-    public function userRegister(){
-        return view('frontend.auth.register');
+    public function termsCondition(){
+        return view('frontend.terms_condition');
+    }
+
+    public function refundPolicy(){
+        return view('frontend.refund_policy');
     }
 
 }

@@ -33,7 +33,10 @@ class SeoController extends Controller
         if(file_exists(public_path("sitemap.xml"))){
             unlink(public_path("sitemap.xml"));
         }
-        ini_set('max_execution_time', '300');
+
+        ini_set('max_execution_time', '600');
+        ini_set('memory_limit', '2048M');
+
         $path = public_path('sitemap.xml');
         $baseUrl = URL::to('/');
         SitemapGenerator::create($baseUrl)->writeToFile($path);

@@ -24,6 +24,7 @@ class LogoFaviconController extends Controller
             'tab_title' => $request->tab_title,
             'logo' => $request->logo != '' ? parse_url($request->logo)['path'] : null,
             'favicon' => $request->favicon != '' ? parse_url($request->favicon)['path'] : null,
+            'payment_banner' => $request->payment_banner != '' ? parse_url($request->payment_banner)['path'] : null,
             'updated_at' => Carbon::now()
         ]);
 

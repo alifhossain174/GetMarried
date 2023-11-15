@@ -103,47 +103,47 @@
     /*=============================================================================
       Age Range Slider JS
     ===============================================================================*/
-    $(function () {
-      $("#slider-range-one").slider({
-        range: true,
-        min: 18,
-        max: 60,
-        values: [18, 60],
-        slide: function (event, ui) {
-          $("#amount-one").val("" + ui.values[0] + " - " + ui.values[1]);
-        },
-      });
-      $("#amount-one").val(
-        "" +
-          $("#slider-range-one").slider("values", 0) +
-          " - " +
-          $("#slider-range-one").slider("values", 1)
-      );
-    });
+    // $(function () {
+    //   $("#slider-range-one").slider({
+    //     range: true,
+    //     min: 18,
+    //     max: 60,
+    //     values: [18, 60],
+    //     slide: function (event, ui) {
+    //       $("#amount-one").val("" + ui.values[0] + " - " + ui.values[1]);
+    //     },
+    //   });
+    //   $("#amount-one").val(
+    //     "" +
+    //       $("#slider-range-one").slider("values", 0) +
+    //       " - " +
+    //       $("#slider-range-one").slider("values", 1)
+    //   );
+    // });
 
     /*=============================================================================
       Height Range Slider JS
     ===============================================================================*/
-    $(function () {
-      $("#slider-range-two").slider({
-        range: true,
-        min: 4,
-        max: 7,
-        values: [4, 7],
-        slide: function (event, ui) {
-          $("#amount-two").val(
-            "" + ui.values[0] + "Ft - " + ui.values[1] + "Ft"
-          );
-        },
-      });
-      $("#amount-two").val(
-        "" +
-          $("#slider-range-two").slider("values", 0) +
-          "Ft - " +
-          $("#slider-range-two").slider("values", 1) +
-          "Ft"
-      );
-    });
+    // $(function () {
+    //   $("#slider-range-two").slider({
+    //     range: true,
+    //     min: 4,
+    //     max: 7,
+    //     values: [4, 7],
+    //     slide: function (event, ui) {
+    //       $("#amount-two").val(
+    //         "" + ui.values[0] + "Ft - " + ui.values[1] + "Ft"
+    //       );
+    //     },
+    //   });
+    //   $("#amount-two").val(
+    //     "" +
+    //       $("#slider-range-two").slider("values", 0) +
+    //       "Ft - " +
+    //       $("#slider-range-two").slider("values", 1) +
+    //       "Ft"
+    //   );
+    // });
 
     /*==============================================================================
 		  About Us Image Slider
@@ -190,10 +190,10 @@ function languageToggle() {
   }
 }
 
-(function () {
-  let onpageLoad = localStorage.getItem("systemChange") || "";
-  let element = document.body;
-  element.classList.add(onpageLoad);
-  document.getElementById("systemChange").textContent =
-    localStorage.getItem("systemChange") || "language-change";
-})();
+// (function () {
+//   let onpageLoad = localStorage.getItem("systemChange") || "";
+//   let element = document.body;
+//   element.classList.add(onpageLoad);
+//   document.getElementById("systemChange").textContent =
+//     localStorage.getItem("systemChange") || "language-change";
+// })();

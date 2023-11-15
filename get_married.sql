@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 10:23 AM
+-- Generation Time: Nov 15, 2023 at 05:06 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -305,6 +305,7 @@ CREATE TABLE `logo_favicons` (
   `logo` varchar(255) DEFAULT NULL,
   `favicon` varchar(255) DEFAULT NULL,
   `tab_title` varchar(255) DEFAULT NULL,
+  `payment_banner` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -313,8 +314,8 @@ CREATE TABLE `logo_favicons` (
 -- Dumping data for table `logo_favicons`
 --
 
-INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `created_at`, `updated_at`) VALUES
-(1, '/storage/files/1/logo.svg', '/storage/files/1/logo.svg', 'XYZ School', '2023-10-08 03:35:45', '2023-10-25 07:45:43');
+INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `payment_banner`, `created_at`, `updated_at`) VALUES
+(1, '/storage/files/1/Logo & Favicon/Getmarried-primary-logo.svg', '/storage/files/1/Logo & Favicon/Getmarried-Favicon.svg', 'সাদিকরুন - Get Married', NULL, '2023-10-08 03:35:45', '2023-11-14 21:36:33');
 
 -- --------------------------------------------------------
 
@@ -743,7 +744,7 @@ CREATE TABLE `social_media_links` (
 --
 
 INSERT INTO `social_media_links` (`id`, `facebook`, `instagram`, `twitter`, `linkedin`, `youtube`, `messenger`, `whatsapp`, `telegram`, `created_at`, `updated_at`) VALUES
-(1, '#', NULL, NULL, '#', '#', NULL, '#', NULL, NULL, '2023-10-25 08:08:12');
+(1, 'https://www.facebook.com', 'https://www.instagram.com', 'https://twitter.com', 'https://www.linkedin.com', 'https://www.youtube.com', 'https://www.messenger.com', 'https://web.whatsapp.com/', 'https://telegram.org', NULL, '2023-11-14 22:04:10');
 
 -- --------------------------------------------------------
 
@@ -5926,7 +5927,7 @@ CREATE TABLE `wesbite_theme_colors` (
 --
 
 INSERT INTO `wesbite_theme_colors` (`id`, `primary_color`, `secondary_color`, `tertiary_color`, `white_color_1`, `white_color_2`, `white_color_3`, `title_color`, `paragraph_color`, `hints_color`, `border_color`, `created_at`, `updated_at`) VALUES
-(1, '#019267', '#3ccf4e', '#f45050', '#ffffff', '#f8f8f8', '#e6f4f0', '#20262e', '#2c3333', '#767a7a', '#e9e9ea', NULL, '2023-10-31 10:35:26');
+(1, '#ff4949', '#541690', '#400082', '#ffffff', '#f8f8f8', '#e6f4f0', '#20262e', '#2c3333', '#767a7a', '#e9e9ea', NULL, '2023-11-14 21:45:26');
 
 --
 -- Indexes for dumped tables
