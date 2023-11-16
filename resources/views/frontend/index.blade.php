@@ -10,8 +10,9 @@
 @endpush
 
 @section('content')
+
     <!-- Hero Area -->
-    <section class="hero-area background-image" style="background-image: url('{{url('frontend_assets')}}/assets/images/hero-bg.png')">
+    <section class="hero-area background-image" style="@if($banner->priority == 1) background-image: url('{{url($banner->background_image)}}'); @else background-color: {{$banner->background_color}} !important; @endif">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-8 col-12">

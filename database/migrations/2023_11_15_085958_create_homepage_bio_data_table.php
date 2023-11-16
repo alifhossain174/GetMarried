@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('homepage_bio_data', function (Blueprint $table) {
             $table->id();
             $table->string('background_color')->nullable();
+            $table->string('background_image')->nullable();
+            $table->tinyInteger('priority')->default(1)->comment("1=>Background Image; 2=>Background Color");
+
             $table->string('image')->nullable();
             $table->string('title')->nullable();
             $table->string('title_bn')->nullable();

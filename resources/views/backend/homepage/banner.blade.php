@@ -126,8 +126,8 @@
                             <div class="col-sm-3 pt-1">
                                 <select name="priority" id="priority" data-plugin="customselect" class="form-select" required>
                                     <option value="">Select One</option>
-                                    <option value="1" selected>Background Image</option>
-                                    <option value="2">Background Color</option>
+                                    <option value="1" @if($data->priority == 1) selected @endif>Background Image</option>
+                                    <option value="2" @if($data->priority == 2) selected @endif>Background Color</option>
                                 </select>
                             </div>
                         </div>

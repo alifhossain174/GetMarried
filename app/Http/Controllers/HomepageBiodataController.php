@@ -22,7 +22,9 @@ class HomepageBiodataController extends Controller
 
         HomepageBioData::where('id', 1)->update([
             'image' => $request->image != '' ? parse_url($request->image)['path'] : null,
+            'background_image' => $request->background_image != '' ? parse_url($request->background_image)['path'] : null,
             'background_color' => $request->background_color,
+            'priority' => $request->priority,
             'title' => $request->title,
             'title_bn' => $request->title_bn,
             'description' => $request->description,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 07:58 AM
+-- Generation Time: Nov 16, 2023 at 10:01 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -85,7 +85,7 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `background_image`, `background_color`, `banner_title`, `banner_title_bn`, `banner_description`, `banner_description_bn`, `priority`, `created_at`, `updated_at`) VALUES
-(1, '/storage/files/1/hero-bg.png', '#c27ba0', 'Trusted Platform for Bride & Groom', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', 'Find from your own area', 'আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই।', 1, NULL, '2023-11-15 02:57:13');
+(1, '/storage/files/1/hero-bg.png', '#cfe2f3', 'Trusted Platform for Bride & Groom', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', 'Find from your own area', 'আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই।', 1, NULL, '2023-11-16 02:47:38');
 
 -- --------------------------------------------------------
 
@@ -329,6 +329,8 @@ INSERT INTO `google_recaptchas` (`id`, `recaptcha_key`, `recaptcha_secret`, `sta
 CREATE TABLE `homepage_bio_data` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `title_bn` varchar(255) DEFAULT NULL,
@@ -349,8 +351,8 @@ CREATE TABLE `homepage_bio_data` (
 -- Dumping data for table `homepage_bio_data`
 --
 
-INSERT INTO `homepage_bio_data` (`id`, `background_color`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
-(1, '#fff2cc', '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 00:51:56');
+INSERT INTO `homepage_bio_data` (`id`, `background_color`, `background_image`, `priority`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
+(1, '#cfe2f3', '/storage/files/1/section-bg.png', 2, '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 02:59:48');
 
 -- --------------------------------------------------------
 

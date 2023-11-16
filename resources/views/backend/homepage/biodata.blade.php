@@ -34,33 +34,31 @@
 
                         <div class="row">
                             <div class="col-lg-5">
+
                                 <div class="form-group">
-                                    <label for="image" class="col-form-label">Side Image</label>
+                                    <label for="image" class="col-form-label">Background Image</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <a id="lfm" data-input="thumbnail" data-preview="holder"
-                                                class="btn btn-success text-white">
-                                                <i class="fi fi-rr-picture"></i> Upload Background
+                                            <a id="lfm2" data-input="thumbnail2" data-preview="holder" class="btn btn-success text-white">
+                                                <i class="fi fi-rr-picture"></i> Upload Image
                                             </a>
                                         </span>
-                                        <input id="thumbnail"
-                                            @if ($data->image && file_exists(public_path($data->image))) value="{{ url($data->image) }}" @endif
-                                            class="form-control @error('image') is-invalid @enderror" type="text"
-                                            name="image" readonly>
-                                        @error('image')
+                                        <input id="thumbnail2" @if ($data->background_image && file_exists(public_path($data->background_image))) value="{{ url($data->background_image) }}" @endif class="form-control @error('image') is-invalid @enderror" type="text" name="background_image" readonly>
+                                        @error('background_image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <small class="form-text text-muted">[Please upload jpg, jpeg, png file of 1999px * 1550px]</small>
-                                    @if ($data->image && file_exists(public_path($data->image)))
-                                        <label for="image" class="d-block col-form-label">Current Image :</label>
+                                    <small class="form-text text-muted">[Please upload jpg, jpeg, png file of 5599px * 2360px]</small>
+                                    @if ($data->background_image && file_exists(public_path($data->background_image)))
+                                        <label for="background_image" class="d-block col-form-label">Current Background Image :</label>
                                         <div class="w-75">
-                                            <img src="{{ url($data->image) }}" class="img-fluid w-50">
+                                            <img src="{{ url($data->background_image) }}" class="img-fluid w-50">
                                         </div>
                                     @endif
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="background_color" class="col-form-label">Background Color</label>
@@ -71,6 +69,16 @@
                                         </span>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="priority" class="col-form-label">Which one to use ?</label>
+                                    <select name="priority" id="priority" data-plugin="customselect" class="form-select" required>
+                                        <option value="">Select One</option>
+                                        <option value="1" @if($data->priority == 1) selected @endif>Background Image</option>
+                                        <option value="2" @if($data->priority == 2) selected @endif>Background Color</option>
+                                    </select>
+                                </div>
+
                             </div>
                             <div class="col-lg-7">
                                 <div class="row">
@@ -198,14 +206,55 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 pt-4">
-                                            <button type="submit" class="btn btn-success">✅︎ <b>Update Info</b></button>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="image" class="col-form-label">Side Image</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <a id="lfm" data-input="thumbnail" data-preview="holder"
+                                                        class="btn btn-success text-white">
+                                                        <i class="fi fi-rr-picture"></i> Upload Image
+                                                    </a>
+                                                </span>
+                                                <input id="thumbnail"
+                                                    @if ($data->image && file_exists(public_path($data->image))) value="{{ url($data->image) }}" @endif
+                                                    class="form-control @error('image') is-invalid @enderror" type="text"
+                                                    name="image" readonly>
+                                                @error('image')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <small class="form-text text-muted">[Please upload jpg, jpeg, png file of 1999px * 1550px]</small>
+                                            @if ($data->image && file_exists(public_path($data->image)))
+                                                <label for="image" class="d-block col-form-label">Current Side Image :</label>
+                                                <div class="w-75">
+                                                    <img src="{{ url($data->image) }}" class="img-fluid w-50">
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="button2_url" class="col-form-label">Status</label>
+                                            <select class="form-select" name="status">
+                                                <option value="1" @if($data->status == 1) selected @endif>Show this Section</option>
+                                                <option value="0" @if($data->status == 0) selected @endif>Hide this Section</option>
+                                            </select>
                                         </div>
                                     </div>
 
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 pt-4">
+                                        <button type="submit" class="btn btn-success">✅︎ <b>Update Info</b></button>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
 
                     </form>
@@ -224,6 +273,9 @@
         var route_prefix = "/filemanager";
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
         $('#lfm').filemanager('file', {
+            prefix: route_prefix
+        });
+        $('#lfm2').filemanager('file', {
             prefix: route_prefix
         });
 

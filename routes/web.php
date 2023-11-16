@@ -65,17 +65,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('/upload/sitemap', [SeoController::class, 'uploadSitemap'])->name('UploadSitemap');
 
 
-    // contact us routes
-    Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
-    Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
-
-    // homepage banner
+    // homepage dynamic content routes
     Route::get('homepage/banner', [BannerController::class, 'homePageBanner'])->name('HomePageBanner');
     Route::post('update/homepage/banner', [BannerController::class, 'updateHomePageBanner'])->name('UpdateHomePageBanner');
-
-    // homepage biodata
     Route::get('homepage/biodata', [HomepageBiodataController::class, 'homePageBiodata'])->name('HomePageBiodata');
     Route::post('update/homepage/biodata', [HomepageBiodataController::class, 'updateHomePageBiodata'])->name('UpdateHomePageBiodata');
+    // Route::get('homepage/statistics')
+    Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
+    Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
 
 
 });
