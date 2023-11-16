@@ -35,13 +35,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
 
     // class config routes
-    // Route::get('view/all/class', [ConfigController::class, 'viewAllClass'])->name('ViewAllClass');
-    // Route::post('add/new/class', [ConfigController::class, 'addNewClass'])->name('AddNewClass');
-    // Route::get('delete/class/{slug}', [ConfigController::class, 'deleteClass'])->name('DeleteClass');
-    // Route::get('get/class/info/{slug}', [ConfigController::class, 'classInfo'])->name('ClassInfo');
-    // Route::post('update/class/info', [ConfigController::class, 'updateClassInfo'])->name('UpdateClassInfo');
-    // Route::get('rearrange/class', [ConfigController::class, 'rearrangeClass'])->name('RearrangeClass');
-    // Route::post('save/rearranged/class', [ConfigController::class, 'saveRearrangeClass'])->name('SaveRearrangeClass');
+    Route::get('language/page', [ConfigController::class, 'languagePage'])->name('LanguagePage');
+    Route::get('set/default/language/{code}/{value}', [ConfigController::class, 'setDefaultLanguage'])->name('SetDefaultLanguage');
 
 
 

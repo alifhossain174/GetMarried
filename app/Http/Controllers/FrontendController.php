@@ -31,7 +31,7 @@ class FrontendController extends Controller
     public function privacyPolicy(){
         return view('frontend.privacy_policy');
     }
-
+    
     public function termsCondition(){
         return view('frontend.terms_condition');
     }
@@ -41,18 +41,13 @@ class FrontendController extends Controller
     }
 
     public function langChange(Request $request){
+        $locale = App::currentLocale();
 
-        // App::setLocale('bn'); //$request->lang
-        // session()->put('locale', 'bn'); //$request->lang
-
-        // config([
-        //     'app.locale' => 'bn',
-        // ]);
-
-        App::setLocale('bn');
-
-        echo $locale = App::currentLocale();
-        exit();
+        if($locale == 'en'){
+            session(['locale' => 'bn']);
+        } else {
+            session(['locale' => 'en']);
+        }
 
         return back();
     }

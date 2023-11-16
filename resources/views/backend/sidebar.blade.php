@@ -9,17 +9,17 @@
         <li>
             <a href="#sidebarPackages" data-bs-toggle="collapse">
                 <i data-feather="settings"></i>
-                <span> Software Config </span>
+                <span> Website Config </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarPackages">
                 <ul class="nav-second-level">
-                    <li><a href="{{url('/view/all/class')}}">Class</a></li>
+                    <li><a href="{{url('/language/page')}}">Languages</a></li>
                 </ul>
             </div>
         </li>
-        <li><a href="{{url('/logo/favicon')}}"><i data-feather="image"></i><span> Logo & Favicon </span></a></li>
-        <li><a href="{{url('/website/theme/page')}}"><i class="bi bi-palette" style="font-size: 15px;"></i><span> Website Theme Color </span></a></li>
+        <li><a href="{{url('/logo/favicon')}}"><i data-feather="image"></i><span> Logo, Icon & Banner </span></a></li>
+        <li><a href="{{url('/website/theme/page')}}"><i class="bi bi-palette" style="font-size: 15px;"></i><span> Site Theme Color </span></a></li>
         <li><a href="{{url('/social/media/page')}}"><i class="bi bi-link-45deg" style="font-size: 18px;"></i><span> Social Media Links </span></a></li>
         <li><a href="{{url('/custom/css/js')}}"><i class="bi bi-code-slash" style="font-size: 16px;"></i><span> Custom CSS & JS </span></a></li>
         <li><a href="{{url('/file-manager')}}"><i data-feather="folder-plus"></i><span> File Manager </span></a></li>

@@ -207,7 +207,7 @@
                                 <a href="{{ url('/user/login') }}" class="theme-btn"> {{ __('message.welcome') }} লগইন</a>
                             </div>
                             <!-- Mobile Menu Button -->
-                            
+
                             <button type="button" class="mobile-menu-offcanvas-toggler" data-bs-toggle="modal"
                                 data-bs-target="#offcanvas-modal">
                                 <span class="line"></span>
@@ -345,8 +345,13 @@
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/select2.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/active.js"></script>
 
+    @php
+        $locale = App::currentLocale();
+    @endphp
+
     <script>
         function languageToggle() {
+
             let element = document.body;
             element.classList.toggle("language-change");
 
@@ -356,6 +361,17 @@
             } else {
                 localStorage.setItem("systemChange", "language-change");
             }
+
+            $.ajax({
+                type: "GET",
+                url: "{{ url('change/lang') }}",
+                success: function (data) {
+                    // location.reload(true);
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+            });
 
         }
     </script>
