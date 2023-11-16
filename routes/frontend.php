@@ -8,7 +8,6 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 
 // frontend web pages
-
 Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/', [FrontendController::class, 'index'])->name('Frontend.Index');
     Route::get('/about', [FrontendController::class, 'about'])->name('Frontend.About');

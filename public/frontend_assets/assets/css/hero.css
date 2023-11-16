@@ -10,16 +10,17 @@
 }
 .hero-cont-title {
   font-size: 58px;
-  margin-bottom: 28px;
   color: var(--secondary-color);
   line-height: 130%;
+  width: 90%;
+  margin: auto;
 }
 .hero-cont-title span {
   display: block;
 }
 .hero-cont-text {
+    margin-top: 28px;
   font-size: 22px;
-  margin: 0;
 }
 .hero-search-filter {
   display: flex;

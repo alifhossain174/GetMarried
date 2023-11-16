@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
+use App\Models\HomepageBioData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -9,7 +11,9 @@ class FrontendController extends Controller
 {
 
     public function index(){
-        return view('frontend.index');
+        $banner = Banner::where('id', 1)->first();
+        $homePageBiodata = HomepageBioData::where('id', 1)->first();
+        return view('frontend.index', compact('banner', 'homePageBiodata'));
     }
 
     public function about(){
@@ -31,7 +35,7 @@ class FrontendController extends Controller
     public function privacyPolicy(){
         return view('frontend.privacy_policy');
     }
-    
+
     public function termsCondition(){
         return view('frontend.terms_condition');
     }

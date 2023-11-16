@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 06:10 AM
+-- Generation Time: Nov 16, 2023 at 07:58 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -350,7 +350,7 @@ CREATE TABLE `homepage_bio_data` (
 --
 
 INSERT INTO `homepage_bio_data` (`id`, `background_color`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
-(1, '#fff2cc', '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-15 04:15:58');
+(1, '#fff2cc', '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 00:51:56');
 
 -- --------------------------------------------------------
 
@@ -5984,8 +5984,8 @@ CREATE TABLE `website_languages` (
 --
 
 INSERT INTO `website_languages` (`id`, `icon`, `name`, `code`, `description`, `serial`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-15 23:10:16'),
-(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-15 23:10:16');
+(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-15 23:51:40'),
+(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-15 23:51:40');
 
 -- --------------------------------------------------------
 

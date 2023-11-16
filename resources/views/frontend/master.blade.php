@@ -134,19 +134,19 @@
                     <nav id="offcanvas-menu" class="navigation offcanvas-menu">
                         <ul id="nav mobile-nav" class="list-none offcanvas-men-list">
                             <li class="active">
-                                <a href="{{ url('/') }}">হোম</a>
+                                <a href="{{ url('/') }}">{{__('label.menu_home')}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">আমাদের সম্পর্কে</a>
+                                <a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/faq') }}">জিজ্ঞাসা </a>
+                                <a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/direction') }}">নির্দেশনা </a>
+                                <a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/contact') }}">যোগাযোগ </a>
+                                <a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a>
                             </li>
                         </ul>
                     </nav>
@@ -155,7 +155,7 @@
                     <div class="mobile-menu-modal-main-bottom">
                         <!-- offcanvas-menu end -->
                         <div class="mobile-menu-modal-bottom header-menu-btn">
-                            <a href="{{ url('/user/login') }}" class="theme-btn">লগইন</a>
+                            <a href="{{ url('/user/login') }}" class="theme-btn">{{__('label.menu_login')}}</a>
                         </div>
                     </div>
 
@@ -173,26 +173,25 @@
                 <div class="col-12">
                     <div class="header-inner">
                         <div class="header-logo">
-                            <a href="{{ url('/') }}"><img
-                                    src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
+                            <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
                         </div>
                         <div class="header-menu">
                             <nav class="navigation">
                                 <ul class="header-menu-list">
                                     <li class="active">
-                                        <a href="{{ url('/') }}">হোম</a>
+                                        <a href="{{ url('/') }}">{{__('label.menu_home')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/about') }}">আমাদের সম্পর্কে</a>
+                                        <a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/faq') }}">জিজ্ঞাসা</a>
+                                        <a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/direction') }}">নির্দেশনা</a>
+                                        <a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/contact') }}">যোগাযোগ</a>
+                                        <a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -204,7 +203,7 @@
                                 <div class="language-change-toggle theme-switch" onclick="languageToggle()"></div>
                             </div>
                             <div class="header-login">
-                                <a href="{{ url('/user/login') }}" class="theme-btn"> {{ __('message.welcome') }} লগইন</a>
+                                <a href="{{ url('/user/login') }}" class="theme-btn">{{__('label.menu_login')}}</a>
                             </div>
                             <!-- Mobile Menu Button -->
 
@@ -349,6 +348,20 @@
         $locale = App::currentLocale();
     @endphp
 
+    @if($locale == 'en')
+    <script>
+        let element = document.body;
+        element.classList.toggle("language-change");
+
+        let systemChange = localStorage.getItem("systemChange");
+        if (systemChange && systemChange === "language-change") {
+            localStorage.setItem("systemChange", "");
+        } else {
+            localStorage.setItem("systemChange", "language-change");
+        }
+    </script>
+    @endif
+
     <script>
         function languageToggle() {
 
@@ -366,7 +379,8 @@
                 type: "GET",
                 url: "{{ url('change/lang') }}",
                 success: function (data) {
-                    // location.reload(true);
+                    console.log("Language Changed Successfully");
+                    location.reload(true);
                 },
                 error: function (data) {
                     console.log('Error:', data);

@@ -17,25 +17,27 @@
                 <div class="col-lg-12 col-xl-8 col-12">
                     <div class="hero-content">
                         <h2 class="hero-cont-title">
-                            পাত্র পাত্রী খোঁজার একমাত্র <span>বিশ্বস্ত মাধ্যম!</span>
+                            {{-- পাত্র পাত্রী খোঁজার একমাত্র <span>বিশ্বস্ত মাধ্যম!</span> --}}
+                            {{ App::currentLocale() == 'en' ? $banner->banner_title : $banner->banner_title_bn }}
                         </h2>
                         <p class="hero-cont-text">
-                            আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই।
+                            {{-- আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই। --}}
+                            {{ App::currentLocale() == 'en' ? $banner->banner_description : $banner->banner_description_bn }}
                         </p>
                     </div>
                     <div class="hero-search-filter">
                         <div class="form-group">
-                            <label>আমি খুঁজছি</label>
+                            <label>{{__('label.hero_searching_for')}}</label>
                             <select class="select2 hero-search-filter-select">
-                                <option value="1">সকল</option>
+                                <option value="">{{__('label.hero_all')}}</option>
                                 <option value="2">পাত্রের বায়োডাটা</option>
                                 <option value="3">পাত্রীর বায়োডাটা</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>বৈবাহিক অবস্থা</label>
+                            <label>{{__('label.hero_marital_status')}}</label>
                             <select class="select2 hero-search-filter-select">
-                                <option value="1">সকল</option>
+                                <option value="">{{__('label.hero_all')}}</option>
                                 <option value="2">অবিবাহিত</option>
                                 <option value="3">বিবাহিত</option>
                                 <option value="4">ডিভোর্সড</option>
@@ -44,9 +46,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>স্থায়ী ঠিকানা</label>
+                            <label>{{__('label.hero_permenant_address')}}</label>
                             <select class="hero-search-filter-select select2" name="state">
-                                <option value="0">সকল জেলা</option>
+                                <option value="">{{__('label.hero_all_district')}}</option>
                                 <option value="1">কুমিল্লা</option>
                                 <option value="2">ফেনী</option>
                                 <option value="3">ব্রাহ্মণবাড়িয়া</option>
@@ -114,7 +116,7 @@
                             </select>
                         </div>
                         <a href="biodata.html" class="h-search-filter-btn">
-                            <i class="fi fi-rs-search"></i>খুঁজুন
+                            <i class="fi fi-rs-search"></i>{{__('label.hero_search')}}
                         </a>
                     </div>
                 </div>
@@ -123,31 +125,31 @@
     </section>
     <!-- End Hero Area -->
 
+
     <!-- BioData CTA Area -->
     <section class="biodata-cta-area background-image" style="background-image: url('{{url('frontend_assets')}}/assets/images/section-bg.png')">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
                     <div class="biodata-cta-img">
+                        @if($homePageBiodata && file_exists(public_path($homePageBiodata->image)))
+                        <img src="{{url($homePageBiodata->image)}}" alt="Image" />
+                        @else
                         <img src="{{url('frontend_assets')}}/assets/images/cta-img.svg" alt="#" />
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="biodata-cta-content">
                         <h3 class="biodata-cta-cont-title">
-                            <span>সাদিকরুনে</span> সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়
+                            {{ App::currentLocale() == 'en' ? $homePageBiodata->title : $homePageBiodata->title_bn }}
                         </h3>
                         <p class="biodata-cta-cont-text">
-                            অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা
-                            তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে
-                            পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।
+                            {{ App::currentLocale() == 'en' ? $homePageBiodata->description : $homePageBiodata->description_bn }}
                         </p>
                         <div class="biodata-cta-btn">
-                            <a href="#" target="_blank" class="theme-btn"><i
-                                    class="fi fi-rr-plus"></i>বায়োডাটা তৈরি করুন</a>
-                            <a href="#" target="_blank" class="theme-btn secondary"><i
-                                    class="icofont-youtube-play"></i>যেভাবে বায়োডাটা তৈরি
-                                করবেন</a>
+                            <a href="{{$homePageBiodata->button1_url}}" target="_blank" class="theme-btn"><i class="fi fi-rr-plus"></i>{{ App::currentLocale() == 'en' ? $homePageBiodata->button1_text : $homePageBiodata->button1_text_bn }}</a>
+                            <a href="{{$homePageBiodata->button2_url}}" target="_blank" class="theme-btn secondary"><i class="icofont-youtube-play"></i>{{ App::currentLocale() == 'en' ? $homePageBiodata->button2_text : $homePageBiodata->button2_text_bn }}</a>
                         </div>
                     </div>
                 </div>
@@ -155,6 +157,7 @@
         </div>
     </section>
     <!-- End BioData CTA Area -->
+
 
     <!-- Funfact  Area -->
     <section class="funfact-area">
