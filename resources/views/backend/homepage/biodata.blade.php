@@ -238,7 +238,7 @@
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label for="button2_url" class="col-form-label">Status</label>
+                                            <label for="status" class="col-form-label">Status</label>
                                             <select class="form-select" name="status">
                                                 <option value="1" @if($data->status == 1) selected @endif>Show this Section</option>
                                                 <option value="0" @if($data->status == 0) selected @endif>Hide this Section</option>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 10:01 AM
+-- Generation Time: Nov 16, 2023 at 12:32 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -352,7 +352,49 @@ CREATE TABLE `homepage_bio_data` (
 --
 
 INSERT INTO `homepage_bio_data` (`id`, `background_color`, `background_image`, `priority`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
-(1, '#cfe2f3', '/storage/files/1/section-bg.png', 2, '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 02:59:48');
+(1, '#ead1dc', '/storage/files/1/section-bg.png', 1, '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 03:04:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `homepage_statistics`
+--
+
+CREATE TABLE `homepage_statistics` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `number` varchar(255) DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `homepage_statistics_configs`
+--
+
+CREATE TABLE `homepage_statistics_configs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `homepage_statistics_configs`
+--
+
+INSERT INTO `homepage_statistics_configs` (`id`, `section_title`, `section_title_bn`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Service Taker Statistics of ShadiKorun', 'সাদিকরুন সেবা গ্রহীতার পরিসংখ্যান', '#ffffff', '/storage/files/1/section-bg.png', 2, 1, NULL, '2023-11-16 05:28:37');
 
 -- --------------------------------------------------------
 
@@ -432,7 +474,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (67, '2023_11_01_151126_create_google_recaptchas_table', 43),
 (70, '2023_11_15_070545_create_banners_table', 44),
 (73, '2023_11_15_085958_create_homepage_bio_data_table', 45),
-(74, '2023_11_16_043246_create_website_languages_table', 46);
+(74, '2023_11_16_043246_create_website_languages_table', 46),
+(75, '2023_11_16_090613_create_homepage_statistics_configs_table', 47),
+(76, '2023_11_16_090619_create_homepage_statistics_table', 47);
 
 -- --------------------------------------------------------
 
@@ -5986,8 +6030,8 @@ CREATE TABLE `website_languages` (
 --
 
 INSERT INTO `website_languages` (`id`, `icon`, `name`, `code`, `description`, `serial`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-15 23:51:40'),
-(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-15 23:51:40');
+(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-16 05:29:34'),
+(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-16 05:29:34');
 
 -- --------------------------------------------------------
 
@@ -6082,6 +6126,18 @@ ALTER TABLE `google_recaptchas`
 -- Indexes for table `homepage_bio_data`
 --
 ALTER TABLE `homepage_bio_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `homepage_statistics`
+--
+ALTER TABLE `homepage_statistics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `homepage_statistics_configs`
+--
+ALTER TABLE `homepage_statistics_configs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6244,6 +6300,18 @@ ALTER TABLE `homepage_bio_data`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `homepage_statistics`
+--
+ALTER TABLE `homepage_statistics`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `homepage_statistics_configs`
+--
+ALTER TABLE `homepage_statistics_configs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `logo_favicons`
 --
 ALTER TABLE `logo_favicons`
@@ -6253,7 +6321,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`

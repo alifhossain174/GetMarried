@@ -35,6 +35,7 @@ class HomepageBiodataController extends Controller
             'button2_text' => $request->button2_text,
             'button2_text_bn' => $request->button2_text_bn,
             'button2_url' => $request->button2_url,
+            'status' => $request->status,
             'updated_at' => Carbon::now(),
         ]);
 

@@ -128,7 +128,8 @@
 
 
     <!-- BioData CTA Area -->
-    <section class="biodata-cta-area background-image" style="background-image: url('{{url('frontend_assets')}}/assets/images/section-bg.png')">
+    @if($homePageBiodata && $homePageBiodata->status == 1)
+    <section class="biodata-cta-area background-image" style="@if($homePageBiodata->priority == 1) background-image: url('{{url($homePageBiodata->background_image)}}'); @else background-color: {{$homePageBiodata->background_color}} !important; @endif">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
@@ -157,17 +158,20 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- End BioData CTA Area -->
 
 
     <!-- Funfact  Area -->
-    <section class="funfact-area">
+    @if($homePageStatConfig && $homePageStatConfig->status == 1)
+    <section class="funfact-area background-image" style="@if($homePageStatConfig->priority == 1) background-image: url('{{url($homePageStatConfig->background_image)}}'); @else background-color: {{$homePageStatConfig->background_color}} !important; @endif">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12">
                     <div class="section-head">
                         <h3 class="section-head-title">
-                            <span>সাদিকরুন</span> সেবা গ্রহীতার পরিসংখ্যান
+                            {{ App::currentLocale() == 'en' ? $homePageStatConfig->section_title : $homePageStatConfig->section_title_bn }}
+                            {{-- <span>সাদিকরুন</span> সেবা গ্রহীতার পরিসংখ্যান --}}
                         </h3>
                     </div>
                 </div>
@@ -224,6 +228,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- End Funfact Area -->
 
     <!-- Work Process Area -->

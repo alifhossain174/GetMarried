@@ -30,7 +30,20 @@
         <li class="menu-title mt-2">Website Content Modules</li>
         <li><a href="{{url('homepage/banner')}}"><i data-feather="airplay"></i><span> Homepage Banner </span></a></li>
         <li><a href="{{url('homepage/biodata')}}"><i data-feather="columns"></i><span> Homepage Biodata </span></a></li>
-        <li><a href="{{url('homepage/statistics')}}"><i data-feather="bar-chart-2"></i><span> Homepage Statistics </span></a></li>
+        <li>
+            <a href="#sidebarHomePageStatistics" data-bs-toggle="collapse">
+                <i data-feather="bar-chart-2"></i>
+                <span> Homepage Statistics </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarHomePageStatistics">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/homepage/statistics/config')}}">Section Config</a></li>
+                    <li><a href="{{url('/view/homepage/statistics')}}">Manage Statistics</a></li>
+                </ul>
+            </div>
+        </li>
+
         <li><a href="{{url('contact/us/page')}}"><i data-feather="phone-call"></i><span> Contact Us Page </span></a></li>
 
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\SeoController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomepageBiodataController;
+use App\Http\Controllers\HomepageStatisticsController;
 
 // Auth::routes();
 Auth::routes([
@@ -70,9 +71,10 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/homepage/banner', [BannerController::class, 'updateHomePageBanner'])->name('UpdateHomePageBanner');
     Route::get('homepage/biodata', [HomepageBiodataController::class, 'homePageBiodata'])->name('HomePageBiodata');
     Route::post('update/homepage/biodata', [HomepageBiodataController::class, 'updateHomePageBiodata'])->name('UpdateHomePageBiodata');
-    // Route::get('homepage/statistics')
     Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
     Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
+    Route::get('homepage/statistics/config', [HomepageStatisticsController::class, 'homePageStatisticsConfig'])->name('HomePageStatisticsConfig');
+    Route::post('update/homepage/statistics/config', [HomepageStatisticsController::class, 'updateHomePageStatisticsConfig'])->name('UpdateHomePageStatisticsConfig');
 
 
 });

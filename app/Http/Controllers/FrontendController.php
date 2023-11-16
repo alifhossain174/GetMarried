@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\HomepageBioData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Models\HomepageStatisticsConfig;
 
 class FrontendController extends Controller
 {
@@ -13,7 +14,8 @@ class FrontendController extends Controller
     public function index(){
         $banner = Banner::where('id', 1)->first();
         $homePageBiodata = HomepageBioData::where('id', 1)->first();
-        return view('frontend.index', compact('banner', 'homePageBiodata'));
+        $homePageStatConfig = HomepageStatisticsConfig::where('id', 1)->first();
+        return view('frontend.index', compact('banner', 'homePageBiodata', 'homePageStatConfig'));
     }
 
     public function about(){
