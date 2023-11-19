@@ -40,14 +40,13 @@
                             </div>
                         </div>
 
-
                         <div class="form-group">
                             <label for="title" class="col-form-label">Write Terms & Conditions in English Here :</label>
                             <textarea name="details" class="form-control">{!! $data->details !!}</textarea>
                         </div>
 
                         <div class="form-group pt-3">
-                            <label for="title" class="col-form-label">Write Terms & Conditions in Bangla Here :</label>
+                            <label for="title" class="col-form-label">এখানে বাংলায় বিধি-নিষেধ এবং শর্তাবলী লিখুন :</label>
                             <textarea name="details_bn" class="form-control">{!! $data->details_bn !!}</textarea>
                         </div>
 

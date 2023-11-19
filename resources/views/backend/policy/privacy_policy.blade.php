@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form-group pt-3">
-                            <label for="title" class="col-form-label">Write Privacy Policy in Bangla Here :</label>
+                            <label for="title" class="col-form-label">এখানে বাংলায় গোপনীয়তা নীতিমালা লিখুন :</label>
                             <textarea name="details_bn" class="form-control">{!! $data->details_bn !!}</textarea>
                         </div>
 
