@@ -46,8 +46,8 @@ class HowItWorksController extends Controller
                     })
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
-                        $btn = ' <a href="'.url('/edit/how/it/works')."/".$data->id.'" class="btn-sm btn-warning rounded"><i class="bi bi-pencil-square"></i></a>';
-                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="btn-sm btn-danger rounded deleteBtn"><i class="bi bi-trash"></i></a>';
+                        $btn = ' <a href="'.url('/edit/how/it/works')."/".$data->id.'" class="btn-sm btn-warning rounded d-inline-block mb-1"><i class="bi bi-pencil-square"></i></a>';
+                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="d-inline-block btn-sm btn-danger rounded deleteBtn"><i class="bi bi-trash"></i></a>';
                         return $btn;
                     })
                     ->rawColumns(['action', 'status'])
@@ -64,7 +64,8 @@ class HowItWorksController extends Controller
         HowItWorks::insert([
             'title' => $request->title,
             'title_bn' => $request->title_bn,
-            'number' => $request->number,
+            'description' => $request->description,
+            'description_bn' => $request->description_bn,
             'image' => $request->image != '' ? parse_url($request->image)['path'] : null,
             'serial' => HowItWorks::min('serial') - 1,
             'status' => 1,
@@ -89,7 +90,8 @@ class HowItWorksController extends Controller
         HowItWorks::where('id', $request->id)->update([
             'title' => $request->title,
             'title_bn' => $request->title_bn,
-            'number' => $request->number,
+            'description' => $request->description,
+            'description_bn' => $request->description_bn,
             'image' => $request->image != '' ? parse_url($request->image)['path'] : null,
             'status' => $request->status,
             'updated_at' => Carbon::now()

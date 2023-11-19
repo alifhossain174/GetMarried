@@ -13,6 +13,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomepageBiodataController;
 use App\Http\Controllers\HomepageStatisticsController;
 use App\Http\Controllers\HowItWorksController;
+use App\Http\Controllers\MobileAppController;
+use App\Http\Controllers\TermsPolicyController;
 
 // Auth::routes();
 Auth::routes([
@@ -72,10 +74,12 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/homepage/banner', [BannerController::class, 'updateHomePageBanner'])->name('UpdateHomePageBanner');
     Route::get('homepage/biodata', [HomepageBiodataController::class, 'homePageBiodata'])->name('HomePageBiodata');
     Route::post('update/homepage/biodata', [HomepageBiodataController::class, 'updateHomePageBiodata'])->name('UpdateHomePageBiodata');
+    Route::get('mobile/app/section', [MobileAppController::class, 'mobileAppSection'])->name('MobileAppSection');
+    Route::post('update/mobile/app/section', [MobileAppController::class, 'updateMobileAppSection'])->name('UpdateMobileAppSection');
     Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
     Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
 
-
+    // homepage statistics routes
     Route::get('homepage/statistics/config', [HomepageStatisticsController::class, 'homePageStatisticsConfig'])->name('HomePageStatisticsConfig');
     Route::post('update/homepage/statistics/config', [HomepageStatisticsController::class, 'updateHomePageStatisticsConfig'])->name('UpdateHomePageStatisticsConfig');
     Route::get('view/homepage/statistics', [HomepageStatisticsController::class, 'viewHomePageStatistics'])->name('ViewHomePageStatistics');
@@ -87,7 +91,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/homepage/statistics', [HomepageStatisticsController::class, 'rearrangeHomePageStatistics'])->name('RearrangeHomePageStatistics');
     Route::post('save/rearranged/homepage/statistics', [HomepageStatisticsController::class, 'saveRearrangedHomePageStatistics'])->name('SaveRearrangedHomePageStatistics');
 
-
+    // homepage how it works routes
     Route::get('how/it/works/config', [HowItWorksController::class, 'howItWorksConfig'])->name('HowItWorksConfig');
     Route::post('update/how/it/works/config', [HowItWorksController::class, 'updateHowItWorksConfig'])->name('UpdateHowItWorksConfig');
     Route::get('view/how/it/works', [HowItWorksController::class, 'viewHowItWorks'])->name('ViewHowItWorks');
@@ -98,6 +102,12 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/how/it/works', [HowItWorksController::class, 'updateHowItWorks'])->name('UpdateHowItWorks');
     Route::get('rearrange/how/it/works', [HowItWorksController::class, 'rearrangeHowItWorks'])->name('RearrangeHowItWorks');
     Route::post('save/rearranged/how/it/works', [HowItWorksController::class, 'saveRearrangedHowItWorks'])->name('SaveRearrangedHowItWorks');
+
+    // terms and policy routes
+    Route::get('terms-conditions', [TermsPolicyController::class, 'termsAndConditions'])->name('TermsAndConditions');
+    Route::post('update/terms/condition', [TermsPolicyController::class, 'updateTermsAndConditions'])->name('UpdateTermsAndConditions');
+    Route::get('privacy-policies', [TermsPolicyController::class, 'privacyPolicy'])->name('PrivacyPolicy');
+    Route::post('update/privacy/policy', [TermsPolicyController::class, 'updatePrivacyPolicy'])->name('UpdatePrivacyPolicy');
 
 });
 

@@ -56,10 +56,21 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="number" class="col-lg-2 col-md-2 col-form-label">Number</label>
+                            <label for="description" class="col-lg-2 col-md-2 col-form-label">Description</label>
                             <div class="col-lg-10 col-md-10">
-                                <input type="number" name="number" class="form-control @error('number') is-invalid @enderror" id="number" placeholder="153">
-                                @error('number')
+                                <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="You can easily create a biodata in Sadikrun for free.">
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="description_bn" class="col-lg-2 col-md-2 col-form-label">Description (BN)</label>
+                            <div class="col-lg-10 col-md-10">
+                                <input type="text" name="description_bn" class="form-control @error('description_bn') is-invalid @enderror" id="description_bn" placeholder="খুব সহজেই বিনামূল্যে সাদিকরুনে বায়োডাটা তৈরি করতে পারবেন।">
+                                @error('description_bn')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

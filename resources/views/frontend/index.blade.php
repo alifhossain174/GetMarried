@@ -198,7 +198,7 @@
                             @else
                             <h4><span>{{$numto->bnCommaLakh($satistic->number)}}</span></h4>
                             @endif
-                            
+
                         </div>
                     </div>
                 </div>
@@ -212,107 +212,80 @@
 
 
     <!-- Work Process Area -->
-    <section class="work-process-area">
+    @if($howItWorksConfig && $howItWorksConfig->status == 1)
+    <section class="work-process-area background-image" style="@if($howItWorksConfig->priority == 1) background-image: url('{{url($howItWorksConfig->background_image)}}'); @else background-color: {{$howItWorksConfig->background_color}} !important; @endif">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-8 col-12">
                     <div class="section-head">
                         <h3 class="section-head-title">
-                            <span>সাদিকরুন</span> যেভাবে কাজ করে
+                            <span>{{ App::currentLocale() == 'en' ? $howItWorksConfig->section_title : $howItWorksConfig->section_title_bn }}</span>
                         </h3>
                     </div>
                 </div>
             </div>
             <div class="row">
+
                 <!-- Single Work Process -->
+                @foreach($howItWorks as $item)
                 <div class="col-lg-6 col-xl-3 col-md-6 col-12">
                     <div class="work-process-card">
                         <div class="work-process-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/work-process/icon-1.svg" alt="#" />
+                            <img src="{{url($item->image)}}" alt="Image" />
                         </div>
                         <div class="work-process-info">
-                            <h4>বায়োডাটা তৈরি করুন</h4>
-                            <p>খুব সহজেই বিনামূল্যে সাদিকরুনে বায়োডাটা তৈরি করতে পারবেন।</p>
+                            <h4>{{ App::currentLocale() == 'en' ? $item->title : $item->title_bn }}</h4>
+                            <p>{{ App::currentLocale() == 'en' ? $item->description : $item->description_bn }}</p>
                         </div>
                     </div>
                 </div>
-                <!-- Single Work Process -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="work-process-card">
-                        <div class="work-process-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/work-process/icon-2.svg" alt="#" />
-                        </div>
-                        <div class="work-process-info">
-                            <h4>বায়োডাটা খুঁজুন</h4>
-                            <p>
-                                বয়স, উপজেলা, পেশা, শিক্ষাগত যোগ্যতা সহ অনেক ফিল্টার ব্যবহার
-                                করে সহজেই বায়োডাটা খুঁজতে পারবেন।
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Work Process -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="work-process-card">
-                        <div class="work-process-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/work-process/icon-3.svg" alt="#" />
-                        </div>
-                        <div class="work-process-info">
-                            <h4>যোগাযোগ করুন</h4>
-                            <p>
-                                আপনার বায়োডাটা কেউ পছন্দ করলে অথবা আপনি কারো বায়োডাটা পছন্দ
-                                করলে সরাসরি অভিভাবকের সাথে যোগাযোগ করতে পারবেন।
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Work Process -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="work-process-card">
-                        <div class="work-process-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/work-process/icon-4.svg" alt="#" />
-                        </div>
-                        <div class="work-process-info">
-                            <h4>বিবাহ সম্পন্ন করুন</h4>
-                            <p>
-                                বায়োডাটা ও কথাবার্তা পছন্দ হলে নিজ দায়িত্বে ভালভাবে খোঁজ নিয়ে
-                                সুন্নতি বিবাহ সম্পন্ন করুন।
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
+    @endif
     <!-- End Work Process Area -->
 
+
     <!-- App Download Area -->
-    <section class="app-download-area">
+    @if($mobileAppSection && $mobileAppSection->status == 1)
+    <section class="app-download-area background-image" style="@if($mobileAppSection->priority == 1) background-image: url('{{url($mobileAppSection->background_image)}}'); @else background-color: {{$mobileAppSection->background_color}} !important; @endif">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
                     <div class="app-download-content">
-                        <h3>আমাদের অ্যাপ ডাউনলোড করুন এবং উপভোগ করুন অসাধারন অভিজ্ঞতা</h3>
+                        <h3>{{ App::currentLocale() == 'en' ? $mobileAppSection->title : $mobileAppSection->title_bn }}</h3>
                         <p>
-                            অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা
-                            তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে
-                            পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।
+                            {{ App::currentLocale() == 'en' ? $mobileAppSection->description : $mobileAppSection->description_bn }}
                         </p>
                         <div class="app-download-btn">
-                            <a href="#" target="_blank"><img src="{{url('frontend_assets')}}/assets/images/google-play.svg"
-                                    alt="#" /></a>
-                            <a href="#" target="_blank"><img src="{{url('frontend_assets')}}/assets/images/app-store.svg"
-                                    alt="#" /></a>
+                            @if($mobileAppSection->play_store_link)
+                            <a href="{{$mobileAppSection->play_store_link}}" target="_blank">
+                                <img src="{{url('frontend_assets')}}/assets/images/google-play.svg" alt="#" />
+                            </a>
+                            @endif
+                            @if($mobileAppSection->play_store_link)
+                            <a href="{{$mobileAppSection->app_store_link}}" target="_blank">
+                                <img src="{{url('frontend_assets')}}/assets/images/app-store.svg" alt="#" />
+                            </a>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 order-class">
                     <div class="app-download-img">
-                        <img src="{{url('frontend_assets')}}/assets/images/app-download-img.png" alt="#" />
+                        @if($mobileAppSection && file_exists(public_path($mobileAppSection->image)))
+                        <img src="{{url($mobileAppSection->image)}}" alt="Image" />
+                        @else
+                        <img src="{{url('frontend_assets')}}/assets/images/app-download-img.png" alt="Image" />
+                        @endif
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- End App Download Area -->
 @endsection

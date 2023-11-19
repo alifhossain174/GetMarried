@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\HomepageBioData;
+use App\Models\MobileApp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\HomepageStatisticsConfig;
 use App\Models\HomepageStatistics;
+use App\Models\HowItWorksConfig;
+use App\Models\HowItWorks;
 
 class FrontendController extends Controller
 {
@@ -17,7 +20,10 @@ class FrontendController extends Controller
         $homePageBiodata = HomepageBioData::where('id', 1)->first();
         $homePageStatConfig = HomepageStatisticsConfig::where('id', 1)->first();
         $homePageStatistics = HomepageStatistics::orderBy('serial', 'asc')->get();
-        return view('frontend.index', compact('banner', 'homePageBiodata', 'homePageStatConfig', 'homePageStatistics'));
+        $howItWorksConfig = HowItWorksConfig::where('id', 1)->first();
+        $howItWorks = HowItWorks::orderBy('serial', 'asc')->get();
+        $mobileAppSection = MobileApp::where('id', 1)->first();
+        return view('frontend.index', compact('banner', 'homePageBiodata', 'homePageStatConfig', 'homePageStatistics', 'howItWorksConfig', 'howItWorks', 'mobileAppSection'));
     }
 
     public function about(){

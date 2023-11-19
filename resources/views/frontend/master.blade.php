@@ -222,9 +222,7 @@
     </header>
     <!-- End Header Area -->
 
-
     @yield('content')
-
 
     <!-- Footer Area -->
     <footer class="footer-area">
@@ -233,10 +231,10 @@
                 <div class="col-lg-12 col-xl-7 col-12">
                     <div class="footer-menu">
                         <ul class="footer-menu-list">
-                            <li><a href="{{ url('/about') }}">আমাদের সম্পর্কে</a></li>
-                            <li><a href="{{ url('/faq') }}">জিজ্ঞাসা</a></li>
-                            <li><a href="{{ url('/direction') }}">নির্দেশনা</a></li>
-                            <li><a href="{{ url('/contact') }}">যোগাযোগ</a></li>
+                            <li><a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a></li>
+                            <li><a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a></li>
+                            <li><a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a></li>
+                            <li><a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a></li>
                         </ul>
                     </div>
                     <p class="footer-copyright-text">
@@ -249,9 +247,9 @@
                 <div class="col-lg-12 col-xl-5 col-12">
                     <div class="footer-menu style-2">
                         <ul class="footer-menu-list">
-                            <li><a href="{{ url('privacy-policy') }}">Privacy Notice</a></li>
-                            <li><a href="{{ url('terms-condition') }}">Terms & Conditions</a></li>
-                            <li><a href="{{ url('refund-policy') }}">Refund Policy</a></li>
+                            <li><a href="{{ url('privacy-policy') }}">{{__('label.menu_privacy_policy')}}</a></li>
+                            <li><a href="{{ url('terms-condition') }}">{{__('label.menu_terms_condition')}}</a></li>
+                            <li><a href="{{ url('refund-policy') }}">{{__('label.menu_refund_policy')}}</a></li>
                         </ul>
                     </div>
                     <div class="footer-social">

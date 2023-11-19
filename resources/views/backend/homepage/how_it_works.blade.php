@@ -60,7 +60,8 @@
                                 <th class="text-center">Icon</th>
                                 <th class="text-center">Title</th>
                                 <th class="text-center">Title (BN)</th>
-                                <th class="text-center">Number</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Description (BN)</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -117,7 +118,8 @@
                     data: 'title_bn',
                     name: 'title_bn'
                 },
-                {data: 'number', name: 'number'},
+                {data: 'description', name: 'description'},
+                {data: 'description_bn', name: 'description_bn'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],

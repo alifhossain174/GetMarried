@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 04:47 AM
+-- Generation Time: Nov 19, 2023 at 01:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -352,7 +352,7 @@ CREATE TABLE `homepage_bio_data` (
 --
 
 INSERT INTO `homepage_bio_data` (`id`, `background_color`, `background_image`, `priority`, `image`, `title`, `title_bn`, `description`, `description_bn`, `button1_text`, `button1_text_bn`, `button1_url`, `button2_text`, `button2_text_bn`, `button2_url`, `status`, `created_at`, `updated_at`) VALUES
-(1, '#ead1dc', '/storage/files/1/section-bg.png', 1, '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-16 03:04:31');
+(1, '#ead1dc', '/storage/files/1/section-bg.png', 1, '/storage/files/1/cta-img.svg', 'Create Biodata without any cost', 'সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা তৈরি করা যায়', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', 'Make Biodata', 'বায়োডাটা তৈরি করুন', '#', 'Howe to make Biodata', 'যেভাবে বায়োডাটা তৈরি করবেন', '#', 1, NULL, '2023-11-18 22:01:29');
 
 -- --------------------------------------------------------
 
@@ -371,6 +371,16 @@ CREATE TABLE `homepage_statistics` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `homepage_statistics`
+--
+
+INSERT INTO `homepage_statistics` (`id`, `image`, `title`, `title_bn`, `number`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(1, '/storage/files/1/Funfact/icon-1.svg', 'Total Biodata', 'সর্বমোট পাত্র-পাত্রীর বায়োডাটা', '5459', 1, 1, '2023-11-18 22:40:05', '2023-11-18 23:35:46'),
+(3, '/storage/files/1/Funfact/icon-2.svg', 'Biodata of Groom', 'সর্বমোট পাত্রের বায়োডাটা', '203', 2, 1, '2023-11-18 22:53:36', '2023-11-18 23:35:46'),
+(4, '/storage/files/1/Funfact/icon-3.svg', 'Biodata of Brides', 'সর্বমোট পাত্রীর বায়োডাটা', '3280', 3, 1, '2023-11-18 23:34:19', '2023-11-18 23:35:46'),
+(5, '/storage/files/1/Funfact/icon-4.svg', 'Total Successfull Marriage', 'সর্বমোট সফল বিবাহ', '1435', 4, 1, '2023-11-18 23:35:38', '2023-11-18 23:35:46');
 
 -- --------------------------------------------------------
 
@@ -395,7 +405,61 @@ CREATE TABLE `homepage_statistics_configs` (
 --
 
 INSERT INTO `homepage_statistics_configs` (`id`, `section_title`, `section_title_bn`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Service Taker Statistics of ShadiKorun', 'সাদিকরুন সেবা গ্রহীতার পরিসংখ্যান', '#ffffff', '/storage/files/1/section-bg.png', 2, 1, NULL, '2023-11-16 05:28:37');
+(1, 'Service Taker Statistics of ShadiKorun', 'সাদিকরুন সেবা গ্রহীতার পরিসংখ্যান', '#ffffff', '/storage/files/1/section-bg.png', 2, 1, NULL, '2023-11-18 23:51:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `how_it_works`
+--
+
+CREATE TABLE `how_it_works` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `how_it_works`
+--
+
+INSERT INTO `how_it_works` (`id`, `image`, `title`, `title_bn`, `description`, `description_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(1, '/storage/files/1/HowItWorks/icon-1.svg', 'Make Biodata', 'বায়োডাটা তৈরি করুন', 'You can easily create a biodata in Sadikrun for free.', 'খুব সহজেই বিনামূল্যে সাদিকরুনে বায়োডাটা তৈরি করতে পারবেন।', 1, 1, '2023-11-19 00:34:01', '2023-11-19 02:37:34'),
+(3, '/storage/files/1/HowItWorks/icon-2.svg', 'Search Biodata', 'বায়োডাটা খুঁজুন', 'You can easily search biodata using many filters including age, upazila, profession, educational qualification.', 'বয়স, উপজেলা, পেশা, শিক্ষাগত যোগ্যতা সহ অনেক ফিল্টার ব্যবহার করে সহজেই বায়োডাটা খুঁজতে পারবেন।', 2, 1, '2023-11-19 01:10:06', '2023-11-19 02:37:49'),
+(4, '/storage/files/1/HowItWorks/icon-3.svg', 'Contact Us', 'যোগাযোগ করুন', 'If someone likes your bio-data or you like someone\'s bio-data you can contact the parent directly.', 'আপনার বায়োডাটা কেউ পছন্দ করলে অথবা আপনি কারো বায়োডাটা পছন্দ করলে সরাসরি অভিভাবকের সাথে যোগাযোগ করতে পারবেন।', 3, 1, '2023-11-19 02:27:37', '2023-11-19 02:38:47'),
+(5, '/storage/files/1/HowItWorks/icon-4.svg', 'Complete You Marriage', 'বিবাহ সম্পন্ন করুন', 'If you like the biodata and talk, do a thorough search at your own risk and complete the Sunnati marriage.', 'বায়োডাটা ও কথাবার্তা পছন্দ হলে নিজ দায়িত্বে ভালভাবে খোঁজ নিয়ে সুন্নতি বিবাহ সম্পন্ন করুন।', 4, 1, '2023-11-19 02:28:10', '2023-11-19 02:40:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `how_it_works_configs`
+--
+
+CREATE TABLE `how_it_works_configs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `how_it_works_configs`
+--
+
+INSERT INTO `how_it_works_configs` (`id`, `section_title`, `section_title_bn`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'How ShadiKorun Works', 'সাদিকরুন যেভাবে কাজ করে', '#fff4f4', NULL, 2, 1, '2023-11-19 06:10:05', '2023-11-19 02:43:54');
 
 -- --------------------------------------------------------
 
@@ -477,7 +541,44 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (73, '2023_11_15_085958_create_homepage_bio_data_table', 45),
 (74, '2023_11_16_043246_create_website_languages_table', 46),
 (75, '2023_11_16_090613_create_homepage_statistics_configs_table', 47),
-(76, '2023_11_16_090619_create_homepage_statistics_table', 47);
+(76, '2023_11_16_090619_create_homepage_statistics_table', 47),
+(77, '2023_11_19_060533_create_how_it_works_configs_table', 48),
+(78, '2023_11_19_060750_create_how_it_works_table', 48),
+(79, '2023_11_19_090416_create_mobile_apps_table', 49),
+(80, '2023_11_19_111042_create_terms_conditions_table', 50),
+(81, '2023_11_19_114546_create_privacy_policies_table', 51);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mobile_apps`
+--
+
+CREATE TABLE `mobile_apps` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `title_bn` text DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `play_store_image` varchar(255) DEFAULT NULL,
+  `play_store_link` varchar(255) DEFAULT NULL,
+  `app_store_image` varchar(255) DEFAULT NULL,
+  `app_store_link` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `mobile_apps`
+--
+
+INSERT INTO `mobile_apps` (`id`, `image`, `title`, `title_bn`, `description`, `description_bn`, `play_store_image`, `play_store_link`, `app_store_image`, `app_store_link`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(1, '/storage/files/1/app-download-img.png', 'Download our app and enjoy the amazing experience', 'আমাদের অ্যাপ ডাউনলোড করুন এবং উপভোগ করুন অসাধারন অভিজ্ঞতা', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', NULL, 'https://play.google.com/store/games?hl=en&gl=US', NULL, 'https://www.apple.com/app-store/', '#ffffff', '/storage/files/1/section-bg.png', 2, 1, '2023-11-19 04:43:21', '2023-11-19 04:43:21');
 
 -- --------------------------------------------------------
 
@@ -782,6 +883,27 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `privacy_policies`
+--
+
+CREATE TABLE `privacy_policies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `details` longtext DEFAULT NULL,
+  `details_bn` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `privacy_policies`
+--
+
+INSERT INTO `privacy_policies` (`id`, `details`, `details_bn`, `created_at`, `updated_at`) VALUES
+(1, '<h3><strong>Consent</strong></h3>\r\n\r\n<p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>\r\n\r\n<p>At ISP Digital, accessible from <a href=\"http://localhost/shadi_korun_design/terms-condition.html#\" target=\"_blank\">Xpeed</a> one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Edufy and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website, software and mobile app with regards to the information that they shared and/or collect in Edufy. This policy is not applicable to any information collected offline or via channels other than this website.</p>\r\n\r\n<h3><strong>How we use your information</strong></h3>\r\n\r\n<p>We use the information we collect in various ways, including to:</p>\r\n\r\n<ul>\r\n	<li>Provide, operate, and maintain our website</li>\r\n	<li>Improve, personalize, and expand our website</li>\r\n	<li>Understand and analyze how you use our website</li>\r\n	<li>Develop new products, services, features, and functionality</li>\r\n	<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>\r\n	<li>Send you emails</li>\r\n	<li>Find and prevent fraud</li>\r\n	<li>Log Files</li>\r\n</ul>\r\n\r\n<p>Edufy follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&#39; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&#39; movement on the website, and gathering demographic information.</p>\r\n\r\n<h3><strong>Cookies and Web Beacons</strong></h3>\r\n\r\n<p>Like any other website, Edufy uses &#39;cookies&#39;. These cookies are used to store information including visitors&#39; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&#39; experience by customizing our web page content based on visitors&#39; browser type and/or other information.</p>\r\n\r\n<h3><strong>Advertising Partners Privacy Policies</strong></h3>\r\n\r\n<p>You may consult this list to find the Privacy Policy for each of the advertising partners of Edufy. Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Edufy, which are sent directly to users&#39; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit. Note that Edufy has no access to or control over these cookies that are used by third-party advertisers.</p>\r\n\r\n<h3><strong>Mobile Application Usage Privacy Policy</strong></h3>\r\n\r\n<p>All the information collected or tracked on this app are solely for the purpose of seamless management of the education institutes of Bangladesh only. There are no adult content or sensitive content on this app that may harm any children. The content of this app does not portray anything that violates cultural norms of Bangladesh. The data in this app will never be used for any business purpose. The app is safe for its intended users, is compliant with Google Play Policies 2, and satisfies legal requirements.</p>\r\n\r\n<ul>\r\n	<li>Sensitive users can only input data that is mandated by their respective institute or their legal guardians.</li>\r\n	<li>The app does not contain any advertisement of third party or external entity. There is no internal ad running system.</li>\r\n	<li>The device data will not be shared to any third party and only be used for the convenience of the intended user.</li>\r\n	<li>The app access is restricted by user credentials. The credentials are provided by the respective educational institute&rsquo;s super admin for their stakeholders.</li>\r\n	<li>The app is intended to be used by education institutes of Bangladesh and its concerning stakeholders. Three different stakeholders of schools, college and madrassas will be using this app. Those are the school authority/administration, teachers and guardians/students. The student panel is mostly for viewing purpose except a very minimal data input like request for leave. The teachers panel is where data input is given regarding activities and performance of students. Admin panel where most data input occurs which is not included in the application.</li>\r\n	<li>This application does not require any input for high risk information signatures. No information is gathered without the full disclosure for the purpose of the data. The app does not require any call log or sms log data from the device. Data input is taken with full consent of the user.</li>\r\n	<li>Provide details about your app&#39;s target audience and contentDescribe how you intend to use any high-risk or sensitive permissions @ such as SMS/CallLog permissionsReceive content ratings from official rating authorities</li>\r\n</ul>\r\n\r\n<h3><strong>Third Party Privacy Policies</strong></h3>\r\n\r\n<p>Edufy&#39;s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers&#39; respective websites.</p>\r\n\r\n<h3><strong>CCPA Privacy Rights (Do Not Sell My Personal Information)</strong></h3>\r\n\r\n<p>Under the CCPA, among other rights, Bangladesh consumers have the right to:</p>\r\n\r\n<ul>\r\n	<li>Request that a business that collects a consumer&#39;s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>\r\n	<li>Request that a business delete any personal data about the consumer that a business has collected.</li>\r\n	<li>Request that a business that sells a consumer&#39;s personal data, not sell the consumer&#39;s personal data.</li>\r\n	<li>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</li>\r\n</ul>\r\n\r\n<h3><strong>Children&#39;s Information</strong></h3>\r\n\r\n<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>\r\n\r\n<p>Edufy does not knowingly collect any Personal Identifiable Information from children under the age of 13 without the consent of their parents. If you think that your child provided this kind of information on our website, software or app, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>', '<h3><strong>সম্মতি</strong></h3>\r\n\r\n<pre>\r\nআমাদের ওয়েবসাইট ব্যবহার করে, আপনি এতদ্বারা আমাদের গোপনীয়তা নীতিমালা সম্মত হন।</pre>\r\n\r\n<pre>\r\nISP Digital-এ, Xpeed থেকে অ্যাক্সেসযোগ্য আমাদের প্রধান অগ্রাধিকারগুলির মধ্যে একটি হল আমাদের দর্শকদের গোপনীয়তা। এই গোপনীয়তা নীতির নথিতে এমন ধরনের তথ্য রয়েছে যা Edufy দ্বারা সংগ্রহ করা এবং রেকর্ড করা হয় এবং আমরা কীভাবে এটি ব্যবহার করি। আপনার যদি অতিরিক্ত প্রশ্ন থাকে বা আমাদের গোপনীয়তা নীতি সম্পর্কে আরও তথ্যের প্রয়োজন হয়, তাহলে আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না। এই গোপনীয়তা নীতি শুধুমাত্র আমাদের অনলাইন ক্রিয়াকলাপের ক্ষেত্রে প্রযোজ্য এবং আমাদের ওয়েবসাইট, সফ্টওয়্যার এবং মোবাইল অ্যাপের দর্শকদের জন্য তারা যে তথ্য শেয়ার করেছেন এবং/অথবা Edufy-তে সংগ্রহ করেছেন তাদের জন্য বৈধ। এই নীতি অফলাইনে বা এই ওয়েবসাইট ছাড়া অন্য চ্যানেলের মাধ্যমে সংগ্রহ করা কোনো তথ্যের ক্ষেত্রে প্রযোজ্য নয়।</pre>\r\n\r\n<h3><strong>How we use your information</strong></h3>\r\n\r\n<p>We use the information we collect in various ways, including to:</p>\r\n\r\n<ul>\r\n	<li>Provide, operate, and maintain our website</li>\r\n	<li>Improve, personalize, and expand our website</li>\r\n	<li>Understand and analyze how you use our website</li>\r\n	<li>Develop new products, services, features, and functionality</li>\r\n	<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>\r\n	<li>Send you emails</li>\r\n	<li>Find and prevent fraud</li>\r\n	<li>Log Files</li>\r\n</ul>\r\n\r\n<p>Edufy follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&#39; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&#39; movement on the website, and gathering demographic information.</p>\r\n\r\n<h3><strong>Cookies and Web Beacons</strong></h3>\r\n\r\n<p>Like any other website, Edufy uses &#39;cookies&#39;. These cookies are used to store information including visitors&#39; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&#39; experience by customizing our web page content based on visitors&#39; browser type and/or other information.</p>\r\n\r\n<h3><strong>Advertising Partners Privacy Policies</strong></h3>\r\n\r\n<p>You may consult this list to find the Privacy Policy for each of the advertising partners of Edufy. Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Edufy, which are sent directly to users&#39; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit. Note that Edufy has no access to or control over these cookies that are used by third-party advertisers.</p>\r\n\r\n<h3><strong>Mobile Application Usage Privacy Policy</strong></h3>\r\n\r\n<p>All the information collected or tracked on this app are solely for the purpose of seamless management of the education institutes of Bangladesh only. There are no adult content or sensitive content on this app that may harm any children. The content of this app does not portray anything that violates cultural norms of Bangladesh. The data in this app will never be used for any business purpose. The app is safe for its intended users, is compliant with Google Play Policies 2, and satisfies legal requirements.</p>\r\n\r\n<ul>\r\n	<li>Sensitive users can only input data that is mandated by their respective institute or their legal guardians.</li>\r\n	<li>The app does not contain any advertisement of third party or external entity. There is no internal ad running system.</li>\r\n	<li>The device data will not be shared to any third party and only be used for the convenience of the intended user.</li>\r\n	<li>The app access is restricted by user credentials. The credentials are provided by the respective educational institute&rsquo;s super admin for their stakeholders.</li>\r\n	<li>The app is intended to be used by education institutes of Bangladesh and its concerning stakeholders. Three different stakeholders of schools, college and madrassas will be using this app. Those are the school authority/administration, teachers and guardians/students. The student panel is mostly for viewing purpose except a very minimal data input like request for leave. The teachers panel is where data input is given regarding activities and performance of students. Admin panel where most data input occurs which is not included in the application.</li>\r\n	<li>This application does not require any input for high risk information signatures. No information is gathered without the full disclosure for the purpose of the data. The app does not require any call log or sms log data from the device. Data input is taken with full consent of the user.</li>\r\n	<li>Provide details about your app&#39;s target audience and contentDescribe how you intend to use any high-risk or sensitive permissions @ such as SMS/CallLog permissionsReceive content ratings from official rating authorities</li>\r\n</ul>\r\n\r\n<h3><strong>Third Party Privacy Policies</strong></h3>\r\n\r\n<p>Edufy&#39;s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers&#39; respective websites.</p>\r\n\r\n<h3><strong>CCPA Privacy Rights (Do Not Sell My Personal Information)</strong></h3>\r\n\r\n<p>Under the CCPA, among other rights, Bangladesh consumers have the right to:</p>\r\n\r\n<ul>\r\n	<li>Request that a business that collects a consumer&#39;s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>\r\n	<li>Request that a business delete any personal data about the consumer that a business has collected.</li>\r\n	<li>Request that a business that sells a consumer&#39;s personal data, not sell the consumer&#39;s personal data.</li>\r\n	<li>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</li>\r\n</ul>\r\n\r\n<h3><strong>Children&#39;s Information</strong></h3>\r\n\r\n<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>\r\n\r\n<p>Edufy does not knowingly collect any Personal Identifiable Information from children under the age of 13 without the consent of their parents. If you think that your child provided this kind of information on our website, software or app, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>', '2023-11-19 11:53:03', '2023-11-19 06:00:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `role_permissions`
 --
 
@@ -853,6 +975,27 @@ CREATE TABLE `social_media_links` (
 
 INSERT INTO `social_media_links` (`id`, `facebook`, `instagram`, `twitter`, `linkedin`, `youtube`, `messenger`, `whatsapp`, `telegram`, `created_at`, `updated_at`) VALUES
 (1, 'https://www.facebook.com', 'https://www.instagram.com', 'https://twitter.com', 'https://www.linkedin.com', 'https://www.youtube.com', 'https://www.messenger.com', 'https://web.whatsapp.com/', 'https://telegram.org', NULL, '2023-11-14 22:04:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `terms_conditions`
+--
+
+CREATE TABLE `terms_conditions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `details` longtext DEFAULT NULL,
+  `details_bn` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `terms_conditions`
+--
+
+INSERT INTO `terms_conditions` (`id`, `details`, `details_bn`, `created_at`, `updated_at`) VALUES
+(1, '<h3><strong>Consent</strong></h3>\r\n\r\n<p>By using our website, you hereby consent to our Terms Conditions and agree to its terms.</p>\r\n\r\n<p>At ISP Digital, accessible from <a href=\"http://localhost/shadi_korun_design/terms-condition.html#\" target=\"_blank\">Xpeed</a> one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Edufy and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website, software and mobile app with regards to the information that they shared and/or collect in Edufy. This policy is not applicable to any information collected offline or via channels other than this website.</p>\r\n\r\n<h3><strong>How we use your information</strong></h3>\r\n\r\n<p>We use the information we collect in various ways, including to:</p>\r\n\r\n<ul>\r\n	<li>Provide, operate, and maintain our website</li>\r\n	<li>Improve, personalize, and expand our website</li>\r\n	<li>Understand and analyze how you use our website</li>\r\n	<li>Develop new products, services, features, and functionality</li>\r\n	<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>\r\n	<li>Send you emails</li>\r\n	<li>Find and prevent fraud</li>\r\n	<li>Log Files</li>\r\n</ul>\r\n\r\n<p>Edufy follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&#39; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&#39; movement on the website, and gathering demographic information.</p>\r\n\r\n<h3><strong>Cookies and Web Beacons</strong></h3>\r\n\r\n<p>Like any other website, Edufy uses &#39;cookies&#39;. These cookies are used to store information including visitors&#39; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&#39; experience by customizing our web page content based on visitors&#39; browser type and/or other information.</p>\r\n\r\n<h3><strong>Advertising Partners Privacy Policies</strong></h3>\r\n\r\n<p>You may consult this list to find the Privacy Policy for each of the advertising partners of Edufy. Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Edufy, which are sent directly to users&#39; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit. Note that Edufy has no access to or control over these cookies that are used by third-party advertisers.</p>\r\n\r\n<h3><strong>Mobile Application Usage Privacy Policy</strong></h3>\r\n\r\n<p>All the information collected or tracked on this app are solely for the purpose of seamless management of the education institutes of Bangladesh only. There are no adult content or sensitive content on this app that may harm any children. The content of this app does not portray anything that violates cultural norms of Bangladesh. The data in this app will never be used for any business purpose. The app is safe for its intended users, is compliant with Google Play Policies 2, and satisfies legal requirements.</p>\r\n\r\n<ul>\r\n	<li>Sensitive users can only input data that is mandated by their respective institute or their legal guardians.</li>\r\n	<li>The app does not contain any advertisement of third party or external entity. There is no internal ad running system.</li>\r\n	<li>The device data will not be shared to any third party and only be used for the convenience of the intended user.</li>\r\n	<li>The app access is restricted by user credentials. The credentials are provided by the respective educational institute&rsquo;s super admin for their stakeholders.</li>\r\n	<li>The app is intended to be used by education institutes of Bangladesh and its concerning stakeholders. Three different stakeholders of schools, college and madrassas will be using this app. Those are the school authority/administration, teachers and guardians/students. The student panel is mostly for viewing purpose except a very minimal data input like request for leave. The teachers panel is where data input is given regarding activities and performance of students. Admin panel where most data input occurs which is not included in the application.</li>\r\n	<li>This application does not require any input for high risk information signatures. No information is gathered without the full disclosure for the purpose of the data. The app does not require any call log or sms log data from the device. Data input is taken with full consent of the user.</li>\r\n	<li>Provide details about your app&#39;s target audience and contentDescribe how you intend to use any high-risk or sensitive permissions @ such as SMS/CallLog permissionsReceive content ratings from official rating authorities</li>\r\n</ul>\r\n\r\n<h3><strong>Third Party Privacy Policies</strong></h3>\r\n\r\n<p>Edufy&#39;s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers&#39; respective websites.</p>\r\n\r\n<h3><strong>CCPA Privacy Rights (Do Not Sell My Personal Information)</strong></h3>\r\n\r\n<p>Under the CCPA, among other rights, Bangladesh consumers have the right to:</p>\r\n\r\n<ul>\r\n	<li>Request that a business that collects a consumer&#39;s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>\r\n	<li>Request that a business delete any personal data about the consumer that a business has collected.</li>\r\n	<li>Request that a business that sells a consumer&#39;s personal data, not sell the consumer&#39;s personal data.</li>\r\n	<li>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</li>\r\n</ul>\r\n\r\n<h3><strong>Children&#39;s Information</strong></h3>\r\n\r\n<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>\r\n\r\n<p>Edufy does not knowingly collect any Personal Identifiable Information from children under the age of 13 without the consent of their parents. If you think that your child provided this kind of information on our website, software or app, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>', '<h3><strong>সম্মতি</strong></h3>\r\n\r\n<pre>\r\nআমাদের ওয়েবসাইট ব্যবহার করে, আপনি এতদ্বারা আমাদের  সম্মত হন এবং এর শর্তাবলীতে সম্মত হন।</pre>\r\n\r\n<pre>\r\nISP Digital-এ, Xpeed থেকে অ্যাক্সেসযোগ্য আমাদের প্রধান অগ্রাধিকারগুলির মধ্যে একটি হল আমাদের দর্শকদের গোপনীয়তা। এই গোপনীয়তা নীতির নথিতে এমন ধরনের তথ্য রয়েছে যা Edufy দ্বারা সংগ্রহ করা এবং রেকর্ড করা হয় এবং আমরা কীভাবে এটি ব্যবহার করি। আপনার যদি অতিরিক্ত প্রশ্ন থাকে বা আমাদের গোপনীয়তা নীতি সম্পর্কে আরও তথ্যের প্রয়োজন হয়, তাহলে আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না। এই গোপনীয়তা নীতি শুধুমাত্র আমাদের অনলাইন ক্রিয়াকলাপের ক্ষেত্রে প্রযোজ্য এবং আমাদের ওয়েবসাইট, সফ্টওয়্যার এবং মোবাইল অ্যাপের দর্শকদের জন্য তারা যে তথ্য শেয়ার করেছেন এবং/অথবা Edufy-তে সংগ্রহ করেছেন তাদের জন্য বৈধ। এই নীতি অফলাইনে বা এই ওয়েবসাইট ছাড়া অন্য চ্যানেলের মাধ্যমে সংগ্রহ করা কোনো তথ্যের ক্ষেত্রে প্রযোজ্য নয়।</pre>\r\n\r\n<h3><strong>How we use your information</strong></h3>\r\n\r\n<p>We use the information we collect in various ways, including to:</p>\r\n\r\n<ul>\r\n	<li>Provide, operate, and maintain our website</li>\r\n	<li>Improve, personalize, and expand our website</li>\r\n	<li>Understand and analyze how you use our website</li>\r\n	<li>Develop new products, services, features, and functionality</li>\r\n	<li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>\r\n	<li>Send you emails</li>\r\n	<li>Find and prevent fraud</li>\r\n	<li>Log Files</li>\r\n</ul>\r\n\r\n<p>Edufy follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services&#39; analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users&#39; movement on the website, and gathering demographic information.</p>\r\n\r\n<h3><strong>Cookies and Web Beacons</strong></h3>\r\n\r\n<p>Like any other website, Edufy uses &#39;cookies&#39;. These cookies are used to store information including visitors&#39; preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users&#39; experience by customizing our web page content based on visitors&#39; browser type and/or other information.</p>\r\n\r\n<h3><strong>Advertising Partners Privacy Policies</strong></h3>\r\n\r\n<p>You may consult this list to find the Privacy Policy for each of the advertising partners of Edufy. Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Edufy, which are sent directly to users&#39; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit. Note that Edufy has no access to or control over these cookies that are used by third-party advertisers.</p>\r\n\r\n<h3><strong>Mobile Application Usage Privacy Policy</strong></h3>\r\n\r\n<p>All the information collected or tracked on this app are solely for the purpose of seamless management of the education institutes of Bangladesh only. There are no adult content or sensitive content on this app that may harm any children. The content of this app does not portray anything that violates cultural norms of Bangladesh. The data in this app will never be used for any business purpose. The app is safe for its intended users, is compliant with Google Play Policies 2, and satisfies legal requirements.</p>\r\n\r\n<ul>\r\n	<li>Sensitive users can only input data that is mandated by their respective institute or their legal guardians.</li>\r\n	<li>The app does not contain any advertisement of third party or external entity. There is no internal ad running system.</li>\r\n	<li>The device data will not be shared to any third party and only be used for the convenience of the intended user.</li>\r\n	<li>The app access is restricted by user credentials. The credentials are provided by the respective educational institute&rsquo;s super admin for their stakeholders.</li>\r\n	<li>The app is intended to be used by education institutes of Bangladesh and its concerning stakeholders. Three different stakeholders of schools, college and madrassas will be using this app. Those are the school authority/administration, teachers and guardians/students. The student panel is mostly for viewing purpose except a very minimal data input like request for leave. The teachers panel is where data input is given regarding activities and performance of students. Admin panel where most data input occurs which is not included in the application.</li>\r\n	<li>This application does not require any input for high risk information signatures. No information is gathered without the full disclosure for the purpose of the data. The app does not require any call log or sms log data from the device. Data input is taken with full consent of the user.</li>\r\n	<li>Provide details about your app&#39;s target audience and contentDescribe how you intend to use any high-risk or sensitive permissions @ such as SMS/CallLog permissionsReceive content ratings from official rating authorities</li>\r\n</ul>\r\n\r\n<h3><strong>Third Party Privacy Policies</strong></h3>\r\n\r\n<p>Edufy&#39;s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options. You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers&#39; respective websites.</p>\r\n\r\n<h3><strong>CCPA Privacy Rights (Do Not Sell My Personal Information)</strong></h3>\r\n\r\n<p>Under the CCPA, among other rights, Bangladesh consumers have the right to:</p>\r\n\r\n<ul>\r\n	<li>Request that a business that collects a consumer&#39;s personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>\r\n	<li>Request that a business delete any personal data about the consumer that a business has collected.</li>\r\n	<li>Request that a business that sells a consumer&#39;s personal data, not sell the consumer&#39;s personal data.</li>\r\n	<li>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</li>\r\n</ul>\r\n\r\n<h3><strong>Children&#39;s Information</strong></h3>\r\n\r\n<p>Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.</p>\r\n\r\n<p>Edufy does not knowingly collect any Personal Identifiable Information from children under the age of 13 without the consent of their parents. If you think that your child provided this kind of information on our website, software or app, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>', '2023-11-19 11:26:15', '2023-11-19 06:00:04');
 
 -- --------------------------------------------------------
 
@@ -6031,8 +6174,8 @@ CREATE TABLE `website_languages` (
 --
 
 INSERT INTO `website_languages` (`id`, `icon`, `name`, `code`, `description`, `serial`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-16 05:29:34'),
-(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-16 05:29:34');
+(1, 'language_icons/bn.png', 'বাংলা', 'bn', 'শুধুমাত্র ওয়েবসাইট এবং ব্যবহারকারী ড্যাশবোর্ডের ডিফল্ট ল্যাগুয়েজ বাংলাতে পরিবর্তন করা হবে। অ্যাডমিন প্যানেলের ভাষা পরিবর্তন করা হবে না। অ্যাডমিন প্যানেল ডিফল্টরূপে ইংরেজিতে থাকে।', 1, 1, '2023-11-16 04:35:31', '2023-11-19 02:25:44'),
+(2, 'language_icons/en.png', 'English', 'en', 'Only Website and User Dashboard\'s default laguage will be change to English. Language of Admin Panel will not be change. Admin Panel is in English by default.', 2, 0, '2023-11-16 04:36:23', '2023-11-19 02:25:44');
 
 -- --------------------------------------------------------
 
@@ -6142,6 +6285,18 @@ ALTER TABLE `homepage_statistics_configs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `how_it_works`
+--
+ALTER TABLE `how_it_works`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `how_it_works_configs`
+--
+ALTER TABLE `how_it_works_configs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `logo_favicons`
 --
 ALTER TABLE `logo_favicons`
@@ -6151,6 +6306,12 @@ ALTER TABLE `logo_favicons`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mobile_apps`
+--
+ALTER TABLE `mobile_apps`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6174,6 +6335,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
@@ -6189,6 +6356,12 @@ ALTER TABLE `seos`
 -- Indexes for table `social_media_links`
 --
 ALTER TABLE `social_media_links`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `terms_conditions`
+--
+ALTER TABLE `terms_conditions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6304,12 +6477,24 @@ ALTER TABLE `homepage_bio_data`
 -- AUTO_INCREMENT for table `homepage_statistics`
 --
 ALTER TABLE `homepage_statistics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `homepage_statistics_configs`
 --
 ALTER TABLE `homepage_statistics_configs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `how_it_works`
+--
+ALTER TABLE `how_it_works`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `how_it_works_configs`
+--
+ALTER TABLE `how_it_works_configs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -6322,7 +6507,13 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT for table `mobile_apps`
+--
+ALTER TABLE `mobile_apps`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`
@@ -6335,6 +6526,12 @@ ALTER TABLE `permission_routes`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `role_permissions`
@@ -6352,6 +6549,12 @@ ALTER TABLE `seos`
 -- AUTO_INCREMENT for table `social_media_links`
 --
 ALTER TABLE `social_media_links`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `terms_conditions`
+--
+ALTER TABLE `terms_conditions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --

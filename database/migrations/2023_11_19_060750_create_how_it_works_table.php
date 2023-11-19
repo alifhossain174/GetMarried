@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title_bn')->nullable();
             $table->longText('description')->nullable();
             $table->longText('description_bn')->nullable();
-            $table->string('number')->nullable();
             $table->double('serial')->default(1);
             $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");
             $table->timestamps();

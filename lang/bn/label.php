@@ -8,6 +8,9 @@ return [
     'menu_instructions' => 'নির্দেশনা',
     'menu_contact_us' => 'যোগাযোগ',
     'menu_login' => 'লগইন',
+    'menu_privacy_policy' => 'গোপনীয়তা নীতিমালা',
+    'menu_terms_condition' => 'বিধি-নিষেধ এবং শর্তাবলী',
+    'menu_refund_policy' => 'রিফান্ড নীতিমালা',
 
     // hero search section
     'hero_all' => 'সকল',

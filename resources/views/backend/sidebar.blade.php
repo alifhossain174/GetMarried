@@ -56,7 +56,21 @@
                 </ul>
             </div>
         </li>
-
+        <li><a href="{{url('mobile/app/section')}}"><i data-feather="smartphone"></i><span> Mobile App Section </span></a></li>
+        <li>
+            <a href="#sidebarTermsPolicies" data-bs-toggle="collapse">
+                <i data-feather="alert-triangle"></i>
+                <span> Terms & Policies </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarTermsPolicies">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/terms-conditions')}}">Terms & Conditions</a></li>
+                    <li><a href="{{url('/privacy-policies')}}">Privacy Policies</a></li>
+                    <li><a href="{{url('/refund-policies')}}">Refund Policies</a></li>
+                </ul>
+            </div>
+        </li>
         <li><a href="{{url('contact/us/page')}}"><i data-feather="phone-call"></i><span> Contact Us Page </span></a></li>
 
 
