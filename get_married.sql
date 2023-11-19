@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 12:32 PM
+-- Generation Time: Nov 19, 2023 at 04:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -364,6 +364,7 @@ CREATE TABLE `homepage_statistics` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',

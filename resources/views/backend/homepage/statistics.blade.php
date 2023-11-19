@@ -1,7 +1,6 @@
 @extends('backend.master')
 
 @section('header_css')
-    <link href="{{url('backend_assets')}}/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
     <link href="{{url('dataTableBootstrap5')}}/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="{{url('dataTableBootstrap5')}}/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <style>
@@ -30,11 +29,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">System Users</h4>
+                <h4 class="page-title">View Homepage Statistics</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">System Users</a></li>
-                        <li class="breadcrumb-item active">View All System Users</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Website Content Module</a></li>
+                        <li class="breadcrumb-item active">View Homepage Statistics</li>
                     </ol>
                 </div>
             </div>
@@ -48,19 +47,21 @@
             <div class="card">
                 <div class="card-body pb-4">
 
-                    <h4 class="mb-3 header-title mt-0">View All System Users</h4>
+                    <h4 class="mb-3 header-title mt-0">View Homepage Statistics</h4>
                     <label id="customFilter" style="float: right;">
-                        <a href="{{url('add/new/system/user')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><b><i class="feather-repeat"></i> Create System User</b></a>
+                        <a href="{{url('add/new/homepage/statistic')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><b><i class="bi bi-plus-lg"></i> Add New Data</b></a>
+                        <a href="{{url('rearrange/homepage/statistics')}}" class="btn btn-success btn-sm" style="margin-left: 0px"><b><i class="bi bi-shuffle"></i> Rearrange Items</b></a>
                     </label>
 
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
                                 <th class="text-center">SL</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Account Created</th>
-                                <th class="text-center">User Type</th>
+                                <th class="text-center">Icon</th>
+                                <th class="text-center">Title</th>
+                                <th class="text-center">Title (Bn)</th>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -86,23 +87,38 @@
 
     <script type="text/javascript">
         var table = $('.yajra-datatable').DataTable({
-            processing: true,stateSave: true,
+            processing: true,
+            stateSave: true,
             serverSide: true,
             pageLength: 10,
             lengthMenu: [10, 20, 50, 100],
-            ajax: "{{ url('view/system/users') }}",
+            ajax: "{{ url('view/homepage/statistics') }}",
             columns: [
                 {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'name',
-                    name: 'name'
+                    data: 'image',
+                    name: 'image',
+                    render: function( data, type, full, meta ) {
+                        if(data){
+                            return "<img class=\"gridProductImage\" src=" + data + " width=\"40\"/>";
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
+                    data: 'title',
+                    name: 'title'
                 }, //orderable: true, searchable: true
-                {data: 'email', name: 'email'},
-                {data: 'created_at', name: 'created_at'},
-                {data: 'user_type', name: 'user_type'},
+                {
+                    data: 'title_bn',
+                    name: 'title_bn'
+                },
+                {data: 'number', name: 'number'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
             initComplete: function() {
@@ -127,11 +143,10 @@
             if(confirm("Are You sure want to delete !")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('delete/system/user') }}"+'/'+id,
+                    url: "{{ url('delete/homepage/statistic') }}"+'/'+id,
                     success: function (data) {
-                        // table.draw(false);
-                        toastr.error("User has been Deleted", "Deleted Successfully");
-                        location.reload(true);
+                        table.draw(false);
+                        toastr.error("Item has been Removed", "Deleted Successfully");
                     },
                     error: function (data) {
                         console.log('Error:', data);
@@ -139,54 +154,6 @@
                 });
             }
         });
-
-        $('body').on('click', '.makeSuperAdmin', function () {
-            var id = $(this).data("id");
-            if(confirm("Are You sure want to Make this SuperAdmin !")){
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('make/user/superadmin') }}"+'/'+id,
-                    success: function (data) {
-                        toastr.success("User is SuperAdmin Now", "Successfull");
-                        location.reload(true);
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
-            }
-        });
-
-        $('body').on('click', '.revokeSuperAdmin', function () {
-            var id = $(this).data("id");
-            if(confirm("Are You sure want to Revoke SuperAdmin !")){
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('revoke/user/superadmin') }}"+'/'+id,
-                    success: function (data) {
-                        toastr.success("User is Not SuperAdmin Now", "Successfull");
-                        location.reload(true);
-                    },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
-            }
-        });
-
-        function changeUserStatus(id){
-            var userId = id;
-            $.ajax({
-                type: "GET",
-                url: "{{ url('change/user/status') }}"+'/'+userId,
-                success: function (data) {
-                    toastr.success("User Status has been Changed", "Changed Successfully");
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                }
-            });
-        }
 
     </script>
 @endsection

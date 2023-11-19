@@ -74,6 +74,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
     Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
     Route::get('homepage/statistics/config', [HomepageStatisticsController::class, 'homePageStatisticsConfig'])->name('HomePageStatisticsConfig');
+    Route::get('view/homepage/statistics', [HomepageStatisticsController::class, 'viewHomePageStatistics'])->name('ViewHomePageStatistics');
+    Route::get('add/new/homepage/statistic', [HomepageStatisticsController::class, 'addHomePageStatistic'])->name('AddHomePageStatistic');
+    Route::post('save/homepage/statistic', [HomepageStatisticsController::class, 'saveHomePageStatistic'])->name('SaveHomePageStatistic');
+    Route::get('delete/homepage/statistic/{id}', [HomepageStatisticsController::class, 'deleteHomePageStatistic'])->name('DeleteHomePageStatistic');
+    Route::get('edit/homepage/statistic/{id}', [HomepageStatisticsController::class, 'editHomePageStatistic'])->name('EditHomePageStatistic');
+    Route::post('update/homepage/statistic', [HomepageStatisticsController::class, 'updateHomePageStatistic'])->name('UpdateHomePageStatistic');
+    Route::get('rearrange/homepage/statistics', [HomepageStatisticsController::class, 'rearrangeHomePageStatistics'])->name('RearrangeHomePageStatistics');
+    Route::post('save/rearranged/homepage/statistics', [HomepageStatisticsController::class, 'saveRearrangedHomePageStatistics'])->name('SaveRearrangedHomePageStatistics');
     Route::post('update/homepage/statistics/config', [HomepageStatisticsController::class, 'updateHomePageStatisticsConfig'])->name('UpdateHomePageStatisticsConfig');
 
 

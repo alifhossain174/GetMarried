@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('title')->nullable();
+            $table->string('title_bn')->nullable();
             $table->string('number')->nullable();
             $table->double('serial')->default(1);
             $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");

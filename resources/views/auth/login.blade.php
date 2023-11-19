@@ -77,7 +77,7 @@
 
                         <div class="col-lg-6 d-none d-md-inline-block">
                             <div class="auth-page-sidebar"
-                                style="background-image: url({{ url('backend_assets') }}/images/login_images/login_bg1.jpg);">
+                                style="background-image: url({{ url('backend_assets') }}/images/login_images/login_bg.jpg);">
                                 <div class="overlay" style="background-color: rgba(0,0,0,0.2);"></div>
                                 <div class="auth-user-testimonial" style="border: 1px solid gray; background: #0000006b;">
                                     <p class="fs-24 fw-bold text-white mb-1" style="text-shadow: 1px 1px 2px black;">Powered
