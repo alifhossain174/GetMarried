@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HomepageBiodataController;
 use App\Http\Controllers\HomepageStatisticsController;
+use App\Http\Controllers\HowItWorksController;
 
 // Auth::routes();
 Auth::routes([
@@ -73,7 +74,10 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/homepage/biodata', [HomepageBiodataController::class, 'updateHomePageBiodata'])->name('UpdateHomePageBiodata');
     Route::get('contact/us/page', [ContactController::class, 'contactUsPage'])->name('ContactUsPage');
     Route::post('update/contact/page/info', [ContactController::class, 'updateContactUsPage'])->name('UpdateContactUsPage');
+
+
     Route::get('homepage/statistics/config', [HomepageStatisticsController::class, 'homePageStatisticsConfig'])->name('HomePageStatisticsConfig');
+    Route::post('update/homepage/statistics/config', [HomepageStatisticsController::class, 'updateHomePageStatisticsConfig'])->name('UpdateHomePageStatisticsConfig');
     Route::get('view/homepage/statistics', [HomepageStatisticsController::class, 'viewHomePageStatistics'])->name('ViewHomePageStatistics');
     Route::get('add/new/homepage/statistic', [HomepageStatisticsController::class, 'addHomePageStatistic'])->name('AddHomePageStatistic');
     Route::post('save/homepage/statistic', [HomepageStatisticsController::class, 'saveHomePageStatistic'])->name('SaveHomePageStatistic');
@@ -82,8 +86,18 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/homepage/statistic', [HomepageStatisticsController::class, 'updateHomePageStatistic'])->name('UpdateHomePageStatistic');
     Route::get('rearrange/homepage/statistics', [HomepageStatisticsController::class, 'rearrangeHomePageStatistics'])->name('RearrangeHomePageStatistics');
     Route::post('save/rearranged/homepage/statistics', [HomepageStatisticsController::class, 'saveRearrangedHomePageStatistics'])->name('SaveRearrangedHomePageStatistics');
-    Route::post('update/homepage/statistics/config', [HomepageStatisticsController::class, 'updateHomePageStatisticsConfig'])->name('UpdateHomePageStatisticsConfig');
 
+
+    Route::get('how/it/works/config', [HowItWorksController::class, 'howItWorksConfig'])->name('HowItWorksConfig');
+    Route::post('update/how/it/works/config', [HowItWorksController::class, 'updateHowItWorksConfig'])->name('UpdateHowItWorksConfig');
+    Route::get('view/how/it/works', [HowItWorksController::class, 'viewHowItWorks'])->name('ViewHowItWorks');
+    Route::get('add/new/how/it/works', [HowItWorksController::class, 'addHowItWorks'])->name('AddHowItWorks');
+    Route::post('save/how/it/works', [HowItWorksController::class, 'saveHowItWorks'])->name('SaveHowItWorks');
+    Route::get('delete/how/it/works/{id}', [HowItWorksController::class, 'deleteHowItWorks'])->name('DeleteHowItWorks');
+    Route::get('edit/how/it/works/{id}', [HowItWorksController::class, 'editHowItWorks'])->name('EditHowItWorks');
+    Route::post('update/how/it/works', [HowItWorksController::class, 'updateHowItWorks'])->name('UpdateHowItWorks');
+    Route::get('rearrange/how/it/works', [HowItWorksController::class, 'rearrangeHowItWorks'])->name('RearrangeHowItWorks');
+    Route::post('save/rearranged/how/it/works', [HowItWorksController::class, 'saveRearrangedHowItWorks'])->name('SaveRearrangedHowItWorks');
 
 });
 

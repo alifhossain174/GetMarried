@@ -10,11 +10,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Add New Homepage Statistic</h4>
+                <h4 class="page-title">Add How it Works</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Website Content Modules</a></li>
-                        <li class="breadcrumb-item active">Add New Homepage Statistic</li>
+                        <li class="breadcrumb-item active">Add How it Works</li>
                     </ol>
                 </div>
             </div>
@@ -27,9 +27,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body pb-4">
-                    <h4 class="mb-3 header-title mt-0">Add Home Page Statistic</h4>
+                    <h4 class="mb-3 header-title mt-0">Add How it Works</h4>
 
-                    <form class="form-horizontal" action="{{ url('save/homepage/statistic') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="{{ url('save/how/it/works') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">

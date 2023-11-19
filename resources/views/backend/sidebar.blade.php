@@ -43,6 +43,19 @@
                 </ul>
             </div>
         </li>
+        <li>
+            <a href="#sidebarHowItWorks" data-bs-toggle="collapse">
+                <i data-feather="command"></i>
+                <span> How It Works </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarHowItWorks">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/how/it/works/config')}}">Section Config</a></li>
+                    <li><a href="{{url('/view/how/it/works')}}">Manage Work Procedure</a></li>
+                </ul>
+            </div>
+        </li>
 
         <li><a href="{{url('contact/us/page')}}"><i data-feather="phone-call"></i><span> Contact Us Page </span></a></li>
 

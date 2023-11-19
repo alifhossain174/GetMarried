@@ -9,6 +9,11 @@
     <meta name="keywords" content="{{str_replace(",",", ",$homePageSeo->meta_keywords)}}" />
 @endpush
 
+@php
+    use Rakibhstu\Banglanumber\NumberToBangla;
+    $numto = new NumberToBangla();
+@endphp
+
 @section('content')
 
     <!-- Hero Area -->
@@ -177,59 +182,34 @@
                 </div>
             </div>
             <div class="row">
+
                 <!-- Single Funfact  -->
+                @foreach($homePageStatistics as $satistic)
                 <div class="col-lg-6 col-xl-3 col-md-6 col-12">
                     <div class="funfact-card">
                         <div class="funfact-card-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/funfact/icon-1.svg" alt="#" />
+                            <img src="{{url($satistic->image)}}" alt="Image" />
                         </div>
                         <div class="funfact-card-info">
-                            <p>সর্বমোট পাত্র-পাত্রীর বায়োডাটা</p>
-                            <h4><span class="counter">5,559</span></h4>
+                            <p>{{ App::currentLocale() == 'en' ? $satistic->title : $satistic->title_bn }}</p>
+
+                            @if(App::currentLocale() == 'en')
+                            <h4><span class="counter">{{$satistic->number}}</span></h4>
+                            @else
+                            <h4><span>{{$numto->bnCommaLakh($satistic->number)}}</span></h4>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>
-                <!-- Single Funfact  -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="funfact-card">
-                        <div class="funfact-card-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/funfact/icon-2.svg" alt="#" />
-                        </div>
-                        <div class="funfact-card-info">
-                            <p>সর্বমোট পাত্রের বায়োডাটা</p>
-                            <h4><span class="counter">2,276</span></h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Funfact  -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="funfact-card">
-                        <div class="funfact-card-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/funfact/icon-3.svg" alt="#" />
-                        </div>
-                        <div class="funfact-card-info">
-                            <p>সর্বমোট পাত্রীর বায়োডাটা</p>
-                            <h4><span class="counter">3,280</span></h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Funfact  -->
-                <div class="col-lg-6 col-xl-3 col-md-6 col-12">
-                    <div class="funfact-card">
-                        <div class="funfact-card-icon">
-                            <img src="{{url('frontend_assets')}}/assets/images/funfact/icon-4.svg" alt="#" />
-                        </div>
-                        <div class="funfact-card-info">
-                            <p>সর্বমোট সফল বিবাহ</p>
-                            <h4><span class="counter">1,435</span>+</h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </section>
     @endif
     <!-- End Funfact Area -->
+
 
     <!-- Work Process Area -->
     <section class="work-process-area">

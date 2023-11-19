@@ -29,11 +29,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">View Homepage Statistics</h4>
+                <h4 class="page-title">Manage How It Works</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Website Content Module</a></li>
-                        <li class="breadcrumb-item active">View Homepage Statistics</li>
+                        <li class="breadcrumb-item active">Manage How It Works</li>
                     </ol>
                 </div>
             </div>
@@ -47,10 +47,10 @@
             <div class="card">
                 <div class="card-body pb-4">
 
-                    <h4 class="mb-3 header-title mt-0">View Homepage Statistics</h4>
+                    <h4 class="mb-3 header-title mt-0">Manage How It Works</h4>
                     <label id="customFilter" style="float: right;">
-                        <a href="{{url('add/new/homepage/statistic')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><b><i class="bi bi-plus-lg"></i> Add New Data</b></a>
-                        <a href="{{url('rearrange/homepage/statistics')}}" class="btn btn-success btn-sm" style="margin-left: 0px"><b><i class="bi bi-shuffle"></i> Rearrange Items</b></a>
+                        <a href="{{url('add/new/how/it/works')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><b><i class="bi bi-plus-lg"></i> Add New Data</b></a>
+                        <a href="{{url('rearrange/how/it/works')}}" class="btn btn-success btn-sm" style="margin-left: 0px"><b><i class="bi bi-shuffle"></i> Rearrange Items</b></a>
                     </label>
 
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
@@ -59,7 +59,7 @@
                                 <th class="text-center">SL</th>
                                 <th class="text-center">Icon</th>
                                 <th class="text-center">Title</th>
-                                <th class="text-center">Title (Bn)</th>
+                                <th class="text-center">Title (BN)</th>
                                 <th class="text-center">Number</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
@@ -92,7 +92,7 @@
             serverSide: true,
             pageLength: 10,
             lengthMenu: [10, 20, 50, 100],
-            ajax: "{{ url('view/homepage/statistics') }}",
+            ajax: "{{ url('view/how/it/works') }}",
             columns: [
                 {
                     data: 'DT_RowIndex',
@@ -143,7 +143,7 @@
             if(confirm("Are You sure want to delete !")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('delete/homepage/statistic') }}"+'/'+id,
+                    url: "{{ url('delete/how/it/works') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
                         toastr.error("Item has been Removed", "Deleted Successfully");

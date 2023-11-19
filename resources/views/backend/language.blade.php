@@ -35,7 +35,7 @@
                                 <p class="mb-0">
                                     {{$language->description}}
                                 </p>
-                                <select class="form-select mt-3" id="language_{{$language->code}}" onchange="setDefaultLanguage('{{$language->code}}', this.value)">
+                                <select class="form-select mt-3" @if($language->status == 1) style="color: white !important; border-color: #06B8AC !important; background-color: #06B8AC !important;" @endif id="language_{{$language->code}}" onchange="setDefaultLanguage('{{$language->code}}', this.value)">
                                     <option value="1" @if($language->status == 1) selected @endif>Active</option>
                                     <option value="0" @if($language->status == 0) selected @endif>Inactive</option>
                                 </select>
