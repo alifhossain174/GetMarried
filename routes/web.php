@@ -108,6 +108,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/terms/condition', [TermsPolicyController::class, 'updateTermsAndConditions'])->name('UpdateTermsAndConditions');
     Route::get('privacy-policies', [TermsPolicyController::class, 'privacyPolicy'])->name('PrivacyPolicy');
     Route::post('update/privacy/policy', [TermsPolicyController::class, 'updatePrivacyPolicy'])->name('UpdatePrivacyPolicy');
+    Route::get('refund-policies', [TermsPolicyController::class, 'refundPolicy'])->name('RefundPolicy');
+    Route::post('update/refund/policy', [TermsPolicyController::class, 'updateRefundPolicy'])->name('UpdateRefundPolicy');
 
 });
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\HomepageBioData;
 use App\Models\MobileApp;
+use App\Models\PrivacyPolicy;
+use App\Models\RefundPolicy;
+use App\Models\TermsCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\HomepageStatisticsConfig;
@@ -43,15 +46,18 @@ class FrontendController extends Controller
     }
 
     public function privacyPolicy(){
-        return view('frontend.privacy_policy');
+        $data = PrivacyPolicy::where('id', 1)->first();
+        return view('frontend.privacy_policy', compact('data'));
     }
 
     public function termsCondition(){
-        return view('frontend.terms_condition');
+        $data = TermsCondition::where('id', 1)->first();
+        return view('frontend.terms_condition', compact('data'));
     }
 
     public function refundPolicy(){
-        return view('frontend.refund_policy');
+        $data = RefundPolicy::where('id', 1)->first();
+        return view('frontend.refund_policy', compact('data'));
     }
 
     public function langChange(Request $request){

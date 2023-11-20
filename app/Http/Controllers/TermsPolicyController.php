@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PrivacyPolicy;
+use App\Models\RefundPolicy;
 use App\Models\TermsCondition;
 use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
@@ -39,6 +40,22 @@ class TermsPolicyController extends Controller
         ]);
 
         Toastr::success('Privacy Policy Updated', 'Success');
+        return back();
+    }
+
+    public function refundPolicy(){
+        $data = RefundPolicy::where('id', 1)->first();
+        return view('backend.policy.refund_policy', compact('data'));
+    }
+
+    public function updateRefundPolicy(Request $request){
+        RefundPolicy::where('id', 1)->update([
+            'details' => $request->details,
+            'details_bn' => $request->details_bn,
+            'updated_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Refund Policy Updated', 'Success');
         return back();
     }
 }
