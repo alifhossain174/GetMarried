@@ -80,9 +80,9 @@
             </a>
             <div class="collapse" id="sidebarFaq">
                 <ul class="nav-second-level">
-                    <li><a href="{{url('/te')}}">Page Title</a></li>
-                    <li><a href="{{url('/pri')}}">Add New FAQ</a></li>
-                    <li><a href="{{url('/re')}}">View All FAQ</a></li>
+                    <li><a href="{{url('/faq/config')}}">Page Title</a></li>
+                    <li><a href="{{url('add/new/faq')}}">Add New FAQ</a></li>
+                    <li><a href="{{url('view/all/faqs')}}">View All FAQ</a></li>
                 </ul>
             </div>
         </li>
