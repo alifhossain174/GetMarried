@@ -57,6 +57,7 @@
             </div>
         </li>
         <li><a href="{{url('mobile/app/section')}}"><i data-feather="smartphone"></i><span> Mobile App Section </span></a></li>
+        <li><a href="{{url('about/us/page')}}"><i data-feather="smartphone"></i><span> About Us </span></a></li>
         <li>
             <a href="#sidebarTermsPolicies" data-bs-toggle="collapse">
                 <i data-feather="alert-triangle"></i>
@@ -68,6 +69,20 @@
                     <li><a href="{{url('/terms-conditions')}}">Terms & Conditions</a></li>
                     <li><a href="{{url('/privacy-policies')}}">Privacy Policies</a></li>
                     <li><a href="{{url('/refund-policies')}}">Refund Policies</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <a href="#sidebarFaq" data-bs-toggle="collapse">
+                <i class="bi bi-question-circle" style="font-size: 15px;"></i>
+                <span> FAQ </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarFaq">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/te')}}">Page Title</a></li>
+                    <li><a href="{{url('/pri')}}">Add New FAQ</a></li>
+                    <li><a href="{{url('/re')}}">View All FAQ</a></li>
                 </ul>
             </div>
         </li>
