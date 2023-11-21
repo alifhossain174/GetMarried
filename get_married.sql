@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 11:02 AM
+-- Generation Time: Nov 21, 2023 at 12:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -331,9 +331,9 @@ CREATE TABLE `faqs` (
 
 INSERT INTO `faqs` (`id`, `question`, `question_bn`, `answer`, `answer_bn`, `serial`, `slug`, `status`, `created_at`, `updated_at`) VALUES
 (14, 'What is sadikrun.com? How does it work?', 'সাদিকরুন ডটকম কী? এটি কিভাবে কাজ করে?', '<p>এটি একটি বাংলাদেশী ইসলামিক ম্যাটরিমনি ওয়েবসাইট। এটিরযাত্রা শুরু হয় জানুয়ারির ১ তারিখ ২০২১ । এখানে উপজেলাভিত্তিক প্রেক্টিসিং মুসলিম পাত্রপাত্রীর বায়োডাটা খোঁজা ও অভিভাবকের সাথে যোগাযোগ করা যায়। একই সাথে পাত্র-পাত্রী চাইলে ওয়েবসাইটে বায়োডাটা তৈরি করে জমা দিতে পারে।</p>', '<p>এটি একটি বাংলাদেশী ইসলামিক ম্যাটরিমনি ওয়েবসাইট। এটিরযাত্রা শুরু হয় জানুয়ারির ১ তারিখ ২০২১ । এখানে উপজেলাভিত্তিক প্রেক্টিসিং মুসলিম পাত্রপাত্রীর বায়োডাটা খোঁজা ও অভিভাবকের সাথে যোগাযোগ করা যায়। একই সাথে পাত্র-পাত্রী চাইলে ওয়েবসাইটে বায়োডাটা তৈরি করে জমা দিতে পারে।</p>', 1, '1700560299zj0LE', 1, '2023-11-21 03:51:39', '2023-11-21 04:01:58'),
-(15, 'বায়োডাটা জমা দিতে কত টাকা লাগে?', NULL, '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', NULL, 2, '1700560335Hxof4', 1, '2023-11-21 03:52:15', '2023-11-21 03:53:18'),
-(16, 'এই ওয়েবসাইট কি সবার জন্য উন্মুক্ত?', NULL, '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', NULL, 3, '1700560364CmQ30', 1, '2023-11-21 03:52:44', '2023-11-21 03:53:18'),
-(17, 'বায়োডাটা তৈরি করার কোনো বিশেষ শর্ত আছে?', NULL, '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', NULL, 4, '1700560386HFvPs', 1, '2023-11-21 03:53:06', '2023-11-21 03:53:18');
+(15, 'How much does it cost to submit a resume?', 'বায়োডাটা জমা দিতে কত টাকা লাগে?', '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', 2, '1700560335Hxof4', 1, '2023-11-21 03:52:15', '2023-11-21 04:38:52'),
+(16, 'Is this website open to everyone?', 'এই ওয়েবসাইট কি সবার জন্য উন্মুক্ত?', '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', 3, '1700560364CmQ30', 1, '2023-11-21 03:52:44', '2023-11-21 04:39:13'),
+(17, 'Are there any special conditions for creating biodata?', 'বায়োডাটা তৈরি করার কোনো বিশেষ শর্ত আছে?', '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', 4, '1700560386HFvPs', 1, '2023-11-21 03:53:06', '2023-11-21 05:03:14');
 
 -- --------------------------------------------------------
 
@@ -525,6 +525,43 @@ INSERT INTO `how_it_works_configs` (`id`, `section_title`, `section_title_bn`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `instructions`
+--
+
+CREATE TABLE `instructions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `answer_bn` longtext DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instruction_configs`
+--
+
+CREATE TABLE `instruction_configs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logo_favicons`
 --
 
@@ -596,7 +633,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (84, '2023_11_21_050833_create_about_us_configs_table', 53),
 (85, '2023_11_21_050736_create_about_us_table', 54),
 (86, '2023_11_21_045846_create_faq_configs_table', 54),
-(87, '2023_11_21_045942_create_faqs_table', 54);
+(87, '2023_11_21_045942_create_faqs_table', 54),
+(88, '2023_11_21_111119_create_instruction_configs_table', 55),
+(89, '2023_11_21_111209_create_instructions_table', 55);
 
 -- --------------------------------------------------------
 
@@ -6386,6 +6425,18 @@ ALTER TABLE `how_it_works_configs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `instructions`
+--
+ALTER TABLE `instructions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `instruction_configs`
+--
+ALTER TABLE `instruction_configs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `logo_favicons`
 --
 ALTER TABLE `logo_favicons`
@@ -6611,6 +6662,18 @@ ALTER TABLE `how_it_works_configs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `instructions`
+--
+ALTER TABLE `instructions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `instruction_configs`
+--
+ALTER TABLE `instruction_configs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `logo_favicons`
 --
 ALTER TABLE `logo_favicons`
@@ -6620,7 +6683,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
