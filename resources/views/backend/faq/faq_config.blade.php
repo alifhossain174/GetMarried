@@ -33,7 +33,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="section_title" class="col-lg-2 col-md-2 col-form-label">Section Title</label>
+                            <label for="section_title" class="col-lg-2 col-md-2 col-form-label">Page Title</label>
                             <div class="col-lg-10 col-md-10">
                                 <input type="text" name="section_title" value="{{$data->section_title}}" class="form-control @error('section_title') is-invalid @enderror" id="section_title" placeholder="Section Title">
                                 @error('section_title')
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="section_title_bn" class="col-lg-2 col-md-2 col-form-label">Section Title (BN)</label>
+                            <label for="section_title_bn" class="col-lg-2 col-md-2 col-form-label">Page Title (BN)</label>
                             <div class="col-lg-10 col-md-10">
                                 <input type="text" name="section_title_bn" value="{{$data->section_title_bn}}" class="form-control @error('section_title_bn') is-invalid @enderror" id="section_title_bn" placeholder="Section Title (BN)">
                                 @error('section_title_bn')
@@ -105,16 +105,6 @@
                                     <option value="">Select One</option>
                                     <option value="1" @if($data->priority == 1) selected @endif>Background Image</option>
                                     <option value="2" @if($data->priority == 2) selected @endif>Background Color</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-3">
-                            <label for="status" class="col-sm-2 col-form-label">Status</label>
-                            <div class="col-sm-3 pt-1">
-                                <select name="status" data-plugin="customselect" class="form-select" required>
-                                    <option value="1" @if($data->status == 1) selected @endif>Show this Section</option>
-                                    <option value="0" @if($data->status == 0) selected @endif>Hide this Section</option>
                                 </select>
                             </div>
                         </div>

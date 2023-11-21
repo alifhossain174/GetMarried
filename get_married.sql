@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 04:49 AM
+-- Generation Time: Nov 21, 2023 at 10:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -29,27 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `about_us` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `page_title` varchar(255) NOT NULL DEFAULT 'About Us',
-  `image` varchar(255) DEFAULT NULL,
+  `images` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `description` longtext DEFAULT NULL,
-  `statistics_section_title` varchar(255) NOT NULL DEFAULT 'Institutional Statistics',
-  `total_students` double NOT NULL DEFAULT 0,
-  `total_teachers` double NOT NULL DEFAULT 0,
-  `total_employees` double NOT NULL DEFAULT 0,
-  `total_rooms` double NOT NULL DEFAULT 0,
-  `total_buildings` double NOT NULL DEFAULT 0,
-  `total_students_label` varchar(255) DEFAULT NULL,
-  `total_teachers_label` varchar(255) DEFAULT NULL,
-  `total_employees_label` varchar(255) DEFAULT NULL,
-  `total_rooms_label` varchar(255) DEFAULT NULL,
-  `total_buildings_label` varchar(255) DEFAULT NULL,
-  `mission_title` varchar(255) NOT NULL DEFAULT 'Mission',
-  `mission_image` varchar(255) DEFAULT NULL,
-  `mission_description` longtext DEFAULT NULL,
-  `vision_title` varchar(255) NOT NULL DEFAULT 'Vision',
-  `vision_image` varchar(255) DEFAULT NULL,
-  `vision_description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -58,8 +42,32 @@ CREATE TABLE `about_us` (
 -- Dumping data for table `about_us`
 --
 
-INSERT INTO `about_us` (`id`, `page_title`, `image`, `title`, `description`, `statistics_section_title`, `total_students`, `total_teachers`, `total_employees`, `total_rooms`, `total_buildings`, `total_students_label`, `total_teachers_label`, `total_employees_label`, `total_rooms_label`, `total_buildings_label`, `mission_title`, `mission_image`, `mission_description`, `vision_title`, `vision_image`, `vision_description`, `created_at`, `updated_at`) VALUES
-(1, 'প্রতিষ্ঠান পরিচিতি 1', '/storage/files/1/AboutUs/about-img-2.png', 'প্রতিষ্ঠান সম্পর্কে 2', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজ এর অতীত গৌরবোজ্জ্বল বর্তমান প্রশংসনীয়। ২০২৩ ইংরেজীর ২০ শে জানুয়ারী এক্সওয়াইজেধ স্কুল এবং কলেজ এর স্থানীয় ম্যাজিষ্ট্রেট অফিসের তৎকালীন প্রধান কারণিক মি: এক্সওয়াইজেধ কর্তৃক প্রতিষ্ঠিত। তখন এটা এক্সওয়াইজেধ গভর্ণমেন্ট স্কুল নামে পরিচিত ছিল। ৯ জন বাংলাদেশী, ১ জন হিন্দু ও ৮ জন মুসলমান বিদ্যোৎসাহী ব্যক্তির একটি কমিটির উপর এর পরিচালনার দায়িত্ব ন্যাস্ত ছিল। এদেশের অধিবাসীদের বাংলায় শিক্ষায় শিক্ষিত করার জন্য এ বিদ্যালয় চালু করা হয়। ২০২৩ ইংরেজির ১ ই মে মি: এক্সওয়াইজেধ বিদ্যালয়ের প্রধান শিক্ষক নিযুক্ত হন।</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজ তার উচ্চমানের শিক্ষা, দক্ষ শিক্ষক এবং আধুনিক সুযোগ-সুবিধার জন্য পরিচিত। স্কুলটিতে একটি শক্তিশালী পাঠ্যক্রম রয়েছে যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। কলেজটিতে একটি বিস্তৃত কোর্স অফার রয়েছে যা শিক্ষার্থীদেরকে তাদের ভবিষ্যতের ক্যারিয়ারের জন্য প্রস্তুত করে। এক্সওয়াইজেধ স্কুল এবং কলেজ বাংলাদেশের একটি অন্যতম সেরা শিক্ষা প্রতিষ্ঠান। এটি শিক্ষার্থীদেরকে একটি উচ্চমানের শিক্ষা প্রদান করে যা তাদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। 123</p>', 'প্রতিষ্ঠানের পরিসংখান 5', 520, 20, 4, 15, 2, 'সর্বোমোট শিক্ষার্থী', 'শিক্ষক/শিক্ষিকা', 'অফিশ কর্মচারী', 'সর্বোমোট কক্ষ', 'বিদ্যালয় ভবন', 'প্রতিষ্ঠানের মিশন 3', '/storage/files/1/AboutUs/about-mission-img.png', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজের মিশন হল শিক্ষার্থীদেরকে একটি উচ্চমানের শিক্ষা প্রদান করা যা তাদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটি বিশ্বাস করে যে প্রতিটি শিক্ষার্থীরই সম্ভাবনা রয়েছে এবং তাদেরকে সেই সম্ভাবনাকে অর্জনের জন্য প্রস্তুত করতে চায়।</p>\r\n\r\n<p><strong>স্কুলের মিশনকে বাস্তবায়নের জন্য, স্কুলটি নিম্নলিখিত মূল্যবোধগুলিকে অনুসরণ করে:</strong></p>\r\n\r\n<ul>\r\n	<li>উচ্চমানের শিক্ষা: স্কুলটি একটি শক্তিশালী পাঠ্যক্রম প্রদান করে যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটিতে একটি দক্ষ শিক্ষক মন্ডলী রয়েছে যারা শিক্ষার্থীদেরকে তাদের শেখার ক্ষেত্রে সর্বোত্তম সাপোর্ট প্রদান করে।</li>\r\n	<li>ব্যক্তিত্ব বিকাশ: স্কুলটি শিক্ষার্থীদেরকে তাদের ব্যক্তিত্ব বিকাশে সহায়তা করে। স্কুলটি বিভিন্ন সহ-পাঠ্যক্রমিক কার্যক্রমের ব্যবস্থা করে যা শিক্ষার্থীদেরকে তাদের দক্ষতা এবং আগ্রহ বিকাশে সাহায্য করে।</li>\r\n	<li>সামাজিক দায়বদ্ধতা: স্কুলটি শিক্ষার্থীদেরকে সামাজিক দায়বদ্ধতা সম্পর্কে সচেতন করে। স্কুলটি বিভিন্ন সামাজিক কার্যক্রমের আয়োজন করে যা শিক্ষার্থীদেরকে সমাজের জন্য কিছু করার জন্য অনুপ্রাণিত করে। এক্সওয়াইজেধ স্কুল এবং কলেজ বিশ্বাস করে যে এই মূল্যবোধগুলি শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করবে।</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজ বিশ্বাস করে যে এই মূল্যবোধগুলি শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করবে।</p>', 'প্রতিষ্ঠানের ভিশন 7', '/storage/files/1/AboutUs/about-mission-img.png', '<p>এক্সওয়াইজেধ স্কুল এবং কলেজের ভিশন হল একটি বিশ্বমানের শিক্ষা প্রতিষ্ঠান হিসাবে গড়ে তোলা যা শিক্ষার্থীদেরকে তাদের সম্পূর্ণ সম্ভাবনায় পৌঁছাতে সাহায্য করে। স্কুলটি বিশ্বাস করে যে শিক্ষার মাধ্যমে শিক্ষার্থীরা একটি উন্নত ভবিষ্যৎ গড়ে তুলতে পারে এবং একটি উন্নত সমাজ গড়তে অবদান রাখতে পারে।</p>\r\n\r\n<p><strong>স্কুলের ভিশনকে বাস্তবায়নের জন্য, স্কুলটি নিম্নলিখিত লক্ষ্যগুলি অর্জনে প্রতিশ্রুতিবদ্ধ:</strong></p>\r\n\r\n<ul>\r\n	<li>উচ্চমানের শিক্ষা প্রদান: স্কুলটি একটি শক্তিশালী পাঠ্যক্রম এবং দক্ষ শিক্ষক মন্ডলীর মাধ্যমে শিক্ষার্থীদেরকে উচ্চমানের শিক্ষা প্রদান করতে চায়।</li>\r\n	<li>ব্যক্তিত্ব বিকাশ: স্কুলটি শিক্ষার্থীদেরকে তাদের ব্যক্তিত্ব বিকাশে সহায়তা করতে চায়। স্কুলটি বিভিন্ন সহ-পাঠ্যক্রমিক কার্যক্রমের ব্যবস্থা করে যা শিক্ষার্থীদেরকে তাদের দক্ষতা এবং আগ্রহ বিকাশে সাহায্য করে।</li>\r\n	<li>সামাজিক দায়বদ্ধতা: স্কুলটি শিক্ষার্থীদেরকে সামাজিক দায়বদ্ধতা সম্পর্কে সচেতন করতে চায়। স্কুলটি বিভিন্ন সামাজিক কার্যক্রমের আয়োজন করে যা শিক্ষার্থীদেরকে সমাজের জন্য কিছু করার জন্য অনুপ্রাণিত করে।</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>এক্সওয়াইজেধ স্কুল এবং কলেজের ভিশন হল একটি উচ্চাভিলাষী লক্ষ্য, তবে এটি একটি লক্ষ্য যা স্কুলটি অর্জনে প্রতিশ্রুতিবদ্ধ। স্কুলটি বিশ্বাস করে যে শিক্ষার মাধ্যমে শিক্ষার্থীরা একটি উন্নত ভবিষ্যৎ গড়ে তুলতে পারে এবং একটি উন্নত সমাজ গড়তে অবদান রাখতে পারে।</p>', '2023-10-08 08:13:56', '2023-10-25 10:08:36');
+INSERT INTO `about_us` (`id`, `images`, `title`, `title_bn`, `description`, `description_bn`, `created_at`, `updated_at`) VALUES
+(1, '[\"\\/storage\\/files\\/1\\/AboutUs\\/img-3.webp\",\"\\/storage\\/files\\/1\\/AboutUs\\/img-1.jpg\",\"\\/storage\\/files\\/1\\/AboutUs\\/img-2.webp\"]', 'Know About Us', 'আমাদের সম্পর্কে জানুন', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</p>', '<p>নিশ্চই সকল প্রশংসা আল্লাহর। আমরা তার কাছে আমাদের অন্তরের অনিষ্ট ও আমাদের কাজের অনিষ্ট থেকে আশ্রয় প্রার্থনা করি। দুরুদ ও সালাম বর্ষিত হোক রাসুল (ﷺ) এর উপর।</p>\r\n\r\n<p><br />\r\n<br />\r\nবিয়ে মহান আল্লাহপ্রদত্ত বিশেষ এক নিয়ামত ও রাসুল (ﷺ) এর একটি গুরুত্বপূর্ণ সুন্নাহ্। কুরআন ও হাদিসে বিয়েকে পবিত্রতার মাধ্যম, দ্বীনের অর্ধেক ও আর্থিক সচ্ছলতার উপায় হিসেবে উল্লেখ করেছেন। অপরদিকে পাশ্চাত্যবাদের তথাকথিত নারী-পুরুষের সমতাবিধানের এই অসুস্থ প্রতিযোগিতার পিছনে ছুটতে গিয়ে সমাজে নৈতিক অবক্ষয় ঘটছে। শিক্ষা, চাকরিতে, বিয়েতে পাশ্চাত্যের সভ্যতাবিবর্জিত অপসংস্কৃতির অনুপ্রবেশের মূল কারন ইসলামি শার&#39;ঈ বিধান অনুযায়ী না চলা ও পরিপূর্ণ দ্বীনি শিক্ষার অভাব। এর ফলশ্রুতিতে বিয়ে হয়েছে কঠিন আর যিনা-ব্যভিচার, পরকীয়া, ধর্ষন, আত্মহত্যাসহ বিভিন্ন অবক্ষয়ে সমাজ ভারাক্রান্ত।</p>\r\n\r\n<p><br />\r\n<br />\r\nঅন্যদিকে যারা এই ভয়াবহ ফিতনার যুগে স্রোতের প্রতিকূলে গিয়ে সুন্নাহ আঁকড়ে ধরার জন্য পরিবার ও সামাজিক তথাকথিত রীতিনীতির বিরুদ্ধে সংগ্রাম করছেন তাদের জন্য দ্বীনদার জীবনসঙ্গী খুঁজে পাওয়াটা যেন অনেক কঠিন হয়ে গিয়েছে। এ সমস্যা সমাধানের জন্যই আমরা ক&#39;জন গুনাহগার বান্দা এমন একটা বাংলাদেশি ম্যাট্রিমনি প্লাটফর্মের স্বপ্ন দেখেছিলাম। ফলশ্রুতিতে ১ জানুয়ারি ২০২১ সাদিকরুন ডটকম যাত্রা শুরু হয়। আল্লাহ&#39;র বিশেষ বরকতে সাদিকরুনের মাধ্যমে খোঁজ পেয়ে ইতিমধ্যে শত শত বিবাহ সম্পন্ন হয়েছে, আলহামদুলিল্লাহ।&nbsp;</p>\r\n\r\n<p><br />\r\n<br />\r\nআমাদের লক্ষ্য হচ্ছে, এ ওয়েবসাইটের মাধ্যমে বিয়ের জন্য শারীয়াসম্মত ইসলামিক ম্যাট্রিমনি প্লাটফর্ম গড়ে তোলা যার মাধ্যমে দ্বীনদার পাত্রপাত্রী সন্ধান সহজ করা। জাহেলী সমাজের সকল অপসংস্কৃতি ভেঙ্গে যিনা-ব্যভিচার বন্ধ করে বিবাহে উৎসাহিত করা, পাত্রীর পরিবারের জন্য চিরঅভিশাপ- যৌতুকের বিরুদ্ধে সবাইকে সচেতন করা এবং নগদ মোহরানায় সুন্নাহ সম্মত বিয়েকে প্রচলিত করা।</p>\r\n\r\n<p><br />\r\n<br />\r\nপরিকল্পনা রয়েছে যা নিয়ে আমরা প্রতিনিয়ত গবেষণা করছি। সকল মুসলিম ভাইবোনদের কাছে এ খেদমত দক্ষতার সাথে অতি শীঘ্রই পৌঁছে দিতে চেষ্টা চালিয়ে যাচ্ছি। আল্লাহ আমাদের নিয়্যত পবিত্র রাখুন, আমাদের সকল নেককাজ সহজ করুন এবং বারকাহ দান করুন। আমিন।</p>', '2023-11-21 05:56:54', '2023-11-21 02:52:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_us_configs`
+--
+
+CREATE TABLE `about_us_configs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `about_us_configs`
+--
+
+INSERT INTO `about_us_configs` (`id`, `page_title`, `page_title_bn`, `background_color`, `background_image`, `priority`, `created_at`, `updated_at`) VALUES
+(1, 'Know About Us', 'আমাদের সম্পর্কে', '#fff4f4', '/storage/files/1/hero-bg.png', 2, '2023-11-21 05:22:20', '2023-11-20 23:57:13');
 
 -- --------------------------------------------------------
 
@@ -301,6 +309,57 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `faqs`
+--
+
+CREATE TABLE `faqs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `answer` varchar(255) DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `faqs`
+--
+
+INSERT INTO `faqs` (`id`, `question`, `answer`, `serial`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(9, 'Qwe', '<p>213213</p>', 4, '1700558253Jxczs', 0, '2023-11-21 03:16:09', '2023-11-21 03:17:33'),
+(10, 'Q2', '<p>dasd</p>', 1, '1700558172XGAbc', 1, '2023-11-21 03:16:12', '2023-11-21 03:17:18'),
+(12, 'Q3', '<p>adasd</p>', 2, '17005582221jFuD', 1, '2023-11-21 03:17:02', '2023-11-21 03:17:18'),
+(13, 'Q4', '<p>dad</p>', 3, '1700558228XHdy1', 1, '2023-11-21 03:17:08', '2023-11-21 03:17:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq_configs`
+--
+
+CREATE TABLE `faq_configs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `faq_configs`
+--
+
+INSERT INTO `faq_configs` (`id`, `section_title`, `section_title_bn`, `background_color`, `background_image`, `priority`, `created_at`, `updated_at`) VALUES
+(1, 'Regular Frequent Questions', 'সচরাচর জিজ্ঞাসা সমূহ', '#744700', '/storage/files/1/hero-bg.png', 1, NULL, '2023-11-21 03:13:59');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `google_recaptchas`
 --
 
@@ -511,14 +570,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2023_07_18_014657_create_user_role_permissions_table', 1),
 (11, '2023_07_27_081453_create_general_configs_table', 2),
 (12, '2023_07_27_050411_create_contact_requests_table', 3),
-(21, '2023_10_01_103552_create_school_classes_table', 4),
-(22, '2023_10_02_061423_create_sections_table', 5),
-(23, '2023_10_02_072224_create_shifts_table', 6),
-(24, '2023_10_02_072454_create_subject_groups_table', 7),
-(25, '2023_10_02_104032_create_school_exams_table', 8),
-(26, '2023_10_02_111547_create_public_exams_table', 9),
-(30, '2023_10_03_050350_create_religions_table', 10),
-(31, '2023_10_03_051820_create_genders_table', 11),
 (32, '2023_10_05_050440_create_wesbite_theme_colors_table', 12),
 (33, '2023_10_05_092151_create_social_media_links_table', 13),
 (34, '2023_10_08_030613_create_logo_favicons_table', 14),
@@ -526,14 +577,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (36, '2023_10_08_040137_create_seos_table', 16),
 (37, '2023_10_08_055716_create_sliders_table', 17),
 (38, '2023_10_08_075141_create_about_us_table', 18),
-(39, '2023_10_08_094824_create_school_infos_table', 19),
-(40, '2023_10_09_034323_create_principal_message_configs_table', 20),
-(41, '2023_10_09_042308_create_personnels_table', 21),
-(43, '2023_10_09_053715_create_personnel_speeches_table', 22),
-(47, '2023_10_09_084329_create_external_links_table', 25),
-(48, '2023_10_09_114407_create_public_exam_results_table', 26),
-(52, '2023_10_10_065830_create_public_exam_result_configs_table', 29),
-(53, '2023_10_10_072105_create_school_exam_results_table', 30),
 (54, '2023_10_10_074833_create_school_exam_result_configs_table', 31),
 (65, '2023_10_19_115129_create_contact_configs_table', 42),
 (67, '2023_11_01_151126_create_google_recaptchas_table', 43),
@@ -547,7 +590,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (79, '2023_11_19_090416_create_mobile_apps_table', 49),
 (80, '2023_11_19_111042_create_terms_conditions_table', 50),
 (81, '2023_11_19_114546_create_privacy_policies_table', 51),
-(82, '2023_11_20_050700_create_refund_policies_table', 52);
+(82, '2023_11_20_050700_create_refund_policies_table', 52),
+(84, '2023_11_21_050833_create_about_us_configs_table', 53),
+(85, '2023_11_21_050736_create_about_us_table', 54),
+(86, '2023_11_21_045846_create_faq_configs_table', 54),
+(87, '2023_11_21_045942_create_faqs_table', 54);
 
 -- --------------------------------------------------------
 
@@ -6239,6 +6286,12 @@ ALTER TABLE `about_us`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `about_us_configs`
+--
+ALTER TABLE `about_us_configs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `banners`
 --
 ALTER TABLE `banners`
@@ -6281,6 +6334,18 @@ ALTER TABLE `divisions`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `faqs`
+--
+ALTER TABLE `faqs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `faq_configs`
+--
+ALTER TABLE `faq_configs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `google_recaptchas`
@@ -6448,6 +6513,12 @@ ALTER TABLE `about_us`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `about_us_configs`
+--
+ALTER TABLE `about_us_configs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
@@ -6488,6 +6559,18 @@ ALTER TABLE `divisions`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `faqs`
+--
+ALTER TABLE `faqs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `faq_configs`
+--
+ALTER TABLE `faq_configs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `google_recaptchas`
@@ -6535,7 +6618,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`

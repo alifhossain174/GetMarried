@@ -24,7 +24,6 @@ class FaqController extends Controller
             'priority' => $request->priority,
             'section_title' => $request->section_title,
             'section_title_bn' => $request->section_title_bn,
-            'status' => $request->status,
             'updated_at' => Carbon::now(),
         ]);
 
@@ -43,6 +42,7 @@ class FaqController extends Controller
             'answer' => $request->answer,
             'slug' => time().str::random(5),
             'status' => 1,
+            'serial' => Faq::min('serial') - 1,
             'created_at' => Carbon::now()
         ]);
 
