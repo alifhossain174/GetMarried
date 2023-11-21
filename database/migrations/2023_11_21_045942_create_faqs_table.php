@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
             $table->string('question')->nullable();
-            $table->string('answer')->nullable();
+            $table->string('question_bn')->nullable();
+            $table->longText('answer')->nullable();
+            $table->longText('answer_bn')->nullable();
             $table->double('serial')->default(1);
             $table->string('slug');
             $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");

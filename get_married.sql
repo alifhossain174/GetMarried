@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 10:18 AM
+-- Generation Time: Nov 21, 2023 at 11:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -315,7 +315,9 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `faqs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `question` varchar(255) DEFAULT NULL,
-  `answer` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `answer_bn` longtext DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
@@ -327,11 +329,11 @@ CREATE TABLE `faqs` (
 -- Dumping data for table `faqs`
 --
 
-INSERT INTO `faqs` (`id`, `question`, `answer`, `serial`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(9, 'Qwe', '<p>213213</p>', 4, '1700558253Jxczs', 0, '2023-11-21 03:16:09', '2023-11-21 03:17:33'),
-(10, 'Q2', '<p>dasd</p>', 1, '1700558172XGAbc', 1, '2023-11-21 03:16:12', '2023-11-21 03:17:18'),
-(12, 'Q3', '<p>adasd</p>', 2, '17005582221jFuD', 1, '2023-11-21 03:17:02', '2023-11-21 03:17:18'),
-(13, 'Q4', '<p>dad</p>', 3, '1700558228XHdy1', 1, '2023-11-21 03:17:08', '2023-11-21 03:17:18');
+INSERT INTO `faqs` (`id`, `question`, `question_bn`, `answer`, `answer_bn`, `serial`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(14, 'What is sadikrun.com? How does it work?', 'সাদিকরুন ডটকম কী? এটি কিভাবে কাজ করে?', '<p>এটি একটি বাংলাদেশী ইসলামিক ম্যাটরিমনি ওয়েবসাইট। এটিরযাত্রা শুরু হয় জানুয়ারির ১ তারিখ ২০২১ । এখানে উপজেলাভিত্তিক প্রেক্টিসিং মুসলিম পাত্রপাত্রীর বায়োডাটা খোঁজা ও অভিভাবকের সাথে যোগাযোগ করা যায়। একই সাথে পাত্র-পাত্রী চাইলে ওয়েবসাইটে বায়োডাটা তৈরি করে জমা দিতে পারে।</p>', '<p>এটি একটি বাংলাদেশী ইসলামিক ম্যাটরিমনি ওয়েবসাইট। এটিরযাত্রা শুরু হয় জানুয়ারির ১ তারিখ ২০২১ । এখানে উপজেলাভিত্তিক প্রেক্টিসিং মুসলিম পাত্রপাত্রীর বায়োডাটা খোঁজা ও অভিভাবকের সাথে যোগাযোগ করা যায়। একই সাথে পাত্র-পাত্রী চাইলে ওয়েবসাইটে বায়োডাটা তৈরি করে জমা দিতে পারে।</p>', 1, '1700560299zj0LE', 1, '2023-11-21 03:51:39', '2023-11-21 04:01:58'),
+(15, 'বায়োডাটা জমা দিতে কত টাকা লাগে?', NULL, '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', NULL, 2, '1700560335Hxof4', 1, '2023-11-21 03:52:15', '2023-11-21 03:53:18'),
+(16, 'এই ওয়েবসাইট কি সবার জন্য উন্মুক্ত?', NULL, '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', NULL, 3, '1700560364CmQ30', 1, '2023-11-21 03:52:44', '2023-11-21 03:53:18'),
+(17, 'বায়োডাটা তৈরি করার কোনো বিশেষ শর্ত আছে?', NULL, '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', NULL, 4, '1700560386HFvPs', 1, '2023-11-21 03:53:06', '2023-11-21 03:53:18');
 
 -- --------------------------------------------------------
 
@@ -355,7 +357,7 @@ CREATE TABLE `faq_configs` (
 --
 
 INSERT INTO `faq_configs` (`id`, `section_title`, `section_title_bn`, `background_color`, `background_image`, `priority`, `created_at`, `updated_at`) VALUES
-(1, 'Regular Frequent Questions', 'সচরাচর জিজ্ঞাসা সমূহ', '#744700', '/storage/files/1/hero-bg.png', 1, NULL, '2023-11-21 03:13:59');
+(1, 'Regular Frequent Questions', 'সচরাচর জিজ্ঞাসা সমূহ', '#fff4f4', '/storage/files/1/hero-bg.png', 2, NULL, '2023-11-21 03:45:18');
 
 -- --------------------------------------------------------
 
@@ -6564,7 +6566,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `faq_configs`

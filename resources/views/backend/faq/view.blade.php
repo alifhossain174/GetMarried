@@ -54,7 +54,7 @@
                                 <tr>
                                     <th class="text-center">SL</th>
                                     <th class="text-center">Question</th>
-                                    {{-- <th class="text-center">Answer</th> --}}
+                                    <th class="text-center">Question (BN)</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -88,7 +88,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'question', name: 'question'},
-                // {data: 'answer', name: 'answer'},
+                {data: 'question_bn', name: 'question_bn'},
                 {data: 'status', name: 'status'},
 
                 {

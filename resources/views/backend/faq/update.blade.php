@@ -44,12 +44,31 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="question_bn" class="col-lg-2 col-md-2 col-form-label">Question (BN)</label>
+                            <div class="col-lg-10 col-md-10">
+                                <input type="text" name="question_bn" value="{{$data->question_bn}}" class="form-control @error('question_bn') is-invalid @enderror" id="question_bn" placeholder="Question in Bangla">
+                                @error('question_bn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         
 
                         <div class="row mb-3">
                             <label for="answer" class="col-lg-2 col-md-2 col-form-label">Description</label>
                             <div class="col-lg-10 col-md-10">
-                                <textarea id="description" name="answer">{!! $data->answer !!}</textarea>
+                                <textarea id="answer" name="answer">{!! $data->answer !!}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="answer_bn" class="col-lg-2 col-md-2 col-form-label">Answer (BN)</label>
+                            <div class="col-lg-10 col-md-10">
+                                <textarea id="answer_bn" name="answer_bn">{!! $data->answer_bn !!}</textarea>
                             </div>
                         </div>
 
@@ -94,11 +113,13 @@
             prefix: route_prefix
         });
 
-        // $("#background_color").spectrum({
-        //     preferredFormat: 'hex',
-        // });
+        CKEDITOR.replace('answer', {
+            filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            height: 300,
+        });
 
-        CKEDITOR.replace('description', {
+        CKEDITOR.replace('answer_bn', {
             filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form',
             height: 300,

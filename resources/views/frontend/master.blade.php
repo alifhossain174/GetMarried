@@ -178,19 +178,19 @@
                         <div class="header-menu">
                             <nav class="navigation">
                                 <ul class="header-menu-list">
-                                    <li class="active">
+                                    <li @if(Request::path() == '/') class="active" @endif>
                                         <a href="{{ url('/') }}">{{__('label.menu_home')}}</a>
                                     </li>
-                                    <li>
+                                    <li @if(Request::path() == 'about') class="active" @endif>
                                         <a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a>
                                     </li>
-                                    <li>
+                                    <li @if(Request::path() == 'faq') class="active" @endif>
                                         <a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a>
                                     </li>
-                                    <li>
+                                    <li @if(Request::path() == 'direction') class="active" @endif>
                                         <a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a>
                                     </li>
-                                    <li>
+                                    <li @if(Request::path() == 'contact') class="active" @endif>
                                         <a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a>
                                     </li>
                                 </ul>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\FaqConfig;
+use App\Models\Faq;
 use App\Models\HomepageBioData;
 use App\Models\MobileApp;
 use App\Models\PrivacyPolicy;
@@ -38,7 +40,9 @@ class FrontendController extends Controller
     }
 
     public function faq(){
-        return view('frontend.faq');
+        $faqConfig = FaqConfig::where('id', 1)->first();
+        $faqs = Faq::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.faq', compact('faqConfig', 'faqs'));
     }
 
     public function direction(){

@@ -39,7 +39,9 @@ class FaqController extends Controller
 
         Faq::insert([
             'question' => $request->question,
+            'question_bn' => $request->question_bn,
             'answer' => $request->answer,
+            'answer_bn' => $request->answer_bn,
             'slug' => time().str::random(5),
             'status' => 1,
             'serial' => Faq::min('serial') - 1,
@@ -88,8 +90,9 @@ class FaqController extends Controller
 
         Faq::where('slug', $request->slug)->update([
             'question' => $request->question,
+            'question_bn' => $request->question_bn,
             'answer' => $request->answer,
-            'slug' => time().str::random(5),
+            'answer_bn' => $request->answer_bn,
             'status' => $request->status,
             'updated_at' => Carbon::now()
         ]);
