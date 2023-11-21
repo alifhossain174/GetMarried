@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\InstructionController;
 
 
 // backend routes
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
     // Faq config routes
-
     Route::get('faq/config', [FaqController::class, 'faqConfig'])->name('faqConfig');
     Route::post('update/faq/config', [FaqController::class, 'updateFaqConfig'])->name('UpdateFaqConfig');
 
@@ -22,15 +22,17 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/faqs', [FaqController::class, 'rearrangeFaqs'])->name('RearrangeFaqs');
     Route::post('save/rearranged/faqs', [FaqController::class, 'saveRearrangedFaqs'])->name('SaveRearrangedFaqs');
 
+    //Instructions
+    Route::get('instruction/config', [InstructionController::class, 'instructionConfig'])->name('instructionConfig');
+    Route::post('update/instruction/config', [InstructionController::class, 'updateInstructionConfig'])->name('UpdateInstructionConfig');
 
-    // Route::get('view/all/class', [ConfigController::class, 'viewAllClass'])->name('ViewAllClass');
-    // Route::post('add/new/class', [ConfigController::class, 'addNewClass'])->name('AddNewClass');
-    // Route::get('delete/class/{slug}', [ConfigController::class, 'deleteClass'])->name('DeleteClass');
-    // Route::get('get/class/info/{slug}', [ConfigController::class, 'classInfo'])->name('ClassInfo');
-    // Route::post('update/class/info', [ConfigController::class, 'updateClassInfo'])->name('UpdateClassInfo');
-    // Route::get('rearrange/class', [ConfigController::class, 'rearrangeClass'])->name('RearrangeClass');
-    // Route::post('save/rearranged/class', [ConfigController::class, 'saveRearrangeClass'])->name('SaveRearrangeClass');
-
-
+    Route::get('view/all/instructions', [InstructionController::class, 'viewAllInstructions'])->name('ViewAllInstructions');
+    Route::get('add/new/instruction', [InstructionController::class, 'addInstruction'])->name('AddInstruction');
+    Route::post('save/instruction', [InstructionController::class, 'saveInstruction'])->name('SaveInstruction');
+    Route::get('delete/instruction/{slug}', [InstructionController::class, 'deleteInstruction'])->name('DeleteInstruction');
+    Route::get('edit/instruction/{slug}', [InstructionController::class, 'editInstruction'])->name('EditInstruction');
+    Route::post('update/instruction', [InstructionController::class, 'updateInstruction'])->name('UpdateInstruction');
+    Route::get('rearrange/instructions', [InstructionController::class, 'rearrangeInstructions'])->name('RearrangeInstructions');
+    Route::post('save/rearranged/instructions', [InstructionController::class, 'saveRearrangedInstructions'])->name('SaveRearrangedInstructions');
 
 });
