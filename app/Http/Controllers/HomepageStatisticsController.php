@@ -44,6 +44,10 @@ class HomepageStatisticsController extends Controller
                             return '<span class="btn-sm btn-danger rounded">Inactive</span>';
                         }
                     })
+                    // ->parameters([
+                    //     'dom'     => 'Bfrtip',
+                    //     'buttons' => ['excel', 'csv'],
+                    // ])
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
                         $btn = ' <a href="'.url('/edit/homepage/statistic')."/".$data->id.'" class="btn-sm btn-warning rounded"><i class="bi bi-pencil-square"></i></a>';

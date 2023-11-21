@@ -14,6 +14,8 @@ use App\Models\HomepageStatisticsConfig;
 use App\Models\HomepageStatistics;
 use App\Models\HowItWorksConfig;
 use App\Models\HowItWorks;
+use App\Models\AboutUsConfig;
+use App\Models\AboutUs;
 
 class FrontendController extends Controller
 {
@@ -30,7 +32,9 @@ class FrontendController extends Controller
     }
 
     public function about(){
-        return view('frontend.about');
+        $aboutUsConfig = AboutUsConfig::where('id', 1)->first();
+        $aboutUs = AboutUs::where('id', 1)->first();
+        return view('frontend.about', compact('aboutUsConfig', 'aboutUs'));
     }
 
     public function faq(){

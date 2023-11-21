@@ -57,7 +57,19 @@
             </div>
         </li>
         <li><a href="{{url('mobile/app/section')}}"><i data-feather="smartphone"></i><span> Mobile App Section </span></a></li>
-        <li><a href="{{url('about/us/page')}}"><i data-feather="smartphone"></i><span> About Us </span></a></li>
+        <li>
+            <a href="#sidebarAboutUs" data-bs-toggle="collapse">
+                <i class="bi bi-card-text" style="font-size: 15px;"></i>
+                <span> About Us </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarAboutUs">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/about/us/page/title')}}">Page Title</a></li>
+                    <li><a href="{{url('/about/us/page')}}">About Us</a></li>
+                </ul>
+            </div>
+        </li>
         <li>
             <a href="#sidebarTermsPolicies" data-bs-toggle="collapse">
                 <i data-feather="alert-triangle"></i>

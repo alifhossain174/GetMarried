@@ -15,6 +15,8 @@ use App\Http\Controllers\HomepageStatisticsController;
 use App\Http\Controllers\HowItWorksController;
 use App\Http\Controllers\MobileAppController;
 use App\Http\Controllers\TermsPolicyController;
+use App\Http\Controllers\AboutUsController;
+
 
 // Auth::routes();
 Auth::routes([
@@ -34,40 +36,33 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('google/recaptcha', [HomeController::class, 'googleRecaptchaPage'])->name('GoogleRecaptchaPage');
     Route::post('update/google/recaptcha', [HomeController::class, 'updateGoogleRecaptcha'])->name('UpdateGoogleRecaptcha');
 
-
     // contact request
     Route::get('contact/requests', [HomeController::class, 'contactRequests'])->name('ContactRequests');
     Route::get('approve/contact/request/{slug}', [HomeController::class, 'approveContactRequest'])->name('ApproveContactRequest');
     Route::get('deny/contact/request/{slug}', [HomeController::class, 'denyContactRequest'])->name('DenyContactRequest');
     Route::get('delete/contact/request/{slug}', [HomeController::class, 'deleteRequest'])->name('DeleteRequest');
 
-
     //Website Theme Color
     Route::get('/website/theme/page', [WesbiteThemeColorController::class, 'websiteThemePage'])->name('WebsiteThemePage');
     Route::post('/update/website/theme/color', [WesbiteThemeColorController::class, 'updateWebsiteThemeColor'])->name('UpdateWebsiteThemeColor');
-
 
     //Social Media Links
     Route::get('/social/media/page', [SocialMediaLinksController::class, 'socialMediaPage'])->name('SocialMediaPage');
     Route::post('/update/social/media/link', [SocialMediaLinksController::class, 'updateSocialMediaLinks'])->name('UpdateSocialMediaLinks');
 
-
     // logo & favicon
     Route::get('/logo/favicon', [LogoFaviconController::class, 'logoFaviconPage'])->name('LogoFaviconPage');
     Route::post('/update/logo/favicon', [LogoFaviconController::class, 'updateLogoFavicon'])->name('UpdateLogoFavicon');
 
-
     // Custom Css JS
     Route::get('/custom/css/js', [CustomCssJsController::class, 'customCssJsPage'])->name('CustomCssJsPage');
     Route::post('/update/custom/css/js', [CustomCssJsController::class, 'updateCustomCssJs'])->name('UpdateCustomCssJs');
-
 
     //Seo Routes
     Route::get('/seo/homepage', [SeoController::class, 'seoHomePage'])->name('SeoHomePage');
     Route::post('/update/seo/homepage', [SeoController::class, 'updateSeoHomePage'])->name('UpdateSeoHomePage');
     Route::get('/generate/sitemap', [SeoController::class, 'generateSitemap'])->name('GenerateSitemap');
     Route::post('/upload/sitemap', [SeoController::class, 'uploadSitemap'])->name('UploadSitemap');
-
 
     // homepage dynamic content routes
     Route::get('homepage/banner', [BannerController::class, 'homePageBanner'])->name('HomePageBanner');
@@ -110,6 +105,13 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/privacy/policy', [TermsPolicyController::class, 'updatePrivacyPolicy'])->name('UpdatePrivacyPolicy');
     Route::get('refund-policies', [TermsPolicyController::class, 'refundPolicy'])->name('RefundPolicy');
     Route::post('update/refund/policy', [TermsPolicyController::class, 'updateRefundPolicy'])->name('UpdateRefundPolicy');
+
+    // about us
+    Route::get('about/us/page/title', [AboutUsController::class, 'aboutUsPageTitle'])->name('AboutUsPageTitle');
+    Route::post('update/about/us/page/title', [AboutUsController::class, 'updateAboutUsPageTitle'])->name('UpdateAboutUsPageTitle');
+    Route::get('about/us/page', [AboutUsController::class, 'aboutUsPage'])->name('AboutUsPage');
+    Route::post('update/about/us', [AboutUsController::class, 'updateAboutUs'])->name('UpdateAboutUs');
+    Route::get('delete/slider/image/{index}', [AboutUsController::class, 'deleteSliderImage'])->name('DeleteSliderImage');
 
 });
 
