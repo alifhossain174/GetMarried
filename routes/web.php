@@ -29,7 +29,6 @@ Auth::routes([
 
 // backend routes
 // 'prefix'=>'admin',
-
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -43,6 +42,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('approve/contact/request/{slug}', [HomeController::class, 'approveContactRequest'])->name('ApproveContactRequest');
     Route::get('deny/contact/request/{slug}', [HomeController::class, 'denyContactRequest'])->name('DenyContactRequest');
     Route::get('delete/contact/request/{slug}', [HomeController::class, 'deleteRequest'])->name('DeleteRequest');
+    Route::get('download/contact/requests/excel', [HomeController::class, 'downloadContactRequestsExcel'])->name('DownloadContactRequestsExcel');
 
     //Website Theme Color
     Route::get('/website/theme/page', [WesbiteThemeColorController::class, 'websiteThemePage'])->name('WebsiteThemePage');

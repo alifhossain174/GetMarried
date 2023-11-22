@@ -20,7 +20,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
+use App\Exports\ContactRequestExport;
 
 class HomeController extends Controller
 {
@@ -150,5 +152,9 @@ class HomeController extends Controller
         ]);
         Toastr::success('Successfully Updated', 'Success');
         return back();
+    }
+
+    public function downloadContactRequestsExcel(){
+        return Excel::download(new ContactRequestExport, 'contact_requests.xlsx');
     }
 }
