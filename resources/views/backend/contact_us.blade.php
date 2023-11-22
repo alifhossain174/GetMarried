@@ -24,125 +24,98 @@
                 <div class="card-body pb-4">
                     <form class="form-horizontal" action="{{url('update/contact/page/info')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="from-group">
-                                            <label for="page_title" class="col-form-label">Page Title</label>
-                                            <input type="text" name="page_title" class="form-control" value="{{$data->page_title}}" id="page_title" placeholder="Page Title" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="from-group">
-                                            <label for="map_iframe_src" class="col-form-label">School Map Iframe</label>
-                                            <input type="text" name="map_iframe_src" class="form-control" value="{{$data->map_iframe_src}}" id="map_iframe_src" placeholder="https://maps.google.com/maps/embed" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="from-group">
-                                            <label for="map_direction_button_text" class="col-form-label">Map Direction Button Text</label>
-                                            <input type="text" name="map_direction_button_text" class="form-control" value="{{$data->map_direction_button_text}}" id="map_direction_button_text" placeholder="ex. দিকনির্দেশ পান">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="from-group">
-                                            <label for="map_direction" class="col-form-label">School Map Direction</label>
-                                            <input type="text" name="map_direction" class="form-control" id="map_direction" value="{{$data->map_direction}}" placeholder="https://maps.app.goo.gl/yvoniqhrU7vBL6pZ8">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-12">
-                                        <div class="from-group">
-                                            <label for="image" class="col-form-label">Contact Form Image</label>
-                                            <div class="input-group">
-                                                <span class="input-group-btn">
-                                                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-success text-white">
-                                                        <i class="fi fi-rr-picture"></i> Upload Teacher Image
-                                                    </a>
-                                                </span>
-                                                <input id="thumbnail" class="form-control" type="text" name="image" value="{{$data->contact_form_image}}" readonly required>
-                                            </div>
-                                            <small class="form-text text-muted">[ Please upload jpg, jpeg, png file of 560px * 617px ]</small>
-                                            @error('image')
-                                                <span class="invalid-feedback d-inline" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="row mb-3">
+                            <label for="page_title" class="col-lg-2 col-md-2 col-form-label">Page Title</label>
+                            <div class="col-lg-10 col-md-10">
+                                <input type="text" name="page_title" value="{{$data->page_title}}" class="form-control @error('page_title') is-invalid @enderror" id="page_title" placeholder="Contact Us">
+                                @error('page_title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-                            <div class="col-lg-6">
-                                <div class="from-group">
-                                    <label for="contact_section_title" class="col-form-label">Contact Medium Section Title</label>
-                                    <input type="text" name="contact_section_title" class="form-control" id="contact_section_title" value="{{$data->contact_section_title}}" placeholder="ex. যোগাযোগের মাধ্যমসমূহ">
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="address_label" class="col-form-label">Address Label</label>
-                                            <input type="text" name="address_label" class="form-control" id="address_label" value="{{$data->address_label}}" placeholder="ex. কলেজের ঠিকানা">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="from-group">
-                                            <label for="address" class="col-form-label">Address</label>
-                                            <input type="text" name="address" class="form-control" id="address" value="{{$data->address}}" placeholder="Address">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="contact_label" class="col-form-label">Contact Label</label>
-                                            <input type="text" name="contact_label" class="form-control" id="contact_label" value="{{$data->contact_label}}" placeholder="ex. মোবাইল নাম্বার">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="primary_contact" class="col-form-label">Primary Contact</label>
-                                            <input type="text" name="primary_contact" class="form-control" id="primary_contact" value="{{$data->primary_contact}}" placeholder="+8801">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="secondary_contact" class="col-form-label">Secondary Contact</label>
-                                            <input type="text" name="secondary_contact" class="form-control" id="secondary_contact" value="{{$data->secondary_contact}}" placeholder="+8801">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="email_label" class="col-form-label">Email Label</label>
-                                            <input type="text" name="email_label" class="form-control" id="email_label" value="{{$data->email_label}}" placeholder="ex. ইমেইল ঠিকানা">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="primary_email" class="col-form-label">Primary Email</label>
-                                            <input type="text" name="primary_email" class="form-control" id="primary_email" value="{{$data->primary_email}}" placeholder="school-1@gmail.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="from-group">
-                                            <label for="secondary_email" class="col-form-label">Secondary Email</label>
-                                            <input type="text" name="secondary_email" class="form-control" id="secondary_email" value="{{$data->secondary_email}}" placeholder="school-2@gmail.com">
-                                        </div>
-                                    </div>
-                                </div>
-
+                        </div>
+                        <div class="row mb-3">
+                            <label for="page_title_bn" class="col-lg-2 col-md-2 col-form-label">Page Title (BN)</label>
+                            <div class="col-lg-10 col-md-10">
+                                <input type="text" name="page_title_bn" value="{{$data->page_title_bn}}" class="form-control @error('page_title_bn') is-invalid @enderror" id="page_title_bn" placeholder="যোগাযোগ করুন">
+                                @error('page_title_bn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
-                        <div class="row justify-content-end mt-4">
-                            <div class="col-lg-12 text-center">
-                                <button type="submit" class="btn btn-success"><b>Update Contact Info</b></button>
+                        <div class="row mb-3">
+                            <label for="google_map_link" class="col-lg-2 col-md-2 col-form-label">Google Map Link</label>
+                            <div class="col-lg-10 col-md-10">
+                                <input type="text" name="google_map_link" value="{{$data->google_map_link}}" class="form-control @error('google_map_link') is-invalid @enderror" id="google_map_link" placeholder="https://maps.google.com/maps/embed?pb=!1m18!1m12!1md3651.010433632!2d90.4127091144!3d23.78264279346122i768!4f13.1!3m3!1m20cb0cb41!2sSoftifyBD%20Ltd.!5e0!3m2!1sen!2sbd">
+                                @error('google_map_link')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="background_image" class="col-lg-2 col-md-2 col-form-label">Background Image</label>
+                            <div class="form-group col-lg-10 col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <a id="lfm" data-input="thumbnail" data-preview="holder"
+                                            class="btn btn-success text-white">
+                                            <i class="fi fi-rr-picture"></i> Upload Background
+                                        </a>
+                                    </span>
+                                    <input id="thumbnail"
+                                        @if ($data->background_image && file_exists(public_path($data->background_image))) value="{{ url($data->background_image) }}" @endif
+                                        class="form-control @error('background_image') is-invalid @enderror" type="text"
+                                        name="background_image" readonly>
+                                    @error('background_image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <small class="form-text text-muted">[Please upload jpg, jpeg, png file of 1920px * 1280px]</small>
+
+                                @if ($data->background_image && file_exists(public_path($data->background_image)))
+                                    <label for="image" class="d-block col-form-label">Current Background Image :</label>
+                                    <div class="w-75">
+                                        <img src="{{ url($data->background_image) }}" class="img-fluid w-25">
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="background_color" class="col-lg-2 col-md-2 col-form-label">Background Color</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input type="text" name="background_color" value="{{$data->background_color}}" class="form-control @error('background_color') is-invalid @enderror" id="background_color" placeholder="Background Color">
+                                @error('background_color')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                            <label for="priority" class="col-sm-2 col-form-label">Which one to use ?</label>
+                            <div class="col-sm-3 pt-1">
+                                <select name="priority" id="priority" data-plugin="customselect" class="form-select" required>
+                                    <option value="">Select One</option>
+                                    <option value="1" @if($data->priority == 1) selected @endif>Background Image</option>
+                                    <option value="2" @if($data->priority == 2) selected @endif>Background Color</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0 justify-content-end">
+                            <div class="col-lg-10 col-md-10">
+                                <button type="submit" class="btn btn-success">✅︎ Update Info</button>
                             </div>
                         </div>
 

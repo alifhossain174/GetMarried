@@ -19,4 +19,11 @@ return [
     'hero_marital_status'=> 'বৈবাহিক অবস্থা',
     'hero_permenant_address'=> 'স্থায়ী ঠিকানা',
     'hero_search' => 'খুঁজুন',
+
+    // form
+    'form_name' => 'নাম',
+    'form_email' => 'ইমেইল',
+    'form_subject' => 'বিষয়',
+    'form_message' => 'আপনার বার্তা',
+    'form_send' => 'পাঠান',
 ];

@@ -18,6 +18,7 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('Frontend.TermsCondition');
     Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
+    Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
 
     // user login dashboard
     Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');

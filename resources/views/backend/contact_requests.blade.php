@@ -41,13 +41,16 @@
                 <div class="card-body pb-4">
                     <h4 class="mb-3 header-title mt-0">View All Contact Requests</h4>
 
+                    <label id="customFilter">
+                        <a href="{{url('download/contact/requests/excel')}}" class="btn btn-sm btn-success rounded" style="display:inline-block; margin-left: 10px;"><i class="feather-download"></i> Download As Excel</a>
+                    </label>
+
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
                                 <th class="text-center">SL</th>
                                 <th class="text-center">Name</th>
                                 <th class="text-center">Email</th>
-                                <th class="text-center">Phone</th>
                                 <th class="text-center">Subject</th>
                                 <th class="text-center">Message</th>
                                 <th class="text-center">Status</th>
@@ -74,7 +77,8 @@
     <script src="{{url('dataTableBootstrap5')}}/DataTables/js/dataTables.bootstrap.min.js"></script>
     <script>
         var table = $('.yajra-datatable').DataTable({
-            processing: true,stateSave: true,
+            processing: true,
+            stateSave: true,
             serverSide: true,
             pageLength: 10,
             lengthMenu: [10, 20, 50, 100],
@@ -83,7 +87,6 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
                 {data: 'email', name: 'email'},
-                {data: 'phone', name: 'phone'},
                 {data: 'subject', name: 'subject'},
                 {data: 'message', name: 'message'},
                 {data: 'status', name: 'status'},
@@ -95,7 +98,8 @@
                 },
             ]
         });
-        $(".dataTables_filter").append($("#customFilter"));
+        // $(".dataTables_filter").append($("#customFilter"));
+        $("#DataTables_Table_0_length").append($("#customFilter"));
     </script>
 
  {{-- js code for user crud --}}
