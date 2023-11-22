@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2023 at 04:44 AM
+-- Generation Time: Nov 22, 2023 at 06:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -118,7 +118,7 @@ CREATE TABLE `contact_configs` (
 --
 
 INSERT INTO `contact_configs` (`id`, `page_title`, `page_title_bn`, `background_color`, `background_image`, `priority`, `google_map_link`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL, NULL, 1, NULL, '2023-11-22 03:36:30', NULL);
+(1, 'Contact Us', 'যোগাযোগ করুন', '#FFF4F4', '/storage/files/1/hero-bg.png', 2, 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.010422565822!2d90.41230847637874!3d23.782643187535772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b1bc2acc3e3f%3A0xc1754878d221b24e!2sGetUp%20Limited!5e0!3m2!1sen!2sbd!4v1700625069766!5m2!1sen!2sbd', '2023-11-22 03:36:30', '2023-11-21 22:10:50');
 
 -- --------------------------------------------------------
 
@@ -144,8 +144,22 @@ CREATE TABLE `contact_requests` (
 --
 
 INSERT INTO `contact_requests` (`id`, `name`, `email`, `phone`, `subject`, `message`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'Quincy Golden', 'togukafuki@mailinator.com', '+1 (618) 759-5091', 'Adipisci sed nesciun', 'Minima accusamus off', '1698833106ywvZq', 0, '2023-11-01 10:05:06', NULL),
-(4, 'Hakeem Owens', 'coru@mailinator.com', '+1 (617) 816-8964', 'Anim impedit veniam', 'Obcaecati sunt duis', '1698833313N3owD', 0, '2023-11-01 10:08:33', NULL);
+(1, 'Gemma Mosley', 'wymudutis@mailinator.com', NULL, 'Voluptas enim conseq', 'Ea aspernatur eligen', '1700626102lDXvZ', 0, '2023-11-21 22:08:22', NULL),
+(2, 'Nerea Mclean', 'guzoca@mailinator.com', NULL, 'Itaque ratione nisi', 'Natus voluptates imp', '1700626134Shk14', 0, '2023-11-21 22:08:54', NULL),
+(3, 'Rebekah Coffey', 'zazufufoto@mailinator.com', NULL, 'Aperiam maxime et se', 'Consequatur odio fug', '1700626214PyodO', 0, '2023-11-21 22:10:14', NULL),
+(4, 'Cameron Watson', 'feparynyl@mailinator.com', NULL, 'Aliquid in illo culp', 'Et quisquam dolore l', '1700626265MNdip', 0, '2023-11-21 22:11:05', NULL),
+(5, 'Alice Mcguire', 'sezucu@mailinator.com', NULL, 'Eum eum est ea facil', 'Possimus consectetu', '1700626268JRwFL', 0, '2023-11-21 22:11:08', NULL),
+(6, 'Amy Rogers', 'simiw@mailinator.com', NULL, 'Dolore in quia sed v', 'Inventore soluta qui', '1700627037aUGLw', 0, '2023-11-21 22:23:57', NULL),
+(7, 'Sara Poole', 'kulet@mailinator.com', NULL, 'Ea et fugit et porr', 'Ut voluptas quis lab', '1700627041C1c6w', 0, '2023-11-21 22:24:01', NULL),
+(8, 'Eleanor Robinson', 'cogob@mailinator.com', NULL, 'Nam quo ut ex tenetu', 'Itaque qui magni vol', '1700627044ITEGv', 0, '2023-11-21 22:24:04', NULL),
+(9, 'Serena Pena', 'tefap@mailinator.com', NULL, 'Omnis eligendi volup', 'Pariatur Voluptates', '1700627268NwKlN', 0, '2023-11-21 22:27:48', NULL),
+(10, 'Alexis Morgan', 'lapewy@mailinator.com', NULL, 'Esse cupidatat culp', 'Ex aliquam dolor sin', '1700627271wgECb', 0, '2023-11-21 22:27:51', NULL),
+(11, 'Jayme Mcclain', 'lyzebuzifi@mailinator.com', NULL, 'Et consequatur ipsum', 'Quasi sapiente quo i', '1700627279xpxQB', 0, '2023-11-21 22:27:59', NULL),
+(12, 'Arthur Le', 'bavopule@mailinator.com', NULL, 'Ea et eum sint prov', 'Exercitation adipisi', '1700628125bbHVU', 0, '2023-11-21 22:42:05', NULL),
+(13, 'Amaya Osborn', 'tyfuberug@mailinator.com', NULL, 'Dolorum enim id accu', 'Quia dolores ipsum', '1700628129ODRxm', 0, '2023-11-21 22:42:09', NULL),
+(14, 'Keane Hatfield', 'wigev@mailinator.com', NULL, 'Fugiat asperiores u', 'Ratione laborum Eu', '1700628132vepiZ', 0, '2023-11-21 22:42:12', NULL),
+(15, 'Kiona Espinoza', 'zaraxezira@mailinator.com', NULL, 'Sed est Nam quo omn', 'Provident veritatis', '17006297129o0pZ', 0, '2023-11-21 23:08:32', NULL),
+(16, 'Plato Torres', 'gejy@mailinator.com', NULL, 'Quaerat obcaecati te', 'Iste reiciendis quis', '17006297161v6ST', 0, '2023-11-21 23:08:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -533,6 +547,16 @@ CREATE TABLE `instructions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `instructions`
+--
+
+INSERT INTO `instructions` (`id`, `question`, `question_bn`, `answer`, `answer_bn`, `serial`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'How to create an account on sadikrun.com?', 'সাদিকরুন ডটকমে কিভাবে একাউন্ট তৈরি করবো?', '<ul>\r\n	<li>১) প্রথমে ShadiKorun.com প্রবেশ করুন এবং হোম পেজের উপরের ডান কোণে থাকা ইউজার আইকনে ক্লিক করুন।</li>\r\n	<li>২) Create Account এ ক্লিক করুন।</li>\r\n	<li>৩) রেজিস্ট্রেশন ফর্ম প্রদর্শিত হবে। আপনার নাম লিখুন এবং জেন্ডার সিলেক্ট করুন।</li>\r\n	<li>৪) আপনার ইমেইল লিখে Verify বাটনে ক্লিক করুন। আপনার ইমেইল সঠিক হলে সেখানে একটি ভেরিফিকেশন কোড যাবে। নির্ধারিত স্থানে ভেরিফিকেশন কোড প্রবেশ করিয়ে Confirm বাটনে ক্লিক করে ইমেইল ভেরিফিকেশন সম্পন্ন করুন।</li>\r\n	<li>৫) আপনার মোবাইল নাম্বার লিখে Verify বাটনে ক্লিক করুন। আপনার মোবাইল নাম্বার সঠিক হলে সেখানে একটি ভেরিফিকেশন কোড যাবে। নির্ধারিত স্থানে ভেরিফিকেশন কোড প্রবেশ করিয়ে Confirm বাটনে ক্লিক করে মোবাইল নাম্বার ভেরিফিকেশন সম্পন্ন করুন।</li>\r\n	<li>৬) একটি পাসওয়ার্ড নির্বাচন করুন।</li>\r\n	<li>৭) সাদিকরুনের <a href=\"http://127.0.0.1:8000/direction#\" target=\"_blank\">Terms and Condition</a> এবং <a href=\"http://127.0.0.1:8000/direction#\" target=\"_blank\">Privacy Policy</a> এর সাথে একমত হলে চেকবক্স চেক করুন।</li>\r\n	<li>৮) Create account বাটনে ক্লিক করে অ্যাকাউন্ট তৈরি সম্পন্ন করুন।</li>\r\n</ul>', '<ul>\r\n	<li>১) প্রথমে ShadiKorun.com প্রবেশ করুন এবং হোম পেজের উপরের ডান কোণে থাকা ইউজার আইকনে ক্লিক করুন।</li>\r\n	<li>২) Create Account এ ক্লিক করুন।</li>\r\n	<li>৩) রেজিস্ট্রেশন ফর্ম প্রদর্শিত হবে। আপনার নাম লিখুন এবং জেন্ডার সিলেক্ট করুন।</li>\r\n	<li>৪) আপনার ইমেইল লিখে Verify বাটনে ক্লিক করুন। আপনার ইমেইল সঠিক হলে সেখানে একটি ভেরিফিকেশন কোড যাবে। নির্ধারিত স্থানে ভেরিফিকেশন কোড প্রবেশ করিয়ে Confirm বাটনে ক্লিক করে ইমেইল ভেরিফিকেশন সম্পন্ন করুন।</li>\r\n	<li>৫) আপনার মোবাইল নাম্বার লিখে Verify বাটনে ক্লিক করুন। আপনার মোবাইল নাম্বার সঠিক হলে সেখানে একটি ভেরিফিকেশন কোড যাবে। নির্ধারিত স্থানে ভেরিফিকেশন কোড প্রবেশ করিয়ে Confirm বাটনে ক্লিক করে মোবাইল নাম্বার ভেরিফিকেশন সম্পন্ন করুন।</li>\r\n	<li>৬) একটি পাসওয়ার্ড নির্বাচন করুন।</li>\r\n	<li>৭) সাদিকরুনের <a href=\"http://127.0.0.1:8000/direction#\" target=\"_blank\">Terms and Condition</a> এবং <a href=\"http://127.0.0.1:8000/direction#\" target=\"_blank\">Privacy Policy</a> এর সাথে একমত হলে চেকবক্স চেক করুন।</li>\r\n	<li>৮) Create account বাটনে ক্লিক করে অ্যাকাউন্ট তৈরি সম্পন্ন করুন।</li>\r\n</ul>', 1, '1700630143Oa7yQ', 1, '2023-11-21 23:15:43', '2023-11-21 23:17:11'),
+(2, 'How much does it cost to submit a resume?', 'বায়োডাটা জমা দিতে কত টাকা লাগে?', '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', '<p>সাদিকরুনে সম্পূর্ণ বিনামূল্যে বায়োডাটা জমা দেয়া যায়।</p>', 2, '1700630172qxPG7', 1, '2023-11-21 23:16:12', '2023-11-21 23:17:23'),
+(3, 'Is this website open to everyone?', 'এই ওয়েবসাইট কি সবার জন্য উন্মুক্ত?', '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', '<p>না, এই ওয়েবসাইট সবার জন্য নয়, এই ওয়েবসাইট শুধুমাত্র প্রেক্টিসিং মুসলিমদের জন্য।</p>', 3, '1700630195hy3fH', 1, '2023-11-21 23:16:35', '2023-11-21 23:17:11'),
+(4, 'Are there any special conditions for creating biodata?', 'বায়োডাটা তৈরি করার কোনো বিশেষ শর্ত আছে?', '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', '<p>আমাদের ওয়েবসাইটে বায়োডাটা&nbsp; নূন্যতম আবশ্যকতা নিম্নরূপ:-</p>\r\n\r\n<p>পুরুষ:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ ওয়াজিব দাড়ি সুন্নতি পদ্ধতিতে বড় থাকতে হবে।</li>\r\n	<li>৩/ টাখনুর উপর কাপড় পরতে হবে।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n	<li>৪/ অভিভাবকের অনুমতি।</li>\r\n</ul>\r\n\r\n<p>নারী:</p>\r\n\r\n<ul>\r\n	<li>১/ ৫ ওয়াক্ত নামাযী হতে হবে।</li>\r\n	<li>২/ &ldquo;নিকাব&rdquo; সহ ফরজ পর্দানশীন হতে হবে।</li>\r\n	<li>৩/ অভিভাবকের অনুমতি।</li>\r\n</ul>', 4, '17006302226o3fP', 1, '2023-11-21 23:17:02', '2023-11-21 23:17:11');
+
 -- --------------------------------------------------------
 
 --
@@ -550,6 +574,13 @@ CREATE TABLE `instruction_configs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `instruction_configs`
+--
+
+INSERT INTO `instruction_configs` (`id`, `page_title`, `page_title_bn`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'General Instructions', 'সাধারণ নির্দেশিকা', '#fff4f4', '/storage/files/1/hero-bg.png', 2, 1, '2023-11-22 05:14:22', '2023-11-21 23:37:03');
 
 -- --------------------------------------------------------
 
@@ -572,7 +603,7 @@ CREATE TABLE `logo_favicons` (
 --
 
 INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `payment_banner`, `created_at`, `updated_at`) VALUES
-(1, '/storage/files/1/Logo & Favicon/Getmarried-primary-logo.svg', '/storage/files/1/Logo & Favicon/Getmarried-Favicon.svg', 'সাদিকরুন - Get Married', '/storage/files/1/Logo & Favicon/sslcommraze-img.svg', '2023-10-08 03:35:45', '2023-11-15 00:49:52');
+(1, '/storage/files/1/Logo & Favicon/logo.svg', '/storage/files/1/Logo & Favicon/Getmarried-Favicon.svg', 'সাদিকরুন - Get Married', '/storage/files/1/Logo & Favicon/sslcommraze-img.svg', '2023-10-08 03:35:45', '2023-11-21 23:40:24');
 
 -- --------------------------------------------------------
 
@@ -6579,7 +6610,7 @@ ALTER TABLE `contact_configs`
 -- AUTO_INCREMENT for table `contact_requests`
 --
 ALTER TABLE `contact_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `custom_css_js`
@@ -6657,13 +6688,13 @@ ALTER TABLE `how_it_works_configs`
 -- AUTO_INCREMENT for table `instructions`
 --
 ALTER TABLE `instructions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `instruction_configs`
 --
 ALTER TABLE `instruction_configs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `logo_favicons`

@@ -101,8 +101,8 @@
 
         <li>
             <a href="#sidebarInstruction" data-bs-toggle="collapse">
-                <i class="bi bi-question-circle" style="font-size: 15px;"></i>
-                <span> Instruction </span>
+                <i class="bi bi-info-circle" style="font-size: 15px;"></i>
+                <span> Instructions </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarInstruction">

@@ -20,6 +20,8 @@ use App\Models\AboutUsConfig;
 use App\Models\AboutUs;
 use App\Models\ContactConfig;
 use App\Models\ContactRequest;
+use App\Models\InstructionConfig;
+use App\Models\Instruction;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
@@ -51,7 +53,9 @@ class FrontendController extends Controller
     }
 
     public function direction(){
-        return view('frontend.direction');
+        $instructionConfig = InstructionConfig::where('id', 1)->first();
+        $instructions = Instruction::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.direction', compact('instructionConfig', 'instructions'));
     }
 
     public function contact(){
@@ -101,7 +105,7 @@ class FrontendController extends Controller
             'subject.required' => 'Subject is Required',
             'message.required' => 'Message is Required'
         ]);
-        
+
 
         ContactRequest::insert([
             'name' => $request->name,

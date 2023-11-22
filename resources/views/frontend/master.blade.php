@@ -121,8 +121,7 @@
                 <div class="modal-header offcanvas-header">
                     <!-- offcanvas-logo-start -->
                     <div class="offcanvas-logo">
-                        <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg"
-                                alt="#" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
                     </div>
                     <!-- offcanvas-logo-end -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -174,7 +173,11 @@
                 <div class="col-12">
                     <div class="header-inner">
                         <div class="header-logo">
-                            <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
+                            @if($logoFavicon && file_exists(public_path($logoFavicon->logo)))
+                                <a href="{{ url('/') }}"><img src="{{ url($logoFavicon->logo) }}" alt="Image" /></a>
+                            @else
+                                <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
+                            @endif
                         </div>
                         <div class="header-menu">
                             <nav class="navigation">
