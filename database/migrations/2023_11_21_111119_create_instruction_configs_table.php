@@ -20,6 +20,13 @@ return new class extends Migration
             $table->tinyInteger('priority')->default(1)->comment("1=>Background Image; 2=>Background Color");
             $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");
             $table->timestamps();
+
+            // $table->string('section_title')->nullable();
+            // $table->string('section_title_bn')->nullable();
+            // $table->string('background_color')->nullable();
+            // $table->string('background_image')->nullable();
+            // $table->tinyInteger('priority')->default(1)->comment("1=>Background Image; 2=>Background Color");
+            // $table->tinyInteger('status')->default(1)->comment("1=>Active; 0=>Inactive");
         });
     }
 

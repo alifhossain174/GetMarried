@@ -14,7 +14,7 @@ class InstructionController extends Controller
 {
     public function instructionConfig(){
         $data = InstructionConfig::where('id', 1)->first();
-        return view("backend.faq.faq_config", compact('data'));
+        return view("backend.instruction.instruction_config", compact('data'));
     }
 
     public function updateInstructionConfig(Request $request){
@@ -22,8 +22,8 @@ class InstructionController extends Controller
             'background_image' => $request->background_image != '' ? parse_url($request->background_image)['path'] : null,
             'background_color' => $request->background_color,
             'priority' => $request->priority,
-            'section_title' => $request->section_title,
-            'section_title_bn' => $request->section_title_bn,
+            'page_title' => $request->page_title,
+            'page_title_bn' => $request->page_title_bn,
             'updated_at' => Carbon::now(),
         ]);
 
@@ -32,7 +32,7 @@ class InstructionController extends Controller
     }
 
     public function addInstruction(){
-        return view('backend.faq.create');
+        return view('backend.instruction.create');
     }
 
     public function saveInstruction(Request $request){
@@ -44,7 +44,7 @@ class InstructionController extends Controller
             'answer_bn' => $request->answer_bn,
             'slug' => time().str::random(5),
             'status' => 1,
-            'serial' => Faq::min('serial') - 1,
+            'serial' => Instruction::min('serial') - 1,
             'created_at' => Carbon::now()
         ]);
 
@@ -65,7 +65,7 @@ class InstructionController extends Controller
                         }
                     })
                     ->addColumn('action', function($data){
-                        $btn = ' <a href="'.url('edit/faq').'/'.$data->slug.'" class="mb-1 d-inline-block btn-sm btn-warning rounded editBtn"><i class="bi bi-pencil-square"></i> Edit</a>';
+                        $btn = ' <a href="'.url('edit/instruction').'/'.$data->slug.'" class="mb-1 d-inline-block btn-sm btn-warning rounded editBtn"><i class="bi bi-pencil-square"></i> Edit</a>';
                         $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->slug.'" data-original-title="Delete" class="d-inline-block btn-sm btn-danger rounded deleteBtn"><i class="bi bi-trash"></i> Delete</a>';
                         return $btn;
                     })
@@ -73,7 +73,7 @@ class InstructionController extends Controller
                     ->make(true);
         }
 
-        return view('backend.faq.view');
+        return view('backend.instruction.view');
     }
 
     public function deleteInstruction($slug){
@@ -83,7 +83,7 @@ class InstructionController extends Controller
 
     public function editInstruction($slug){
         $data =  Instruction::where('slug', $slug)->first();
-        return view('backend.faq.update', compact('data'));
+        return view('backend.instruction.update', compact('data'));
     }
 
     public function updateInstruction(Request $request){
@@ -97,13 +97,13 @@ class InstructionController extends Controller
             'updated_at' => Carbon::now()
         ]);
 
-        Toastr::success(' Faqs Updated', 'Success');
-        return redirect('view/all/faqs');
+        Toastr::success(' Instructions Updated', 'Success');
+        return redirect('view/all/instructions');
     }
 
     public function rearrangeInstructions(){
         $data =  Instruction::orderBy('serial', 'asc')->get();
-        return view('backend.faq.rearrange', compact('data'));
+        return view('backend.instruction.rearrange', compact('data'));
     }
 
     public function saveRearrangedInstructions(Request $request){
@@ -115,6 +115,6 @@ class InstructionController extends Controller
             $sl++;
         }
         Toastr::success('Item has been Rerranged', 'Success');
-        return redirect('view/all/faqs');
+        return redirect('view/all/instructions');
     }
 }

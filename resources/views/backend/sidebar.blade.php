@@ -98,6 +98,22 @@
                 </ul>
             </div>
         </li>
+
+        <li>
+            <a href="#sidebarInstruction" data-bs-toggle="collapse">
+                <i class="bi bi-question-circle" style="font-size: 15px;"></i>
+                <span> Instruction </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarInstruction">
+                <ul class="nav-second-level">
+                    <li><a href="{{url('/instruction/config')}}">Page Title</a></li>
+                    <li><a href="{{url('add/new/instruction')}}">Add New Instruction</a></li>
+                    <li><a href="{{url('view/all/instructions')}}">View All Instruction</a></li>
+                </ul>
+            </div>
+        </li>
+
         <li><a href="{{url('contact/us/page')}}"><i data-feather="phone-call"></i><span> Contact Us Page </span></a></li>
 
 
