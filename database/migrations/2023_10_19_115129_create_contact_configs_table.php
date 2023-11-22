@@ -16,19 +16,11 @@ return new class extends Migration
         Schema::create('contact_configs', function (Blueprint $table) {
             $table->id();
             $table->string('page_title')->nullable();
-            $table->longText('map_iframe_src')->nullable();
-            $table->string('map_direction_button_text')->nullable();
-            $table->string('map_direction')->nullable();
-            $table->string('contact_section_title')->nullable();
-            $table->string('address_label')->nullable();
-            $table->string('address')->nullable();
-            $table->string('contact_label')->nullable();
-            $table->string('primary_contact')->nullable();
-            $table->string('secondary_contact')->nullable();
-            $table->string('email_label')->nullable();
-            $table->string('primary_email')->nullable();
-            $table->string('secondary_email')->nullable();
-            $table->string('contact_form_image')->nullable();
+            $table->string('page_title_bn')->nullable();
+            $table->string('background_color')->nullable();
+            $table->string('background_image')->nullable();
+            $table->tinyInteger('priority')->default(1)->comment("1=>Background Image; 2=>Background Color");
+            $table->longText('google_map_link')->nullable();
             $table->timestamps();
         });
     }

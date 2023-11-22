@@ -6,6 +6,7 @@ use App\Models\AboutUsConfig;
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 
 class AboutUsController extends Controller
 {
@@ -21,6 +22,7 @@ class AboutUsController extends Controller
             'background_image' => $request->background_image != '' ? parse_url($request->background_image)['path'] : null,
             'background_color' => $request->background_color,
             'priority' => $request->priority,
+            'updated_at' => Carbon::now()
         ]);
 
         Toastr::success('Data has been Updated', 'Success');

@@ -18,19 +18,11 @@ class ContactController extends Controller
 
         ContactConfig::where('id', 1)->update([
             'page_title' => $request->page_title,
-            'map_iframe_src' => $request->map_iframe_src,
-            'map_direction_button_text' => $request->map_direction_button_text,
-            'map_direction' => $request->map_direction,
-            'contact_form_image' => $request->image != '' ? parse_url($request->image)['path'] : null,
-            'contact_section_title' => $request->contact_section_title,
-            'address_label' => $request->address_label,
-            'address' => $request->address,
-            'contact_label' => $request->contact_label,
-            'primary_contact' => $request->primary_contact,
-            'secondary_contact' => $request->secondary_contact,
-            'email_label' => $request->email_label,
-            'primary_email' => $request->primary_email,
-            'secondary_email' => $request->secondary_email,
+            'page_title_bn' => $request->page_title_bn,
+            'background_image' => $request->background_image != '' ? parse_url($request->background_image)['path'] : null,
+            'background_color' => $request->background_color,
+            'priority' => $request->priority,
+            'google_map_link' => $request->google_map_link,
             'updated_at' => Carbon::now()
         ]);
 

@@ -18,6 +18,11 @@ use App\Models\HowItWorksConfig;
 use App\Models\HowItWorks;
 use App\Models\AboutUsConfig;
 use App\Models\AboutUs;
+use App\Models\ContactConfig;
+use App\Models\ContactRequest;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Brian2694\Toastr\Facades\Toastr;
 
 class FrontendController extends Controller
 {
@@ -50,7 +55,8 @@ class FrontendController extends Controller
     }
 
     public function contact(){
-        return view('frontend.contact');
+        $contactConfig = ContactConfig::where('id', 1)->first();
+        return view('frontend.contact', compact('contactConfig'));
     }
 
     public function privacyPolicy(){
@@ -77,6 +83,36 @@ class FrontendController extends Controller
             session(['locale' => 'en']);
         }
 
+        return back();
+    }
+
+    public function contactRequestSubmit(Request $request){
+
+        $rules = [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'max:255'],
+            'subject' => ['required', 'max:255'],
+            'message' => ['required'],
+        ];
+
+        $this->validate($request, $rules, [
+            'name.required' => 'Name is Required',
+            'email.required' => 'Email is Required',
+            'subject.required' => 'Subject is Required',
+            'message.required' => 'Message is Required'
+        ]);
+        
+
+        ContactRequest::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+            'slug' => time().str::random(5),
+            'created_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Request Submitted', 'Success');
         return back();
     }
 

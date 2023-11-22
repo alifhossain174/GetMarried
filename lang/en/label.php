@@ -20,4 +20,10 @@ return [
     'hero_permenant_address'=> 'Permenant Address',
     'hero_search' => 'Search',
 
+    // form
+    'form_name' => 'Name',
+    'form_email' => 'Email',
+    'form_subject' => 'Subject',
+    'form_message' => 'Message',
+    'form_send' => 'Send',
 ];

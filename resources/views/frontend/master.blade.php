@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/select2.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/icofont.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/uicons.css" />
+    <link rel="stylesheet" href="{{ url('backend_assets') }}/css/toastr.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/style.css" />
 
     @yield('header_css')
@@ -393,6 +394,9 @@
     <script>
         {!! $customCssJs->custom_js !!}
     </script>
+
+    <script src="{{ url('backend_assets') }}/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
 </body>
 
 </html>

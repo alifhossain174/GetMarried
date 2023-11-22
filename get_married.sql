@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 12:13 PM
+-- Generation Time: Nov 22, 2023 at 04:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -104,19 +104,11 @@ INSERT INTO `banners` (`id`, `background_image`, `background_color`, `banner_tit
 CREATE TABLE `contact_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `page_title` varchar(255) DEFAULT NULL,
-  `map_iframe_src` longtext DEFAULT NULL,
-  `map_direction_button_text` varchar(255) DEFAULT NULL,
-  `map_direction` varchar(255) DEFAULT NULL,
-  `contact_section_title` varchar(255) DEFAULT NULL,
-  `address_label` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `contact_label` varchar(255) DEFAULT NULL,
-  `primary_contact` varchar(255) DEFAULT NULL,
-  `secondary_contact` varchar(255) DEFAULT NULL,
-  `email_label` varchar(255) DEFAULT NULL,
-  `primary_email` varchar(255) DEFAULT NULL,
-  `secondary_email` varchar(255) DEFAULT NULL,
-  `contact_form_image` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
+  `google_map_link` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -125,8 +117,8 @@ CREATE TABLE `contact_configs` (
 -- Dumping data for table `contact_configs`
 --
 
-INSERT INTO `contact_configs` (`id`, `page_title`, `map_iframe_src`, `map_direction_button_text`, `map_direction`, `contact_section_title`, `address_label`, `address`, `contact_label`, `primary_contact`, `secondary_contact`, `email_label`, `primary_email`, `secondary_email`, `contact_form_image`, `created_at`, `updated_at`) VALUES
-(1, 'দ্রুত যোগাযোগ 1', 'https://maps.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0104336321297!2d90.41270911479724!3d23.782642793461232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b165a1921a09%3A0xb58f02520cb0cb41!2sSoftifyBD%20Ltd.!5e0!3m2!1sen!2sbd!4v1669619081345!5m2!1sen!2sbd', 'দিকনির্দেশ পান', 'https://maps.app.goo.gl/yvoniqhrU7vBL6pZ8', 'যোগাযোগের মাধ্যমসমূহ', 'স্কুল এবং কলেজের ঠিকানা', 'XYZ School & College, Main Road, Khilgaon, Dhaka', 'মোবাইল/টেলিফোন নাম্বার', '+8801000000000', '+8801000000002', 'ইমেইল ঠিকানা', 'sample@gmail.com', 'sample2@gmail.com', '/storage/files/1/AboutUs/about-img-2.png', '2023-10-19 08:08:44', '2023-11-01 03:28:45');
+INSERT INTO `contact_configs` (`id`, `page_title`, `page_title_bn`, `background_color`, `background_image`, `priority`, `google_map_link`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, NULL, NULL, 1, NULL, '2023-11-22 03:36:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -617,7 +609,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (37, '2023_10_08_055716_create_sliders_table', 17),
 (38, '2023_10_08_075141_create_about_us_table', 18),
 (54, '2023_10_10_074833_create_school_exam_result_configs_table', 31),
-(65, '2023_10_19_115129_create_contact_configs_table', 42),
 (67, '2023_11_01_151126_create_google_recaptchas_table', 43),
 (70, '2023_11_15_070545_create_banners_table', 44),
 (73, '2023_11_15_085958_create_homepage_bio_data_table', 45),
@@ -635,7 +626,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (86, '2023_11_21_045846_create_faq_configs_table', 54),
 (87, '2023_11_21_045942_create_faqs_table', 54),
 (88, '2023_11_21_111119_create_instruction_configs_table', 55),
-(89, '2023_11_21_111209_create_instructions_table', 55);
+(89, '2023_11_21_111209_create_instructions_table', 55),
+(90, '2023_10_19_115129_create_contact_configs_table', 56);
 
 -- --------------------------------------------------------
 
@@ -6683,7 +6675,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
