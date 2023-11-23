@@ -31,10 +31,10 @@
             <li class="{{ (Request::path() == 'user/checked/biodata') ? 'active' : ''}}">
                 <a href="{{url('user/checked/biodata')}}"><i class="fi fi-rr-following"></i>{{__('label.user_menu_checked_biodata')}}</a>
             </li>
-            <li class="{{ (Request::path() == 'user/my/purchased') ? 'active' : ''}}">
+            <li class="{{ (Request::path()=='user/my/purchased') || (Request::path()=='user/connection') || (Request::path()=='user/payment/process') ? 'active' : ''}}">
                 <a href="{{url('user/my/purchased')}}"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_purchased')}}</a>
             </li>
-            <li class="{{ (Request::path() == 'user/support/report') ? 'active' : ''}}">
+            <li class="{{ (Request::path() == 'user/support/report') || (Request::path() == 'user/report/conversation') ? 'active' : ''}}">
                 <a href="{{url('user/support/report')}}"><i class="fi-rs-flag"></i>{{__('label.user_menu_support_report')}}</a>
             </li>
             <li class="{{ (Request::path() == 'user/settings') ? 'active' : ''}}">

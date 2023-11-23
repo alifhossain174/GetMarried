@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="user-d-breadcrumbs">
-                                <h3 class="user-d-breadcrumbs-title">রিপোর্ট সমূহ</h3>
+                                <h3 class="user-d-breadcrumbs-title">{{__('label.user_menu_support_report')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -22,12 +22,12 @@
                             <div class="user-d-list-items myPurchased-package" style="margin-top: 32px">
                                 <div class="user-d-list-item list-head">
                                     <h4>#</h4>
-                                    <h4>রিপোর্ট আইডি</h4>
-                                    <h4>বায়োডাটা নং</h4>
-                                    <h4>স্ট্যাটাস</h4>
-                                    <h4>তারিখ</h4>
-                                    <h4>নতুন উত্তর</h4>
-                                    <h4>অপশন</h4>
+                                    <h4>{{__('message.user_support_report_id')}}</h4>
+                                    <h4>{{__('message.user_support_report_biodata_no')}}</h4>
+                                    <h4>{{__('message.user_support_report_status')}}</h4>
+                                    <h4>{{__('message.user_support_report_date')}}</h4>
+                                    <h4>{{__('message.user_support_report_new_answer')}}</h4>
+                                    <h4>{{__('message.user_support_report_option')}}</h4>
                                 </div>
                                 <!-- Single List Data -->
                                 <div class="user-d-list-item">
@@ -50,7 +50,7 @@
                                         <p>0</p>
                                     </div>
                                     <div>
-                                        <a class="create-report-btn" href="{{url('user/report/conversation')}}">বিস্তারিত</a>
+                                        <a class="create-report-btn" href="{{url('user/report/conversation')}}">{{__('message.user_support_report_details')}}</a>
                                     </div>
                                 </div>
                             </div>

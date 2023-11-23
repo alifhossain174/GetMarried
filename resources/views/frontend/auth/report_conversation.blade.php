@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="user-d-breadcrumbs">
-                                <h3 class="user-d-breadcrumbs-title">রিপোর্ট কনভারসেশন</h3>
+                                <h3 class="user-d-breadcrumbs-title">{{__('label.user_menu_report_conversation')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -22,22 +22,22 @@
                             <div class="report-conversation-widget">
                                 <div class="report-conversation-top">
                                     <h3 class="report-conversation-title">
-                                        রিপোর্ট আইডি: <span>od-51561-65362671aa356</span>
+                                        {{__('label.user_menu_report_id')}}: <span>od-51561-65362671aa356</span>
                                     </h3>
                                     <div class="report-bottom-head">
-                                        <p>রিপোর্ট স্ট্যাটাস: <span>OPEN</span></p>
-                                        <p>তারিখ: <span>23/10/2023</span></p>
+                                        <p>{{__('label.user_menu_report_status')}}: <span>OPEN</span></p>
+                                        <p>{{__('label.user_menu_report_date')}}: <span>23/10/2023</span></p>
                                     </div>
                                     <form class="report-conversation-form" action="#" method="post">
                                         <div class="report-form-group-cotainer">
                                             <div class="form-group">
-                                                <textarea placeholder="এখানে লিখুন.." name="complain" required></textarea>
+                                                <textarea placeholder="{{__('label.user_menu_report_write_here')}}.." name="complain" required></textarea>
                                             </div>
                                         </div>
                                         <div class="create-report-form-bottom">
                                             <div class="create-report-form-attachment">
                                                 <div class="form-group">
-                                                    <label>অ্যাটাচমেন্ট</label>
+                                                    <label>{{__('label.user_menu_report_attachment')}}</label>
                                                     <div class="complain_attachment-file">
                                                         <input type="file" name="complain_attachment" multiple />
                                                     </div>
@@ -45,7 +45,7 @@
                                             </div>
                                             <div class="create-report-form-btn">
                                                 <button type="submit" class="theme-btn secondary">
-                                                    পাঠান
+                                                    {{__('label.user_menu_report_send')}}
                                                 </button>
                                             </div>
                                         </div>

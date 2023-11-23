@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="user-d-breadcrumbs">
-                                <h3 class="user-d-breadcrumbs-title">বায়োডাটা দেখেছেন</h3>
+                                <h3 class="user-d-breadcrumbs-title">{{__('label.user_menu_checked_biodata')}}</h3>
                             </div>
                         </div>
                     </div>

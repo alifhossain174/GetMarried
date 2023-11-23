@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="user-d-breadcrumbs">
-                                <h3 class="user-d-breadcrumbs-title">অর্ডার সম্পন্ন করুন</h3>
+                                <h3 class="user-d-breadcrumbs-title">{{__('message.user_complete_order')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -24,20 +24,20 @@
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="payment-process-widget order-summary">
                                             <h3 class="payment-process-widget-title">
-                                                অর্ডার সম্পর্কিত তথ্য
+                                                {{__('message.user_order_info')}}
                                             </h3>
                                             <div class="payment-process-widget-inner">
                                                 <ul>
                                                     <li>
-                                                        <span>প্যাকেজের নাম</span>
+                                                        <span>{{__('message.user_package_name')}}</span>
                                                         <p>বেসিক</p>
                                                     </li>
                                                     <li>
-                                                        <span>কানেকশন সংখ্যা</span>
+                                                        <span>{{__('message.user_connection_no')}}</span>
                                                         <p>1</p>
                                                     </li>
                                                     <li>
-                                                        <span>মূল্য</span>
+                                                        <span>{{__('message.user_package_price')}}</span>
                                                         <p>৳১০০</p>
                                                     </li>
                                                 </ul>
@@ -48,7 +48,7 @@
                                         <div class="payment-gateway-widget">
                                             <div class="payment-process-widget payment-gateway">
                                                 <h3 class="payment-process-widget-title">
-                                                    পেমেন্ট গেটওয়ে নির্বাচন করুন
+                                                    {{__('message.user_select_payment_gateway')}}
                                                 </h3>
                                                 <div class="payment-process-widget-inner">
                                                     <div class="single-payment-gateway">
@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="payment-gateway-btn">
                                                 <button type="button" class="theme-btn">
-                                                    পেমেন্ট করুন
+                                                    {{__('message.user_pay_now')}}
                                                 </button>
                                             </div>
                                         </div>

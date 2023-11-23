@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="user-d-breadcrumbs">
-                                <h3 class="user-d-breadcrumbs-title">Account Setting</h3>
+                                <h3 class="user-d-breadcrumbs-title">{{__('label.user_menu_settings')}}</h3>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                                                 <div class="auth-card-head-icon">
                                                     <img src="{{url('frontend_assets')}}/assets/images/icons/edit.svg" alt="#" />
                                                 </div>
-                                                <h4 class="auth-card-title">Change Password</h4>
+                                                <h4 class="auth-card-title">{{__('message.user_settings_change_password')}}</h4>
                                             </div>
                                             <div class="auth-card-form-body">
                                                 <form class="auth-card-form">
@@ -38,10 +38,8 @@
                                                             <i class="fi fi-ss-lock"></i>
                                                         </div>
                                                         <div class="form-group-password">
-                                                            <input type="password" id="password" placeholder="New password"
-                                                                required />
-                                                            <i id="showPasswordIcon" class="fi-rr-eye"
-                                                                onclick="togglePasswordVisibility()"></i>
+                                                            <input type="password" id="password" placeholder="{{__('message.user_settings_new_password')}}" required />
+                                                            <i id="showPasswordIcon" class="fi-rr-eye" onclick="togglePasswordVisibility()"></i>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -49,10 +47,8 @@
                                                             <i class="fi fi-ss-lock"></i>
                                                         </div>
                                                         <div class="form-group-password">
-                                                            <input type="password" id="confirmPassword"
-                                                                placeholder="Confirm New password" required />
-                                                            <i id="showConfirmPasswordIcon" class="fi-rr-eye"
-                                                                onclick="toggleConfirmPasswordVisibility()"></i>
+                                                            <input type="password" id="confirmPassword" placeholder="{{__('message.user_settings_confirm_password')}}" required />
+                                                            <i id="showConfirmPasswordIcon" class="fi-rr-eye" onclick="toggleConfirmPasswordVisibility()"></i>
                                                         </div>
                                                     </div>
                                                     <button class="auth-card-form-btn theme-btn" type="submit">
@@ -67,22 +63,20 @@
                                     <div class="col-lg-8 col-12">
                                         <div class="delete-biodata-widget">
                                             <h3 class="delete-biodata-widget-title">
-                                                Delete Biodata
+                                                {{__('message.user_settings_delete_biodata')}}
                                             </h3>
                                             <p class="delete-biodata-widget-text">
-                                                If it is temporary you can hide it from the sidebar
-                                                menu. This action will be permanently deleted your
-                                                biodata.
+                                                {{__('message.user_settings_delete_biodata_msg1')}}
                                             </p>
                                             <div class="form-check">
                                                 <label class="biodata-check-box">
-                                                    <input class="form-check-input" type="checkbox" value="1" />I
-                                                    understand and would like to delete this
-                                                    biodata.</label>
+                                                    <input class="form-check-input" type="checkbox" value="1" />
+                                                    {{__('message.user_settings_delete_biodata_msg2')}}
+                                                </label>
                                             </div>
                                             <div class="delete-biodata-widget-btn">
                                                 <button type="button" class="theme-btn secondary">
-                                                    Delete Biodata
+                                                    {{__('message.user_settings_delete_biodata')}}
                                                 </button>
                                             </div>
                                         </div>
