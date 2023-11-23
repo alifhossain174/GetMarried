@@ -26,4 +26,18 @@ return [
     'form_subject' => 'বিষয়',
     'form_message' => 'আপনার বার্তা',
     'form_send' => 'পাঠান',
+
+    // user dasboard
+    'user_menu_biodata_progress' => 'বায়োডাটার অবস্থা',
+    'user_menu_my_biodata' => 'আমার বায়োডাটা',
+    'user_menu_dashboard' => 'ড্যাশবোর্ড',
+    'user_menu_edit_biodata' => 'বায়োডাটা এডিট করুন',
+    'user_menu_short_list' => 'পছন্দের তালিকা',
+    'user_menu_ignore_list' => 'অপছন্দের তালিকা',
+    'user_menu_checked_biodata' => 'বায়োডাটা দেখেছেন',
+    'user_menu_purchased' => 'আমার ক্রয়সমূহ',
+    'user_menu_support_report' => 'সাপোর্ট & রিপোর্ট',
+    'user_menu_settings' => 'সেটিংস',
+    'user_menu_logout' => 'লগআউট',
+
 ];

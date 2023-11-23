@@ -167,7 +167,7 @@
 
 
     <!-- Header Area -->
-    <header id="active-sticky" class="header-area @if (request()->route()->uri == 'user/login' || request()->route()->uri == 'user/register') no_sticky @endif">
+    <header id="active-sticky" class="header-area @if (str_contains(request()->route()->uri, 'user')) no_sticky @endif">
         <div class="container">
             <div class="row">
                 <div class="col-12">

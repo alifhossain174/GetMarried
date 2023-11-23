@@ -1,59 +1,15 @@
-@extends('frontend.auth.master')
+@extends('frontend.master')
 
 @section('content')
+
     <!-- User Dashboard Area -->
     <section class="user-dashboard-area">
         <div class="user-d-container">
             <div class="user-d-row">
                 <a href="#" class="sidebar-trigger trigger-fixed"></a>
-                <!-- Dashboard Sidebar -->
-                <div class="user-d-sidebar">
-                    <a href="#" class="sidebar-trigger"></a>
-                    <div class="user-d-sidebar-info">
-                        <img src="{{url('frontend_assets')}}/assets/images/icons/user.svg" alt="#" />
-                        <div class="user-d-bio-status-wrap">
-                            <h3>বায়োডাটার অবস্থা</h3>
-                            <div class="user-d-bio-status">
-                                <span class="user-d-complete">Complete</span>
-                                <!-- <span class="user-d-incomplete">Incomplete</span> -->
-                            </div>
-                        </div>
-                        <div class="user-d-preview-biodata-link">
-                            <a href="preview-biodata.html" class="theme-btn">আমার বায়োডাটা</a>
-                        </div>
-                    </div>
-                    <nav class="user-d-nav">
-                        <ul>
-                            <li>
-                                <a href="dashboard.html"><i class="fi fi-rs-apps"></i>ড্যাশবোর্ড</a>
-                            </li>
-                            <li>
-                                <a href="edit-biodata.html"><i class="fi fi-rr-edit"></i>বায়োডাটা এডিট করুন</a>
-                            </li>
-                            <li>
-                                <a href="short-list.html"><i class="fi fi-rs-heart"></i>পছন্দের তালিকা</a>
-                            </li>
-                            <li>
-                                <a href="ignore-list.html"><i class="fi fi-br-ban"></i>অপছন্দের তালিকা</a>
-                            </li>
-                            <li>
-                                <a href="checked-biodata.html"><i class="fi fi-rr-following"></i>বায়োডাটা দেখেছেন</a>
-                            </li>
-                            <li>
-                                <a href="my-purchased.html"><i class="fi fi-rr-shopping-bag"></i>আমার ক্রয়সমূহ</a>
-                            </li>
-                            <li>
-                                <a href="support-report.html"><i class="fi-rs-flag"></i>সাপোর্ট & রিপোর্ট</a>
-                            </li>
-                            <li class="active">
-                                <a href="setting.html"><i class="fi fi-rr-settings"></i>সেটিংস</a>
-                            </li>
-                            <li>
-                                <a href="../login.html"><i class="fi fi-rs-sign-out-alt"></i>লগআউট</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+
+                @include('frontend.auth.sideMenu')
+
                 <!-- Dashboard Content -->
                 <div class="user-d-content">
                     <div class="row">
@@ -71,7 +27,7 @@
                                         <div class="auth-card change-password-card">
                                             <div class="auth-card-head">
                                                 <div class="auth-card-head-icon">
-                                                    <img src="../assets/images/icons/edit.svg" alt="#" />
+                                                    <img src="{{url('frontend_assets')}}/assets/images/icons/edit.svg" alt="#" />
                                                 </div>
                                                 <h4 class="auth-card-title">Change Password</h4>
                                             </div>
@@ -140,4 +96,5 @@
         </div>
     </section>
     <!-- End User Dashboard Area -->
+
 @endsection
