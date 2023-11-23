@@ -145,6 +145,366 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single BioData Card -->
+                            <div class="biodata-card">
+                                <div class="biodata-card-top">
+                                    <div class="biodata-card-icon">
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                            alt="#" />
+                                    </div>
+                                    <div class="biodata-card-top-info">
+                                        <h4>বায়োডাটা নং</h4>
+                                        <p>ODF10729</p>
+                                    </div>
+                                    <button class="wishlist-btn">
+                                        <i class="fi fi-rs-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="biodata-card-bottom">
+                                    <div class="biodata-card-bottom-info">
+                                        <div class="biodata-card-each-item">
+                                            <label>জন্মসন</label>
+                                            <p>August, 2000</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>উচ্চতা</label>
+                                            <p>৫′</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>গাত্রবর্ণ</label>
+                                            <p>উজ্জ্বল শ্যামলা</p>
+                                        </div>
+                                    </div>
+                                    <div class="biodata-card-btn">
+                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
+                                            বায়োডাটা</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
