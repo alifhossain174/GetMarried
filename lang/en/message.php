@@ -32,4 +32,42 @@ return [
     'user_package_price' => 'Price',
     'user_select_payment_gateway' => 'Select Payment Gateway',
     'user_pay_now' => 'Pay Now',
+
+    'user_checked_biodata_till_now' => 'Till Now You have checked : ',
+    'user_checked_biodata_no' => 'Biodata No',
+    'user_checked_biodata_date' => 'Date',
+    'user_checked_biodata_option' => 'Option',
+    'user_checked_biodata_report_now' => 'Report Now',
+
+    'user_checked_biodata_report_page' => 'Submit A Report',
+
+    'user_ignore_list_biodata_no' => 'Biodata No',
+    'user_ignore_list_birth_date' => 'Birth Date',
+    'user_ignore_list_address' => 'Address',
+    'user_ignore_list_option' => 'Option',
+
+
+
+
+    'user_dashboard_liked_list' => 'Short list',
+    'user_dashboard_liked_list_msg' => 'List biodata of your choice.',
+
+    'user_dashboard_disliked_list' => 'Block list',
+    'user_dashboard_disliked_list_msg' => 'List biodata you dislike.',
+
+    'user_dashboard_my_purchases' => 'My Purchases',
+    'user_dashboard_my_purchases_msg' => 'All information regarding your purchase.',
+
+    'user_dashboard_remaining_connection' => 'Remaining Connections',
+    'user_dashboard_remaining_connection_msg' => 'Each biodata requires 1 connection to view contact information.',
+    'user_dashboard_remaining_connection_btn' => 'Buy Connection',
+
+    'user_dashboard_biodata_visited' => 'Number of Biodata Visits',
+    'user_dashboard_biodata_visited_msg' => 'Number of times your biodata has been visited.',
+    'user_dashboard_biodata_visited_last_30' => 'Last 30 days',
+    'user_dashboard_biodata_visited_last_7' => 'Last 7 days',
+    'user_dashboard_biodata_visited_today' => 'Today',
+
+    'user_dashboard_biodata_liked' => 'Your biodata is listed as preferred',
+    'user_dashboard_biodata_liked_msg' => 'So many people have favorited your biodata.',
 ];

@@ -36,6 +36,7 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/user/report/conversation', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
     Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
     Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
+    Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
 });
 
 

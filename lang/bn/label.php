@@ -26,6 +26,13 @@ return [
     'form_subject' => 'বিষয়',
     'form_message' => 'আপনার বার্তা',
     'form_send' => 'পাঠান',
+    'form_biodata_for_report' => 'অভিযুক্ত বায়োডাটা নং',
+    'form_biodata_report_reason' => 'রিপোর্টের কারণ',
+    'form_biodata_report_mobile_no' => 'আপনার মোবাইল নং',
+    'form_biodata_report_message' => 'আপনার অভিযোগটি লিখুন',
+    'form_biodata_report_attachment' => 'অ্যাটাচমেন্ট',
+    'form_biodata_report_submit' => 'সাবমিট',
+    'form_biodata_report_select_option' => 'নির্বাচন করুন',
 
     // user dasboard
     'user_menu_biodata_progress' => 'বায়োডাটার অবস্থা',
@@ -52,5 +59,7 @@ return [
     'user_menu_report_attachment' => 'রিপোর্ট সংযুক্তি',
     'user_menu_report_send' => 'পাঠান',
     'user_menu_report_write_here' => 'এখান থেকে লিখুন',
+
+
 
 ];

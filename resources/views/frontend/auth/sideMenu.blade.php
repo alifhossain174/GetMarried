@@ -34,7 +34,7 @@
             <li class="{{ (Request::path()=='user/my/purchased') || (Request::path()=='user/connection') || (Request::path()=='user/payment/process') ? 'active' : ''}}">
                 <a href="{{url('user/my/purchased')}}"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_purchased')}}</a>
             </li>
-            <li class="{{ (Request::path() == 'user/support/report') || (Request::path() == 'user/report/conversation') ? 'active' : ''}}">
+            <li class="{{ (Request::path() == 'user/support/report') || (Request::path() == 'user/report/conversation') || (Request::path() == 'user/create/report') ? 'active' : ''}}">
                 <a href="{{url('user/support/report')}}"><i class="fi-rs-flag"></i>{{__('label.user_menu_support_report')}}</a>
             </li>
             <li class="{{ (Request::path() == 'user/settings') ? 'active' : ''}}">

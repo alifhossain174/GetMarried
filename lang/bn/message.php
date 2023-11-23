@@ -32,4 +32,43 @@ return [
     'user_package_price' => 'মূল্য',
     'user_select_payment_gateway' => 'পেমেন্ট গেটওয়ে নির্বাচন করুন',
     'user_pay_now' => 'পেমেন্ট করুন',
+
+    'user_checked_biodata_till_now' => 'আপনি এখন পর্যন্ত বায়োডাটার যোগাযোগ তথ্য দেখেছেন : ',
+    'user_checked_biodata_no' => 'বায়োডাটা নং',
+    'user_checked_biodata_date' => 'তারিখ',
+    'user_checked_biodata_option' => 'অপশন',
+    'user_checked_biodata_report_now' => 'রিপোর্ট',
+
+    'user_checked_biodata_report_page' => 'রিপোর্ট করুন',
+
+    'user_ignore_list_biodata_no' => 'বায়োডাটা নং',
+    'user_ignore_list_birth_date' => 'জন্ম সাল',
+    'user_ignore_list_address' => 'ঠিকানা',
+    'user_ignore_list_option' => 'অপশন',
+
+
+
+    'user_dashboard_liked_list' => 'পছন্দের তালিকা',
+    'user_dashboard_liked_list_msg' => 'আপনার পছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।',
+
+    'user_dashboard_disliked_list' => 'অপছন্দের তালিকা',
+    'user_dashboard_disliked_list_msg' => 'আপনার অপছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।',
+
+    'user_dashboard_my_purchases' => 'আমার ক্রয়সমূহ',
+    'user_dashboard_my_purchases_msg' => 'আপনার ক্রয় সংক্রান্ত সমস্ত তথ্য।',
+
+    'user_dashboard_remaining_connection' => 'কানেকশন রয়েছে',
+    'user_dashboard_remaining_connection_msg' => 'প্রতিটি বায়োডাটার যোগাযোগের তথ্য দেখতে ১টি কানেকশন প্রয়োজন।',
+    'user_dashboard_remaining_connection_btn' => 'কানেকশন কিনুন',
+
+    'user_dashboard_biodata_visited' => 'বায়োডাটা ভিজিট সংখ্যা',
+    'user_dashboard_biodata_visited_msg' => 'আপনার বায়োডাটা যতবার ভিজিট করা হয়েছে।',
+    'user_dashboard_biodata_visited_last_30' => 'শেষ ৩০ দিন',
+    'user_dashboard_biodata_visited_last_7' => 'শেষ ৭ দিন',
+    'user_dashboard_biodata_visited_today' => 'আজকে',
+
+    'user_dashboard_biodata_liked' => 'আপনার বায়োডাটা পছন্দের তালিকাভুক্ত হয়েছে',
+    'user_dashboard_biodata_liked_msg' => 'এত জন আপনার বায়োডাটা পছন্দের তালিকায় রেখেছেন।',
+
+
 ];

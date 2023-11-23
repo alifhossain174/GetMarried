@@ -22,11 +22,12 @@
                             <div class="user-d-list-items shortlist">
                                 <div class="user-d-list-item list-head">
                                     <h4>#</h4>
-                                    <h4>বায়োডাটা নং</h4>
-                                    <h4>জন্ম সাল</h4>
-                                    <h4>ঠিকানা</h4>
-                                    <h4>অপশন</h4>
+                                    <h4>{{__('message.user_ignore_list_biodata_no')}}</h4>
+                                    <h4>{{__('message.user_ignore_list_birth_date')}}</h4>
+                                    <h4>{{__('message.user_ignore_list_address')}}</h4>
+                                    <h4>{{__('message.user_ignore_list_option')}}</h4>
                                 </div>
+
                                 <!-- Single List Data -->
                                 <div class="user-d-list-item">
                                     <div>

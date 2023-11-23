@@ -26,6 +26,13 @@ return [
     'form_subject' => 'Subject',
     'form_message' => 'Message',
     'form_send' => 'Send',
+    'form_biodata_for_report' => 'Accused Biodata No',
+    'form_biodata_report_reason' => 'Reason of Report',
+    'form_biodata_report_mobile_no' => 'Mobile No',
+    'form_biodata_report_message' => 'Write Your Complain',
+    'form_biodata_report_attachment' => 'Attachment',
+    'form_biodata_report_submit' => 'Submit',
+    'form_biodata_report_select_option' => 'Select Option',
 
     // user dasboard
     'user_menu_biodata_progress' => 'Biodata Progress',

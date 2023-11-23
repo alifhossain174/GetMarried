@@ -21,15 +21,14 @@
                         <div class="col-12">
                             <div class="user-d-list-widget">
                                 <h4 class="user-d-list-item-title">
-                                    আপনি এখন পর্যন্ত <span>1</span> টি বায়োডাটার যোগাযোগ তথ্য
-                                    দেখেছেন
+                                    {{__('message.user_checked_biodata_till_now')}} <span>1</span>
                                 </h4>
                                 <div class="user-d-list-items myPurchased">
                                     <div class="user-d-list-item list-head">
                                         <h4>#</h4>
-                                        <h4>বায়োডাটা নং</h4>
-                                        <h4>তারিখ</h4>
-                                        <h4>অপশন</h4>
+                                        <h4>{{__('message.user_checked_biodata_no')}}</h4>
+                                        <h4>{{__('message.user_checked_biodata_date')}}</h4>
+                                        <h4>{{__('message.user_checked_biodata_option')}}</h4>
                                     </div>
                                     <!-- Single List Data -->
                                     <div class="user-d-list-item">
@@ -43,8 +42,7 @@
                                             <p>Oct 22, 2023</p>
                                         </div>
                                         <div class="user-d-list-item-option">
-                                            <a class="create-report-btn" href="create-report.html"
-                                                target="_blank">রিপোর্ট</a>
+                                            <a class="create-report-btn" href="{{url('user/create/report')}}">{{__('message.user_checked_biodata_report_now')}}</a>
                                         </div>
                                     </div>
                                 </div>

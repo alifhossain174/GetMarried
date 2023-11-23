@@ -42,6 +42,9 @@ class UserDashboardController extends Controller
     public function userEditBiodata(){
         return view('frontend.auth.edit_biodata');
     }
+    public function userCreateReport(){
+        return view('frontend.auth.create_report');
+    }
 
 
 }

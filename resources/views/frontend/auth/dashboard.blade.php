@@ -21,8 +21,8 @@
                                 </div>
                                 <div class="user-d-home-card-info">
                                     <h4><span class="counter">24</span></h4>
-                                    <h5>পছন্দের তালিকা</h5>
-                                    <p>আপনার পছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।</p>
+                                    <h5>{{__('message.user_dashboard_liked_list')}}</h5>
+                                    <p>{{__('message.user_dashboard_liked_list_msg')}}</p>
                                 </div>
                             </a>
                         </div>
@@ -34,8 +34,8 @@
                                 </div>
                                 <div class="user-d-home-card-info">
                                     <h4><span class="counter">5</span></h4>
-                                    <h5>অপছন্দের তালিকা</h5>
-                                    <p>আপনার অপছন্দের তালিকাভুক্ত বায়োডাটা সমূহ।</p>
+                                    <h5>{{__('message.user_dashboard_disliked_list')}}</h5>
+                                    <p>{{__('message.user_dashboard_disliked_list_msg')}}</p>
                                 </div>
                             </a>
                         </div>
@@ -47,8 +47,8 @@
                                 </div>
                                 <div class="user-d-home-card-info">
                                     <h4><span class="counter">0</span></h4>
-                                    <h5>আমার ক্রয়সমূহ</h5>
-                                    <p>আপনার ক্রয় সংক্রান্ত সমস্ত তথ্য।</p>
+                                    <h5>{{__('message.user_dashboard_my_purchases')}}</h5>
+                                    <p>{{__('message.user_dashboard_my_purchases_msg')}}</p>
                                 </div>
                             </a>
                         </div>
@@ -59,13 +59,12 @@
                             <div class="user-d-home-card-2">
                                 <div class="user-d-home-card-2-content">
                                     <span class="counter">2</span>
-                                    <h3>কানেকশন রয়েছে</h3>
+                                    <h3>{{__('message.user_dashboard_remaining_connection')}}</h3>
                                     <p>
-                                        প্রতিটি বায়োডাটার যোগাযোগের তথ্য দেখতে ১টি কানেকশন
-                                        প্রয়োজন।
+                                        {{__('message.user_dashboard_remaining_connection_msg')}}
                                     </p>
                                     <div class="user-d-home-card-2-content-btn">
-                                        <a href="{{url('user/connection')}}" class="theme-btn secondary">কানেকশন কিনুন</a>
+                                        <a href="{{url('user/connection')}}" class="theme-btn secondary">{{__('message.user_dashboard_remaining_connection_btn')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -75,19 +74,19 @@
                             <div class="user-d-home-card-2">
                                 <div class="user-d-home-card-2-content">
                                     <span class="counter">100</span>
-                                    <h3>বায়োডাটা ভিজিট সংখ্যা</h3>
-                                    <p>আপনার বায়োডাটা যতবার ভিজিট করা হয়েছে।</p>
+                                    <h3>{{__('message.user_dashboard_biodata_visited')}}</h3>
+                                    <p>{{__('message.user_dashboard_biodata_visited_msg')}}</p>
                                     <div class="user-d-visited-graph">
                                         <div class="visited-graph-item">
-                                            <label>শেষ ৩০ দিন</label>
+                                            <label>{{__('message.user_dashboard_biodata_visited_last_30')}}</label>
                                             <span>34</span>
                                         </div>
                                         <div class="visited-graph-item">
-                                            <label>শেষ ৭ দিন</label>
+                                            <label>{{__('message.user_dashboard_biodata_visited_last_7')}}</label>
                                             <span>29</span>
                                         </div>
                                         <div class="visited-graph-item">
-                                            <label>আজকে</label>
+                                            <label>{{__('message.user_dashboard_biodata_visited_today')}}</label>
                                             <span>37</span>
                                         </div>
                                     </div>
@@ -99,8 +98,8 @@
                             <div class="user-d-home-card-2">
                                 <div class="user-d-home-card-2-content">
                                     <span class="counter">4</span>
-                                    <h3>আপনার বায়োডাটা পছন্দের তালিকাভুক্ত হয়েছে</h3>
-                                    <p>এত জন আপনার বায়োডাটা পছন্দের তালিকায় রেখেছেন।</p>
+                                    <h3>{{__('message.user_dashboard_biodata_liked')}}</h3>
+                                    <p>{{__('message.user_dashboard_biodata_liked_msg')}}</p>
                                 </div>
                             </div>
                         </div>
