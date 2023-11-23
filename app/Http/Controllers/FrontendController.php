@@ -120,4 +120,8 @@ class FrontendController extends Controller
         return back();
     }
 
+    public function searchResults(){
+        return view('frontend.search_results');
+    }
+
 }

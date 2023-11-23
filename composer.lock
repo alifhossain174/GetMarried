@@ -4134,16 +4134,16 @@
         },
         {
             "name": "spatie/crawler",
-            "version": "8.0.2",
+            "version": "8.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "62354d296c6112ab4694f594ad620139e3f0fed2"
+                "reference": "6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/62354d296c6112ab4694f594ad620139e3f0fed2",
-                "reference": "62354d296c6112ab4694f594ad620139e3f0fed2",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5",
+                "reference": "6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5",
                 "shasum": ""
             },
             "require": {
@@ -4186,7 +4186,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/crawler/issues",
-                "source": "https://github.com/spatie/crawler/tree/8.0.2"
+                "source": "https://github.com/spatie/crawler/tree/8.0.3"
             },
             "funding": [
                 {
@@ -4198,7 +4198,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-20T08:04:52+00:00"
+            "time": "2023-11-22T12:56:26+00:00"
         },
         {
             "name": "spatie/image",
@@ -4536,16 +4536,16 @@
         },
         {
             "name": "spatie/robots-txt",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/robots-txt.git",
-                "reference": "f40a12b89f98dd18f3665673d04757298f5fbbf9"
+                "reference": "dacba2ba159364987392aa1b0002e196c5923970"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/f40a12b89f98dd18f3665673d04757298f5fbbf9",
-                "reference": "f40a12b89f98dd18f3665673d04757298f5fbbf9",
+                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/dacba2ba159364987392aa1b0002e196c5923970",
+                "reference": "dacba2ba159364987392aa1b0002e196c5923970",
                 "shasum": ""
             },
             "require": {
@@ -4581,7 +4581,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/robots-txt/issues",
-                "source": "https://github.com/spatie/robots-txt/tree/2.0.2"
+                "source": "https://github.com/spatie/robots-txt/tree/2.0.3"
             },
             "funding": [
                 {
@@ -4593,7 +4593,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-18T15:14:21+00:00"
+            "time": "2023-11-22T12:57:35+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -7029,16 +7029,16 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "bd84899ce65a7f193e676dd8444e424fa50f64fa"
+                "reference": "3bf53c9aae09d11235304e9305cd16bc27e6424a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/bd84899ce65a7f193e676dd8444e424fa50f64fa",
-                "reference": "bd84899ce65a7f193e676dd8444e424fa50f64fa",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/3bf53c9aae09d11235304e9305cd16bc27e6424a",
+                "reference": "3bf53c9aae09d11235304e9305cd16bc27e6424a",
                 "shasum": ""
             },
             "require": {
@@ -7102,9 +7102,9 @@
             ],
             "support": {
                 "issues": "https://github.com/UniSharp/laravel-filemanager/issues",
-                "source": "https://github.com/UniSharp/laravel-filemanager/tree/v2.6.2"
+                "source": "https://github.com/UniSharp/laravel-filemanager/tree/v2.6.3"
             },
-            "time": "2023-11-15T09:23:41+00:00"
+            "time": "2023-11-22T08:33:54+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -8085,16 +8085,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.8",
+            "version": "10.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297"
+                "reference": "a56a9ab2f680246adcf3db43f38ddf1765774735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/84838eed9ded511f61dc3e8b5944a52d9017b297",
-                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a56a9ab2f680246adcf3db43f38ddf1765774735",
+                "reference": "a56a9ab2f680246adcf3db43f38ddf1765774735",
                 "shasum": ""
             },
             "require": {
@@ -8151,7 +8151,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.8"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.9"
             },
             "funding": [
                 {
@@ -8159,7 +8159,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-15T13:31:15+00:00"
+            "time": "2023-11-23T12:23:20+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

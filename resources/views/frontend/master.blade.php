@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/animate.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/jquery-ui.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/maginific-popup.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/fancybox.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/select2.css" />
@@ -121,7 +122,8 @@
                 <div class="modal-header offcanvas-header">
                     <!-- offcanvas-logo-start -->
                     <div class="offcanvas-logo">
-                        <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg"
+                                alt="#" /></a>
                     </div>
                     <!-- offcanvas-logo-end -->
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -134,19 +136,19 @@
                     <nav id="offcanvas-menu" class="navigation offcanvas-menu">
                         <ul id="nav mobile-nav" class="list-none offcanvas-men-list">
                             <li class="active">
-                                <a href="{{ url('/') }}">{{__('label.menu_home')}}</a>
+                                <a href="{{ url('/') }}">{{ __('label.menu_home') }}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a>
+                                <a href="{{ url('/about') }}">{{ __('label.menu_about_us') }}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a>
+                                <a href="{{ url('/faq') }}">{{ __('label.menu_question') }}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a>
+                                <a href="{{ url('/direction') }}">{{ __('label.menu_instructions') }}</a>
                             </li>
                             <li>
-                                <a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a>
+                                <a href="{{ url('/contact') }}">{{ __('label.menu_contact_us') }}</a>
                             </li>
                         </ul>
                     </nav>
@@ -155,7 +157,7 @@
                     <div class="mobile-menu-modal-main-bottom">
                         <!-- offcanvas-menu end -->
                         <div class="mobile-menu-modal-bottom header-menu-btn">
-                            <a href="{{ url('/user/login') }}" class="theme-btn">{{__('label.menu_login')}}</a>
+                            <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
                         </div>
                     </div>
 
@@ -173,29 +175,31 @@
                 <div class="col-12">
                     <div class="header-inner">
                         <div class="header-logo">
-                            @if($logoFavicon && file_exists(public_path($logoFavicon->logo)))
-                                <a href="{{ url('/') }}"><img src="{{ url($logoFavicon->logo) }}" alt="Image" /></a>
+                            @if ($logoFavicon && file_exists(public_path($logoFavicon->logo)))
+                                <a href="{{ url('/') }}"><img src="{{ url($logoFavicon->logo) }}"
+                                        alt="Image" /></a>
                             @else
-                                <a href="{{ url('/') }}"><img src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
+                                <a href="{{ url('/') }}"><img
+                                        src="{{ url('frontend_assets') }}/assets/images/logo.svg" alt="#" /></a>
                             @endif
                         </div>
                         <div class="header-menu">
                             <nav class="navigation">
                                 <ul class="header-menu-list">
-                                    <li @if(Request::path() == '/') class="active" @endif>
-                                        <a href="{{ url('/') }}">{{__('label.menu_home')}}</a>
+                                    <li @if (Request::path() == '/') class="active" @endif>
+                                        <a href="{{ url('/') }}">{{ __('label.menu_home') }}</a>
                                     </li>
-                                    <li @if(Request::path() == 'about') class="active" @endif>
-                                        <a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a>
+                                    <li @if (Request::path() == 'about') class="active" @endif>
+                                        <a href="{{ url('/about') }}">{{ __('label.menu_about_us') }}</a>
                                     </li>
-                                    <li @if(Request::path() == 'faq') class="active" @endif>
-                                        <a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a>
+                                    <li @if (Request::path() == 'faq') class="active" @endif>
+                                        <a href="{{ url('/faq') }}">{{ __('label.menu_question') }}</a>
                                     </li>
-                                    <li @if(Request::path() == 'direction') class="active" @endif>
-                                        <a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a>
+                                    <li @if (Request::path() == 'direction') class="active" @endif>
+                                        <a href="{{ url('/direction') }}">{{ __('label.menu_instructions') }}</a>
                                     </li>
-                                    <li @if(Request::path() == 'contact') class="active" @endif>
-                                        <a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a>
+                                    <li @if (Request::path() == 'contact') class="active" @endif>
+                                        <a href="{{ url('/contact') }}">{{ __('label.menu_contact_us') }}</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -207,7 +211,7 @@
                                 <div class="language-change-toggle theme-switch" onclick="languageToggle()"></div>
                             </div>
                             <div class="header-login">
-                                <a href="{{ url('/user/login') }}" class="theme-btn">{{__('label.menu_login')}}</a>
+                                <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
                             </div>
                             <!-- Mobile Menu Button -->
 
@@ -235,10 +239,10 @@
                 <div class="col-lg-12 col-xl-7 col-12">
                     <div class="footer-menu">
                         <ul class="footer-menu-list">
-                            <li><a href="{{ url('/about') }}">{{__('label.menu_about_us')}}</a></li>
-                            <li><a href="{{ url('/faq') }}">{{__('label.menu_question')}}</a></li>
-                            <li><a href="{{ url('/direction') }}">{{__('label.menu_instructions')}}</a></li>
-                            <li><a href="{{ url('/contact') }}">{{__('label.menu_contact_us')}}</a></li>
+                            <li><a href="{{ url('/about') }}">{{ __('label.menu_about_us') }}</a></li>
+                            <li><a href="{{ url('/faq') }}">{{ __('label.menu_question') }}</a></li>
+                            <li><a href="{{ url('/direction') }}">{{ __('label.menu_instructions') }}</a></li>
+                            <li><a href="{{ url('/contact') }}">{{ __('label.menu_contact_us') }}</a></li>
                         </ul>
                     </div>
                     <p class="footer-copyright-text">
@@ -251,9 +255,10 @@
                 <div class="col-lg-12 col-xl-5 col-12">
                     <div class="footer-menu style-2">
                         <ul class="footer-menu-list">
-                            <li><a href="{{ url('privacy-policy') }}">{{__('label.menu_privacy_policy')}}</a></li>
-                            <li><a href="{{ url('terms-condition') }}">{{__('label.menu_terms_condition')}}</a></li>
-                            <li><a href="{{ url('refund-policy') }}">{{__('label.menu_refund_policy')}}</a></li>
+                            <li><a href="{{ url('privacy-policy') }}">{{ __('label.menu_privacy_policy') }}</a></li>
+                            <li><a href="{{ url('terms-condition') }}">{{ __('label.menu_terms_condition') }}</a>
+                            </li>
+                            <li><a href="{{ url('refund-policy') }}">{{ __('label.menu_refund_policy') }}</a></li>
                         </ul>
                     </div>
                     <div class="footer-social">
@@ -333,6 +338,7 @@
     <!-- End Footer Area -->
 
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery.min.js"></script>
+    <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery-ui.min.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/jquery-migrate.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/modernizer.min.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/bootstrap.min.js"></script>
@@ -346,22 +352,18 @@
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/select2.js"></script>
     <script src="{{ url('frontend_assets') }}/assets/plugins/js/active.js"></script>
 
-    @php
-        $locale = App::currentLocale();
-    @endphp
+    @if (App::currentLocale() == 'en')
+        <script>
+            let element = document.body;
+            element.classList.toggle("language-change");
 
-    @if($locale == 'en')
-    <script>
-        let element = document.body;
-        element.classList.toggle("language-change");
-
-        let systemChange = localStorage.getItem("systemChange");
-        if (systemChange && systemChange === "language-change") {
-            localStorage.setItem("systemChange", "");
-        } else {
-            localStorage.setItem("systemChange", "language-change");
-        }
-    </script>
+            let systemChange = localStorage.getItem("systemChange");
+            if (systemChange && systemChange === "language-change") {
+                localStorage.setItem("systemChange", "");
+            } else {
+                localStorage.setItem("systemChange", "language-change");
+            }
+        </script>
     @endif
 
     <script>
@@ -380,11 +382,11 @@
             $.ajax({
                 type: "GET",
                 url: "{{ url('change/lang') }}",
-                success: function (data) {
+                success: function(data) {
                     console.log("Language Changed Successfully");
                     location.reload(true);
                 },
-                error: function (data) {
+                error: function(data) {
                     console.log('Error:', data);
                 }
             });

@@ -9,6 +9,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 // frontend web pages
 Route::group(['middleware' => ['SetLocale']], function () {
+
     Route::get('/', [FrontendController::class, 'index'])->name('Frontend.Index');
     Route::get('/about', [FrontendController::class, 'about'])->name('Frontend.About');
     Route::get('/faq', [FrontendController::class, 'faq'])->name('Frontend.Faq');
@@ -19,6 +20,9 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
+
+
+    Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
 
 
     // user login dashboard
