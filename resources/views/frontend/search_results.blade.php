@@ -640,14 +640,11 @@
                                                                 <div class="biodata-accordion-body">
                                                                     <div class="form-group">
                                                                         <label>জেলা</label>
-                                                                        <select class="hero-search-filter-select select2"
-                                                                            name="state">
+                                                                        <select class="hero-search-filter-select select2" name="state">
                                                                             <option value="0">সকল জেলা</option>
                                                                             <option value="1">কুমিল্লা</option>
                                                                             <option value="2">ফেনী</option>
-                                                                            <option value="3">
-                                                                                ব্রাহ্মণবাড়িয়া
-                                                                            </option>
+                                                                            <option value="3">ব্রাহ্মণবাড়িয়া</option>
                                                                             <option value="4">রাঙ্গামাটি</option>
                                                                             <option value="5">নোয়াখালী</option>
                                                                             <option value="6">চাঁদপুর</option>
@@ -662,9 +659,7 @@
                                                                             <option value="15">রাজশাহী</option>
                                                                             <option value="16">নাটোর</option>
                                                                             <option value="17">জয়পুরহাট</option>
-                                                                            <option value="18">
-                                                                                চাঁপাইনবাবগঞ্জ
-                                                                            </option>
+                                                                            <option value="18">চাঁপাইনবাবগঞ্জ</option>
                                                                             <option value="19">নওগাঁ</option>
                                                                             <option value="20">যশোর</option>
                                                                             <option value="21">সাতক্ষীরা</option>
