@@ -1,6 +1,7 @@
 @extends('frontend.master')
 
 @section('content')
+
     <!-- Auth Page  Area -->
     <section class="auth-page-area">
         <div class="container">
@@ -14,37 +15,42 @@
                             <h4 class="auth-card-title">Register Account</h4>
                         </div>
                         <div class="auth-card-form-body">
-                            <form class="auth-card-form" action="#" method="post">
+                            <form class="auth-card-form" action="{{url('register')}}" method="post">
+                                @csrf
+
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-user"></i>
                                     </div>
-                                    <input name="email" placeholder="Email or phone number" required="" type="email"
-                                        id="email" class="form-control" value="" />
+                                    <input type="text" id="name" name="name" placeholder="Full Name" required="" class="form-control" value="{{ old('name') }}" />
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group-icon">
+                                        <i class="fi fi-ss-envelope"></i>
+                                    </div>
+                                    <input name="email" placeholder="Email" required="" type="email" id="email" class="form-control" value="{{ old('email') }}" />
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="Password" required="" type="password"
-                                        id="password" class="form-control" value="" />
+                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control" value="" />
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi-ss-home-location-alt"></i>
                                     </div>
-                                    <input name="address" placeholder="Address" required="" type="address" id="address"
-                                        class="form-control" value="" />
+                                    <input name="address" placeholder="Address" type="address" id="address" class="form-control" value="{{ old('address') }}" />
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">
                                     Register account
                                 </button>
+
                             </form>
                             <div class="auth-card-bottom">
                                 <span>or</span>
                                 <div class="auth-card-google-btn">
-                                    <a target="_blank" href="#"><img src="{{url('frontend_assets')}}/assets/images/icons/google.svg"
-                                            alt="#" />Register with Google</a>
+                                    <a target="_blank" href="#"><img src="{{url('frontend_assets')}}/assets/images/icons/google.svg" alt="#" />Register with Google</a>
                                 </div>
                                 <p class="auth-card-bottom-link">
                                     Already have an account?<a href="{{url('user-login')}}">Sign in</a>

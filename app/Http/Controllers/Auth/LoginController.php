@@ -45,7 +45,7 @@ class LoginController extends Controller
                 return '/';
                 break;
         }
-      }
+    }
 
     /**
      * Create a new controller instance.

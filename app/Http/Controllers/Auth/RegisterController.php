@@ -29,7 +29,25 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectTo() {
+        $role = Auth::user()->user_type;
+        switch ($role) {
+            case 1:
+                return '/home';
+                break;
+            case 2:
+                return '/home';
+                break;
+            case 3:
+                return '/user/dashboard';
+                break;
+
+            default:
+                return '/';
+                break;
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -68,6 +86,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'address' => null,
         ]);
     }
 }

@@ -28,7 +28,6 @@ Auth::routes([
 
 
 // backend routes
-// 'prefix'=>'admin',
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');

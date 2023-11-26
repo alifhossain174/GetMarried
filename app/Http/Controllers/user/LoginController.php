@@ -14,7 +14,6 @@ class LoginController extends Controller
         } else {
             return redirect('user/dashboard');
         }
-
     }
 
     public function userRegister(){
