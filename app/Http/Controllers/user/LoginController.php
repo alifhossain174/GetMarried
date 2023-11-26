@@ -4,11 +4,17 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     public function userLogin(){
-        return view('frontend.auth.login');
+        if(!Auth::user()){
+            return view('frontend.auth.login');
+        } else {
+            return redirect('user/dashboard');
+        }
+
     }
 
     public function userRegister(){

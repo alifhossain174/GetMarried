@@ -21,13 +21,23 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-user"></i>
                                     </div>
-                                    <input name="email" placeholder="Email" required="" type="email" id="email" class="form-control" value="{{ old('email') }}" />
+                                    <input name="email" placeholder="Email" required="" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control" value="" />
+                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" />
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert" style="display: block;">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="auth-card-info">
                                     <div class="form-check">

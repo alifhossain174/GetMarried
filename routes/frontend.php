@@ -26,9 +26,9 @@ Route::group(['middleware' => ['SetLocale']], function () {
 
 
     // user login dashboard
-    Route::group(['middleware' => ['auth']], function () {
-        Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
-        Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
+    Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
+    Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
+    Route::group(['middleware' => ['CheckCustomer']], function () {
         Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
         Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
         Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
