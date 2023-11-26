@@ -41,15 +41,17 @@
                                         <span class="input-group-text">
                                             <i class="icon-dual" data-feather="mail"></i>
                                         </span>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="email" name="email" value="{{ old('email') }}"
+                                        <input type="email" class="form-control @error('username') is-invalid @enderror"
+                                            id="username" name="username" value="{{ old('username') }}"
                                             placeholder="hello@demo.com" required autocomplete="email" autofocus>
                                     </div>
-                                    @error('email')
+                                    @if(count($errors) > 0)
+                                        @foreach( $errors->all() as $message )
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @endforeach
+                                    @endif
                                 </div>
 
                                 <div class="mb-3">
