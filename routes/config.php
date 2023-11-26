@@ -38,6 +38,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('language/page', [ConfigController::class, 'languagePage'])->name('LanguagePage');
     Route::get('set/default/language/{code}/{value}', [ConfigController::class, 'setDefaultLanguage'])->name('SetDefaultLanguage');
 
+    // BioDataType
+    Route::get('view/all/biodatatype', [ConfigController::class, 'viewAllBiodataType'])->name('ViewAllBiodataType');
+    Route::post('add/new/biodatatype', [ConfigController::class, 'addNewBiodataType'])->name('AddNewBiodataType');
+    Route::get('delete/biodatatype/{id}', [ConfigController::class, 'deleteBiodataType'])->name('DeleteBiodataType');
+    Route::get('get/biodatatype/{id}', [ConfigController::class, 'biodataType'])->name('BiodataType');
+    Route::post('update/biodatatype', [ConfigController::class, 'updateBiodataType'])->name('UpdateBiodataType');
+    Route::get('rearrange/biodatatype', [ConfigController::class, 'rearrangeBiodataType'])->name('RearrangeBiodataType');
+    Route::post('save/rearranged/biodatatype', [ConfigController::class, 'saveRearrangeBiodataType'])->name('SaveRearrangeBiodataType');
+
 
 
 });
