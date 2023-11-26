@@ -56,6 +56,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
      Route::get('rearrange/marital/condition', [ConfigController::class, 'rearrangeMaritalCondition'])->name('RearrangeMaritalCondition');
      Route::post('save/rearranged/marital/condition', [ConfigController::class, 'saveRearrangeMaritalCondition'])->name('SaveRearrangeMaritalCondition');
 
+      // Question Set
+      Route::get('view/all/question/set', [ConfigController::class, 'viewAllQuestionSets'])->name('ViewAllQuestionSets');
+      Route::post('add/new/question/set', [ConfigController::class, 'addNewQuestionSet'])->name('AddNewQuestionSet');
+      Route::get('delete/question/set/{id}', [ConfigController::class, 'deleteQuestionSet'])->name('DeleteQuestionSet');
+      Route::get('get/question/set/{id}', [ConfigController::class, 'questionSet'])->name('QuestionSet');
+      Route::post('update/question/set', [ConfigController::class, 'updateQuestionSet'])->name('UpdateQuestionSet');
+      Route::get('rearrange/question/set', [ConfigController::class, 'rearrangeQuestionSet'])->name('RearrangeQuestionSet');
+      Route::post('save/rearranged/question/set', [ConfigController::class, 'saveRearrangeQuestionSet'])->name('SaveRearrangeQuestionSet');
+
 
 
 

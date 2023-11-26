@@ -9,6 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\DB;
 use App\Models\BiodataType;
 use App\Models\MaritalCondition;
+use App\Models\QuestionSet;
 use Illuminate\Support\Str;
 
 class ConfigController extends Controller
@@ -189,5 +190,85 @@ class ConfigController extends Controller
         Toastr::success('Item has been Rerranged', 'Success');
         return redirect('view/all/marital/condition');
     }
+
+     // functions for Question Set
+     public function viewAllQuestionSets(Request $request){
+        if ($request->ajax()) {
+
+            $data = QuestionSet::orderBy('serial', 'asc')->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('status', function($data) {
+                        if($data->status == 1){
+                            return "<span class='btn btn-sm btn-success rounded' style='padding: .1rem .5rem !important;'>Active</span>";
+                        }else{
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Inactive</span>";
+                        }
+                    })
+                    ->addColumn('action', function($data){
+                        $btn = ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Edit" class="mb-1 btn-sm btn-warning rounded editBtn"><i class="bi bi-pencil-square"></i> Edit</a>';
+                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="btn-sm btn-danger rounded deleteBtn"><i class="bi bi-trash"></i> Delete</a>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'status'])
+                    ->make(true);
+
+        }
+
+        return view('backend.config.question_set');
+    }
+
+    public function addNewQuestionSet(Request $request){
+
+        QuestionSet::insert([
+            'title' => $request->title,
+            'title_bn' => $request->title_bn,
+            'status' => $request->status,
+            'serial' =>  QuestionSet::min('serial') - 1,
+            'created_at' => Carbon::now()
+        ]);
+
+        return response()->json(['success' => 'Saved Successfully']);
+    }
+
+    public function deleteQuestionSet($id){
+        QuestionSet::where('id', $id)->delete();
+        return response()->json(['success' => 'Deleted Successfully']);
+    }
+
+    public function questionSet($id){
+        $data = QuestionSet::where('id', $id)->first();
+        return response()->json($data);
+    }
+
+    public function updateQuestionSet(Request $request){
+        QuestionSet::where('id', $request->questionset_id)->update([
+            'title' => $request->title,
+            'title_bn' => $request->title_bn,
+            'status' => $request->status,
+            'updated_at' => Carbon::now()
+        ]);
+
+        return response()->json(['success' => 'Updated Successfully']);
+    }
+
+    public function rearrangeQuestionSet(){
+        $data = QuestionSet::orderBy('serial', 'asc')->get();
+        return view('backend.config.rearrange_question_set', compact('data'));
+    }
+
+    public function saveRearrangeQuestionSet(Request $request){
+        $sl = 1;
+        foreach($request->id as $id){
+            QuestionSet::where('id', $id)->update([
+                'serial' => $sl
+            ]);
+            $sl++;
+        }
+        Toastr::success('Item has been Rerranged', 'Success');
+        return redirect('view/all/question/set');
+    }
+
 
 }
