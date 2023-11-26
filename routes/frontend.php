@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\user\LoginController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -28,7 +29,14 @@ Route::group(['middleware' => ['SetLocale']], function () {
     // user login dashboard
     Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
     Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
-    Route::group(['middleware' => ['CheckCustomer']], function () {
+
+    Route::group(['middleware' => ['auth', 'CheckCustomer']], function () {
+
+        // verify routes
+        Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+        Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+        Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+
         Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
         Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
         Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');

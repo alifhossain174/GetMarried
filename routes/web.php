@@ -18,13 +18,7 @@ use App\Http\Controllers\TermsPolicyController;
 use App\Http\Controllers\AboutUsController;
 
 
-// Auth::routes();
-Auth::routes([
-    'login' => true,
-    'register' => false, // Registration Routes...
-    'reset' => false, // Password Reset Routes...
-    'verify' => false, // Email Verification Routes...
-]);
+Auth::routes();
 
 
 // backend routes

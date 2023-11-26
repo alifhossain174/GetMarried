@@ -53,7 +53,7 @@
                                     <a target="_blank" href="#"><img src="{{url('frontend_assets')}}/assets/images/icons/google.svg" alt="#" />Register with Google</a>
                                 </div>
                                 <p class="auth-card-bottom-link">
-                                    Already have an account?<a href="{{url('user-login')}}">Sign in</a>
+                                    Already have an account?<a href="{{url('user/login')}}">Sign in</a>
                                 </p>
                             </div>
                         </div>
