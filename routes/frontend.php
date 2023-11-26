@@ -26,21 +26,24 @@ Route::group(['middleware' => ['SetLocale']], function () {
 
 
     // user login dashboard
-    Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
-    Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
-    Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
-    Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
-    Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
-    Route::get('/user/ignore/list', [UserDashboardController::class, 'userIgnoreList'])->name('Frontend.UserIgnoreList');
-    Route::get('/user/my/purchased', [UserDashboardController::class, 'userMyPurchased'])->name('Frontend.UserMyPurchased');
-    Route::get('/user/connection', [UserDashboardController::class, 'userConnection'])->name('Frontend.UserConnection');
-    Route::get('/user/payment/process', [UserDashboardController::class, 'userPaymentProcess'])->name('Frontend.UserPaymentProcess');
-    Route::get('/user/checked/biodata', [UserDashboardController::class, 'userCheckedBiodata'])->name('Frontend.UserCheckedBiodata');
-    Route::get('/user/support/report', [UserDashboardController::class, 'userSupportReport'])->name('Frontend.UserSupportReport');
-    Route::get('/user/report/conversation', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
-    Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
-    Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
-    Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
+        Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
+        Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
+        Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
+        Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
+        Route::get('/user/ignore/list', [UserDashboardController::class, 'userIgnoreList'])->name('Frontend.UserIgnoreList');
+        Route::get('/user/my/purchased', [UserDashboardController::class, 'userMyPurchased'])->name('Frontend.UserMyPurchased');
+        Route::get('/user/connection', [UserDashboardController::class, 'userConnection'])->name('Frontend.UserConnection');
+        Route::get('/user/payment/process', [UserDashboardController::class, 'userPaymentProcess'])->name('Frontend.UserPaymentProcess');
+        Route::get('/user/checked/biodata', [UserDashboardController::class, 'userCheckedBiodata'])->name('Frontend.UserCheckedBiodata');
+        Route::get('/user/support/report', [UserDashboardController::class, 'userSupportReport'])->name('Frontend.UserSupportReport');
+        Route::get('/user/report/conversation', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
+        Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
+        Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
+        Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+    });
+
 });
 
 

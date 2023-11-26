@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 01:29 PM
+-- Generation Time: Nov 26, 2023 at 04:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -94,6 +94,22 @@ CREATE TABLE `banners` (
 
 INSERT INTO `banners` (`id`, `background_image`, `background_color`, `banner_title`, `banner_title_bn`, `banner_description`, `banner_description_bn`, `priority`, `created_at`, `updated_at`) VALUES
 (1, '/storage/files/1/hero-bg.png', '#cfe2f3', 'Trusted Platform for Bride & Groom', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', 'Find from your own area', 'আপনার জেলার পাত্র/পাত্রী খুঁজে নিন খুব সহজেই।', 1, NULL, '2023-11-16 02:47:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biodata_types`
+--
+
+CREATE TABLE `biodata_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -658,7 +674,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (87, '2023_11_21_045942_create_faqs_table', 54),
 (88, '2023_11_21_111119_create_instruction_configs_table', 55),
 (89, '2023_11_21_111209_create_instructions_table', 55),
-(90, '2023_10_19_115129_create_contact_configs_table', 56);
+(90, '2023_10_19_115129_create_contact_configs_table', 56),
+(91, '2023_11_26_035059_create_biodata_types_table', 57);
 
 -- --------------------------------------------------------
 
@@ -6362,6 +6379,12 @@ ALTER TABLE `banners`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `biodata_types`
+--
+ALTER TABLE `biodata_types`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact_configs`
 --
 ALTER TABLE `contact_configs`
@@ -6601,6 +6624,12 @@ ALTER TABLE `banners`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `biodata_types`
+--
+ALTER TABLE `biodata_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `contact_configs`
 --
 ALTER TABLE `contact_configs`
@@ -6706,7 +6735,7 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
