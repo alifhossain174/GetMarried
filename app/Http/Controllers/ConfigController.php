@@ -215,7 +215,6 @@ class ConfigController extends Controller
                     ->make(true);
 
         }
-
         return view('backend.config.question_set');
     }
 
