@@ -17,6 +17,7 @@
                     <li><a href="{{url('/language/page')}}">Languages</a></li>
                     <li><a href="{{url('/view/all/biodatatype')}}">Biodata Type</a></li>
                     <li><a href="{{url('/view/all/marital/condition')}}">Marital Condition</a></li>
+                    <li><a href="{{url('/view/all/question/set')}}">Question Set</a></li>
                 </ul>
             </div>
         </li>

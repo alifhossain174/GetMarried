@@ -18,11 +18,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Biodata Type</h4>
+                <h4 class="page-title">Question Set</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Config</a></li>
-                        <li class="breadcrumb-item active">Biodata Type</li>
+                        <li class="breadcrumb-item active">Question Set</li>
                     </ol>
                 </div>
             </div>
@@ -34,11 +34,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body pb-4">
-                    <h4 class="mb-3 header-title mt-0">View All Biodata Types</h4>
+                    <h4 class="mb-3 header-title mt-0">View All Question Set</h4>
 
                     <label id="customFilter" style="float: right;">
-                        <button class="btn btn-success btn-sm" id="addNewBiodataType" style="margin-left: 10px"><b><i class="bi bi-plus-lg"></i> Add New</b></button>
-                        <a href="{{url('rearrange/biodatatype')}}" class="btn btn-success btn-sm" style="margin-left: 5px"><b><i class="bi bi-shuffle"></i> Rearrange</b></a>
+                        <button class="btn btn-success btn-sm" id="addNewQuestionSet" style="margin-left: 10px"><b><i class="bi bi-plus-lg"></i> Add New</b></button>
+                        <a href="{{url('rearrange/question/set')}}" class="btn btn-success btn-sm" style="margin-left: 5px"><b><i class="bi bi-shuffle"></i> Rearrange</b></a>
                     </label>
 
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
@@ -66,13 +66,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="border-bottom: 1px solid #dbdbdb;">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Biodata Type</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Question Set</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
-                    <form id="biodataForm" name="biodataForm" class="form-horizontal">
-                        <input type="hidden" name="biodatatype_id" id="biodatatype_id">
+                    <form id="questionsetForm" name="questionsetForm" class="form-horizontal">
+                        <input type="hidden" name="questionset_id" id="questionset_id">
 
                         <div class="form-group mb-1">
                             <label for="title" class="col-form-label">Title</label>
@@ -85,7 +85,7 @@
 
                         <div class="form-group mb-1">
                             <label class="col-form-label">Status</label>
-                            <select class="form-select" id="biodatatype_status" name="status">
+                            <select class="form-select" id="questionset_status" name="status">
                                 <option value="">Select One</option>
                                 <option value="1" selected>Active</option>
                                 <option value="0">Inactive</option>
@@ -116,7 +116,7 @@
             serverSide: true,
             pageLength: 10,
             lengthMenu: [10, 20, 50, 100],
-            ajax: "{{ url('view/all/biodatatype') }}",
+            ajax: "{{ url('view/all/question/set') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'title', name: 'title'},
@@ -141,30 +141,30 @@
             }
         });
 
-        $('#addNewBiodataType').click(function() {
-            $('#biodataForm').trigger("reset");
-            $("#biodatatype_id").val(0);
-            $("#exampleModalLabel").html("Add New Biodata Type");
+        $('#addNewQuestionSet').click(function() {
+            $('#questionSetForm').trigger("reset");
+            $("#questionset_id").val(0);
+            $("#exampleModalLabel").html("Add New Question Set");
             $('#exampleModal').modal('show');
         });
 
         $('#saveBtn').click(function (e) {
             e.preventDefault();
 
-            var biodatatypeId = $('#biodatatype_id').val();
-            if(biodatatypeId > 0){ // update
+            var questionsetId = $('#questionset_id').val();
+            if(questionsetId > 0){ // update
 
                 $(this).html('Saving..');
                 $.ajax({
-                    data: $('#biodataForm').serialize(),
-                    url: "{{ url('update/biodatatype') }}",
+                    data: $('#questionsetForm').serialize(),
+                    url: "{{ url('update/question/set') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
                         $('#saveBtn').html('Save');
-                        $('#biodataForm').trigger("reset");
+                        $('#questionsetForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("Biodata Type Updated", "Updated Successfully");
+                        toastr.success("Question Set Updated", "Updated Successfully");
                         table.draw(false);
                     },
                     error: function (data) {
@@ -178,15 +178,15 @@
 
                 $(this).html('Saving..');
                 $.ajax({
-                    data: $('#biodataForm').serialize(),
-                    url: "{{ url('add/new/biodatatype') }}",
+                    data: $('#questionsetForm').serialize(),
+                    url: "{{ url('add/new/question/set') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
                         $('#saveBtn').html('Save');
-                        $('#biodataForm').trigger("reset");
+                        $('#questionsetForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("New Biodata Type Added", "Added Successfully");
+                        toastr.success("Question Set Added", "Added Successfully");
                         table.draw(false);
                     },
                     error: function (data) {
@@ -200,13 +200,13 @@
 
         $('body').on('click', '.editBtn', function () {
             var id = $(this).data('id');
-            $.get("{{ url('get/biodatatype') }}" +'/' + id, function (data) {
-                $("#exampleModalLabel").html("Update Biodata Type");
+            $.get("{{ url('get/question/set') }}" +'/' + id, function (data) {
+                $("#exampleModalLabel").html("Update Question Set");
                 $('#exampleModal').modal('show');
-                $('#biodatatype_id').val(data.id);
+                $('#questionset_id').val(data.id);
                 $('#title').val(data.title);
                 $('#title_bn').val(data.title_bn);
-                $('#biodatatype_status').val(data.status);
+                $('#questionset_status').val(data.status);
             })
         });
 
@@ -216,7 +216,7 @@
             if(confirm("Are You sure want to delete !")){
                 $.ajax({
                     type: "GET",
-                    url: "{{ url('delete/biodatatype') }}"+'/'+id,
+                    url: "{{ url('delete/question/set') }}"+'/'+id,
                     success: function (data) {
                         table.draw(false);
                         toastr.error("Data has been Deleted", "Deleted Successfully");
