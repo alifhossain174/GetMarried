@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 06:51 AM
+-- Generation Time: Nov 26, 2023 at 06:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -624,6 +624,22 @@ INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `payment_bann
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `marital_conditions`
+--
+
+CREATE TABLE `marital_conditions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -675,7 +691,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (88, '2023_11_21_111119_create_instruction_configs_table', 55),
 (89, '2023_11_21_111209_create_instructions_table', 55),
 (90, '2023_10_19_115129_create_contact_configs_table', 56),
-(91, '2023_11_26_035059_create_biodata_types_table', 57);
+(91, '2023_11_26_035059_create_biodata_types_table', 57),
+(92, '2023_11_26_055648_create_marital_conditions_table', 58);
 
 -- --------------------------------------------------------
 
@@ -6491,6 +6508,12 @@ ALTER TABLE `logo_favicons`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `marital_conditions`
+--
+ALTER TABLE `marital_conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -6734,10 +6757,16 @@ ALTER TABLE `logo_favicons`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `marital_conditions`
+--
+ALTER TABLE `marital_conditions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
