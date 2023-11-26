@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('address')->nullable();
             $table->tinyInteger('user_type')->comment("1=>Admin; 2=>User/Shop;")->default(2);
             $table->tinyInteger('status')->comment("1=>Active; 0=>Inactive")->default(1);
             $table->rememberToken();

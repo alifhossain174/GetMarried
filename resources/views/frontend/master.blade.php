@@ -211,7 +211,13 @@
                                 <div class="language-change-toggle theme-switch" onclick="languageToggle()"></div>
                             </div>
                             <div class="header-login">
+                                @guest
                                 <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
+                                @endguest
+
+                                @auth
+                                <a href="{{ url('/user/dashboard') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                @endauth
                             </div>
                             <!-- Mobile Menu Button -->
 
