@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 @php
-    $logoFavicon = App\Models\Logofavicon::where('id', 1)->first();
+    $logoFavicon = App\Models\LogoFavicon::where('id', 1)->first();
     $websiteThemeColor = App\Models\WesbiteThemeColor::where('id', 1)->first();
     $socialMediaLinks = App\Models\SocialMediaLinks::where('id', 1)->first();
     $customCssJs = App\Models\CustomCssJs::where('id', 1)->first();
