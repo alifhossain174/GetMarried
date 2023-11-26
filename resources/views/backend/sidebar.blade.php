@@ -16,6 +16,7 @@
                 <ul class="nav-second-level">
                     <li><a href="{{url('/language/page')}}">Languages</a></li>
                     <li><a href="{{url('/view/all/biodatatype')}}">Biodata Type</a></li>
+                    <li><a href="{{url('/view/all/marital/condition')}}">Marital Condition</a></li>
                 </ul>
             </div>
         </li>
