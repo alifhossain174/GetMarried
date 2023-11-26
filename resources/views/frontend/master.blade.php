@@ -216,7 +216,11 @@
                                 @endguest
 
                                 @auth
-                                <a href="{{ url('/user/dashboard') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                    @if(Auth::user()->user_type == 3)
+                                        <a href="{{ url('/user/dashboard') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                    @else
+                                        <a href="{{ url('/home') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                    @endif
                                 @endauth
                             </div>
                             <!-- Mobile Menu Button -->
