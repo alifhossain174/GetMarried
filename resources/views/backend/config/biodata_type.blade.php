@@ -164,7 +164,7 @@
                         $('#saveBtn').html('Save');
                         $('#biodataForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("Biodata Type Info Updated", "Updated Successfully");
+                        toastr.success("Biodata Type Updated", "Updated Successfully");
                         table.draw(false);
                     },
                     error: function (data) {

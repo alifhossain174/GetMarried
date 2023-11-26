@@ -164,7 +164,7 @@
                         $('#saveBtn').html('Save');
                         $('#maritalconditionForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("Marital Condition Info Updated", "Updated Successfully");
+                        toastr.success("Marital Condition Updated", "Updated Successfully");
                         table.draw(false);
                     },
                     error: function (data) {

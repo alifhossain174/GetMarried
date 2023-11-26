@@ -37,7 +37,7 @@
                     <h4 class="mb-3 header-title mt-0">View All Question Set</h4>
 
                     <label id="customFilter" style="float: right;">
-                        <button class="btn btn-success btn-sm" id="addNewMaritalCondition" style="margin-left: 10px"><b><i class="bi bi-plus-lg"></i> Add New</b></button>
+                        <button class="btn btn-success btn-sm" id="addNewQuestionSet" style="margin-left: 10px"><b><i class="bi bi-plus-lg"></i> Add New</b></button>
                         <a href="{{url('rearrange/question/set')}}" class="btn btn-success btn-sm" style="margin-left: 5px"><b><i class="bi bi-shuffle"></i> Rearrange</b></a>
                     </label>
 
@@ -71,8 +71,8 @@
                 </div>
                 <div class="modal-body">
 
-                    <form id="maritalconditionForm" name="maritalconditionForm" class="form-horizontal">
-                        <input type="hidden" name="maritalcondition_id" id="maritalcondition_id">
+                    <form id="questionsetForm" name="questionsetForm" class="form-horizontal">
+                        <input type="hidden" name="questionset_id" id="questionset_id">
 
                         <div class="form-group mb-1">
                             <label for="title" class="col-form-label">Title</label>
@@ -85,7 +85,7 @@
 
                         <div class="form-group mb-1">
                             <label class="col-form-label">Status</label>
-                            <select class="form-select" id="maritalcondition_status" name="status">
+                            <select class="form-select" id="questionset_status" name="status">
                                 <option value="">Select One</option>
                                 <option value="1" selected>Active</option>
                                 <option value="0">Inactive</option>
@@ -142,29 +142,29 @@
         });
 
         $('#addNewQuestionSet').click(function() {
-            $('#QuestionSetForm').trigger("reset");
+            $('#questionSetForm').trigger("reset");
             $("#questionset_id").val(0);
-            $("#exampleModalLabel").html("Add New Marital Condition");
+            $("#exampleModalLabel").html("Add New Question Set");
             $('#exampleModal').modal('show');
         });
 
         $('#saveBtn').click(function (e) {
             e.preventDefault();
 
-            var maritalconditionId = $('#maritalcondition_id').val();
-            if(maritalconditionId > 0){ // update
+            var questionsetId = $('#questionset_id').val();
+            if(questionsetId > 0){ // update
 
                 $(this).html('Saving..');
                 $.ajax({
-                    data: $('#maritalconditionForm').serialize(),
+                    data: $('#questionsetForm').serialize(),
                     url: "{{ url('update/question/set') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
                         $('#saveBtn').html('Save');
-                        $('#maritalconditionForm').trigger("reset");
+                        $('#questionsetForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("Marital Condition Info Updated", "Updated Successfully");
+                        toastr.success("Question Set Updated", "Updated Successfully");
                         table.draw(false);
                     },
                     error: function (data) {
@@ -178,15 +178,15 @@
 
                 $(this).html('Saving..');
                 $.ajax({
-                    data: $('#maritalconditionForm').serialize(),
+                    data: $('#questionsetForm').serialize(),
                     url: "{{ url('add/new/question/set') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
                         $('#saveBtn').html('Save');
-                        $('#maritalconditionForm').trigger("reset");
+                        $('#questionsetForm').trigger("reset");
                         $('#exampleModal').modal('hide');
-                        toastr.success("New Marital Condition Added", "Added Successfully");
+                        toastr.success("Question Set Added", "Added Successfully");
                         table.draw(false);
                     },
                     error: function (data) {
@@ -200,13 +200,13 @@
 
         $('body').on('click', '.editBtn', function () {
             var id = $(this).data('id');
-            $.get("{{ url(get/question/set') }}" +'/' + id, function (data) {
-                $("#exampleModalLabel").html("Update Marital Condition");
+            $.get("{{ url('get/question/set') }}" +'/' + id, function (data) {
+                $("#exampleModalLabel").html("Update Question Set");
                 $('#exampleModal').modal('show');
-                $('#maritalcondition_id').val(data.id);
+                $('#questionset_id').val(data.id);
                 $('#title').val(data.title);
                 $('#title_bn').val(data.title_bn);
-                $('#maritalcondition_status').val(data.status);
+                $('#questionset_status').val(data.status);
             })
         });
 
