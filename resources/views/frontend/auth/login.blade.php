@@ -21,12 +21,16 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-user"></i>
                                     </div>
-                                    <input name="email" placeholder="Email" required="" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
-                                    @error('email')
+                                    <input name="username" placeholder="Email or Phone Number" required="" type="text" id="username" class="form-control @error('email') is-invalid @enderror" value="{{ old('username') }}" />
+
+                                    @if(count($errors) > 0)
+                                        @foreach( $errors->all() as $message )
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @endforeach
+                                    @endif
+
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
