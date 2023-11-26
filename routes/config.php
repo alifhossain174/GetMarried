@@ -47,6 +47,16 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/biodatatype', [ConfigController::class, 'rearrangeBiodataType'])->name('RearrangeBiodataType');
     Route::post('save/rearranged/biodatatype', [ConfigController::class, 'saveRearrangeBiodataType'])->name('SaveRearrangeBiodataType');
 
+     // Marital Condition
+     Route::get('view/all/marital/condition', [ConfigController::class, 'viewAllMaritalCondition'])->name('ViewAllMaritalCondition');
+     Route::post('add/new/marital/condition', [ConfigController::class, 'addNewMaritalCondition'])->name('AddNewMaritalCondition');
+     Route::get('delete/marital/condition/{id}', [ConfigController::class, 'deleteMaritalCondition'])->name('DeleteMaritalCondition');
+     Route::get('get/marital/condition/{id}', [ConfigController::class, 'maritalCondition'])->name('MaritalCondition');
+     Route::post('update/marital/condition', [ConfigController::class, 'updateMaritalCondition'])->name('UpdateMaritalCondition');
+     Route::get('rearrange/marital/condition', [ConfigController::class, 'rearrangeMaritalCondition'])->name('RearrangeMaritalCondition');
+     Route::post('save/rearranged/marital/condition', [ConfigController::class, 'saveRearrangeMaritalCondition'])->name('SaveRearrangeMaritalCondition');
+
+
 
 
 });
