@@ -9,18 +9,20 @@
                     <div class="auth-card">
                         <div class="auth-card-head">
                             <div class="auth-card-head-icon">
-                                <img src="{{url('frontend_assets')}}/assets/images/icons/edit.svg" alt="#" />
+                                <img src="{{ url('frontend_assets') }}/assets/images/icons/edit.svg" alt="#" />
                             </div>
-                            <h4 class="auth-card-title">Set A New Password</h4>
+                            <h4 class="auth-card-title">{{ __('label.set_new_assword') }}</h4>
                         </div>
                         <div class="auth-card-form-body">
-                            <form class="auth-card-form" action="{{url('change/forgotten/password')}}" method="post">
+                            <form class="auth-card-form" action="{{ url('change/forgotten/password') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-edit"></i>
                                     </div>
-                                    <input name="code" placeholder="Verification Code" required="" type="text" class="form-control @error('code') is-invalid @enderror" value="{{ old('code') }}"/>
+                                    <input name="code" placeholder="{{ __('label.verification_code') }}" required=""
+                                        type="text" class="form-control @error('code') is-invalid @enderror"
+                                        value="{{ old('code') }}" />
                                     @error('code')
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
@@ -31,8 +33,12 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="New Password" required="" id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}"/>
-                                    <i class="fi-rs-eye-crossed" id="togglePassword" style="position: absolute; top: 50%; right: 15px; transform: translateY(-40%); cursor: pointer; color: #FF4949"></i>
+                                    <input name="password" placeholder="{{ __('label.new_password') }}" required=""
+                                        id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        value="{{ old('password') }}" />
+                                    <i class="fi-rs-eye-crossed" id="togglePassword"
+                                        style="position: absolute; top: 50%; right: 15px; transform: translateY(-40%); cursor: pointer; color: #FF4949"></i>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
@@ -40,11 +46,13 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">
-                                    Next
+                                    {{ __('label.next') }}
                                 </button>
                             </form>
                             <div class="auth-card-bottom">
-                                <p class="auth-card-bottom-link" style="margin-top: 32px">Remember credentials?<a href="{{url('login')}}">Sign in</a></p>
+                                <p class="auth-card-bottom-link" style="margin-top: 32px">
+                                    {{ __('label.remember_credential') }}<a
+                                        href="{{ url('login') }}">{{ __('label.sign_in') }}</a></p>
                             </div>
                         </div>
                     </div>
@@ -56,12 +64,12 @@
 @endsection
 
 
-@section("footer_js")
+@section('footer_js')
     <script>
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
 
-        togglePassword.addEventListener("click", function () {
+        togglePassword.addEventListener("click", function() {
             // toggle the type attribute
             const type = password.getAttribute("type") === "password" ? "text" : "password";
             password.setAttribute("type", type);
@@ -76,7 +84,7 @@
 
         // prevent form submit
         const form = document.querySelector("form");
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
         });
     </script>

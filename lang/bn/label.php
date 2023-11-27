@@ -26,6 +26,20 @@ return [
     'register_account' => 'নিবন্ধন করুন',
     'full_name' => 'পুরো নাম',
     'address' => 'ঠিকানা',
+    'already_have_account' => 'ইতিমধ্যে একটি অ্যাকাউন্ট আছে?',
+    'forgotten_password' => 'পাসওয়ার্ড ভুলে গেছেন?',
+    'next' => 'পরবর্তী',
+    'remember_credential' => 'ইমেল বা ফোন মনে আছে?',
+    'set_new_assword' => 'নতুন পাসওয়ার্ড সেট করুন',
+    'verification_code' => 'যাচাইকরণ কোড',
+    'new_password' => 'নতুন পাসওয়ার্ড',
+    'verify_otp' => 'OTP যাচাই করুন',
+    'six_digit_code_sent' => 'একটি 6-সংখ্যা যাচাইকরণ কোড পাঠানো হয়েছে',
+    'enter_code_to_verify' => 'যাচাই করার জন্য কোড লিখুন',
+    'enter_code' => 'কোড লিখুন',
+    'verify' => 'যাচাই করুন',
+    'didnt_receive_sms' => 'এসএমএস পাননি?',
+    'send_again' => 'আবার পাঠাও',
 
 
     // hero search section

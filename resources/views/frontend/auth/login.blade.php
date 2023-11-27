@@ -9,7 +9,7 @@
                     <div class="auth-card">
                         <div class="auth-card-head">
                             <div class="auth-card-head-icon">
-                                <img src="{{url('frontend_assets')}}/assets/images/icons/lock.svg" alt="#" />
+                                <img src="{{ url('frontend_assets') }}/assets/images/icons/lock.svg" alt="#" />
                             </div>
                             <h4 class="auth-card-title">{{ __('label.sign_in') }}</h4>
                         </div>
@@ -21,13 +21,16 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rs-user"></i>
                                     </div>
-                                    <input name="username" placeholder="{{ __('label.email_or_phone') }}" required="" type="text" id="username" class="form-control @error('email') is-invalid @enderror" value="{{ old('username') }}" />
+                                    <input name="username" placeholder="{{ __('label.email_or_phone') }}" required=""
+                                        type="text" id="username"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        value="{{ old('username') }}" />
 
-                                    @if(count($errors) > 0)
-                                        @foreach( $errors->all() as $message )
-                                        <span class="invalid-feedback" role="alert" style="display: block;">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                    @if (count($errors) > 0)
+                                        @foreach ($errors->all() as $message)
+                                            <span class="invalid-feedback" role="alert" style="display: block;">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @endforeach
                                     @endif
 
@@ -36,8 +39,11 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="{{ __('label.password') }}" required="" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" />
-                                    <i class="fi-rs-eye-crossed" id="togglePassword" style="position: absolute; top: 50%; right: 15px; transform: translateY(-40%); cursor: pointer; color: #FF4949"></i>
+                                    <input name="password" placeholder="{{ __('label.password') }}" required=""
+                                        type="password" id="password"
+                                        class="form-control @error('password') is-invalid @enderror" value="" />
+                                    <i class="fi-rs-eye-crossed" id="togglePassword"
+                                        style="position: absolute; top: 50%; right: 15px; transform: translateY(-40%); cursor: pointer; color: #FF4949"></i>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
@@ -46,23 +52,28 @@
                                 </div>
                                 <div class="auth-card-info">
                                     <div class="form-check">
-                                        <input type="checkbox" id="custom-checkbox" class="form-check-input" /><label title="" for="custom-checkbox" class="form-check-label">{{ __('label.remember') }}</label>
+                                        <input type="checkbox" id="custom-checkbox" class="form-check-input" /><label
+                                            title="" for="custom-checkbox"
+                                            class="form-check-label">{{ __('label.remember') }}</label>
                                     </div>
-                                    <a href="{{url('user/forget/password')}}">{{ __('label.forget_password') }}</a>
+                                    <a href="{{ url('user/forget/password') }}">{{ __('label.forget_password') }}</a>
                                 </div>
-                                <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">{{ __('label.sign_in') }}</button>
+                                <button type="submit"
+                                    class="auth-card-form-btn theme-btn btn btn-primary">{{ __('label.sign_in') }}</button>
 
                             </form>
                             <div class="auth-card-bottom">
                                 <span>{{ __('label.or') }}</span>
                                 <div class="auth-card-google-btn">
                                     <a target="_blank" href="#">
-                                        <img src="{{url('frontend_assets')}}/assets/images/icons/google.svg" alt="#" />
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/google.svg"
+                                            alt="#" />
                                         {{ __('label.sign_in_with_google') }}
                                     </a>
                                 </div>
                                 <p class="auth-card-bottom-link">
-                                    {{ __('label.dont_have_an_account') }}<a href="{{url('user/register')}}">{{ __('label.register_account') }}</a>
+                                    {{ __('label.dont_have_an_account') }}<a
+                                        href="{{ url('user/register') }}">{{ __('label.register_account') }}</a>
                                 </p>
                             </div>
                         </div>
@@ -74,12 +85,12 @@
     <!-- End Auth Page  Area -->
 @endsection
 
-@section("footer_js")
+@section('footer_js')
     <script>
         const togglePassword = document.querySelector("#togglePassword");
         const password = document.querySelector("#password");
 
-        togglePassword.addEventListener("click", function () {
+        togglePassword.addEventListener("click", function() {
             // toggle the type attribute
             const type = password.getAttribute("type") === "password" ? "text" : "password";
             password.setAttribute("type", type);
@@ -94,7 +105,7 @@
 
         // prevent form submit
         const form = document.querySelector("form");
-        form.addEventListener('submit', function (e) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
         });
     </script>

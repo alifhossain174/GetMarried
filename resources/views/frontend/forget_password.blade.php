@@ -9,18 +9,20 @@
                     <div class="auth-card">
                         <div class="auth-card-head">
                             <div class="auth-card-head-icon">
-                                <img src="{{url('frontend_assets')}}/assets/images/icons/edit.svg" alt="#" />
+                                <img src="{{ url('frontend_assets') }}/assets/images/icons/edit.svg" alt="#" />
                             </div>
-                            <h4 class="auth-card-title">Forgotten Password?</h4>
+                            <h4 class="auth-card-title">{{ __('label.forgotten_password') }}</h4>
                         </div>
                         <div class="auth-card-form-body">
-                            <form class="auth-card-form" action="{{url('send/forget/password/code')}}" method="post">
+                            <form class="auth-card-form" action="{{ url('send/forget/password/code') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-user"></i>
                                     </div>
-                                    <input name="username" placeholder="Email or phone number" required="" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}"/>
+                                    <input name="username" placeholder="{{ __('label.email_or_phone') }}" required=""
+                                        type="text" class="form-control @error('username') is-invalid @enderror"
+                                        value="{{ old('username') }}" />
                                     @error('username')
                                         <span class="invalid-feedback" role="alert" style="display: block;">
                                             <strong>{{ $message }}</strong>
@@ -28,11 +30,13 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">
-                                    Next
+                                    {{ __('label.next') }}
                                 </button>
                             </form>
                             <div class="auth-card-bottom">
-                                <p class="auth-card-bottom-link" style="margin-top: 32px">Remember credentials?<a href="{{url('user/login')}}">Sign in</a></p>
+                                <p class="auth-card-bottom-link" style="margin-top: 32px">
+                                    {{ __('label.remember_credential') }}<a
+                                        href="{{ url('user/login') }}">{{ __('label.sign_in') }}</a></p>
                             </div>
                         </div>
                     </div>
