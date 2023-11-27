@@ -18,7 +18,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-group-icon">
-                                        <i class="fi fi-ss-user"></i>
+                                        <i class="fi fi-rr-user"></i>
                                     </div>
                                     <input name="username" placeholder="Email or phone number" required="" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}"/>
                                     @error('username')
