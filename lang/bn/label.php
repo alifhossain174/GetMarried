@@ -13,6 +13,17 @@ return [
     'menu_terms_condition' => 'বিধি-নিষেধ এবং শর্তাবলী',
     'menu_refund_policy' => 'রিফান্ড নীতিমালা',
 
+    // authentication
+    'sign_in' => 'সাইন ইন',
+    'email_or_phone' => 'ইমেইল বা ফোন নম্বর',
+    'password' => 'পাসওয়ার্ড',
+    'remember' => 'মনে রাখবেন',
+    'forget_password' => 'পাসওয়ার্ড ভুলে গেছেন?',
+    'or' => 'বা',
+    'sign_in_with_google' => 'Google দিয়ে সাইন ইন করুন',
+    'dont_have_an_account' => 'কোন অ্যাকাউন্ট নেই?',
+    'register_account' => 'নিবন্ধন করুন',
+
     // hero search section
     'hero_all' => 'সকল',
     'hero_all_district' => 'সকল জেলা',

@@ -13,6 +13,17 @@ return [
     'menu_terms_condition' => 'Terms & Condition',
     'menu_refund_policy' => 'Refund Policy',
 
+    // authentication
+    'sign_in' => 'Sign In',
+    'email_or_phone' => 'Email or Phone Number',
+    'password' => 'Password',
+    'remember' => 'Remember Me',
+    'forget_password' => 'Forgotten password?',
+    'or' => 'or',
+    'sign_in_with_google' => 'Sign in with Google',
+    'dont_have_an_account' => 'Don’t have any account?',
+    'register_account' => 'Register account',
+
     // hero search section
     'hero_all' => 'All',
     'hero_all_district' => 'All District',
