@@ -21,14 +21,16 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
-
-
     Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
 
 
     // user login dashboard
     Route::get('/user/login', [LoginController::class, 'userLogin'])->name('Frontend.UserLogin');
     Route::get('/user/register', [LoginController::class, 'userRegister'])->name('Frontend.UserRegister');
+    Route::get('/user/forget/password', [LoginController::class, 'userForgetPassword'])->name('Frontend.UserForgetPassword');
+    Route::post('/send/forget/password/code', [LoginController::class, 'sendForgetPasswordCode'])->name('Frontend.SendForgetPasswordCode');
+    Route::get('/new/password', [LoginController::class, 'newPasswordPage'])->name('Frontend.NewPasswordPage');
+    Route::post('/change/forgotten/password', [LoginController::class, 'changeForgetPassword'])->name('Frontend.ChangeForgetPassword');
 
     Route::group(['middleware' => ['auth', 'CheckCustomer']], function () {
 

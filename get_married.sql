@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 04:31 AM
+-- Generation Time: Nov 27, 2023 at 12:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -6270,7 +6270,7 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `verification_code` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -6291,7 +6291,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `contact`, `verification_code`, `ema
 (1, 'Admin', 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
 (2, 'User', 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
 (7, 'Fahad', 'fahad@gmail.com', '01969005035', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(24, 'Joel Perez', 'alifhossain174@gmail.com', NULL, NULL, NULL, '$2y$12$W0TO/q6uGClhx/m9pZ5JMOCvrWHBzjsmcW2d1cytn9gOWItONcw8a', 'Quisquam aut impedit', 3, 1, NULL, '2023-11-26 21:25:22', '2023-11-26 21:25:22');
+(24, 'Joel Perez', 'alifhossain174@gmail.com', NULL, '774068', '2023-09-17 10:49:43', '$2y$12$pF93ndTB/QTTMNhjYCuPFe1IW5Uj6iOaUo27JUbFSUcNE0pTXjHFm', 'Quisquam aut impedit', 3, 1, NULL, '2023-11-26 21:25:22', '2023-11-27 05:20:27'),
+(25, 'Timon Barr', 'lemukyve@mailinator.com', NULL, '590565', '2023-11-26 22:27:17', '$2y$12$MjlDpi9FEUuFQbr//kD.MurRiBsNGlrtGp6/T6xk9LZy/o485FwFa', 'Nihil tempora deleni', 3, 1, NULL, '2023-11-26 21:41:26', '2023-11-26 22:27:17'),
+(26, 'Yen Rasmussen', 'miry@mailinator.com', NULL, '180968', '2023-11-26 22:35:17', '$2y$12$sVZ9XTL8j/1HpzWgWNOpseke47j3NtZN29av9M5bWui0ILUyL78ti', 'Anim in cum neque in', 3, 1, NULL, '2023-11-26 22:29:19', '2023-11-26 22:35:17'),
+(28, 'Chantale Blair', NULL, '01969005035', '644317', '2023-11-26 22:57:44', '$2y$12$W3Qe5lfTbaZZ9duhNI29yuohnMyjjSjGZ9LE1ZCBYVF777ADw6AJS', 'Commodo assumenda vo', 3, 1, NULL, '2023-11-26 22:55:37', '2023-11-26 22:57:44'),
+(29, 'Halee Mclaughlin', 'wozilifes@mailinator.com', NULL, '298088', '2023-11-26 23:22:15', '$2y$12$c4rp5pDzZwjK.P2ueoK7NOICvOMxNgkDYVMLz1QuCtljDqhZOxW5y', 'Labore enim amet ea', 3, 1, NULL, '2023-11-26 23:00:32', '2023-11-26 23:22:15'),
+(30, 'Aline Norris', 'fizikoqove@mailinator.com', NULL, '926170', '2023-11-26 23:22:15', '$2y$12$Htm7AO2fGdXEhWgY5nOiHOsPWhYE8FtpD.iAcYwW0rCljERjWp3Xi', 'Eu et est suscipit s', 3, 1, NULL, '2023-11-27 04:09:25', '2023-11-27 04:09:25'),
+(31, 'Jasmine Dennis', 'fenyrazume@mailinator.com', NULL, '959887', '2023-11-27 04:37:33', '$2y$12$jnnXscj/2R/H9siLTWtIfeIVviVP7F2FVqK1DL7Fv30uqI3OTOrru', 'Laboriosam sapiente', 3, 1, NULL, '2023-11-27 04:37:15', '2023-11-27 04:37:33');
 
 -- --------------------------------------------------------
 
@@ -6870,7 +6876,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

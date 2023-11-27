@@ -10,6 +10,7 @@ use App\Mail\UserVerificationMail;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -93,6 +94,100 @@ class LoginController extends Controller
         } else {
             Toastr::error('Wrong Verification Code', 'Failed');
             return back();
+        }
+    }
+
+    public function userForgetPassword(){
+        return view('frontend.forget_password');
+    }
+
+    public function sendForgetPasswordCode(Request $request){
+        $request->validate([
+            'username' => ['required', 'string', 'max:255'],
+        ]);
+
+        if (filter_var($request->username, FILTER_VALIDATE_EMAIL)) {
+
+            $randomCode = rand(100000, 999999);
+            $userInfo = User::where('email', $request->username)->first();
+            if($userInfo){
+                User::where('id', $userInfo->id)->update([
+                    'verification_code' => $randomCode
+                ]);
+
+                $mailData = array();
+                $mailData['code'] = $randomCode;
+                Mail::to(trim($userInfo->email))->send(new UserVerificationMail($mailData));
+                session(['username' => $request->username]);
+
+                Toastr::success('Password Reset Code Sent', 'Code Sent Successfully');
+                // return view('frontend.change_password');
+                return redirect('/new/password');
+            } else {
+                Toastr::error('No Account Found', '! Failed');
+                return back();
+            }
+
+        } else {
+
+            $randomCode = rand(100000, 999999);
+            $userInfo = User::where('contact', $request->username)->first();
+            if($userInfo){
+                User::where('id', $userInfo->id)->update([
+                    'verification_code' => $randomCode
+                ]);
+
+                // sms API Code Here
+
+                session(['username' => $request->username]);
+
+                Toastr::success('Password Reset Code Sent', 'Code Sent Successfully');
+                // return view('frontend.change_password');
+                return redirect('/new/password');
+            } else {
+                Toastr::error('No Account Found', '! Failed');
+                return back();
+            }
+        }
+    }
+
+    public function newPasswordPage(){
+        return view('frontend.change_password');
+    }
+
+    public function changeForgetPassword(Request $request){
+
+        $request->validate([
+            'code' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'max:255'],
+        ]);
+
+        $username = session('username');
+        $code = $request->code;
+        $password = $request->password;
+
+        $userInfo = User::where('email', $username)->where('verification_code', $code)->first();
+        if($userInfo){
+            $userInfo->password = Hash::make($password);
+            $userInfo->save();
+            Auth::login($userInfo);
+
+            Toastr::success('Successfully Changed the Password', 'Password Changed');
+            return redirect('user/dashboard');
+        } else {
+
+            $userInfo = User::where('contact', $username)->where('verification_code', $code)->first();
+            if($userInfo){
+                $userInfo->password = Hash::make($password);
+                $userInfo->save();
+                Auth::login($userInfo);
+
+                Toastr::success('Successfully Changed the Password', 'Password Changed');
+                return redirect('user/dashboard');
+            } else {
+                Toastr::error('Wrong Verification Code', 'Try Again');
+                return back();
+            }
         }
 
     }

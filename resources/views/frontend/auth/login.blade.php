@@ -47,7 +47,7 @@
                                     <div class="form-check">
                                         <input type="checkbox" id="custom-checkbox" class="form-check-input" /><label title="" for="custom-checkbox" class="form-check-label">Remember me</label>
                                     </div>
-                                    <a href="forget-password.html">Forgotten password?</a>
+                                    <a href="{{url('user/forget/password')}}">Forgotten password?</a>
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">Sign in</button>
 
