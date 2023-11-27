@@ -41,14 +41,10 @@
                 <a href="{{ url('user/settings') }}"><i class="fi fi-rr-settings"></i>{{__('label.user_menu_settings')}}</a>
             </li>
             <li>
-                <a href="{{ url('user/login') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fi fi-rs-sign-out-alt"></i>{{__('label.user_menu_logout')}}</a>
+                <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fi fi-rs-sign-out-alt"></i>{{__('label.user_menu_logout')}}</a>
             </li>
         </ul>
     </nav>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form>
 </div>
 
 

@@ -65,9 +65,13 @@ class LoginController extends Controller
                 'verification_code' => $randomCode
             ]);
 
-            $mailData = array();
-            $mailData['code'] = $randomCode;
-            Mail::to(trim($userInfo->email))->send(new UserVerificationMail($mailData));
+            if($userInfo->email){
+                $mailData = array();
+                $mailData['code'] = $randomCode;
+                Mail::to(trim($userInfo->email))->send(new UserVerificationMail($mailData));
+            } else {
+                // sms api code here
+            }
 
             Toastr::success('Verification Code Sent', 'Resend Verification Code');
             return back();
@@ -159,7 +163,7 @@ class LoginController extends Controller
 
         $request->validate([
             'code' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'max:255', 'min:8'],
         ]);
 
         $username = session('username');
