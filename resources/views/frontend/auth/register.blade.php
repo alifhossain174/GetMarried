@@ -12,7 +12,7 @@
                             <div class="auth-card-head-icon">
                                 <img src="{{url('frontend_assets')}}/assets/images/icons/edit.svg" alt="#" />
                             </div>
-                            <h4 class="auth-card-title">Register Account</h4>
+                            <h4 class="auth-card-title">{{ __('label.register_account') }}</h4>
                         </div>
                         <div class="auth-card-form-body">
                             <form class="auth-card-form" action="{{url('register')}}" method="post">
@@ -22,7 +22,7 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rs-user"></i>
                                     </div>
-                                    <input type="text" id="name" name="name" placeholder="Full Name" required="" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" />
+                                    <input type="text" id="name" name="name" placeholder="{{ __('label.full_name') }}" required="" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" />
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-envelope"></i>
                                     </div>
-                                    <input name="email" placeholder="Email or Phone Number" required="" type="text" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
+                                    <input name="email" placeholder="{{ __('label.email_or_phone') }}" required="" type="text" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-rr-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" />
+                                    <input name="password" placeholder="{{ __('label.password') }}" required="" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" />
                                     <i class="fi-rs-eye-crossed" id="togglePassword" style="position: absolute; top: 50%; right: 15px; transform: translateY(-40%); cursor: pointer; color: #FF4949"></i>
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                                     <div class="form-group-icon">
                                         <i class="fi-rr-home-location-alt"></i>
                                     </div>
-                                    <input name="address" placeholder="Address" type="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" />
+                                    <input name="address" placeholder="{{ __('label.address') }}" type="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" />
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -64,14 +64,14 @@
                                     @enderror
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">
-                                    Register account
+                                    {{ __('label.register_account') }}
                                 </button>
 
                             </form>
                             <div class="auth-card-bottom">
                                 <span>or</span>
                                 <div class="auth-card-google-btn">
-                                    <a target="_blank" href="#"><img src="{{url('frontend_assets')}}/assets/images/icons/google.svg" alt="#" />Register with Google</a>
+                                    <a target="_blank" href="#"><img src="{{url('frontend_assets')}}/assets/images/icons/google.svg" alt="#" />{{ __('label.sign_in_with_google') }}</a>
                                 </div>
                                 <p class="auth-card-bottom-link">
                                     Already have an account?<a href="{{url('user/login')}}">Sign in</a>

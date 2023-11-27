@@ -13,6 +13,7 @@ return [
     'menu_terms_condition' => 'বিধি-নিষেধ এবং শর্তাবলী',
     'menu_refund_policy' => 'রিফান্ড নীতিমালা',
 
+
     // authentication
     'sign_in' => 'সাইন ইন',
     'email_or_phone' => 'ইমেইল বা ফোন নম্বর',
@@ -23,6 +24,9 @@ return [
     'sign_in_with_google' => 'Google দিয়ে সাইন ইন করুন',
     'dont_have_an_account' => 'কোন অ্যাকাউন্ট নেই?',
     'register_account' => 'নিবন্ধন করুন',
+    'full_name' => 'পুরো নাম',
+    'address' => 'ঠিকানা',
+
 
     // hero search section
     'hero_all' => 'সকল',

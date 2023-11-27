@@ -23,6 +23,8 @@ return [
     'sign_in_with_google' => 'Sign in with Google',
     'dont_have_an_account' => 'Don’t have any account?',
     'register_account' => 'Register account',
+    'full_name' => 'Full Name',
+    'address' => 'Address',
 
     // hero search section
     'hero_all' => 'All',
