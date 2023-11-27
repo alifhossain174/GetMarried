@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2023 at 09:47 AM
+-- Generation Time: Nov 27, 2023 at 04:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -6272,6 +6272,7 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `verification_code` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -6286,13 +6287,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `contact`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
-(2, 'User', 'user@gmail.com', NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
-(7, 'Fahad', 'fahad@gmail.com', '01969005035', '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(10, 'Marvin Gay', 'qyxabocuz@mailinator.com', NULL, NULL, '$2y$12$bb2pkvoQRuLULTCTE9tKsuHr674o9l4YrmCWGwFwxFhqwEZepitna', 'Eius ducimus qui to', 3, 1, NULL, '2023-11-26 01:14:31', '2023-11-26 01:14:31'),
-(11, 'Blake Douglas', 'waxusymidu@mailinator.com', NULL, NULL, '$2y$12$/gZgirpDlEiwtD6ETqtjWevuB3ObhFP2Q48jAOuW8x3rDIr/7GWj.', 'Error ullamco porro', 3, 1, NULL, '2023-11-26 01:22:37', '2023-11-26 01:22:37'),
-(12, 'Amos Ellis', 'cedyjojo@mailinator.com', NULL, NULL, '$2y$12$izndh9NXm1aaUEDqv9cfnuQr8kSLUZt4R9DiD4o/i2XCSJ8.aLDV.', 'Ut dicta aliqua Qui', 3, 1, NULL, '2023-11-26 01:30:43', '2023-11-26 01:30:43');
+INSERT INTO `users` (`id`, `name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
+(2, 'User', 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
+(7, 'Fahad', 'fahad@gmail.com', '01969005035', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
+(24, 'Joel Perez', 'alifhossain174@gmail.com', NULL, NULL, NULL, '$2y$12$W0TO/q6uGClhx/m9pZ5JMOCvrWHBzjsmcW2d1cytn9gOWItONcw8a', 'Quisquam aut impedit', 3, 1, NULL, '2023-11-26 21:25:22', '2023-11-26 21:25:22');
 
 -- --------------------------------------------------------
 
@@ -6871,7 +6870,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

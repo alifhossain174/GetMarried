@@ -33,11 +33,11 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::group(['middleware' => ['auth', 'CheckCustomer']], function () {
 
         // verify routes
-        Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-        Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
-        Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+        Route::get('/user/verification', [LoginController::class, 'userVerification'])->name('Frontend.UserVerification');
+        Route::post('/user/verify/check', [LoginController::class, 'userVerifyCheck'])->name('Frontend.UserVerifyCheck');
+        Route::get('/user/verification/resend', [LoginController::class, 'userVerificationResend'])->name('Frontend.UserVerificationResend');
 
-        // Route::group(['middleware' => ['verified']], function () {
+        Route::group(['middleware' => ['CheckUserVerification']], function () {
             Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
             Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
             Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
@@ -51,7 +51,7 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
             Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
             Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
-        // });
+        });
     });
 
 });

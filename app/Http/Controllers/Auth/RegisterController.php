@@ -41,7 +41,7 @@ class RegisterController extends Controller
                 return '/home';
                 break;
             case 3:
-                return '/user/dashboard';
+                return '/user/verification';
                 break;
 
             default:
@@ -70,7 +70,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'max:255', 'unique:users'],
             // 'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -84,12 +84,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'user_type' => 3,
-            'address' => $data['address'],
-        ]);
+        if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'user_type' => 3,
+                'address' => $data['address'],
+            ]);
+        } else {
+            return User::create([
+                'name' => $data['name'],
+                'contact' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'user_type' => 3,
+                'address' => $data['address'],
+            ]);
+        }
     }
 }

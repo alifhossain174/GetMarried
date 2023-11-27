@@ -22,25 +22,45 @@
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-user"></i>
                                     </div>
-                                    <input type="text" id="name" name="name" placeholder="Full Name" required="" class="form-control" value="{{ old('name') }}" />
+                                    <input type="text" id="name" name="name" placeholder="Full Name" required="" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" />
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-envelope"></i>
                                     </div>
-                                    <input name="email" placeholder="Email" required="" type="email" id="email" class="form-control" value="{{ old('email') }}" />
+                                    <input name="email" placeholder="Email or Phone Number" required="" type="text" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" />
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi fi-ss-lock"></i>
                                     </div>
-                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control" value="" />
+                                    <input name="password" placeholder="Password" required="" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="" />
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <div class="form-group-icon">
                                         <i class="fi-ss-home-location-alt"></i>
                                     </div>
-                                    <input name="address" placeholder="Address" type="address" id="address" class="form-control" value="{{ old('address') }}" />
+                                    <input name="address" placeholder="Address" type="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" />
+                                    @error('address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">
                                     Register account
