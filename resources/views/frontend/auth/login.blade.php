@@ -65,7 +65,7 @@
                             <div class="auth-card-bottom">
                                 <span>{{ __('label.or') }}</span>
                                 <div class="auth-card-google-btn">
-                                    <a target="_blank" href="#">
+                                    <a href="{{ url('auth/google') }}">
                                         <img src="{{ url('frontend_assets') }}/assets/images/icons/google.svg"
                                             alt="#" />
                                         {{ __('label.sign_in_with_google') }}

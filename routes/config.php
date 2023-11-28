@@ -5,19 +5,19 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CkeditorController;
 
 
+// Route::get('/link', function () {
+    // echo $_SERVER['DOCUMENT_ROOT'];
+    // exit();
+    // $target = '/home/public_html/storage/app/public';
+    // $shortcut = '/home/public_html/public/storage';
+    // symlink($target, $shortcut);
+
+    // return "Storage link!";
+// });
+
+
 // backend routes
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
-
-    // Route::get('/link', function () {
-        // echo $_SERVER['DOCUMENT_ROOT'];
-        // exit();
-        // $target = '/home/public_html/storage/app/public';
-        // $shortcut = '/home/public_html/public/storage';
-        // symlink($target, $shortcut);
-
-        // return "Storage link!";
-    // });
-
 
     // file manager routes start
     Route::get('/file-manager', function () {

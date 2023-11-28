@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserDashboardController;
-use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\user\LoginController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -31,6 +31,10 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::post('/send/forget/password/code', [LoginController::class, 'sendForgetPasswordCode'])->name('Frontend.SendForgetPasswordCode');
     Route::get('/new/password', [LoginController::class, 'newPasswordPage'])->name('Frontend.NewPasswordPage');
     Route::post('/change/forgotten/password', [LoginController::class, 'changeForgetPassword'])->name('Frontend.ChangeForgetPassword');
+
+    // social login
+    Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('Frontend.RedirectToGoogle');
+    Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('Frontend.HandleGoogleCallback');
 
     Route::group(['middleware' => ['auth', 'CheckCustomer']], function () {
 
