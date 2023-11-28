@@ -20,6 +20,7 @@ class QuestionController extends Controller
                         ->leftJoin('question_sets', 'questions.question_set_id', '=', 'question_sets.id')
                         ->select('questions.*', 'question_sets.title', 'question_sets.serial')
                         ->orderBy('question_sets.serial', 'asc')
+                        ->orderBy('questions.serial', 'asc')
                         ->get();
 
             return Datatables::of($data)
@@ -110,15 +111,20 @@ class QuestionController extends Controller
     }
 
     public function rearrangeQuestions(){
-
-        // $data = DB::table('questions')
-        //             ->leftJoin('question_sets', 'questions.question_set_id', '=', 'question_sets.id')
-        //             ->select('questions.*', 'question_sets.title', 'question_sets.serial')
-        //             ->orderBy('question_sets.serial', 'asc')
-        //             ->get();
-
         $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
         return view('backend.question.rearrange', compact('questionSets'));
+    }
+
+    public function saveRearrangedQuestions(Request $request){
+        $sl = 1;
+        foreach($request->id as $id){
+            Question::where('id', $id)->update([
+                'serial' => $sl
+            ]);
+            $sl++;
+        }
+        Toastr::success('Item has been Rerranged', 'Success');
+        return redirect('view/all/questions');
     }
 
 }

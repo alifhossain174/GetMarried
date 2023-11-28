@@ -2,7 +2,7 @@
 
 @section('header_css')
     <style>
-        ol.rearrangement{
+        ol.rearrangement {
             font-weight: 500;
         }
 
@@ -25,7 +25,7 @@
             clear: both;
         }
 
-        small.instruction_text{
+        small.instruction_text {
             color: #1e1e1e;
             font-weight: 500;
             font-size: 13px;
@@ -36,7 +36,6 @@
 @endsection
 
 @section('content')
-
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -58,36 +57,48 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body pb-4">
-                    <h4 class="mb-3 header-title mt-0">Rearrange Items by Dragging them</h4>
-                    <small class="instruction_text">[N/B: Drag the Item using your Mouse Cursor to Rearrange their Order. Then Press the save button to save the Rearranged Order]</small>
+                    <form action="{{ url('save/rearranged/questions') }}" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="mb-3 header-title mt-0">Rearrange Items by Dragging them</h4>
+                            </div>
+                            <div class="col-lg-4 text-end">
+                                <button type="submit" class="btn rounded btn-primary">Save Rearranged Order</button>
+                            </div>
+                        </div>
+                        <small class="instruction_text">[N/B: Drag the Item using your Mouse Cursor to Rearrange their
+                            Order.
+                            Then Press the save button to save the Rearranged Order]</small>
 
-                    <form action="{{url('save/rearranged/questions')}}" method="POST" enctype="multipart/form-data">
+
                         @csrf
 
-                            @php
-                                $sl = 1;
-                                $str = '';
-                            @endphp
+                        @php
+                            $sl = 1;
+                        @endphp
+                        <ol class="clearfix rearrangement">
                             @foreach ($questionSets as $questionSet)
-                                <b>{{$questionSet->title}}:</b>
+                                <b>{{ $questionSet->title }}:</b>
                                 @php
                                     $data = DB::table('questions')
                                         ->leftJoin('question_sets', 'questions.question_set_id', '=', 'question_sets.id')
                                         ->where('questions.question_set_id', $questionSet->id)
                                         ->select('questions.*', 'question_sets.title', 'question_sets.serial')
                                         ->orderBy('question_sets.serial', 'asc')
+                                        ->orderBy('questions.serial', 'asc')
                                         ->get();
                                 @endphp
-                                <ol class="clearfix rearrangement">
+
                                 @foreach ($data as $question)
-                                <li style="background: #{{rand(1000,9999)}};">
-                                    <input type="hidden" value="{{$question->id}}" name="id[]">
-                                    {{$sl++}}) {{$question->question}}
-                                </li>
+                                    <li style="background: #{{ rand(1000, 9999) }};">
+                                        <input type="hidden" value="{{ $question->id }}" name="id[]">
+                                        {{ $sl++ }}) {{ $question->question }}
+                                    </li>
                                 @endforeach
-                                </ol>
+
                                 <br>
                             @endforeach
+                        </ol>
 
                         <button type="submit" class="btn rounded btn-primary">Save Rearranged Order</button>
                     </form>
@@ -97,22 +108,19 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
-
 @endsection
 
 
 @section('footer_js')
-
-    <script src="{{url('backend_assets')}}/js/jquery.dragndrop.js"></script>
+    <script src="{{ url('backend_assets') }}/js/jquery.dragndrop.js"></script>
     <script>
-        $(function(){
+        $(function() {
             $('ol').dragndrop({
-                onDrop: function( element, droppedElement ) {
-                    console.log( 'element dropped: ' );
-                    console.log( droppedElement );
+                onDrop: function(element, droppedElement) {
+                    console.log('element dropped: ');
+                    console.log(droppedElement);
                 }
             });
         });
     </script>
-
 @endsection
