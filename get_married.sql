@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 12:55 PM
+-- Generation Time: Nov 28, 2023 at 01:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -712,7 +712,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (91, '2023_11_26_035059_create_biodata_types_table', 57),
 (92, '2023_11_26_055648_create_marital_conditions_table', 58),
 (93, '2023_11_26_084712_create_question_sets_table', 59),
-(95, '2023_11_28_085440_create_questions_table', 60);
+(95, '2023_11_28_085440_create_questions_table', 60),
+(96, '2023_11_28_120900_create_m_c_q_s_table', 61);
 
 -- --------------------------------------------------------
 
@@ -745,6 +746,23 @@ CREATE TABLE `mobile_apps` (
 
 INSERT INTO `mobile_apps` (`id`, `image`, `title`, `title_bn`, `description`, `description_bn`, `play_store_image`, `play_store_link`, `app_store_image`, `app_store_link`, `background_color`, `background_image`, `priority`, `status`, `created_at`, `updated_at`) VALUES
 (1, '/storage/files/1/app-download-img.png', 'Download our app and enjoy the amazing experience', 'আমাদের অ্যাপ ডাউনলোড করুন এবং উপভোগ করুন অসাধারন অভিজ্ঞতা', 'With this app you can create a resume in the fastest and easiest way. Even all the processes can be done very easily. So without delay download our app now.', 'অ্যাপ এর মাধ্যমে আপনি সবচেয়ে দ্রুত এবং সহজ উপায়ে একটি বায়োডাটা তৈরি করতে পারবেন। এমনকি সকল প্রক্রিয়া গুলো খুব সহযেই করতে পারবেন। তাই দেরি না করে এখনই ডাউনলোড করুন আমাদের অ্যাপ।', NULL, 'https://play.google.com/store/games?hl=en&gl=US', NULL, 'https://www.apple.com/app-store/', '#ffffff', '/storage/files/1/section-bg.png', 2, 1, '2023-11-19 04:43:21', '2023-11-19 04:43:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_c_q_s`
+--
+
+CREATE TABLE `m_c_q_s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `option` varchar(255) DEFAULT NULL,
+  `option_bn` varchar(255) DEFAULT NULL,
+  `serial` double NOT NULL DEFAULT 1,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -6656,6 +6674,12 @@ ALTER TABLE `mobile_apps`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `m_c_q_s`
+--
+ALTER TABLE `m_c_q_s`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -6908,13 +6932,19 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
 --
 ALTER TABLE `mobile_apps`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `m_c_q_s`
+--
+ALTER TABLE `m_c_q_s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`
