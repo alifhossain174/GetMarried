@@ -37,89 +37,27 @@
                             <label>{{ __('label.hero_searching_for') }}</label>
                             <select class="select2 hero-search-filter-select">
                                 <option value="">{{ __('label.hero_all') }}</option>
-                                <option value="2">পাত্রের বায়োডাটা</option>
-                                <option value="3">পাত্রীর বায়োডাটা</option>
+                                @foreach ($biodataTypes as $type)
+                                <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>{{ __('label.hero_marital_status') }}</label>
                             <select class="select2 hero-search-filter-select">
                                 <option value="">{{ __('label.hero_all') }}</option>
-                                <option value="2">অবিবাহিত</option>
-                                <option value="3">বিবাহিত</option>
-                                <option value="4">ডিভোর্সড</option>
-                                <option value="5">বিধবা</option>
-                                <option value="6">বিপত্নীক</option>
+                                @foreach ($maritalConditions as $mc)
+                                <option value="{{$mc->id}}">{{ App::currentLocale() == 'en' ? $mc->title : $mc->title_bn }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>{{ __('label.hero_permenant_address') }}</label>
                             <select class="hero-search-filter-select select2" name="state">
                                 <option value="">{{ __('label.hero_all_district') }}</option>
-                                <option value="1">কুমিল্লা</option>
-                                <option value="2">ফেনী</option>
-                                <option value="3">ব্রাহ্মণবাড়িয়া</option>
-                                <option value="4">রাঙ্গামাটি</option>
-                                <option value="5">নোয়াখালী</option>
-                                <option value="6">চাঁদপুর</option>
-                                <option value="7">লক্ষ্মীপুর</option>
-                                <option value="8">চট্টগ্রাম</option>
-                                <option value="9">কক্সবাজার</option>
-                                <option value="10">খাগড়াছড়ি</option>
-                                <option value="11">বান্দরবান</option>
-                                <option value="12">সিরাজগঞ্জ</option>
-                                <option value="13">পাবনা</option>
-                                <option value="14">বগুড়া</option>
-                                <option value="15">রাজশাহী</option>
-                                <option value="16">নাটোর</option>
-                                <option value="17">জয়পুরহাট</option>
-                                <option value="18">চাঁপাইনবাবগঞ্জ</option>
-                                <option value="19">নওগাঁ</option>
-                                <option value="20">যশোর</option>
-                                <option value="21">সাতক্ষীরা</option>
-                                <option value="22">মেহেরপুর</option>
-                                <option value="23">নড়াইল</option>
-                                <option value="24">চুয়াডাঙ্গা</option>
-                                <option value="25">কুষ্টিয়া</option>
-                                <option value="26">মাগুরা</option>
-                                <option value="27">খুলনা</option>
-                                <option value="28">বাগেরহাট</option>
-                                <option value="29">ঝিনাইদহ</option>
-                                <option value="30">ঝালকাঠি</option>
-                                <option value="31">পটুয়াখালী</option>
-                                <option value="32">পিরোজপুর</option>
-                                <option value="33">বরিশাল</option>
-                                <option value="34">ভোলা</option>
-                                <option value="35">বরগুনা</option>
-                                <option value="36">সিলেট</option>
-                                <option value="37">মৌলভীবাজার</option>
-                                <option value="38">হবিগঞ্জ</option>
-                                <option value="39">সুনামগঞ্জ</option>
-                                <option value="40">নরসিংদী</option>
-                                <option value="41">গাজীপুর</option>
-                                <option value="42">শরীয়তপুর</option>
-                                <option value="43">নারায়ণগঞ্জ</option>
-                                <option value="44">টাঙ্গাইল</option>
-                                <option value="45">কিশোরগঞ্জ</option>
-                                <option value="46">মানিকগঞ্জ</option>
-                                <option value="47">ঢাকা</option>
-                                <option value="48">মুন্সিগঞ্জ</option>
-                                <option value="49">রাজবাড়ী</option>
-                                <option value="50">মাদারীপুর</option>
-                                <option value="51">গোপালগঞ্জ</option>
-                                <option value="52">ফরিদপুর</option>
-                                <option value="53">পঞ্চগড়</option>
-                                <option value="54">দিনাজপুর</option>
-                                <option value="55">লালমনিরহাট</option>
-                                <option value="56">নীলফামারী</option>
-                                <option value="57">গাইবান্ধা</option>
-                                <option value="58">ঠাকুরগাঁও</option>
-                                <option value="59">রংপুর</option>
-                                <option value="60">কুড়িগ্রাম</option>
-                                <option value="61">শেরপুর</option>
-                                <option value="62">ময়মনসিংহ</option>
-                                <option value="63">জামালপুর</option>
-                                <option value="64">নেত্রকোণা</option>
+                                @foreach ($districts as $district)
+                                <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <a href="{{ url('search/results') }}" class="h-search-filter-btn">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2023 at 06:06 AM
+-- Generation Time: Nov 28, 2023 at 12:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -111,6 +111,14 @@ CREATE TABLE `biodata_types` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `biodata_types`
+--
+
+INSERT INTO `biodata_types` (`id`, `title`, `title_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Biodata of Groom', 'পাত্রের বায়োডাটা', 1, 1, '2023-11-28 00:20:54', '2023-11-28 00:22:51'),
+(2, 'Biodata of Bride', 'পাত্রীর বায়োডাটা', 2, 1, '2023-11-28 00:21:47', '2023-11-28 00:22:51');
+
 -- --------------------------------------------------------
 
 --
@@ -211,79 +219,78 @@ CREATE TABLE `districts` (
   `bn_name` varchar(25) NOT NULL,
   `lat` varchar(15) DEFAULT NULL,
   `lon` varchar(15) DEFAULT NULL,
-  `url` varchar(50) NOT NULL,
-  `delivery_charge` double NOT NULL DEFAULT 100
+  `url` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `districts`
 --
 
-INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `url`, `delivery_charge`) VALUES
-(1, 1, 'Comilla', 'কুমিল্লা', '23.4682747', '91.1788135', 'www.comilla.gov.bd', 100),
-(2, 1, 'Feni', 'ফেনী', '23.023231', '91.3840844', 'www.feni.gov.bd', 100),
-(3, 1, 'Brahmanbaria', 'ব্রাহ্মণবাড়িয়া', '23.9570904', '91.1119286', 'www.brahmanbaria.gov.bd', 100),
-(4, 1, 'Rangamati', 'রাঙ্গামাটি', '22.65561018', '92.17541121', 'www.rangamati.gov.bd', 100),
-(5, 1, 'Noakhali', 'নোয়াখালী', '22.869563', '91.099398', 'www.noakhali.gov.bd', 100),
-(6, 1, 'Chandpur', 'চাঁদপুর', '23.2332585', '90.6712912', 'www.chandpur.gov.bd', 100),
-(7, 1, 'Lakshmipur', 'লক্ষ্মীপুর', '22.942477', '90.841184', 'www.lakshmipur.gov.bd', 100),
-(8, 1, 'Chattogram', 'চট্টগ্রাম', '22.335109', '91.834073', 'www.chittagong.gov.bd', 100),
-(9, 1, 'Coxsbazar', 'কক্সবাজার', '21.44315751', '91.97381741', 'www.coxsbazar.gov.bd', 100),
-(10, 1, 'Khagrachhari', 'খাগড়াছড়ি', '23.119285', '91.984663', 'www.khagrachhari.gov.bd', 100),
-(11, 1, 'Bandarban', 'বান্দরবান', '22.1953275', '92.2183773', 'www.bandarban.gov.bd', 100),
-(12, 2, 'Sirajganj', 'সিরাজগঞ্জ', '24.4533978', '89.7006815', 'www.sirajganj.gov.bd', 100),
-(13, 2, 'Pabna', 'পাবনা', '23.998524', '89.233645', 'www.pabna.gov.bd', 100),
-(14, 2, 'Bogura', 'বগুড়া', '24.8465228', '89.377755', 'www.bogra.gov.bd', 100),
-(15, 2, 'Rajshahi', 'রাজশাহী', '24.37230298', '88.56307623', 'www.rajshahi.gov.bd', 100),
-(16, 2, 'Natore', 'নাটোর', '24.420556', '89.000282', 'www.natore.gov.bd', 100),
-(17, 2, 'Joypurhat', 'জয়পুরহাট', '25.09636876', '89.04004280', 'www.joypurhat.gov.bd', 100),
-(18, 2, 'Chapainawabganj', 'চাঁপাইনবাবগঞ্জ', '24.5965034', '88.2775122', 'www.chapainawabganj.gov.bd', 100),
-(19, 2, 'Naogaon', 'নওগাঁ', '24.83256191', '88.92485205', 'www.naogaon.gov.bd', 100),
-(20, 3, 'Jashore', 'যশোর', '23.16643', '89.2081126', 'www.jessore.gov.bd', 100),
-(21, 3, 'Satkhira', 'সাতক্ষীরা', '22.7180905', '89.0687033', 'www.satkhira.gov.bd', 100),
-(22, 3, 'Meherpur', 'মেহেরপুর', '23.762213', '88.631821', 'www.meherpur.gov.bd', 100),
-(23, 3, 'Narail', 'নড়াইল', '23.172534', '89.512672', 'www.narail.gov.bd', 100),
-(24, 3, 'Chuadanga', 'চুয়াডাঙ্গা', '23.6401961', '88.841841', 'www.chuadanga.gov.bd', 100),
-(25, 3, 'Kushtia', 'কুষ্টিয়া', '23.901258', '89.120482', 'www.kushtia.gov.bd', 100),
-(26, 3, 'Magura', 'মাগুরা', '23.487337', '89.419956', 'www.magura.gov.bd', 100),
-(27, 3, 'Khulna', 'খুলনা', '22.815774', '89.568679', 'www.khulna.gov.bd', 100),
-(28, 3, 'Bagerhat', 'বাগেরহাট', '22.651568', '89.785938', 'www.bagerhat.gov.bd', 100),
-(29, 3, 'Jhenaidah', 'ঝিনাইদহ', '23.5448176', '89.1539213', 'www.jhenaidah.gov.bd', 100),
-(30, 4, 'Jhalakathi', 'ঝালকাঠি', '22.6422689', '90.2003932', 'www.jhalakathi.gov.bd', 100),
-(31, 4, 'Patuakhali', 'পটুয়াখালী', '22.3596316', '90.3298712', 'www.patuakhali.gov.bd', 100),
-(32, 4, 'Pirojpur', 'পিরোজপুর', '22.5781398', '89.9983909', 'www.pirojpur.gov.bd', 100),
-(33, 4, 'Barisal', 'বরিশাল', '22.7004179', '90.3731568', 'www.barisal.gov.bd', 100),
-(34, 4, 'Bhola', 'ভোলা', '22.685923', '90.648179', 'www.bhola.gov.bd', 100),
-(35, 4, 'Barguna', 'বরগুনা', '22.159182', '90.125581', 'www.barguna.gov.bd', 100),
-(36, 5, 'Sylhet', 'সিলেট', '24.8897956', '91.8697894', 'www.sylhet.gov.bd', 100),
-(37, 5, 'Moulvibazar', 'মৌলভীবাজার', '24.482934', '91.777417', 'www.moulvibazar.gov.bd', 100),
-(38, 5, 'Habiganj', 'হবিগঞ্জ', '24.374945', '91.41553', 'www.habiganj.gov.bd', 100),
-(39, 5, 'Sunamganj', 'সুনামগঞ্জ', '25.0658042', '91.3950115', 'www.sunamganj.gov.bd', 100),
-(40, 6, 'Narsingdi', 'নরসিংদী', '23.932233', '90.71541', 'www.narsingdi.gov.bd', 100),
-(41, 6, 'Gazipur', 'গাজীপুর', '24.0022858', '90.4264283', 'www.gazipur.gov.bd', 100),
-(42, 6, 'Shariatpur', 'শরীয়তপুর', '23.2060195', '90.3477725', 'www.shariatpur.gov.bd', 100),
-(43, 6, 'Narayanganj', 'নারায়ণগঞ্জ', '23.63366', '90.496482', 'www.narayanganj.gov.bd', 100),
-(44, 6, 'Tangail', 'টাঙ্গাইল', '24.264145', '89.918029', 'www.tangail.gov.bd', 100),
-(45, 6, 'Kishoreganj', 'কিশোরগঞ্জ', '24.444937', '90.776575', 'www.kishoreganj.gov.bd', 100),
-(46, 6, 'Manikganj', 'মানিকগঞ্জ', '23.8602262', '90.0018293', 'www.manikganj.gov.bd', 100),
-(47, 6, 'Dhaka', 'ঢাকা', '23.7115253', '90.4111451', 'www.dhaka.gov.bd', 60),
-(48, 6, 'Munshiganj', 'মুন্সিগঞ্জ', '23.5435742', '90.5354327', 'www.munshiganj.gov.bd', 100),
-(49, 6, 'Rajbari', 'রাজবাড়ী', '23.7574305', '89.6444665', 'www.rajbari.gov.bd', 100),
-(50, 6, 'Madaripur', 'মাদারীপুর', '23.164102', '90.1896805', 'www.madaripur.gov.bd', 100),
-(51, 6, 'Gopalganj', 'গোপালগঞ্জ', '23.0050857', '89.8266059', 'www.gopalganj.gov.bd', 100),
-(52, 6, 'Faridpur', 'ফরিদপুর', '23.6070822', '89.8429406', 'www.faridpur.gov.bd', 100),
-(53, 7, 'Panchagarh', 'পঞ্চগড়', '26.3411', '88.5541606', 'www.panchagarh.gov.bd', 100),
-(54, 7, 'Dinajpur', 'দিনাজপুর', '25.6217061', '88.6354504', 'www.dinajpur.gov.bd', 100),
-(55, 7, 'Lalmonirhat', 'লালমনিরহাট', '25.9165451', '89.4532409', 'www.lalmonirhat.gov.bd', 100),
-(56, 7, 'Nilphamari', 'নীলফামারী', '25.931794', '88.856006', 'www.nilphamari.gov.bd', 100),
-(57, 7, 'Gaibandha', 'গাইবান্ধা', '25.328751', '89.528088', 'www.gaibandha.gov.bd', 100),
-(58, 7, 'Thakurgaon', 'ঠাকুরগাঁও', '26.0336945', '88.4616834', 'www.thakurgaon.gov.bd', 100),
-(59, 7, 'Rangpur', 'রংপুর', '25.7558096', '89.244462', 'www.rangpur.gov.bd', 100),
-(60, 7, 'Kurigram', 'কুড়িগ্রাম', '25.805445', '89.636174', 'www.kurigram.gov.bd', 100),
-(61, 8, 'Sherpur', 'শেরপুর', '25.0204933', '90.0152966', 'www.sherpur.gov.bd', 100),
-(62, 8, 'Mymensingh', 'ময়মনসিংহ', '24.7465670', '90.4072093', 'www.mymensingh.gov.bd', 100),
-(63, 8, 'Jamalpur', 'জামালপুর', '24.937533', '89.937775', 'www.jamalpur.gov.bd', 100),
-(64, 8, 'Netrokona', 'নেত্রকোণা', '24.870955', '90.727887', 'www.netrokona.gov.bd', 100);
+INSERT INTO `districts` (`id`, `division_id`, `name`, `bn_name`, `lat`, `lon`, `url`) VALUES
+(1, 1, 'Comilla', 'কুমিল্লা', '23.4682747', '91.1788135', 'www.comilla.gov.bd'),
+(2, 1, 'Feni', 'ফেনী', '23.023231', '91.3840844', 'www.feni.gov.bd'),
+(3, 1, 'Brahmanbaria', 'ব্রাহ্মণবাড়িয়া', '23.9570904', '91.1119286', 'www.brahmanbaria.gov.bd'),
+(4, 1, 'Rangamati', 'রাঙ্গামাটি', '22.65561018', '92.17541121', 'www.rangamati.gov.bd'),
+(5, 1, 'Noakhali', 'নোয়াখালী', '22.869563', '91.099398', 'www.noakhali.gov.bd'),
+(6, 1, 'Chandpur', 'চাঁদপুর', '23.2332585', '90.6712912', 'www.chandpur.gov.bd'),
+(7, 1, 'Lakshmipur', 'লক্ষ্মীপুর', '22.942477', '90.841184', 'www.lakshmipur.gov.bd'),
+(8, 1, 'Chattogram', 'চট্টগ্রাম', '22.335109', '91.834073', 'www.chittagong.gov.bd'),
+(9, 1, 'Coxsbazar', 'কক্সবাজার', '21.44315751', '91.97381741', 'www.coxsbazar.gov.bd'),
+(10, 1, 'Khagrachhari', 'খাগড়াছড়ি', '23.119285', '91.984663', 'www.khagrachhari.gov.bd'),
+(11, 1, 'Bandarban', 'বান্দরবান', '22.1953275', '92.2183773', 'www.bandarban.gov.bd'),
+(12, 2, 'Sirajganj', 'সিরাজগঞ্জ', '24.4533978', '89.7006815', 'www.sirajganj.gov.bd'),
+(13, 2, 'Pabna', 'পাবনা', '23.998524', '89.233645', 'www.pabna.gov.bd'),
+(14, 2, 'Bogura', 'বগুড়া', '24.8465228', '89.377755', 'www.bogra.gov.bd'),
+(15, 2, 'Rajshahi', 'রাজশাহী', '24.37230298', '88.56307623', 'www.rajshahi.gov.bd'),
+(16, 2, 'Natore', 'নাটোর', '24.420556', '89.000282', 'www.natore.gov.bd'),
+(17, 2, 'Joypurhat', 'জয়পুরহাট', '25.09636876', '89.04004280', 'www.joypurhat.gov.bd'),
+(18, 2, 'Chapainawabganj', 'চাঁপাইনবাবগঞ্জ', '24.5965034', '88.2775122', 'www.chapainawabganj.gov.bd'),
+(19, 2, 'Naogaon', 'নওগাঁ', '24.83256191', '88.92485205', 'www.naogaon.gov.bd'),
+(20, 3, 'Jashore', 'যশোর', '23.16643', '89.2081126', 'www.jessore.gov.bd'),
+(21, 3, 'Satkhira', 'সাতক্ষীরা', '22.7180905', '89.0687033', 'www.satkhira.gov.bd'),
+(22, 3, 'Meherpur', 'মেহেরপুর', '23.762213', '88.631821', 'www.meherpur.gov.bd'),
+(23, 3, 'Narail', 'নড়াইল', '23.172534', '89.512672', 'www.narail.gov.bd'),
+(24, 3, 'Chuadanga', 'চুয়াডাঙ্গা', '23.6401961', '88.841841', 'www.chuadanga.gov.bd'),
+(25, 3, 'Kushtia', 'কুষ্টিয়া', '23.901258', '89.120482', 'www.kushtia.gov.bd'),
+(26, 3, 'Magura', 'মাগুরা', '23.487337', '89.419956', 'www.magura.gov.bd'),
+(27, 3, 'Khulna', 'খুলনা', '22.815774', '89.568679', 'www.khulna.gov.bd'),
+(28, 3, 'Bagerhat', 'বাগেরহাট', '22.651568', '89.785938', 'www.bagerhat.gov.bd'),
+(29, 3, 'Jhenaidah', 'ঝিনাইদহ', '23.5448176', '89.1539213', 'www.jhenaidah.gov.bd'),
+(30, 4, 'Jhalakathi', 'ঝালকাঠি', '22.6422689', '90.2003932', 'www.jhalakathi.gov.bd'),
+(31, 4, 'Patuakhali', 'পটুয়াখালী', '22.3596316', '90.3298712', 'www.patuakhali.gov.bd'),
+(32, 4, 'Pirojpur', 'পিরোজপুর', '22.5781398', '89.9983909', 'www.pirojpur.gov.bd'),
+(33, 4, 'Barisal', 'বরিশাল', '22.7004179', '90.3731568', 'www.barisal.gov.bd'),
+(34, 4, 'Bhola', 'ভোলা', '22.685923', '90.648179', 'www.bhola.gov.bd'),
+(35, 4, 'Barguna', 'বরগুনা', '22.159182', '90.125581', 'www.barguna.gov.bd'),
+(36, 5, 'Sylhet', 'সিলেট', '24.8897956', '91.8697894', 'www.sylhet.gov.bd'),
+(37, 5, 'Moulvibazar', 'মৌলভীবাজার', '24.482934', '91.777417', 'www.moulvibazar.gov.bd'),
+(38, 5, 'Habiganj', 'হবিগঞ্জ', '24.374945', '91.41553', 'www.habiganj.gov.bd'),
+(39, 5, 'Sunamganj', 'সুনামগঞ্জ', '25.0658042', '91.3950115', 'www.sunamganj.gov.bd'),
+(40, 6, 'Narsingdi', 'নরসিংদী', '23.932233', '90.71541', 'www.narsingdi.gov.bd'),
+(41, 6, 'Gazipur', 'গাজীপুর', '24.0022858', '90.4264283', 'www.gazipur.gov.bd'),
+(42, 6, 'Shariatpur', 'শরীয়তপুর', '23.2060195', '90.3477725', 'www.shariatpur.gov.bd'),
+(43, 6, 'Narayanganj', 'নারায়ণগঞ্জ', '23.63366', '90.496482', 'www.narayanganj.gov.bd'),
+(44, 6, 'Tangail', 'টাঙ্গাইল', '24.264145', '89.918029', 'www.tangail.gov.bd'),
+(45, 6, 'Kishoreganj', 'কিশোরগঞ্জ', '24.444937', '90.776575', 'www.kishoreganj.gov.bd'),
+(46, 6, 'Manikganj', 'মানিকগঞ্জ', '23.8602262', '90.0018293', 'www.manikganj.gov.bd'),
+(47, 6, 'Dhaka', 'ঢাকা', '23.7115253', '90.4111451', 'www.dhaka.gov.bd'),
+(48, 6, 'Munshiganj', 'মুন্সিগঞ্জ', '23.5435742', '90.5354327', 'www.munshiganj.gov.bd'),
+(49, 6, 'Rajbari', 'রাজবাড়ী', '23.7574305', '89.6444665', 'www.rajbari.gov.bd'),
+(50, 6, 'Madaripur', 'মাদারীপুর', '23.164102', '90.1896805', 'www.madaripur.gov.bd'),
+(51, 6, 'Gopalganj', 'গোপালগঞ্জ', '23.0050857', '89.8266059', 'www.gopalganj.gov.bd'),
+(52, 6, 'Faridpur', 'ফরিদপুর', '23.6070822', '89.8429406', 'www.faridpur.gov.bd'),
+(53, 7, 'Panchagarh', 'পঞ্চগড়', '26.3411', '88.5541606', 'www.panchagarh.gov.bd'),
+(54, 7, 'Dinajpur', 'দিনাজপুর', '25.6217061', '88.6354504', 'www.dinajpur.gov.bd'),
+(55, 7, 'Lalmonirhat', 'লালমনিরহাট', '25.9165451', '89.4532409', 'www.lalmonirhat.gov.bd'),
+(56, 7, 'Nilphamari', 'নীলফামারী', '25.931794', '88.856006', 'www.nilphamari.gov.bd'),
+(57, 7, 'Gaibandha', 'গাইবান্ধা', '25.328751', '89.528088', 'www.gaibandha.gov.bd'),
+(58, 7, 'Thakurgaon', 'ঠাকুরগাঁও', '26.0336945', '88.4616834', 'www.thakurgaon.gov.bd'),
+(59, 7, 'Rangpur', 'রংপুর', '25.7558096', '89.244462', 'www.rangpur.gov.bd'),
+(60, 7, 'Kurigram', 'কুড়িগ্রাম', '25.805445', '89.636174', 'www.kurigram.gov.bd'),
+(61, 8, 'Sherpur', 'শেরপুর', '25.0204933', '90.0152966', 'www.sherpur.gov.bd'),
+(62, 8, 'Mymensingh', 'ময়মনসিংহ', '24.7465670', '90.4072093', 'www.mymensingh.gov.bd'),
+(63, 8, 'Jamalpur', 'জামালপুর', '24.937533', '89.937775', 'www.jamalpur.gov.bd'),
+(64, 8, 'Netrokona', 'নেত্রকোণা', '24.870955', '90.727887', 'www.netrokona.gov.bd');
 
 -- --------------------------------------------------------
 
@@ -637,6 +644,17 @@ CREATE TABLE `marital_conditions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `marital_conditions`
+--
+
+INSERT INTO `marital_conditions` (`id`, `title`, `title_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Unmarried', 'অবিবাহিত', 0, 1, '2023-11-28 00:25:27', '2023-11-28 00:26:14'),
+(2, 'Married', 'বিবাহিত', 0, 1, '2023-11-28 00:25:34', '2023-11-28 00:26:26'),
+(3, 'Divorced', 'ডিভোর্সড', 0, 1, '2023-11-28 00:25:40', '2023-11-28 00:26:43'),
+(4, 'Widow', 'বিধবা', 0, 1, '2023-11-28 00:25:47', '2023-11-28 00:27:01'),
+(5, 'Widower', 'বিপত্নীক', 0, 1, '2023-11-28 00:25:53', '2023-11-28 00:29:42');
+
 -- --------------------------------------------------------
 
 --
@@ -693,7 +711,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (90, '2023_10_19_115129_create_contact_configs_table', 56),
 (91, '2023_11_26_035059_create_biodata_types_table', 57),
 (92, '2023_11_26_055648_create_marital_conditions_table', 58),
-(93, '2023_11_26_084712_create_question_sets_table', 59);
+(93, '2023_11_26_084712_create_question_sets_table', 59),
+(95, '2023_11_28_085440_create_questions_table', 60);
 
 -- --------------------------------------------------------
 
@@ -1051,6 +1070,82 @@ INSERT INTO `privacy_policies` (`id`, `details`, `details_bn`, `created_at`, `up
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question_set_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `hints` longtext DEFAULT NULL,
+  `hints_bn` longtext DEFAULT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Open Ended; 2=>MCQ',
+  `serial` double NOT NULL DEFAULT 1,
+  `required` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Yes; 0=>No',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `slug` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `question_set_id`, `question`, `question_bn`, `hints`, `hints_bn`, `type`, `serial`, `required`, `status`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Your medium of Education', 'আপনার শিক্ষা মাধ্যম', NULL, NULL, 2, -1, 1, 1, 'UYTUT1231235', '2023-11-28 03:21:40', NULL),
+(2, 1, 'Max. Educational Qualification', 'সর্বোচ্চ শিক্ষাগত যোগ্যতা', NULL, NULL, 2, -2, 1, 1, 'ZIUKBT456671', '2023-11-28 03:29:44', NULL),
+(3, 1, 'Other Educational Qualifications', 'অন্যান্য শিক্ষাগত যোগ্যতা', NULL, NULL, 1, -6, 0, 1, 'JIKUYV456679', '2023-11-28 03:39:28', '2023-11-28 03:39:28'),
+(4, 2, 'Father\'s Name', 'পিতার নাম', '* Only for Authority', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 1, -15, 1, 1, 'CIKURF456676', '2023-11-28 04:24:42', '2023-11-28 04:44:16'),
+(5, 2, 'Is You Father Alive?', 'আপনার পিতা কি জীবিত?', NULL, NULL, 2, -16, 1, 1, '1701168299YouEu', '2023-11-28 04:44:59', NULL),
+(6, 2, 'Father\'s Occupation', 'পিতার পেশার বিবরণ', 'শুধু \'চাকরিজীবী\' বা \'ব্যবসায়ী\' এভাবে লিখবেন না। চাকরিজীবী হলে প্রতিষ্ঠানের ধরণ এবং পদবী, আর ব্যবসায়ী হলে কী ধরণের ব্যবসা করেন/করতেন ইত্যাদি বিস্তারিত লিখবেন।', 'Just don\'t write \'employee\' or \'businessman\' as such. If you are an employee, write the type and title of the organization, and if you are a businessman, what type of business you do/did etc. in detail.', 1, -17, 1, 1, '1701168354VmcH1', '2023-11-28 04:45:54', NULL),
+(7, 2, 'Mother\'s Name', 'মাতার নাম', '* For authorities only', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 1, -18, 1, 1, '1701168587wHfa3', '2023-11-28 04:49:47', NULL),
+(8, 2, 'Is You Mother Alive?', 'আপনার মাতা কি জীবিত?', NULL, NULL, 2, -19, 1, 1, '1701168631OnfAn', '2023-11-28 04:50:31', NULL),
+(9, 2, 'Mother\'s Occupation', 'মাতার পেশার বিবরণ', NULL, NULL, 1, -20, 1, 1, '1701168654fnt1D', '2023-11-28 04:50:54', NULL),
+(10, 2, 'How many brothers do you have?', 'আপনার কতজন ভাই আছে?', NULL, NULL, 2, -21, 1, 1, '1701168774hC4sB', '2023-11-28 04:52:54', NULL),
+(11, 2, 'Brothers information', 'ভাইদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, -22, 1, 1, '170116899049aGn', '2023-11-28 04:56:30', NULL),
+(12, 2, 'How many sisters do you have?', 'আপনার কতজন বোন আছে?', NULL, NULL, 2, -23, 1, 1, '1701169036rTuBm', '2023-11-28 04:57:16', NULL),
+(13, 2, 'Information on sisters', 'বোনদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, -24, 1, 1, '1701169143PcLGs', '2023-11-28 04:59:03', NULL),
+(14, 2, 'Occupation of uncles', 'চাচা মামাদের পেশা', NULL, NULL, 1, -27, 1, 1, '1701169205M0Yh1', '2023-11-28 05:00:05', '2023-11-28 05:01:52'),
+(15, 2, 'Family economic status', 'পারিবারিক অর্থনৈতিক অবস্থা', NULL, NULL, 2, -28, 1, 1, '1701169274N8YKD', '2023-11-28 05:01:14', '2023-11-28 05:03:06'),
+(16, 2, 'Description of economic conditions', 'অর্থনৈতিক অবস্থার বর্ণনা', 'Mention details such as: Residential (rented or own), land or family business details etc. Many consider it important in Kufu Mela.', 'বিস্তারিত উল্লেখ করবেন যেমনঃ বসত বাড়ি (ভাড়া নাকি নিজস্ব), জমি বা পারিবারিক ব্যবসা থাকলে তার বিবরণ ইত্যাদি। কুফু মেলাতে অনেকেই এটিকে গুরুত্বপূর্ণ মনে করে।', 1, -29, 1, 1, '1701169496bPTYk', '2023-11-28 05:04:56', NULL),
+(17, 1, 'How is the family religious environment?', 'পারিবারিক দ্বীনি পরিবেশ কেমন?', 'Write about the religion of your family members and Mahram non-Mahram.', 'আপনার পরিবারের সদস্যগণের দ্বীন পালন এবং মাহরাম নন-মাহরাম মেনে চলার বিষয়ে লিখবেন।', 1, -30, 1, 1, '1701169613010R8', '2023-11-28 05:06:53', NULL),
+(18, 3, 'What kind of clothes do you usually wear outside the house?', 'ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?', '* In the case of the bride, she must mention whether she wears burqa, hijab, niqab and hand-foot socks.', '* পাত্রীর ক্ষেত্রে বোরকা, হিজাব, নিকাব এবং হাত-পা মোজা পরেন কী না অবশ্যই উল্লেখ করবেন।', 1, -31, 1, 1, '1701169718NEOdf', '2023-11-28 05:08:38', NULL),
+(19, 3, 'Do you have circumcised beard? Since when?', 'সুন্নতি দাড়ি আছে কি না? কবে থেকে রেখেছেন?', 'Write clearly the number of years you have had a beard. If you have a biological reason for receding beard, this should also be mentioned.', 'কত বছর যাবৎ দাড়ি রেখেছেন তা স্পষ্ট করে লিখুন। আপনার যদি বায়োলজিক্যাল কারণে দাড়ি কম উঠে, তাও উল্লেখ করতে হবে।', 1, -32, 1, 1, '1701169853ecuK1', '2023-11-28 05:10:53', NULL),
+(20, 3, 'Wear clothes above the ankle?', 'টাখনুর উপরে কাপড় পরেন?', NULL, NULL, 1, -33, 1, 1, '1701169903N1Egc', '2023-11-28 05:11:43', NULL),
+(21, 3, 'Do you pray five times a day? Since when are you reading?', 'প্রতিদিন পাঁচ ওয়াক্ত নামাজ পড়েন কি? কবে থেকে পড়ছেন?', 'Answer clearly with \"yes\" or \"no\". The number of years you have been offering five times prayer must be mentioned.', '\"হ্যাঁ\" অথবা \"না\" দিয়ে স্পষ্ট করে উত্তর লিখুন। কত বছর যাবৎ পাঁচ ওয়াক্ত নামায পড়ছেন, তা অবশ্যই উল্লেখ করতে হবে।', 1, -34, 1, 1, '1701169958TTAZp', '2023-11-28 05:12:38', NULL),
+(22, 3, 'How many times a week do you usually pray Qaza?', 'সাধারণত সপ্তাহে কত ওয়াক্ত নামায আপনার কাযা হয়?', NULL, NULL, 1, -35, 1, 1, '1701170000XBsbb', '2023-11-28 05:13:20', NULL),
+(23, 2, 'Do you follow mahram/non-mahram?', 'মাহরাম/নন-মাহরাম মেনে চলেন কি?', NULL, NULL, 1, -36, 1, 1, '1701170067Ni4X1', '2023-11-28 05:14:27', NULL),
+(24, 2, 'Can you recite the Quran correctly?', 'শুদ্ধভাবে কুরআন তিলওয়াত করতে পারেন?', NULL, NULL, 1, -58, 1, 1, '1701170106PDS5k', '2023-11-28 05:15:06', '2023-11-28 05:50:03'),
+(25, 3, 'Which fiqh do you follow?', 'কোন ফিকহ অনুসরণ করেন?', NULL, NULL, 2, -38, 1, 1, '1701170169prX7I', '2023-11-28 05:16:09', NULL),
+(26, 3, 'Do you watch or listen to dramas/movies/serials/songs?', 'নাটক / সিনেমা / সিরিয়াল / গান এসব দেখেন বা শুনেন?', NULL, NULL, 1, -39, 1, 1, '1701170208OLlB0', '2023-11-28 05:16:48', NULL),
+(27, 3, 'Are you involved in any special serve of religion?', 'দ্বীনের কোন বিশেষ মেহনতে যুক্ত আছেন?', 'For example: Tabligh etc.', 'যেমনঃ তাবলীগ ইত্যাদি।', 1, -40, 1, 1, '1701170435xdqAp', '2023-11-28 05:20:35', NULL),
+(28, 2, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 1, -41, 1, 1, '1701170463yICkV', '2023-11-28 05:21:03', NULL),
+(29, 3, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 1, -43, 1, 1, '1701170501KkWTo', '2023-11-28 05:21:41', '2023-11-28 05:22:10'),
+(30, 3, 'Name at least 3 Islamic books you have read', 'আপনার পড়া হয়েছে এমন অন্তত ৩ টি ইসলামি বই এর নাম লিখুন', NULL, NULL, 1, -44, 1, 1, '1701170560lX5rB', '2023-11-28 05:22:40', NULL),
+(31, 3, 'Write the names of at least 3 islamic scholars of your choice', 'আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন', NULL, NULL, 1, -48, 1, 1, '1701170593GeW2f', '2023-11-28 05:23:13', '2023-11-28 05:25:21'),
+(32, 3, 'Select the category that applies to you. (Otherwise leave the cell blank)', 'আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন)', 'Example: If you are a non-Muslim, select the non-Muslim category. If you are associated with Tabligh, select Tabligh category. In this way you can select one or more of the mentioned categories.', 'উদাহরণঃ আপনি নওমুসলিম হলে, নওমুসলিম ক্যাটাগরি সিলেক্ট করুন। আপনি তাবলীগের সাথে যুক্ত থাকলে, তাবলীগ ক্যাটাগরি সিলেক্ট করুন। এভাবে উল্লিখিত এক বা একাধিক ক্যাটাগরি সিলেক্ট করতে পারবেন।', 1, -51, 1, 1, '1701170617JflZK', '2023-11-28 05:23:37', '2023-11-28 05:27:27'),
+(33, 2, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, -47, 1, 1, '1701170666kHxV8', '2023-11-28 05:24:26', NULL),
+(34, 3, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, -50, 1, 1, '1701170818RZ9FR', '2023-11-28 05:26:58', NULL),
+(35, 3, 'Groom\'s mobile number', 'পাত্রের মোবাইল নাম্বার', 'Candidate\'s personal mobile number is being taken for biodata verification. It will not be disclosed to anyone except the authorities.', 'বায়োডাটা ভেরিফিকেশনের জন্য পাত্রের ব্যক্তিগত মোবাইল নাম্বার নেয়া হচ্ছে। এটি কর্তৃপক্ষ বাদে কারো কাছে প্রকাশ করা হবে না।', 1, -52, 1, 1, '1701170932J9Rio', '2023-11-28 05:28:52', NULL),
+(36, 4, 'Occupation', 'পেশা', NULL, NULL, 2, -53, 1, 1, '1701171933ENp1l', '2023-11-28 05:45:33', NULL),
+(37, 4, 'Job details', 'পেশার বিস্তারিত বিবরণ', 'You can write your place of work, in which organization you are working, whether your income is halal or not.', 'আপনার কর্মস্থল কোথায়, আপনি কোন প্রতিষ্ঠানে কাজ করছেন, আপনার উপার্জন হালাল কি না ইত্যাদি লিখতে পারেন।', 1, -54, 1, 1, '1701172032HpA17', '2023-11-28 05:47:12', NULL),
+(38, 4, 'Monthly Income', 'মাসিক আয়', NULL, NULL, 1, -55, 1, 1, '1701172062LIUvw', '2023-11-28 05:47:42', NULL),
+(39, 5, 'Does the parent agree to your marriage?', 'অভিভাবক আপনার বিয়েতে রাজি কি না?', NULL, NULL, 1, -57, 1, 1, '1701172100WatEX', '2023-11-28 05:48:20', '2023-11-28 05:48:58'),
+(40, 5, 'Can you keep your wife on the screen after marriage?', 'বিয়ের পর স্ত্রীকে পর্দায় রাখতে পারবেন?', NULL, NULL, 1, -59, 1, 1, '1701172233SVQSv', '2023-11-28 05:50:33', NULL),
+(41, 5, 'Want to let his wife study after marriage?', 'বিয়ের পর স্ত্রীকে পড়াশোনা করতে দিতে চান?', NULL, NULL, 1, -60, 1, 1, '1701172250LVtBu', '2023-11-28 05:50:50', NULL),
+(42, 5, 'Want to let your wife work after marriage?', 'বিয়ের পর স্ত্রীকে চাকরী করতে দিতে চান?', NULL, NULL, 1, -61, 1, 1, '1701172267OUULg', '2023-11-28 05:51:07', NULL),
+(43, 5, 'Where will you take your wife after marriage?', 'বিয়ের পর স্ত্রীকে কোথায় নিয়ে থাকবেন?', NULL, NULL, 1, -62, 1, 1, '1701172286bcf97', '2023-11-28 05:51:26', NULL),
+(44, 5, 'Do you or your family expect any gifts from the bride?', 'আপনি বা আপনার পরিবার পাত্রীপক্ষের কাছে কোনো উপহার আশা করবেন কি না?', NULL, NULL, 1, -63, 1, 1, '1701172310lWbzh', '2023-11-28 05:51:50', NULL),
+(45, 5, 'Why are you getting married? What are your thoughts on marriage?', 'কেন বিয়ে করছেন? বিয়ে সম্পর্কে আপনার ধারণা কি?', NULL, NULL, 1, -64, 1, 1, '1701172344v9n9Q', '2023-11-28 05:52:24', NULL),
+(46, 6, 'Submitting your resume on the website, does your parent know?', 'ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক জানেন?', NULL, NULL, 2, -65, 1, 1, '1701172399TyjsO', '2023-11-28 05:53:19', NULL),
+(47, 6, 'Testify by Allah, that the information given is true?', 'আল্লাহ\'র শপথ করে সাক্ষ্য দিন, যে তথ্যগুলো দিয়েছেন সব সত্য?', NULL, NULL, 2, -66, 1, 1, '1701172426F1uaG', '2023-11-28 05:53:46', NULL),
+(48, 6, 'Providing any false information will not take the responsibility of the worldly legal and akhirat authorities. Do you agree?', 'কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার  কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?', NULL, NULL, 2, -67, 1, 1, '1701172456f0eHJ', '2023-11-28 05:54:16', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `question_sets`
 --
 
@@ -1063,6 +1158,18 @@ CREATE TABLE `question_sets` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `question_sets`
+--
+
+INSERT INTO `question_sets` (`id`, `title`, `title_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Educational Background', 'শিক্ষাগত যোগ্যতা', 1, 1, '2023-11-28 02:27:53', '2023-11-28 02:44:26'),
+(2, 'Family Info', 'পারিবারিক তথ্য', 2, 1, '2023-11-28 02:41:47', '2023-11-28 02:44:26'),
+(3, 'Personal Info', 'ব্যক্তিগত তথ্য', 3, 1, '2023-11-28 02:42:06', '2023-11-28 03:57:54'),
+(4, 'Occupational Info', 'পেশাগত তথ্য', 4, 1, '2023-11-28 02:42:49', '2023-11-28 02:44:26'),
+(5, 'Marriage Info', 'বিবাহ সম্পর্কিত তথ্য', 5, 1, '2023-11-28 02:43:10', '2023-11-28 02:44:26'),
+(6, 'Agreement', 'অঙ্গীকারনামা', 6, 1, '2023-11-28 02:43:34', '2023-11-28 02:44:26');
 
 -- --------------------------------------------------------
 
@@ -6293,9 +6400,8 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
 (2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
 (7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005035', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(35, 'Coby Gibbs', NULL, NULL, 'bulix@mailinator.com', NULL, '908466', NULL, '$2y$12$njW773nigjNRoiAiHOelAefx9JLhrFBl9gjPdWZlYuUbkJIYbjV2m', 'Autem tempore aperi', 3, 1, NULL, '2023-11-27 05:49:38', '2023-11-27 05:49:57'),
-(36, 'asdasd', NULL, NULL, 'asdasd@gmail.com', NULL, '398483', '2023-09-17 10:49:43', '$2y$12$J0Foqgw2VgWx.X27H5hmuuINCKMx6IzSEQP8srnjbgUTV3B/XqCwu', 'asdasd', 3, 1, NULL, '2023-11-27 05:54:12', '2023-11-27 06:34:50'),
-(37, 'Rhonda Bradford', NULL, NULL, 'vetufidiv@mailinator.com', NULL, '337388', NULL, '$2y$12$Xdf79p4jPSVE.iBXgKIjGuVqF1j1GlPA3A6KwgqL/qTbCp0dZ2FhO', 'Tempora enim pariatu', 3, 1, NULL, '2023-11-27 06:26:32', '2023-11-27 06:26:32');
+(42, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-27 23:52:17', 'eyJpdiI6IkE0QlAvaUtWMmpOMmlKbWRYa0xVN3c9PSIsInZhbHVlIjoia0RNRmR5R0FVYmljT0xxbjJaTlJTSFozM0JwYWw5bnlYdy9NUWQ4Umowbz0iLCJtYWMiOiI1ZDRkZTEwNGJkMTgxZmMyYzkzNTY4YTNhOThhODRjYjc5NWExZDU2NjRjM2JmMDRkNmZjM2E1MGMzZjAxNmJlIiwidGFnIjoiIn0=', NULL, 3, 1, NULL, NULL, NULL),
+(43, 'Md. Fahim Hossain', '116750798120712918592', 'google', 'fahimmit05@gmail.com', NULL, NULL, '2023-11-28 01:05:02', 'eyJpdiI6IllvaFYxMEo4Yld4UVQzYUk1aW9TRWc9PSIsInZhbHVlIjoiZXEyRjNQM2VleVBvQTB2R21OYWYyVGRrTnUwNlhVbCtESk1xVmliZm15MD0iLCJtYWMiOiIyOTFmZGQ3MDhhOWIwMTExNGY4M2U4NjBkZGVkOWIwZTE0NjdkMGQ0NjQ1ZmZlYTgwMTdmNTc3M2E0OTFlZGE0IiwidGFnIjoiIn0=', NULL, 3, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6576,6 +6682,12 @@ ALTER TABLE `privacy_policies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `question_sets`
 --
 ALTER TABLE `question_sets`
@@ -6682,7 +6794,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `biodata_types`
 --
 ALTER TABLE `biodata_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`
@@ -6790,13 +6902,13 @@ ALTER TABLE `logo_favicons`
 -- AUTO_INCREMENT for table `marital_conditions`
 --
 ALTER TABLE `marital_conditions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -6823,10 +6935,16 @@ ALTER TABLE `privacy_policies`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
 -- AUTO_INCREMENT for table `question_sets`
 --
 ALTER TABLE `question_sets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `refund_policies`
@@ -6874,7 +6992,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

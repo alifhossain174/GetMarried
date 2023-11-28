@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CkeditorController;
+use App\Http\Controllers\QuestionController;
 
 
 // Route::get('/link', function () {
@@ -11,7 +12,6 @@ use App\Http\Controllers\CkeditorController;
     // $target = '/home/public_html/storage/app/public';
     // $shortcut = '/home/public_html/public/storage';
     // symlink($target, $shortcut);
-
     // return "Storage link!";
 // });
 
@@ -47,23 +47,31 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/biodatatype', [ConfigController::class, 'rearrangeBiodataType'])->name('RearrangeBiodataType');
     Route::post('save/rearranged/biodatatype', [ConfigController::class, 'saveRearrangeBiodataType'])->name('SaveRearrangeBiodataType');
 
-     // Marital Condition
-     Route::get('view/all/marital/condition', [ConfigController::class, 'viewAllMaritalCondition'])->name('ViewAllMaritalCondition');
-     Route::post('add/new/marital/condition', [ConfigController::class, 'addNewMaritalCondition'])->name('AddNewMaritalCondition');
-     Route::get('delete/marital/condition/{id}', [ConfigController::class, 'deleteMaritalCondition'])->name('DeleteMaritalCondition');
-     Route::get('get/marital/condition/{id}', [ConfigController::class, 'maritalCondition'])->name('MaritalCondition');
-     Route::post('update/marital/condition', [ConfigController::class, 'updateMaritalCondition'])->name('UpdateMaritalCondition');
-     Route::get('rearrange/marital/condition', [ConfigController::class, 'rearrangeMaritalCondition'])->name('RearrangeMaritalCondition');
-     Route::post('save/rearranged/marital/condition', [ConfigController::class, 'saveRearrangeMaritalCondition'])->name('SaveRearrangeMaritalCondition');
+    // Marital Condition
+    Route::get('view/all/marital/condition', [ConfigController::class, 'viewAllMaritalCondition'])->name('ViewAllMaritalCondition');
+    Route::post('add/new/marital/condition', [ConfigController::class, 'addNewMaritalCondition'])->name('AddNewMaritalCondition');
+    Route::get('delete/marital/condition/{id}', [ConfigController::class, 'deleteMaritalCondition'])->name('DeleteMaritalCondition');
+    Route::get('get/marital/condition/{id}', [ConfigController::class, 'maritalCondition'])->name('MaritalCondition');
+    Route::post('update/marital/condition', [ConfigController::class, 'updateMaritalCondition'])->name('UpdateMaritalCondition');
+    Route::get('rearrange/marital/condition', [ConfigController::class, 'rearrangeMaritalCondition'])->name('RearrangeMaritalCondition');
+    Route::post('save/rearranged/marital/condition', [ConfigController::class, 'saveRearrangeMaritalCondition'])->name('SaveRearrangeMaritalCondition');
 
-      // Question Set
-      Route::get('view/all/question/set', [ConfigController::class, 'viewAllQuestionSets'])->name('ViewAllQuestionSets');
-      Route::post('add/new/question/set', [ConfigController::class, 'addNewQuestionSet'])->name('AddNewQuestionSet');
-      Route::get('delete/question/set/{id}', [ConfigController::class, 'deleteQuestionSet'])->name('DeleteQuestionSet');
-      Route::get('get/question/set/{id}', [ConfigController::class, 'questionSet'])->name('QuestionSet');
-      Route::post('update/question/set', [ConfigController::class, 'updateQuestionSet'])->name('UpdateQuestionSet');
-      Route::get('rearrange/question/set', [ConfigController::class, 'rearrangeQuestionSet'])->name('RearrangeQuestionSet');
-      Route::post('save/rearranged/question/set', [ConfigController::class, 'saveRearrangeQuestionSet'])->name('SaveRearrangeQuestionSet');
+    // Question Set
+    Route::get('view/all/question/set', [ConfigController::class, 'viewAllQuestionSets'])->name('ViewAllQuestionSets');
+    Route::post('add/new/question/set', [ConfigController::class, 'addNewQuestionSet'])->name('AddNewQuestionSet');
+    Route::get('delete/question/set/{id}', [ConfigController::class, 'deleteQuestionSet'])->name('DeleteQuestionSet');
+    Route::get('get/question/set/{id}', [ConfigController::class, 'questionSet'])->name('QuestionSet');
+    Route::post('update/question/set', [ConfigController::class, 'updateQuestionSet'])->name('UpdateQuestionSet');
+    Route::get('rearrange/question/set', [ConfigController::class, 'rearrangeQuestionSet'])->name('RearrangeQuestionSet');
+    Route::post('save/rearranged/question/set', [ConfigController::class, 'saveRearrangeQuestionSet'])->name('SaveRearrangeQuestionSet');
+
+    // Questions
+    Route::get('view/all/questions', [QuestionController::class, 'viewAllQuestions'])->name('ViewAllQuestions');
+    Route::get('create/question', [QuestionController::class, 'createQuestion'])->name('CreateQuestion');
+    Route::post('save/new/question', [QuestionController::class, 'saveNewQuestion'])->name('SaveNewQuestion');
+    Route::get('edit/question/{slug}', [QuestionController::class, 'editQuestion'])->name('EditQuestion');
+    Route::post('update/question', [QuestionController::class, 'updateQuestionInfo'])->name('UpdateQuestionInfo');
+    Route::get('get/question/{id}', [QuestionController::class, 'getQuestionInfo'])->name('GetQuestionInfo');
 
 
 

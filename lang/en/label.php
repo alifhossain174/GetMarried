@@ -87,4 +87,10 @@ return [
     'user_menu_report_attachment' => 'Attachment',
     'user_menu_report_send' => 'Send',
     'user_menu_report_write_here' => 'Write From Here',
+
+    // biodata
+    'biodata' => 'Biodata',
+    'biodata_found' => 'biodata found!',
+    'biodata_no' => 'Biodata No',
+    'biodata_search' => 'Search',
 ];

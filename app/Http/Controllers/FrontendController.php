@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\BiodataType;
 use App\Models\FaqConfig;
 use App\Models\Faq;
 use App\Models\HomepageBioData;
+use App\Models\MaritalCondition;
 use App\Models\MobileApp;
 use App\Models\PrivacyPolicy;
 use App\Models\RefundPolicy;
@@ -25,6 +27,7 @@ use App\Models\Instruction;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -37,7 +40,10 @@ class FrontendController extends Controller
         $howItWorksConfig = HowItWorksConfig::where('id', 1)->first();
         $howItWorks = HowItWorks::orderBy('serial', 'asc')->get();
         $mobileAppSection = MobileApp::where('id', 1)->first();
-        return view('frontend.index', compact('banner', 'homePageBiodata', 'homePageStatConfig', 'homePageStatistics', 'howItWorksConfig', 'howItWorks', 'mobileAppSection'));
+        $biodataTypes = BiodataType::where('status', 1)->orderBy('serial', 'asc')->get();
+        $maritalConditions = MaritalCondition::where('status', 1)->orderBy('serial', 'asc')->get();
+        $districts = DB::table('districts')->orderBy('id', 'asc')->get();
+        return view('frontend.index', compact('banner', 'homePageBiodata', 'homePageStatConfig', 'homePageStatistics', 'howItWorksConfig', 'howItWorks', 'mobileAppSection', 'biodataTypes', 'maritalConditions', 'districts'));
     }
 
     public function about(){

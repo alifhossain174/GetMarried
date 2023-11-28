@@ -90,6 +90,11 @@ return [
     'user_menu_report_send' => 'পাঠান',
     'user_menu_report_write_here' => 'এখান থেকে লিখুন',
 
+    // biodata
+    'biodata' => 'বায়োডাটা সমূহ',
+    'biodata_found' => 'টি বায়োডাটা পাওয়া গেছে!',
+    'biodata_no' => 'বায়োডাটা নং',
+    'biodata_search' => 'খুঁজুন',
 
 
 ];

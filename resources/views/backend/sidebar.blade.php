@@ -18,22 +18,10 @@
                     <li><a href="{{url('/view/all/biodatatype')}}">Biodata Type</a></li>
                     <li><a href="{{url('/view/all/marital/condition')}}">Marital Condition</a></li>
                     <li><a href="{{url('/view/all/question/set')}}">Question Set</a></li>
+                    <li><a href="{{url('/view/all/questions')}}">Questions</a></li>
                 </ul>
             </div>
         </li>
-
-        {{-- <li>
-            <a href="#sidebarPackages" data-bs-toggle="collapse">
-                <i data-feather="settings"></i>
-                <span> Biodata Type </span>
-                <span class="menu-arrow"></span>
-            </a>
-            <div class="collapse" id="sidebarPackages">
-                <ul class="nav-second-level">
-                    <li><a href="{{url('/view/all/biodatatype')}}">Biodata Type</a></li>
-                </ul>
-            </div>
-        </li> --}}
 
         <li><a href="{{url('/logo/favicon')}}"><i data-feather="image"></i><span> Logo, Icon & Banner </span></a></li>
         <li><a href="{{url('/website/theme/page')}}"><i class="bi bi-palette" style="font-size: 15px;"></i><span> Site Theme Color </span></a></li>
