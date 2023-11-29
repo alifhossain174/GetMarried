@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BiodataType;
+use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use Illuminate\Http\Request;
 
@@ -42,7 +44,9 @@ class UserDashboardController extends Controller
     }
     public function userEditBiodata(){
         $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
-        return view('frontend.auth.edit_biodata', compact('questionSets'));
+        $biodataTypes = BiodataType::where('status', 1)->orderBy('serial', 'asc')->get();
+        $maritalConditions = MaritalCondition::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions'));
     }
     public function userCreateReport(){
         return view('frontend.auth.create_report');

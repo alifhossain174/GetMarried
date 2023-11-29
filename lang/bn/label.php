@@ -97,6 +97,9 @@ return [
     'biodata_search' => 'খুঁজুন',
     'general_info' => 'সাধারণ তথ্য',
     'contact' => 'যোগাযোগ',
+    'biodata_type' => 'বায়োডাটার ধরন',
+    'date_of_birth' => 'জন্মসন',
+    'date_of_birth_hints' => '* অবশ্যই আসল জন্মসন দিবেন। NID বা জন্মনিবন্ধনে কমানো বয়স থাকলে সেটা দিবেন না।',
 
 
 ];

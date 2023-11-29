@@ -95,4 +95,7 @@ return [
     'biodata_search' => 'Search',
     'general_info' => 'General Info',
     'contact' => 'Contact',
+    'biodata_type' => 'Biodata Type',
+    'date_of_birth' => 'Date of Birth',
+    'date_of_birth_hints' => '* Must give original birth certificate. Do not provide NID or birth certificate if there is reduced age.',
 ];
