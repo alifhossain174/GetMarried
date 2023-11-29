@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MCQ;
 use App\Models\Question;
 use App\Models\QuestionSet;
 use Carbon\Carbon;
@@ -63,7 +64,7 @@ class QuestionController extends Controller
 
     public function saveNewQuestion(Request $request){
 
-        Question::insert([
+        $questionId = Question::insertGetId([
             'question_set_id' => $request->question_set_id,
             'question' => $request->question,
             'question_bn' => $request->question_bn,
@@ -77,6 +78,20 @@ class QuestionController extends Controller
             'created_at' => Carbon::now()
         ]);
 
+
+        if($request->type == 2 && count($request->option) >= 1){
+            $index = 0;
+            foreach($request->option as $option){
+                MCQ::insert([
+                    'question_id' => $questionId,
+                    'option' => $option,
+                    'option_bn' => $request->option_bn[$index],
+                    'created_at' => Carbon::now()
+                ]);
+                $index++;
+            }
+        }
+
         Toastr::success('Question Saved Successfully', 'Success');
         return redirect('view/all/questions');
     }
@@ -84,7 +99,8 @@ class QuestionController extends Controller
     public function editQuestion($slug){
         $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
         $question = Question::where('slug', $slug)->first();
-        return view('backend.question.updated', compact('questionSets', 'question'));
+        $options = MCQ::where('question_id', $question->id)->get();
+        return view('backend.question.updated', compact('questionSets', 'question', 'options'));
     }
 
     public function updateQuestionInfo(Request $request){
@@ -100,6 +116,35 @@ class QuestionController extends Controller
             'required' => $request->required,
             'updated_at' => Carbon::now()
         ]);
+
+        if($request->type == 2 && count($request->option) >= 1){
+            $index = 0;
+            $availableOptions = array();
+            foreach($request->option as $option){
+                if(isset($request->option_id[$index]) && $request->option_id[$index] > 0){
+                    MCQ::where('id', $request->option_id[$index])->update([
+                        'option' => $option,
+                        'option_bn' => $request->option_bn[$index],
+                        'updated_at' => Carbon::now()
+                    ]);
+                    $availableOptions[] = $request->option_id[$index];
+                } else {
+                    $mcqId = MCQ::insertGetId([
+                        'question_id' => $request->question_id,
+                        'option' => $option,
+                        'option_bn' => $request->option_bn[$index],
+                        'created_at' => Carbon::now()
+                    ]);
+                    $availableOptions[] = $mcqId;
+                }
+                $index++;
+            }
+            MCQ::whereNotIn('id', $availableOptions)->delete();
+        }
+
+        if($request->type == 1){
+            MCQ::where('question_id', $request->question_id)->delete();
+        }
 
         Toastr::success('Question Updated Successfully', 'Success');
         return redirect('view/all/questions');
@@ -125,6 +170,12 @@ class QuestionController extends Controller
         }
         Toastr::success('Item has been Rerranged', 'Success');
         return redirect('view/all/questions');
+    }
+
+    public function deleteQuestion($id){
+        MCQ::where('question_id', $id)->delete();
+        Question::where('id', $id)->delete();
+        return response()->json(['success' => 'Deleted Successfully']);
     }
 
 }

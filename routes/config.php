@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('edit/question/{slug}', [QuestionController::class, 'editQuestion'])->name('EditQuestion');
     Route::post('update/question', [QuestionController::class, 'updateQuestionInfo'])->name('UpdateQuestionInfo');
     Route::get('get/question/{id}', [QuestionController::class, 'getQuestionInfo'])->name('GetQuestionInfo');
+    Route::get('delete/question/{id}', [QuestionController::class, 'deleteQuestion'])->name('DeleteQuestion');
     Route::get('rearrange/questions', [QuestionController::class, 'rearrangeQuestions'])->name('RearrangeQuestions');
     Route::post('save/rearranged/questions', [QuestionController::class, 'saveRearrangedQuestions'])->name('SaveRearrangedQuestions');
 

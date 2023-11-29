@@ -103,6 +103,31 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div id="mcq_set" class="row mb-3" style="@if($question->type == 1) display: none; @endif margin-top: -20px;">
+                            <label for="type" class="col-lg-2 col-md-2 col-form-label">&nbsp;</label>
+                            <div class="col-lg-3 col-md-3">
+                                <label class="col-form-label">Add MCQ Options</label>
+                                @php
+                                    $sl = 1;
+                                @endphp
+                                @foreach ($options as $option)
+                                <div class="form-group">
+                                    <input type="hidden" name="option_id[]" value="{{$option->id}}">
+                                    <input type="text" name="option[]" value="{{$option->option}}" class="form-control mb-1 d-inline-block" style="width: 46%;" placeholder="Option 1">
+                                    <input type="text" name="option_bn[]" value="{{$option->option_bn}}" class="form-control mb-1 d-inline-block" style="width: 46%;" placeholder="Option 1 (BN)">
+                                    @if($sl > 1)
+                                    <a class="d-inline-block text-danger" onclick="removeRow(this)" style="cursor: pointer; font-size: 18px; margin: 2px;"><i class="bi bi-trash"></i></a>
+                                    @endif
+                                </div>
+                                @php
+                                    $sl++;
+                                @endphp
+                                @endforeach
+                                <a class="btn btn-sm btn-info rounded" onclick="addMoreOption()"><i class="bi bi-plus-lg"></i> Add More Option</a>
+                            </div>
+                        </div>
+
                         <div class="row mb-3">
                             <label for="required" class="col-lg-2 col-md-2 col-form-label">Is Required?</label>
                             <div class="col-lg-3 col-md-3">
@@ -147,3 +172,33 @@
     </div>
     <!-- end row -->
 @endsection
+
+
+@section('footer_js')
+    <script>
+
+        function addMoreOption(){
+            var serial = $(".form-group").length+1
+            $str = "<div class='form-group'><input type='text' name='option[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+"'> <input type='text' name='option_bn[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+" (BN)'><a class='d-inline-block text-danger' onclick='removeRow(this)' style='cursor: pointer; font-size: 18px; margin: 4px;'><i class='bi bi-trash'></i></a></div>";
+            $(".form-group:last").append($str);
+        }
+
+        function removeRow(btndel){
+            if (typeof(btndel) == "object") {
+                $(btndel).closest("div").remove();
+            } else {
+                return false;
+            }
+        }
+
+        function checkMcqOpenEnded(){
+            var questionType = $("#type").val()
+            if(questionType == 2){
+                $("#mcq_set").css("display", "flex");
+            } else {
+                $("#mcq_set").css("display", "none");
+            }
+        }
+    </script>
+@endsection
+
