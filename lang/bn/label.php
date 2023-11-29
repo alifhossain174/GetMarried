@@ -95,6 +95,8 @@ return [
     'biodata_found' => 'টি বায়োডাটা পাওয়া গেছে!',
     'biodata_no' => 'বায়োডাটা নং',
     'biodata_search' => 'খুঁজুন',
+    'general_info' => 'সাধারণ তথ্য',
+    'contact' => 'যোগাযোগ',
 
 
 ];

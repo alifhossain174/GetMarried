@@ -93,4 +93,6 @@ return [
     'biodata_found' => 'biodata found!',
     'biodata_no' => 'Biodata No',
     'biodata_search' => 'Search',
+    'general_info' => 'General Info',
+    'contact' => 'Contact',
 ];

@@ -104,6 +104,7 @@ class QuestionController extends Controller
     }
 
     public function updateQuestionInfo(Request $request){
+
         Question::where('id', $request->question_id)->update([
             'question_set_id' => $request->question_set_id,
             'question' => $request->question,
@@ -111,7 +112,6 @@ class QuestionController extends Controller
             'hints' => $request->hints,
             'hints_bn' => $request->hints_bn,
             'type' => $request->type,
-            'serial' => Question::min('serial')-1,
             'status' => $request->status,
             'required' => $request->required,
             'updated_at' => Carbon::now()
@@ -139,7 +139,7 @@ class QuestionController extends Controller
                 }
                 $index++;
             }
-            MCQ::whereNotIn('id', $availableOptions)->delete();
+            MCQ::whereNotIn('id', $availableOptions)->where('question_id', $request->question_id)->delete();
         }
 
         if($request->type == 1){

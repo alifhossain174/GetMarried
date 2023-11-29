@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QuestionSet;
 use Illuminate\Http\Request;
 
 class UserDashboardController extends Controller
@@ -40,7 +41,8 @@ class UserDashboardController extends Controller
         return view('frontend.auth.biodata_preview');
     }
     public function userEditBiodata(){
-        return view('frontend.auth.edit_biodata');
+        $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.auth.edit_biodata', compact('questionSets'));
     }
     public function userCreateReport(){
         return view('frontend.auth.create_report');
