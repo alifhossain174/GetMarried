@@ -403,18 +403,26 @@
                                                         <div class="edit-biodata-form-data">
 
                                                             @foreach ($questions as $question)
+                                                            @php
+                                                                if($question->type == 2){
+                                                                    $options = DB::table('m_c_q_s')->where('question_id', $question->id)->where('status', 1)->orderBy('serial', 'asc')->get();
+                                                                }
+                                                            @endphp
                                                             <div class="form-group">
                                                                 <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }} @if($question->required)<span>*</span>@endif</label>
+                                                                <input type="hidden" name="question[]" value="{{$question->id}}">
 
-                                                                @if($question->type == 2)
-                                                                <select class="hero-search-filter-select select2" name="state" required>
-                                                                    <option value="0">নির্বাচন করুন</option>
-                                                                    <option value="1">জেনারেল</option>
-                                                                    <option value="2">কওমি</option>
-                                                                    <option value="3">আলিয়া</option>
+                                                                @if($question->type == 1)
+                                                                <textarea name="answer[]" @if($question->required) required @endif></textarea>
+                                                                @elseif($question->type == 2)
+                                                                <select class="hero-search-filter-select select2" name="answer[]" @if($question->required) required @endif>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    @foreach ($options as $option)
+                                                                    <option value="{{$option->id}}">{{ App::currentLocale() == 'en' ? $option->option : $option->option_bn }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                                 @else
-                                                                <textarea name="educational-skill" required></textarea>
+                                                                <input type="text" name="asnser[]" @if($question->required) required @endif>
                                                                 @endif
 
                                                                 @if($question->required)
