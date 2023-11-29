@@ -92,7 +92,7 @@
                         <div class="row mb-3">
                             <label for="type" class="col-lg-2 col-md-2 col-form-label">Question Type</label>
                             <div class="col-lg-3 col-md-3">
-                                <select class="form-select @error('type') is-invalid @enderror" id="type" name="type">
+                                <select class="form-select @error('type') is-invalid @enderror" onchange="checkMcqOpenEnded()" id="type" name="type">
                                     <option value="1" @if($question->type == 1) selected @endif>Open Ended</option>
                                     <option value="2" @if($question->type == 2) selected @endif>MCQ</option>
                                 </select>
@@ -111,6 +111,7 @@
                                 @php
                                     $sl = 1;
                                 @endphp
+                                @if(count($options) > 0)
                                 @foreach ($options as $option)
                                 <div class="form-group">
                                     <input type="hidden" name="option_id[]" value="{{$option->id}}">
@@ -124,6 +125,13 @@
                                     $sl++;
                                 @endphp
                                 @endforeach
+                                @else
+                                <div class="form-group">
+                                    <input type="text" name="option[]" class="form-control mb-1 d-inline-block" style="width: 46%;" placeholder="Option 1">
+                                    <input type="text" name="option_bn[]" class="form-control mb-1 d-inline-block" style="width: 46%;" placeholder="Option 1 (BN)">
+                                    {{-- <a class="d-inline-block text-danger" style="cursor: pointer; font-size: 18px;"><i class="bi bi-trash"></i></a> --}}
+                                </div>
+                                @endif
                                 <a class="btn btn-sm btn-info rounded" onclick="addMoreOption()"><i class="bi bi-plus-lg"></i> Add More Option</a>
                             </div>
                         </div>
