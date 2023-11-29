@@ -187,7 +187,7 @@
 
         function addMoreOption(){
             var serial = $(".form-group").length+1
-            $str = "<div class='form-group'><input type='text' name='option[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+"'> <input type='text' name='option_bn[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+" (BN)'><a class='d-inline-block text-danger' onclick='removeRow(this)' style='cursor: pointer; font-size: 18px; margin: 4px;'><i class='bi bi-trash'></i></a></div>";
+            $str = "<div class='form-group'><input type='text' name='option[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+"'> <input type='text' name='option_bn[]' class='form-control mb-1 d-inline-block' style='width: 46%;' placeholder='Option "+serial+" (BN)'><a class='d-inline-block text-danger' onclick='removeRow(this)' style='cursor: pointer; font-size: 18px; margin: 2px;'><i class='bi bi-trash'></i></a></div>";
             $(".form-group:last").append($str);
         }
 
