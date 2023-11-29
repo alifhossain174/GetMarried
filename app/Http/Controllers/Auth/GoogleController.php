@@ -7,6 +7,7 @@ use Socialite;
 use Exception;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +35,7 @@ class GoogleController extends Controller
                     'email' => $user->email,
                     'provider_name' => 'google',
                     'provider_id'=> $user->id,
-                    'password' => encrypt('GetMarried1234'),
+                    'password' => Hash::make('GetMarried1234'),
                     'user_type' => 3,
                     'status' => 1,
                     'email_verified_at' => Carbon::now()

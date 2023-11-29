@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('question_bn')->nullable();
             $table->longText('hints')->nullable();
             $table->longText('hints_bn')->nullable();
-            $table->tinyInteger('type')->default(1)->comment("1=>Open Ended; 2=>MCQ");
+            $table->tinyInteger('type')->default(1)->comment("1=>Open Ended; 2=>MCQ; 3=>Short Question");
             $table->double('serial')->default(1);
             $table->tinyInteger('required')->default(1)->comment('1=>Yes; 0=>No');
             $table->tinyInteger('status')->default(1)->comment('1=>Active; 0=>Inactive');

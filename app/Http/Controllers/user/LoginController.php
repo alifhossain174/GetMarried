@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\SmsGateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserVerificationMail;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +43,42 @@ class LoginController extends Controller
                 $mailData['code'] = $randomCode;
                 Mail::to(trim($userInfo->email))->send(new UserVerificationMail($mailData));
             } else {
-                // send otp to mobile no
+
+                $smsGateway = SmsGateway::where('status', 1)->first();
+                if($smsGateway && $smsGateway->provider_name == 'Reve'){
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'apikey' => $smsGateway->api_key,
+                        'secretkey' => $smsGateway->secret_key,
+                        "callerID" => $smsGateway->sender_id,
+                        "toUser" => $userInfo->contact,
+                        "messageContent" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } elseif($smsGateway && $smsGateway->provider_name == 'ElitBuzz'){
+
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'api_key' => $smsGateway->api_key,
+                        "type" => "text",
+                        "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
+                        "senderid" => $smsGateway->sender_id,
+                        "msg" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } else {
+                    Toastr::error('No SMS Gateway is Active Now', 'Failed to send SMS');
+                    return back();
+                }
+
             }
 
             return view('verification.notice');
@@ -70,7 +107,42 @@ class LoginController extends Controller
                 $mailData['code'] = $randomCode;
                 Mail::to(trim($userInfo->email))->send(new UserVerificationMail($mailData));
             } else {
-                // sms api code here
+
+                $smsGateway = SmsGateway::where('status', 1)->first();
+                if($smsGateway && $smsGateway->provider_name == 'Reve'){
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'apikey' => $smsGateway->api_key,
+                        'secretkey' => $smsGateway->secret_key,
+                        "callerID" => $smsGateway->sender_id,
+                        "toUser" => $userInfo->contact,
+                        "messageContent" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } elseif($smsGateway && $smsGateway->provider_name == 'ElitBuzz'){
+
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'api_key' => $smsGateway->api_key,
+                        "type" => "text",
+                        "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
+                        "senderid" => $smsGateway->sender_id,
+                        "msg" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } else {
+                    Toastr::error('No SMS Gateway is Active Now', 'Failed to send SMS');
+                    return back();
+                }
+
             }
 
             Toastr::success('Verification Code Sent', 'Resend Verification Code');
@@ -141,7 +213,40 @@ class LoginController extends Controller
                     'verification_code' => $randomCode
                 ]);
 
-                // sms API Code Here
+                $smsGateway = SmsGateway::where('status', 1)->first();
+                if($smsGateway && $smsGateway->provider_name == 'Reve'){
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'apikey' => $smsGateway->api_key,
+                        'secretkey' => $smsGateway->secret_key,
+                        "callerID" => $smsGateway->sender_id,
+                        "toUser" => $userInfo->contact,
+                        "messageContent" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } elseif($smsGateway && $smsGateway->provider_name == 'ElitBuzz'){
+
+                    $response = Http::get($smsGateway->api_endpoint, [
+                        'api_key' => $smsGateway->api_key,
+                        "type" => "text",
+                        "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
+                        "senderid" => $smsGateway->sender_id,
+                        "msg" => "Verification Code is : ". $randomCode
+                    ]);
+
+                    if($response->status() != 200){
+                        Toastr::error('Something Went Wrong', 'Failed to send SMS');
+                        return back();
+                    }
+
+                } else {
+                    Toastr::error('No SMS Gateway is Active Now', 'Failed to send SMS');
+                    return back();
+                }
 
                 session(['username' => $request->username]);
 

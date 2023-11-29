@@ -1,5 +1,13 @@
 @extends('frontend.master')
 
+@section('header_css')
+    <style>
+        input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea{
+            color: #1e1e1e;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Auth Page  Area -->
     <section class="auth-page-area">
@@ -58,22 +66,19 @@
                                     </div>
                                     <a href="{{ url('user/forget/password') }}">{{ __('label.forget_password') }}</a>
                                 </div>
-                                <button type="submit"
-                                    class="auth-card-form-btn theme-btn btn btn-primary">{{ __('label.sign_in') }}</button>
+                                <button type="submit" class="auth-card-form-btn theme-btn btn btn-primary">{{ __('label.sign_in') }}</button>
 
                             </form>
                             <div class="auth-card-bottom">
                                 <span>{{ __('label.or') }}</span>
                                 <div class="auth-card-google-btn">
                                     <a href="{{ url('auth/google') }}">
-                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/google.svg"
-                                            alt="#" />
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/google.svg" alt="#" />
                                         {{ __('label.sign_in_with_google') }}
                                     </a>
                                 </div>
                                 <p class="auth-card-bottom-link">
-                                    {{ __('label.dont_have_an_account') }}<a
-                                        href="{{ url('user/register') }}">{{ __('label.register_account') }}</a>
+                                    {{ __('label.dont_have_an_account') }}<a href="{{ url('user/register') }}">{{ __('label.register_account') }}</a>
                                 </p>
                             </div>
                         </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\PaymentGateway;
 use App\Models\WebsiteLanguage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
+use App\Models\SmsGateway;
 use Illuminate\Support\Str;
 
 class ConfigController extends Controller
@@ -30,6 +32,173 @@ class ConfigController extends Controller
         }
 
         return response()->json(['success'=> 'Updated Successfully']);
+    }
+
+    // sms gateway
+    public function viewSmsGateways(){
+        $gateways = SmsGateway::orderBy('id', 'asc')->get();
+        return view('backend.sms_gateway', compact('gateways'));
+    }
+
+    public function updateSmsGatewayInfo(Request $request){
+        $provider = $request->provider;
+
+        DB::table('sms_gateways')->update([
+            'status' => 0,
+            'updated_at' => Carbon::now()
+        ]);
+
+        if($provider == 'elitbuzz'){ //ID 1 => Elitbuzz
+            SmsGateway::where('id', 1)->update([
+                'api_endpoint' => $request->api_endpoint,
+                'api_key' => $request->api_key,
+                'sender_id' => $request->sender_id,
+                'status' => 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'revesms'){ //ID 2 => Revesms
+            SmsGateway::where('id', 2)->update([
+                'api_endpoint' => $request->api_endpoint,
+                'api_key' => $request->api_key,
+                'secret_key' => $request->secret_key,
+                'sender_id' => $request->sender_id,
+                'status' => 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        Toastr::success('Info Updated', 'Success');
+        return back();
+
+    }
+
+    // payment gateway
+    public function viewPaymentGateways(){
+        $gateways = PaymentGateway::orderBy('id', 'asc')->get();
+        return view('backend.payment_gateway', compact('gateways'));
+    }
+
+    public function updatePaymentGatewayInfo(Request $request){
+        $provider = $request->provider_name;
+
+        if($provider == 'ssl_commerz'){
+            PaymentGateway::where('id', 1)->update([
+                'api_key' => $request->api_key,
+                'secret_key' => $request->secret_key,
+                'username' => $request->username,
+                'password' => $request->password,
+                'live' => $request->live == '' ? 0 : $request->live,
+                'status' => $request->status,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'stripe'){
+            PaymentGateway::where('id', 2)->update([
+                'api_key' => $request->api_key,
+                'secret_key' => $request->secret_key,
+                'username' => $request->username,
+                'password' => $request->password,
+                'live' => $request->live == '' ? 0 : $request->live,
+                'status' => $request->status,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'bkash'){
+            PaymentGateway::where('id', 3)->update([
+                'api_key' => $request->api_key,
+                'secret_key' => $request->secret_key,
+                'username' => $request->username,
+                'password' => $request->password,
+                'live' => $request->live == '' ? 0 : $request->live,
+                'status' => $request->status,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'amar_pay'){
+            PaymentGateway::where('id', 4)->update([
+                'api_key' => $request->api_key,
+                'secret_key' => $request->secret_key,
+                'username' => $request->username,
+                'password' => $request->password,
+                'live' => $request->live == '' ? 0 : $request->live,
+                'status' => $request->status,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        Toastr::success('Payment Gateway Info Updated', 'Updated Successfully');
+        return back();
+
+    }
+
+    public function changePaymentGatewayStatus($provider){
+
+        if($provider == 'ssl_commerz'){ //ID 1 => ssl_commerz
+            $info = PaymentGateway::where('id', 1)->first();
+
+            PaymentGateway::where('id', 1)->update([
+                'status' => $info->status == 1 ? 0 : 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'stripe'){ //ID 2 => stripe
+            $info = PaymentGateway::where('id', 2)->first();
+
+            PaymentGateway::where('id', 2)->update([
+                'status' => $info->status == 1 ? 0 : 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'bkash'){ //ID 3 => bkash
+            $info = PaymentGateway::where('id', 3)->first();
+
+            PaymentGateway::where('id', 3)->update([
+                'status' => $info->status == 1 ? 0 : 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'amar_pay'){ //ID 4 => amar_pay
+            $info = PaymentGateway::where('id', 4)->first();
+
+            PaymentGateway::where('id', 4)->update([
+                'status' => $info->status == 1 ? 0 : 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        return response()->json(['success' => 'Updated Successfully.']);
+    }
+
+    public function changeGatewayStatus($provider){
+
+        DB::table('sms_gateways')->update([
+            'status' => 0,
+            'updated_at' => Carbon::now()
+        ]);
+
+        if($provider == 'elitbuzz'){ //ID 1 => Elitbuzz
+            SmsGateway::where('id', 1)->update([
+                'status' => 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        if($provider == 'revesms'){ //ID 2 => Revesms
+            SmsGateway::where('id', 2)->update([
+                'status' => 1,
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        return response()->json(['success' => 'Updated Successfully.']);
     }
 
 

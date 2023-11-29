@@ -38,6 +38,19 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('language/page', [ConfigController::class, 'languagePage'])->name('LanguagePage');
     Route::get('set/default/language/{code}/{value}', [ConfigController::class, 'setDefaultLanguage'])->name('SetDefaultLanguage');
 
+
+    // system route for sms gateway
+    Route::get('/setup/sms/gateways', [ConfigController::class, 'viewSmsGateways'])->name('ViewSmsGateways');
+    Route::post('/update/sms/gateway/info', [ConfigController::class, 'updateSmsGatewayInfo'])->name('UpdateSmsGatewayInfo');
+    Route::get('/change/gateway/status/{provider}', [ConfigController::class, 'changeGatewayStatus'])->name('ChangeGatewayStatus');
+
+
+    // system route for payment gateway
+    Route::get('/setup/payment/gateways', [ConfigController::class, 'viewPaymentGateways'])->name('ViewPaymentGateways');
+    Route::post('/update/payment/gateway/info', [ConfigController::class, 'updatePaymentGatewayInfo'])->name('UpdatePaymentGatewayInfo');
+    Route::get('/change/payment/gateway/status/{provider}', [ConfigController::class, 'changePaymentGatewayStatus'])->name('ChangePaymentGatewayStatus');
+
+
     // BioDataType
     Route::get('view/all/biodatatype', [ConfigController::class, 'viewAllBiodataType'])->name('ViewAllBiodataType');
     Route::post('add/new/biodatatype', [ConfigController::class, 'addNewBiodataType'])->name('AddNewBiodataType');

@@ -1,5 +1,13 @@
 @extends('frontend.master')
 
+@section('header_css')
+    <style>
+        input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea{
+            color: #1e1e1e;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Auth Page  Area -->
     <section class="auth-page-area">

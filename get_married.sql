@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 07:13 AM
+-- Generation Time: Nov 29, 2023 at 12:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1020,7 +1020,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (93, '2023_11_26_084712_create_question_sets_table', 59),
 (95, '2023_11_28_085440_create_questions_table', 60),
 (96, '2023_11_28_120900_create_m_c_q_s_table', 61),
-(97, '2023_11_29_054853_create_bio_data_table', 62);
+(97, '2023_11_29_054853_create_bio_data_table', 62),
+(98, '2023_11_29_094605_create_sms_gateways_table', 63),
+(99, '2023_11_29_105300_create_payment_gateways_table', 64);
 
 -- --------------------------------------------------------
 
@@ -1071,6 +1073,78 @@ CREATE TABLE `m_c_q_s` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `m_c_q_s`
+--
+
+INSERT INTO `m_c_q_s` (`id`, `question_id`, `option`, `option_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
+(85, 2, 'Under S.S.C', 'এস.এস.সি\'র নিচে', 1, 1, '2023-11-28 23:03:29', '2023-11-29 00:17:52'),
+(87, 1, 'General', 'জেনারেল', 1, 1, '2023-11-28 23:06:18', '2023-11-29 00:14:22'),
+(88, 1, 'Qawmi', 'কওমি', 1, 1, '2023-11-28 23:06:18', '2023-11-29 00:14:22'),
+(89, 1, 'Alia', 'আলিয়া', 1, 1, '2023-11-29 00:14:22', NULL),
+(90, 2, 'S.S.C', 'এস.এস.সি', 1, 1, '2023-11-29 00:17:52', NULL),
+(91, 2, 'H.S.C', 'এইচ.এস.সি', 1, 1, '2023-11-29 00:17:52', NULL),
+(92, 2, 'Diploma Ongoing', 'ডিপ্লোমা চলমান', 1, 1, '2023-11-29 00:17:52', NULL),
+(93, 2, 'Diploma', 'ডিপ্লোমা', 1, 1, '2023-11-29 00:17:52', NULL),
+(94, 2, 'Graduation Ongoing', 'স্নাতক চলমান', 1, 1, '2023-11-29 00:17:52', NULL),
+(95, 2, 'Graduation', 'স্নাতক', 1, 1, '2023-11-29 00:17:52', NULL),
+(96, 2, 'Post Graduate', 'স্নাতকোত্তর', 1, 1, '2023-11-29 00:17:52', NULL),
+(97, 2, 'Doctorate', 'ডক্টরেট', 1, 1, '2023-11-29 00:17:52', NULL),
+(98, 5, 'Yes, Alive', 'জী, জীবিত', 1, 1, '2023-11-29 00:18:46', NULL),
+(99, 5, 'No, Dead', 'না, মৃত', 1, 1, '2023-11-29 00:18:46', NULL),
+(100, 8, 'Yes, Alive', 'জী, জীবিত', 1, 1, '2023-11-29 00:19:16', NULL),
+(101, 8, 'No, Dead', 'না, মৃত', 1, 1, '2023-11-29 00:19:16', NULL),
+(102, 10, 'No Brother', 'ভাই নেই', 1, 1, '2023-11-29 00:24:41', NULL),
+(103, 10, '1', '১', 1, 1, '2023-11-29 00:24:41', NULL),
+(104, 10, '2', '২', 1, 1, '2023-11-29 00:24:41', NULL),
+(105, 10, '3', '৩', 1, 1, '2023-11-29 00:24:41', NULL),
+(106, 10, '4', '৪', 1, 1, '2023-11-29 00:24:41', NULL),
+(107, 10, '5', '৫', 1, 1, '2023-11-29 00:24:41', NULL),
+(108, 10, '6', '৬', 1, 1, '2023-11-29 00:24:41', NULL),
+(109, 10, '7', '৭', 1, 1, '2023-11-29 00:24:41', NULL),
+(110, 10, '8', '৮', 1, 1, '2023-11-29 00:24:41', NULL),
+(111, 10, '9', '৯', 1, 1, '2023-11-29 00:24:41', NULL),
+(112, 10, '10', '১০', 1, 1, '2023-11-29 00:24:41', NULL),
+(113, 12, 'No Sister', 'বোন নেই', 1, 1, '2023-11-29 00:24:45', NULL),
+(114, 12, '1', '১', 1, 1, '2023-11-29 00:24:45', NULL),
+(115, 12, '2', '২', 1, 1, '2023-11-29 00:24:45', NULL),
+(116, 12, '3', '৩', 1, 1, '2023-11-29 00:24:45', NULL),
+(117, 12, '4', '৪', 1, 1, '2023-11-29 00:24:45', NULL),
+(118, 12, '5', '৫', 1, 1, '2023-11-29 00:24:45', NULL),
+(119, 12, '6', '৬', 1, 1, '2023-11-29 00:24:45', NULL),
+(120, 12, '7', '৭', 1, 1, '2023-11-29 00:24:45', NULL),
+(121, 12, '8', '৮', 1, 1, '2023-11-29 00:24:45', NULL),
+(122, 12, '9', '৯', 1, 1, '2023-11-29 00:24:45', NULL),
+(123, 12, '10', '১০', 1, 1, '2023-11-29 00:24:45', NULL),
+(124, 15, 'High Class', 'উচ্চবিত্ত', 1, 1, '2023-11-29 00:30:51', '2023-11-29 00:31:00'),
+(125, 15, 'Higher-Middlle Class', 'উচ্চ মধ্যবিত্ত', 1, 1, '2023-11-29 00:30:51', '2023-11-29 00:31:00'),
+(126, 15, 'Middlle Class', 'মধ্যবিত্ত', 1, 1, '2023-11-29 00:30:51', '2023-11-29 00:31:00'),
+(127, 15, 'Lower-Middle Class', 'নিম্ন মধ্যবিত্ত', 1, 1, '2023-11-29 00:30:51', '2023-11-29 00:31:00'),
+(128, 15, 'Lower Class', 'নিম্নবিত্ত', 1, 1, '2023-11-29 00:30:51', '2023-11-29 00:31:00'),
+(129, 25, 'Hanafi', 'হানাফি', 1, 1, '2023-11-29 00:34:10', NULL),
+(130, 25, 'Maliki', 'মালিকি', 1, 1, '2023-11-29 00:34:10', NULL),
+(131, 25, 'Shafi\'i', 'শাফিঈ', 1, 1, '2023-11-29 00:34:10', NULL),
+(132, 25, 'Hanbali', 'হাম্বলি', 1, 1, '2023-11-29 00:34:10', NULL),
+(133, 36, 'Imam', 'ইমাম', 1, 1, '2023-11-29 00:44:38', NULL),
+(134, 36, 'Madrasa Teacher', 'মাদ্রাসা শিক্ষক', 1, 1, '2023-11-29 00:44:38', NULL),
+(135, 36, 'Teacher', 'শিক্ষক', 1, 1, '2023-11-29 00:44:38', NULL),
+(136, 36, 'Doctor', 'ডাক্তার', 1, 1, '2023-11-29 00:44:38', NULL),
+(137, 36, 'Engineer', 'ইঞ্জিনিয়ার', 1, 1, '2023-11-29 00:44:38', NULL),
+(138, 36, 'Businessman', 'ব্যবসায়ী', 1, 1, '2023-11-29 00:44:38', NULL),
+(139, 36, 'Government Job', 'সরকারী চাকুরী', 1, 1, '2023-11-29 00:44:38', NULL),
+(140, 36, 'Private Job', 'বেসরকারী চাকুরী', 1, 1, '2023-11-29 00:44:38', NULL),
+(141, 36, 'Freelancer', 'ফ্রিল্যান্সার', 1, 1, '2023-11-29 00:44:38', NULL),
+(142, 36, 'Student', 'শিক্ষার্থী', 1, 1, '2023-11-29 00:44:38', NULL),
+(143, 36, 'Expatriate', 'প্রবাসী', 1, 1, '2023-11-29 00:44:38', NULL),
+(144, 36, 'Others', 'অন্যান্য', 1, 1, '2023-11-29 00:44:38', NULL),
+(145, 36, 'No Profession', 'পেশা নেই', 1, 1, '2023-11-29 00:44:38', NULL),
+(146, 46, 'Yes', 'হ্যাঁ', 1, 1, '2023-11-29 00:45:36', NULL),
+(147, 46, 'No', 'না', 1, 1, '2023-11-29 00:45:36', NULL),
+(148, 48, 'Yes', 'হ্যাঁ', 1, 1, '2023-11-29 00:45:51', NULL),
+(149, 48, 'No', 'না', 1, 1, '2023-11-29 00:45:51', NULL),
+(150, 47, 'Yes', 'হ্যাঁ', 1, 1, '2023-11-29 00:46:07', NULL),
+(151, 47, 'No', 'না', 1, 1, '2023-11-29 00:46:07', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1082,6 +1156,35 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_gateways`
+--
+
+CREATE TABLE `payment_gateways` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `provider_name` varchar(255) NOT NULL,
+  `api_key` varchar(255) DEFAULT NULL COMMENT 'StoreID/ApiKey',
+  `secret_key` varchar(255) DEFAULT NULL COMMENT 'StorePassword/SecretKey',
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `live` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Test/Sandbox; 1=>Product/Live',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Inactive; 1=>Active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_gateways`
+--
+
+INSERT INTO `payment_gateways` (`id`, `provider_name`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ssl_commerz', 'sodai644d7015e8eb1', 'sodai644d7015e8eb1@ssl', 'alifhossain174', '12345678', 1, 1, NULL, '2023-10-18 08:16:01'),
+(2, 'stripe', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
+(3, 'bkash', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
+(4, 'amar_pay', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 0, NULL, '2023-11-29 05:06:01');
 
 -- --------------------------------------------------------
 
@@ -1405,7 +1508,7 @@ CREATE TABLE `questions` (
   `question_bn` varchar(255) DEFAULT NULL,
   `hints` longtext DEFAULT NULL,
   `hints_bn` longtext DEFAULT NULL,
-  `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Open Ended; 2=>MCQ',
+  `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Open Ended; 2=>MCQ; 3=>Short Question',
   `serial` double NOT NULL DEFAULT 1,
   `required` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Yes; 0=>No',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
@@ -1419,54 +1522,52 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `question_set_id`, `question`, `question_bn`, `hints`, `hints_bn`, `type`, `serial`, `required`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Your medium of Education', 'আপনার শিক্ষা মাধ্যম', NULL, NULL, 2, -1, 1, 1, 'UYTUT1231235', '2023-11-28 03:21:40', NULL),
-(2, 1, 'Max. Educational Qualification', 'সর্বোচ্চ শিক্ষাগত যোগ্যতা', NULL, NULL, 2, -2, 1, 1, 'ZIUKBT456671', '2023-11-28 03:29:44', NULL),
-(3, 1, 'Other Educational Qualifications', 'অন্যান্য শিক্ষাগত যোগ্যতা', NULL, NULL, 1, -6, 0, 1, 'JIKUYV456679', '2023-11-28 03:39:28', '2023-11-28 03:39:28'),
-(4, 2, 'Father\'s Name', 'পিতার নাম', '* Only for Authority', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 1, -15, 1, 1, 'CIKURF456676', '2023-11-28 04:24:42', '2023-11-28 04:44:16'),
-(5, 2, 'Is You Father Alive?', 'আপনার পিতা কি জীবিত?', NULL, NULL, 2, -16, 1, 1, '1701168299YouEu', '2023-11-28 04:44:59', NULL),
-(6, 2, 'Father\'s Occupation', 'পিতার পেশার বিবরণ', 'শুধু \'চাকরিজীবী\' বা \'ব্যবসায়ী\' এভাবে লিখবেন না। চাকরিজীবী হলে প্রতিষ্ঠানের ধরণ এবং পদবী, আর ব্যবসায়ী হলে কী ধরণের ব্যবসা করেন/করতেন ইত্যাদি বিস্তারিত লিখবেন।', 'Just don\'t write \'employee\' or \'businessman\' as such. If you are an employee, write the type and title of the organization, and if you are a businessman, what type of business you do/did etc. in detail.', 1, -17, 1, 1, '1701168354VmcH1', '2023-11-28 04:45:54', NULL),
-(7, 2, 'Mother\'s Name', 'মাতার নাম', '* For authorities only', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 1, -18, 1, 1, '1701168587wHfa3', '2023-11-28 04:49:47', NULL),
-(8, 2, 'Is You Mother Alive?', 'আপনার মাতা কি জীবিত?', NULL, NULL, 2, -19, 1, 1, '1701168631OnfAn', '2023-11-28 04:50:31', NULL),
-(9, 2, 'Mother\'s Occupation', 'মাতার পেশার বিবরণ', NULL, NULL, 1, -20, 1, 1, '1701168654fnt1D', '2023-11-28 04:50:54', NULL),
-(10, 2, 'How many brothers do you have?', 'আপনার কতজন ভাই আছে?', NULL, NULL, 2, -21, 1, 1, '1701168774hC4sB', '2023-11-28 04:52:54', NULL),
-(11, 2, 'Brothers information', 'ভাইদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, -22, 1, 1, '170116899049aGn', '2023-11-28 04:56:30', NULL),
-(12, 2, 'How many sisters do you have?', 'আপনার কতজন বোন আছে?', NULL, NULL, 2, -23, 1, 1, '1701169036rTuBm', '2023-11-28 04:57:16', NULL),
-(13, 2, 'Information on sisters', 'বোনদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, -24, 1, 1, '1701169143PcLGs', '2023-11-28 04:59:03', NULL),
-(14, 2, 'Occupation of uncles', 'চাচা মামাদের পেশা', NULL, NULL, 1, -27, 1, 1, '1701169205M0Yh1', '2023-11-28 05:00:05', '2023-11-28 05:01:52'),
-(15, 2, 'Family economic status', 'পারিবারিক অর্থনৈতিক অবস্থা', NULL, NULL, 2, -28, 1, 1, '1701169274N8YKD', '2023-11-28 05:01:14', '2023-11-28 05:03:06'),
-(16, 2, 'Description of economic conditions', 'অর্থনৈতিক অবস্থার বর্ণনা', 'Mention details such as: Residential (rented or own), land or family business details etc. Many consider it important in Kufu Mela.', 'বিস্তারিত উল্লেখ করবেন যেমনঃ বসত বাড়ি (ভাড়া নাকি নিজস্ব), জমি বা পারিবারিক ব্যবসা থাকলে তার বিবরণ ইত্যাদি। কুফু মেলাতে অনেকেই এটিকে গুরুত্বপূর্ণ মনে করে।', 1, -29, 1, 1, '1701169496bPTYk', '2023-11-28 05:04:56', NULL),
-(17, 1, 'How is the family religious environment?', 'পারিবারিক দ্বীনি পরিবেশ কেমন?', 'Write about the religion of your family members and Mahram non-Mahram.', 'আপনার পরিবারের সদস্যগণের দ্বীন পালন এবং মাহরাম নন-মাহরাম মেনে চলার বিষয়ে লিখবেন।', 1, -30, 1, 1, '1701169613010R8', '2023-11-28 05:06:53', NULL),
-(18, 3, 'What kind of clothes do you usually wear outside the house?', 'ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?', '* In the case of the bride, she must mention whether she wears burqa, hijab, niqab and hand-foot socks.', '* পাত্রীর ক্ষেত্রে বোরকা, হিজাব, নিকাব এবং হাত-পা মোজা পরেন কী না অবশ্যই উল্লেখ করবেন।', 1, -31, 1, 1, '1701169718NEOdf', '2023-11-28 05:08:38', NULL),
-(19, 3, 'Do you have circumcised beard? Since when?', 'সুন্নতি দাড়ি আছে কি না? কবে থেকে রেখেছেন?', 'Write clearly the number of years you have had a beard. If you have a biological reason for receding beard, this should also be mentioned.', 'কত বছর যাবৎ দাড়ি রেখেছেন তা স্পষ্ট করে লিখুন। আপনার যদি বায়োলজিক্যাল কারণে দাড়ি কম উঠে, তাও উল্লেখ করতে হবে।', 1, -32, 1, 1, '1701169853ecuK1', '2023-11-28 05:10:53', NULL),
-(20, 3, 'Wear clothes above the ankle?', 'টাখনুর উপরে কাপড় পরেন?', NULL, NULL, 1, -33, 1, 1, '1701169903N1Egc', '2023-11-28 05:11:43', NULL),
-(21, 3, 'Do you pray five times a day? Since when are you reading?', 'প্রতিদিন পাঁচ ওয়াক্ত নামাজ পড়েন কি? কবে থেকে পড়ছেন?', 'Answer clearly with \"yes\" or \"no\". The number of years you have been offering five times prayer must be mentioned.', '\"হ্যাঁ\" অথবা \"না\" দিয়ে স্পষ্ট করে উত্তর লিখুন। কত বছর যাবৎ পাঁচ ওয়াক্ত নামায পড়ছেন, তা অবশ্যই উল্লেখ করতে হবে।', 1, -34, 1, 1, '1701169958TTAZp', '2023-11-28 05:12:38', NULL),
-(22, 3, 'How many times a week do you usually pray Qaza?', 'সাধারণত সপ্তাহে কত ওয়াক্ত নামায আপনার কাযা হয়?', NULL, NULL, 1, -35, 1, 1, '1701170000XBsbb', '2023-11-28 05:13:20', NULL),
-(23, 2, 'Do you follow mahram/non-mahram?', 'মাহরাম/নন-মাহরাম মেনে চলেন কি?', NULL, NULL, 1, -36, 1, 1, '1701170067Ni4X1', '2023-11-28 05:14:27', NULL),
-(24, 2, 'Can you recite the Quran correctly?', 'শুদ্ধভাবে কুরআন তিলওয়াত করতে পারেন?', NULL, NULL, 1, -58, 1, 1, '1701170106PDS5k', '2023-11-28 05:15:06', '2023-11-28 05:50:03'),
-(25, 3, 'Which fiqh do you follow?', 'কোন ফিকহ অনুসরণ করেন?', NULL, NULL, 2, -38, 1, 1, '1701170169prX7I', '2023-11-28 05:16:09', NULL),
-(26, 3, 'Do you watch or listen to dramas/movies/serials/songs?', 'নাটক / সিনেমা / সিরিয়াল / গান এসব দেখেন বা শুনেন?', NULL, NULL, 1, -39, 1, 1, '1701170208OLlB0', '2023-11-28 05:16:48', NULL),
-(27, 3, 'Are you involved in any special serve of religion?', 'দ্বীনের কোন বিশেষ মেহনতে যুক্ত আছেন?', 'For example: Tabligh etc.', 'যেমনঃ তাবলীগ ইত্যাদি।', 1, -40, 1, 1, '1701170435xdqAp', '2023-11-28 05:20:35', NULL),
-(28, 2, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 1, -41, 1, 1, '1701170463yICkV', '2023-11-28 05:21:03', NULL),
-(29, 3, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 1, -43, 1, 1, '1701170501KkWTo', '2023-11-28 05:21:41', '2023-11-28 05:22:10'),
-(30, 3, 'Name at least 3 Islamic books you have read', 'আপনার পড়া হয়েছে এমন অন্তত ৩ টি ইসলামি বই এর নাম লিখুন', NULL, NULL, 1, -44, 1, 1, '1701170560lX5rB', '2023-11-28 05:22:40', NULL),
-(31, 3, 'Write the names of at least 3 islamic scholars of your choice', 'আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন', NULL, NULL, 1, -48, 1, 1, '1701170593GeW2f', '2023-11-28 05:23:13', '2023-11-28 05:25:21'),
-(32, 3, 'Select the category that applies to you. (Otherwise leave the cell blank)', 'আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন)', 'Example: If you are a non-Muslim, select the non-Muslim category. If you are associated with Tabligh, select Tabligh category. In this way you can select one or more of the mentioned categories.', 'উদাহরণঃ আপনি নওমুসলিম হলে, নওমুসলিম ক্যাটাগরি সিলেক্ট করুন। আপনি তাবলীগের সাথে যুক্ত থাকলে, তাবলীগ ক্যাটাগরি সিলেক্ট করুন। এভাবে উল্লিখিত এক বা একাধিক ক্যাটাগরি সিলেক্ট করতে পারবেন।', 1, -51, 1, 1, '1701170617JflZK', '2023-11-28 05:23:37', '2023-11-28 05:27:27'),
-(33, 2, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, -47, 1, 1, '1701170666kHxV8', '2023-11-28 05:24:26', NULL),
-(34, 3, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, -50, 1, 1, '1701170818RZ9FR', '2023-11-28 05:26:58', NULL),
-(35, 3, 'Groom\'s mobile number', 'পাত্রের মোবাইল নাম্বার', 'Candidate\'s personal mobile number is being taken for biodata verification. It will not be disclosed to anyone except the authorities.', 'বায়োডাটা ভেরিফিকেশনের জন্য পাত্রের ব্যক্তিগত মোবাইল নাম্বার নেয়া হচ্ছে। এটি কর্তৃপক্ষ বাদে কারো কাছে প্রকাশ করা হবে না।', 1, -52, 1, 1, '1701170932J9Rio', '2023-11-28 05:28:52', NULL),
-(36, 4, 'Occupation', 'পেশা', NULL, NULL, 2, -53, 1, 1, '1701171933ENp1l', '2023-11-28 05:45:33', NULL),
-(37, 4, 'Job details', 'পেশার বিস্তারিত বিবরণ', 'You can write your place of work, in which organization you are working, whether your income is halal or not.', 'আপনার কর্মস্থল কোথায়, আপনি কোন প্রতিষ্ঠানে কাজ করছেন, আপনার উপার্জন হালাল কি না ইত্যাদি লিখতে পারেন।', 1, -54, 1, 1, '1701172032HpA17', '2023-11-28 05:47:12', NULL),
-(38, 4, 'Monthly Income', 'মাসিক আয়', NULL, NULL, 1, -55, 1, 1, '1701172062LIUvw', '2023-11-28 05:47:42', NULL),
-(39, 5, 'Does the parent agree to your marriage?', 'অভিভাবক আপনার বিয়েতে রাজি কি না?', NULL, NULL, 1, -57, 1, 1, '1701172100WatEX', '2023-11-28 05:48:20', '2023-11-28 05:48:58'),
-(40, 5, 'Can you keep your wife on the screen after marriage?', 'বিয়ের পর স্ত্রীকে পর্দায় রাখতে পারবেন?', NULL, NULL, 1, -59, 1, 1, '1701172233SVQSv', '2023-11-28 05:50:33', NULL),
-(41, 5, 'Want to let his wife study after marriage?', 'বিয়ের পর স্ত্রীকে পড়াশোনা করতে দিতে চান?', NULL, NULL, 1, -60, 1, 1, '1701172250LVtBu', '2023-11-28 05:50:50', NULL),
-(42, 5, 'Want to let your wife work after marriage?', 'বিয়ের পর স্ত্রীকে চাকরী করতে দিতে চান?', NULL, NULL, 1, -61, 1, 1, '1701172267OUULg', '2023-11-28 05:51:07', NULL),
-(43, 5, 'Where will you take your wife after marriage?', 'বিয়ের পর স্ত্রীকে কোথায় নিয়ে থাকবেন?', NULL, NULL, 1, -62, 1, 1, '1701172286bcf97', '2023-11-28 05:51:26', NULL),
-(44, 5, 'Do you or your family expect any gifts from the bride?', 'আপনি বা আপনার পরিবার পাত্রীপক্ষের কাছে কোনো উপহার আশা করবেন কি না?', NULL, NULL, 1, -63, 1, 1, '1701172310lWbzh', '2023-11-28 05:51:50', NULL),
-(45, 5, 'Why are you getting married? What are your thoughts on marriage?', 'কেন বিয়ে করছেন? বিয়ে সম্পর্কে আপনার ধারণা কি?', NULL, NULL, 1, -64, 1, 1, '1701172344v9n9Q', '2023-11-28 05:52:24', NULL),
-(46, 6, 'Submitting your resume on the website, does your parent know?', 'ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক জানেন?', NULL, NULL, 2, -65, 1, 1, '1701172399TyjsO', '2023-11-28 05:53:19', NULL),
-(47, 6, 'Testify by Allah, that the information given is true?', 'আল্লাহ\'র শপথ করে সাক্ষ্য দিন, যে তথ্যগুলো দিয়েছেন সব সত্য?', NULL, NULL, 2, -66, 1, 1, '1701172426F1uaG', '2023-11-28 05:53:46', NULL),
-(48, 6, 'Providing any false information will not take the responsibility of the worldly legal and akhirat authorities. Do you agree?', 'কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার  কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?', NULL, NULL, 2, -67, 1, 1, '1701172456f0eHJ', '2023-11-28 05:54:16', NULL);
+(1, 1, 'Your medium of Education', 'আপনার শিক্ষা মাধ্যম', NULL, NULL, 2, 1, 1, 1, 'UYTUT1231235', '2023-11-28 03:21:40', '2023-11-29 03:12:07'),
+(2, 1, 'Max. Educational Qualification', 'সর্বোচ্চ শিক্ষাগত যোগ্যতা', NULL, NULL, 2, 2, 1, 1, 'ZIUKBT456671', '2023-11-28 03:29:44', '2023-11-29 03:12:07'),
+(3, 1, 'Other Educational Qualifications', 'অন্যান্য শিক্ষাগত যোগ্যতা', NULL, NULL, 1, 3, 0, 1, 'JIKUYV456679', '2023-11-28 03:39:28', '2023-11-29 03:12:07'),
+(4, 2, 'Father\'s Name', 'পিতার নাম', '* Only for Authority', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 3, 5, 1, 1, 'CIKURF456676', '2023-11-28 04:24:42', '2023-11-29 03:12:07'),
+(5, 2, 'Is You Father Alive?', 'আপনার পিতা কি জীবিত?', NULL, NULL, 2, 4, 1, 1, '1701168299YouEu', '2023-11-28 04:44:59', '2023-11-29 03:12:07'),
+(6, 2, 'Father\'s Occupation', 'পিতার পেশার বিবরণ', 'শুধু \'চাকরিজীবী\' বা \'ব্যবসায়ী\' এভাবে লিখবেন না। চাকরিজীবী হলে প্রতিষ্ঠানের ধরণ এবং পদবী, আর ব্যবসায়ী হলে কী ধরণের ব্যবসা করেন/করতেন ইত্যাদি বিস্তারিত লিখবেন।', 'Just don\'t write \'employee\' or \'businessman\' as such. If you are an employee, write the type and title of the organization, and if you are a businessman, what type of business you do/did etc. in detail.', 3, 6, 0, 1, '1701168354VmcH1', '2023-11-28 04:45:54', '2023-11-29 03:12:07'),
+(7, 2, 'Mother\'s Name', 'মাতার নাম', '* For authorities only', '* শুধুমাত্র কর্তৃপক্ষের জন্য', 3, 8, 1, 1, '1701168587wHfa3', '2023-11-28 04:49:47', '2023-11-29 03:12:07'),
+(8, 2, 'Is You Mother Alive?', 'আপনার মাতা কি জীবিত?', NULL, NULL, 2, 7, 1, 1, '1701168631OnfAn', '2023-11-28 04:50:31', '2023-11-29 03:12:07'),
+(9, 2, 'Mother\'s Occupation', 'মাতার পেশার বিবরণ', NULL, NULL, 3, 9, 0, 1, '1701168654fnt1D', '2023-11-28 04:50:54', '2023-11-29 03:12:19'),
+(10, 2, 'How many brothers do you have?', 'আপনার কতজন ভাই আছে?', NULL, NULL, 2, 10, 1, 1, '1701168774hC4sB', '2023-11-28 04:52:54', '2023-11-29 03:12:07'),
+(11, 2, 'Brothers information', 'ভাইদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, 11, 0, 1, '170116899049aGn', '2023-11-28 04:56:30', '2023-11-29 03:12:54'),
+(12, 2, 'How many sisters do you have?', 'আপনার কতজন বোন আছে?', NULL, NULL, 2, 12, 1, 1, '1701169036rTuBm', '2023-11-28 04:57:16', '2023-11-29 03:12:07'),
+(13, 2, 'Information on sisters', 'বোনদের তথ্য', '* Enter educational qualification, marital status and occupation. If you have more than one brother, write it in the following line with a comma.', '* শিক্ষাগত যোগ্যতা, বৈবাহিক অবস্থা এবং পেশা লিখবেন। একাধিক ভাই থাকলে কমা দিয়ে নিচের লাইনে লিখবেন।', 1, 13, 0, 1, '1701169143PcLGs', '2023-11-28 04:59:03', '2023-11-29 03:13:02'),
+(14, 2, 'Occupation of uncles', 'চাচা মামাদের পেশা', NULL, NULL, 1, 14, 1, 1, '1701169205M0Yh1', '2023-11-28 05:00:05', '2023-11-29 03:12:07'),
+(15, 2, 'Family economic status', 'পারিবারিক অর্থনৈতিক অবস্থা', NULL, NULL, 2, 15, 1, 1, '1701169274N8YKD', '2023-11-28 05:01:14', '2023-11-29 03:12:07'),
+(16, 2, 'Description of economic conditions', 'অর্থনৈতিক অবস্থার বর্ণনা', 'Mention details such as: Residential (rented or own), land or family business details etc. Many consider it important in Kufu Mela.', 'বিস্তারিত উল্লেখ করবেন যেমনঃ বসত বাড়ি (ভাড়া নাকি নিজস্ব), জমি বা পারিবারিক ব্যবসা থাকলে তার বিবরণ ইত্যাদি। কুফু মেলাতে অনেকেই এটিকে গুরুত্বপূর্ণ মনে করে।', 1, 16, 1, 1, '1701169496bPTYk', '2023-11-28 05:04:56', '2023-11-29 03:12:07'),
+(17, 2, 'How is the family religious environment?', 'পারিবারিক দ্বীনি পরিবেশ কেমন?', 'Write about the religion of your family members and Mahram non-Mahram.', 'আপনার পরিবারের সদস্যগণের দ্বীন পালন এবং মাহরাম নন-মাহরাম মেনে চলার বিষয়ে লিখবেন।', 1, 17, 1, 1, '1701169613010R8', '2023-11-28 05:06:53', '2023-11-29 03:12:07'),
+(18, 3, 'What kind of clothes do you usually wear outside the house?', 'ঘরের বাহিরে সাধারণত কি ধরণের পোষাক পরেন?', '* In the case of the bride, she must mention whether she wears burqa, hijab, niqab and hand-foot socks.', '* পাত্রীর ক্ষেত্রে বোরকা, হিজাব, নিকাব এবং হাত-পা মোজা পরেন কী না অবশ্যই উল্লেখ করবেন।', 3, 18, 1, 1, '1701169718NEOdf', '2023-11-28 05:08:38', '2023-11-29 03:19:29'),
+(19, 3, 'Do you have circumcised beard? Since when?', 'সুন্নতি দাড়ি আছে কি না? কবে থেকে রেখেছেন?', 'Write clearly the number of years you have had a beard. If you have a biological reason for receding beard, this should also be mentioned.', 'কত বছর যাবৎ দাড়ি রেখেছেন তা স্পষ্ট করে লিখুন। আপনার যদি বায়োলজিক্যাল কারণে দাড়ি কম উঠে, তাও উল্লেখ করতে হবে।', 3, 19, 1, 1, '1701169853ecuK1', '2023-11-28 05:10:53', '2023-11-29 03:19:37'),
+(20, 3, 'Wear clothes above the ankle?', 'টাখনুর উপরে কাপড় পরেন?', NULL, NULL, 3, 20, 1, 1, '1701169903N1Egc', '2023-11-28 05:11:43', '2023-11-29 03:20:12'),
+(21, 3, 'Do you pray five times a day? Since when are you reading?', 'প্রতিদিন পাঁচ ওয়াক্ত নামাজ পড়েন কি? কবে থেকে পড়ছেন?', 'Answer clearly with \"yes\" or \"no\". The number of years you have been offering five times prayer must be mentioned.', '\"হ্যাঁ\" অথবা \"না\" দিয়ে স্পষ্ট করে উত্তর লিখুন। কত বছর যাবৎ পাঁচ ওয়াক্ত নামায পড়ছেন, তা অবশ্যই উল্লেখ করতে হবে।', 3, 21, 1, 1, '1701169958TTAZp', '2023-11-28 05:12:38', '2023-11-29 03:21:19'),
+(22, 3, 'How many times a week do you usually pray Qaza?', 'সাধারণত সপ্তাহে কত ওয়াক্ত নামায আপনার কাযা হয়?', NULL, NULL, 3, 22, 1, 1, '1701170000XBsbb', '2023-11-28 05:13:20', '2023-11-29 03:21:26'),
+(25, 3, 'Which fiqh do you follow?', 'কোন ফিকহ অনুসরণ করেন?', NULL, NULL, 2, 25, 1, 1, '1701170169prX7I', '2023-11-28 05:16:09', '2023-11-29 03:12:07'),
+(26, 3, 'Do you watch or listen to dramas/movies/serials/songs?', 'নাটক / সিনেমা / সিরিয়াল / গান এসব দেখেন বা শুনেন?', NULL, NULL, 3, 26, 1, 1, '1701170208OLlB0', '2023-11-28 05:16:48', '2023-11-29 03:38:42'),
+(27, 3, 'Are you involved in any special serve of religion?', 'দ্বীনের কোন বিশেষ মেহনতে যুক্ত আছেন?', 'For example: Tabligh etc.', 'যেমনঃ তাবলীগ ইত্যাদি।', 3, 27, 1, 1, '1701170435xdqAp', '2023-11-28 05:20:35', '2023-11-29 03:39:07'),
+(29, 3, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 3, 28, 1, 1, '1701170501KkWTo', '2023-11-28 05:21:41', '2023-11-29 03:39:11'),
+(30, 3, 'Name at least 3 Islamic books you have read', 'আপনার পড়া হয়েছে এমন অন্তত ৩ টি ইসলামি বই এর নাম লিখুন', NULL, NULL, 3, 30, 1, 1, '1701170560lX5rB', '2023-11-28 05:22:40', '2023-11-29 03:39:21'),
+(31, 3, 'Write the names of at least 3 islamic scholars of your choice', 'আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন', NULL, NULL, 3, 29, 1, 1, '1701170593GeW2f', '2023-11-28 05:23:13', '2023-11-29 03:39:16'),
+(32, 3, 'Select the category that applies to you. (Otherwise leave the cell blank)', 'আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন)', 'Example: If you are a non-Muslim, select the non-Muslim category. If you are associated with Tabligh, select Tabligh category. In this way you can select one or more of the mentioned categories.', 'উদাহরণঃ আপনি নওমুসলিম হলে, নওমুসলিম ক্যাটাগরি সিলেক্ট করুন। আপনি তাবলীগের সাথে যুক্ত থাকলে, তাবলীগ ক্যাটাগরি সিলেক্ট করুন। এভাবে উল্লিখিত এক বা একাধিক ক্যাটাগরি সিলেক্ট করতে পারবেন।', 3, 31, 1, 1, '1701170617JflZK', '2023-11-28 05:23:37', '2023-11-29 03:39:29'),
+(34, 3, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, 32, 1, 1, '1701170818RZ9FR', '2023-11-28 05:26:58', '2023-11-29 03:12:07'),
+(35, 3, 'Groom\'s mobile number', 'পাত্রের মোবাইল নাম্বার', 'Candidate\'s personal mobile number is being taken for biodata verification. It will not be disclosed to anyone except the authorities.', 'বায়োডাটা ভেরিফিকেশনের জন্য পাত্রের ব্যক্তিগত মোবাইল নাম্বার নেয়া হচ্ছে। এটি কর্তৃপক্ষ বাদে কারো কাছে প্রকাশ করা হবে না।', 3, 33, 1, 1, '1701170932J9Rio', '2023-11-28 05:28:52', '2023-11-29 03:39:52'),
+(36, 4, 'Occupation', 'পেশা', NULL, NULL, 2, 36, 1, 1, '1701171933ENp1l', '2023-11-28 05:45:33', '2023-11-29 03:12:07'),
+(37, 4, 'Job details', 'পেশার বিস্তারিত বিবরণ', 'You can write your place of work, in which organization you are working, whether your income is halal or not.', 'আপনার কর্মস্থল কোথায়, আপনি কোন প্রতিষ্ঠানে কাজ করছেন, আপনার উপার্জন হালাল কি না ইত্যাদি লিখতে পারেন।', 1, 35, 1, 1, '1701172032HpA17', '2023-11-28 05:47:12', '2023-11-29 03:12:07'),
+(38, 4, 'Monthly Income', 'মাসিক আয়', NULL, NULL, 3, 34, 1, 1, '1701172062LIUvw', '2023-11-28 05:47:42', '2023-11-29 03:40:06'),
+(39, 5, 'Does the parent agree to your marriage?', 'অভিভাবক আপনার বিয়েতে রাজি কি না?', NULL, NULL, 3, 43, 1, 1, '1701172100WatEX', '2023-11-28 05:48:20', '2023-11-29 03:41:24'),
+(40, 5, 'Can you keep your wife on the screen after marriage?', 'বিয়ের পর স্ত্রীকে পর্দায় রাখতে পারবেন?', NULL, NULL, 3, 42, 1, 1, '1701172233SVQSv', '2023-11-28 05:50:33', '2023-11-29 03:41:17'),
+(41, 5, 'Want to let his wife study after marriage?', 'বিয়ের পর স্ত্রীকে পড়াশোনা করতে দিতে চান?', NULL, NULL, 3, 41, 1, 1, '1701172250LVtBu', '2023-11-28 05:50:50', '2023-11-29 03:41:03'),
+(42, 5, 'Want to let your wife work after marriage?', 'বিয়ের পর স্ত্রীকে চাকরী করতে দিতে চান?', NULL, NULL, 3, 40, 1, 1, '1701172267OUULg', '2023-11-28 05:51:07', '2023-11-29 03:40:49'),
+(43, 5, 'Where will you take your wife after marriage?', 'বিয়ের পর স্ত্রীকে কোথায় নিয়ে থাকবেন?', NULL, NULL, 3, 39, 1, 1, '1701172286bcf97', '2023-11-28 05:51:26', '2023-11-29 03:40:42'),
+(44, 5, 'Do you or your family expect any gifts from the bride?', 'আপনি বা আপনার পরিবার পাত্রীপক্ষের কাছে কোনো উপহার আশা করবেন কি না?', NULL, NULL, 3, 38, 1, 1, '1701172310lWbzh', '2023-11-28 05:51:50', '2023-11-29 03:40:36'),
+(45, 5, 'Why are you getting married? What are your thoughts on marriage?', 'কেন বিয়ে করছেন? বিয়ে সম্পর্কে আপনার ধারণা কি?', NULL, NULL, 1, 37, 1, 1, '1701172344v9n9Q', '2023-11-28 05:52:24', '2023-11-29 03:12:07'),
+(46, 6, 'Submitting your resume on the website, does your parent know?', 'ওয়েবসাইটে বায়োডাটা জমা দিচ্ছেন, তা আপনার অভিভাবক জানেন?', NULL, NULL, 2, 44, 1, 1, '1701172399TyjsO', '2023-11-28 05:53:19', '2023-11-29 03:12:07'),
+(47, 6, 'Testify by Allah, that the information given is true?', 'আল্লাহ\'র শপথ করে সাক্ষ্য দিন, যে তথ্যগুলো দিয়েছেন সব সত্য?', NULL, NULL, 2, 45, 1, 1, '1701172426F1uaG', '2023-11-28 05:53:46', '2023-11-29 03:12:07'),
+(48, 6, 'Providing any false information will not take the responsibility of the worldly legal and akhirat authorities. Do you agree?', 'কোনো মিথ্যা তথ্য প্রদান করলে দুনিয়াবী আইনগত এবং আখিরাতের দায়ভার  কর্তৃপক্ষ নিবে না। আপনি কি সম্মত?', NULL, NULL, 2, 46, 1, 1, '1701172456f0eHJ', '2023-11-28 05:54:16', '2023-11-29 03:12:07'),
+(51, 3, 'Do you follow mahram/non-mahram?', 'মাহরাম/নন-মাহরাম মেনে চলেন কি?', NULL, NULL, 3, 23, 1, 1, '1701247902cdoaa', '2023-11-29 00:51:42', '2023-11-29 03:21:31'),
+(52, 3, 'Can you read the Quran correctly?', 'শুদ্ধভাবে কুরআন তিলওয়াত করতে পারেন?', NULL, NULL, 3, 24, 1, 1, '1701247941tpYpa', '2023-11-29 00:52:21', '2023-11-29 03:21:38');
 
 -- --------------------------------------------------------
 
@@ -1564,6 +1665,33 @@ CREATE TABLE `seos` (
 
 INSERT INTO `seos` (`id`, `meta_title`, `meta_keywords`, `meta_description`, `sitemap_generate_time`, `created_at`, `updated_at`) VALUES
 (1, 'সাদিকরুন - Get Married', 'সাদিকরুন ,Get Married', 'পাত্র পাত্রী খোঁজার একমাত্র বিশ্বস্ত মাধ্যম!', '2023-11-15 07:04:09', NULL, '2023-11-15 01:04:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_gateways`
+--
+
+CREATE TABLE `sms_gateways` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `provider_name` varchar(255) NOT NULL,
+  `api_endpoint` varchar(255) NOT NULL,
+  `api_key` varchar(255) DEFAULT NULL,
+  `secret_key` varchar(255) DEFAULT NULL,
+  `sender_id` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Inactive; 1=>Active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sms_gateways`
+--
+
+INSERT INTO `sms_gateways` (`id`, `image`, `provider_name`, `api_endpoint`, `api_key`, `secret_key`, `sender_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'ElitBuzz', 'https://880sms.com/smsapi', 'C20095786bf436075.858353215', NULL, 'GenericCommerceV1', 1, '2023-06-13 03:43:26', '2023-11-29 03:58:07'),
+(2, NULL, 'Reve', 'https://smpp.ajuratech.com:7790/sendtext', '69cff06995a4a85', '20cdf1d28', 'GenericCommerceV1', 0, '2023-06-13 03:43:26', '2023-11-29 03:58:07');
 
 -- --------------------------------------------------------
 
@@ -6724,9 +6852,12 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
 (2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
-(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005035', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(42, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-27 23:52:17', 'eyJpdiI6IkE0QlAvaUtWMmpOMmlKbWRYa0xVN3c9PSIsInZhbHVlIjoia0RNRmR5R0FVYmljT0xxbjJaTlJTSFozM0JwYWw5bnlYdy9NUWQ4Umowbz0iLCJtYWMiOiI1ZDRkZTEwNGJkMTgxZmMyYzkzNTY4YTNhOThhODRjYjc5NWExZDU2NjRjM2JmMDRkNmZjM2E1MGMzZjAxNmJlIiwidGFnIjoiIn0=', NULL, 3, 1, NULL, NULL, NULL),
-(43, 'Md. Fahim Hossain', '116750798120712918592', 'google', 'fahimmit05@gmail.com', NULL, NULL, '2023-11-28 01:05:02', 'eyJpdiI6IllvaFYxMEo4Yld4UVQzYUk1aW9TRWc9PSIsInZhbHVlIjoiZXEyRjNQM2VleVBvQTB2R21OYWYyVGRrTnUwNlhVbCtESk1xVmliZm15MD0iLCJtYWMiOiIyOTFmZGQ3MDhhOWIwMTExNGY4M2U4NjBkZGVkOWIwZTE0NjdkMGQ0NjQ1ZmZlYTgwMTdmNTc3M2E0OTFlZGE0IiwidGFnIjoiIn0=', NULL, 3, 1, NULL, NULL, NULL);
+(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
+(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, NULL, NULL, NULL),
+(45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
+(46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
+(47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
+(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005035', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27');
 
 -- --------------------------------------------------------
 
@@ -7007,6 +7138,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `payment_gateways`
+--
+ALTER TABLE `payment_gateways`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permission_routes`
 --
 ALTER TABLE `permission_routes`
@@ -7054,6 +7191,12 @@ ALTER TABLE `role_permissions`
 -- Indexes for table `seos`
 --
 ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sms_gateways`
+--
+ALTER TABLE `sms_gateways`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7259,7 +7402,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -7271,7 +7414,13 @@ ALTER TABLE `mobile_apps`
 -- AUTO_INCREMENT for table `m_c_q_s`
 --
 ALTER TABLE `m_c_q_s`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+
+--
+-- AUTO_INCREMENT for table `payment_gateways`
+--
+ALTER TABLE `payment_gateways`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`
@@ -7295,7 +7444,7 @@ ALTER TABLE `privacy_policies`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `question_sets`
@@ -7320,6 +7469,12 @@ ALTER TABLE `role_permissions`
 --
 ALTER TABLE `seos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sms_gateways`
+--
+ALTER TABLE `sms_gateways`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `social_media_links`
@@ -7349,7 +7504,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

@@ -95,6 +95,7 @@
                                 <select class="form-select @error('type') is-invalid @enderror" onchange="checkMcqOpenEnded()" id="type" name="type">
                                     <option value="1" selected>Open Ended</option>
                                     <option value="2">MCQ</option>
+                                    <option value="3">Short Answer</option>
                                 </select>
                                 @error('type')
                                     <span class="invalid-feedback" role="alert">

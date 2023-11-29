@@ -163,6 +163,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Tab Two -->
                                                 <div class="tab-pane fade" id="tab2" role="tabpanel">
                                                     <div class="edit-biodata-form-widget">
@@ -391,32 +392,38 @@
                                                 <!-- Tab Three -->
                                                 @php $sl=3; @endphp
                                                 @foreach ($questionSets as $set)
+                                                @php
+                                                    $questions = DB::table('questions')->where('question_set_id', $set->id)->where('status', 1)->orderBy('serial', 'asc')->get();
+                                                @endphp
                                                 <div class="tab-pane fade" id="tab{{$sl++}}" role="tabpanel">
                                                     <div class="edit-biodata-form-widget">
                                                         <h2 class="edit-biodata-form-title">
                                                             {{ App::currentLocale() == 'en' ? $set->title : $set->title_bn }}
                                                         </h2>
                                                         <div class="edit-biodata-form-data">
+
+                                                            @foreach ($questions as $question)
                                                             <div class="form-group">
-                                                                <label>আপনার শিক্ষা মাধ্যম<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="state" required>
+                                                                <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }} @if($question->required)<span>*</span>@endif</label>
+
+                                                                @if($question->type == 2)
+                                                                <select class="hero-search-filter-select select2" name="state" required>
                                                                     <option value="0">নির্বাচন করুন</option>
                                                                     <option value="1">জেনারেল</option>
                                                                     <option value="2">কওমি</option>
                                                                     <option value="3">আলিয়া</option>
                                                                 </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>অন্যান্য শিক্ষাগত যোগ্যতা
-                                                                    <span>*</span></label>
+                                                                @else
                                                                 <textarea name="educational-skill" required></textarea>
-                                                                <p>
-                                                                    * শিক্ষাপ্রতিষ্ঠানের নাম, বিষয়, পাসের সন সহ
-                                                                    বিস্তারিত লিখবেন। কিছু না থাকলে ঘরটি ফাঁকা
-                                                                    রাখবেন।
-                                                                </p>
+                                                                @endif
+
+                                                                @if($question->required)
+                                                                <p>{{ App::currentLocale() == 'en' ? $question->hints : $question->hints_bn }}</p>
+                                                                @endif
+
                                                             </div>
+                                                            @endforeach
+
                                                         </div>
                                                     </div>
                                                 </div>

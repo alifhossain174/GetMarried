@@ -40,9 +40,11 @@ class QuestionController extends Controller
                     })
                     ->editColumn('type', function($data) {
                         if($data->type == 1){
-                            return "<span class='btn btn-sm btn-info rounded' style='padding: .1rem .5rem !important;'>Open Ended</span>";
-                        }else{
-                            return "<span class='btn btn-sm btn-info rounded' style='padding: .1rem .5rem !important;'>MCQ</span>";
+                            return "<span class='btn btn-sm btn-secondary rounded' style='padding: .1rem .5rem !important;'>Open Ended</span>";
+                        }elseif($data->type == 3){
+                            return "<span class='btn btn-sm btn-dark rounded' style='padding: .1rem .5rem !important;'>Short Ans.</span>";
+                        } else {
+                            return "<span class='btn btn-sm btn-primary rounded' style='padding: .1rem .5rem !important;'>MCQ</span>";
                         }
                     })
                     ->addColumn('action', function($data){
