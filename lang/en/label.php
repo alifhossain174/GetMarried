@@ -98,4 +98,17 @@ return [
     'biodata_type' => 'Biodata Type',
     'date_of_birth' => 'Date of Birth',
     'date_of_birth_hints' => '* Must give original birth certificate. Do not provide NID or birth certificate if there is reduced age.',
+    'height' => 'Height',
+    'skin_tone' => 'Skin Tone',
+
+    'skin_tone_black' => 'Dark',
+    'skin_tone_brown' => 'Brown',
+    'skin_tone_bright_brown' => 'Bright Brown',
+    'skin_tone_white' => 'White',
+    'skin_tone_bright_white' => 'Bright White',
+    'weight' => 'Weight',
+    'your_weight' => 'Your Weight',
+    'blood_group' => 'Blood Group',
+    'dont_know' => 'Dont Know',
+    'nationality' => 'Nationality',
 ];

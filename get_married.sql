@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 12:06 PM
+-- Generation Time: Nov 30, 2023 at 04:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -229,7 +229,7 @@ INSERT INTO `contact_requests` (`id`, `name`, `email`, `phone`, `subject`, `mess
 --
 
 CREATE TABLE `countries` (
-  `num_code` int(3) NOT NULL DEFAULT 0,
+  `id` int(3) NOT NULL DEFAULT 0,
   `alpha_2_code` varchar(2) DEFAULT NULL,
   `alpha_3_code` varchar(3) DEFAULT NULL,
   `en_short_name` varchar(52) DEFAULT NULL,
@@ -240,7 +240,7 @@ CREATE TABLE `countries` (
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`num_code`, `alpha_2_code`, `alpha_3_code`, `en_short_name`, `nationality`) VALUES
+INSERT INTO `countries` (`id`, `alpha_2_code`, `alpha_3_code`, `en_short_name`, `nationality`) VALUES
 (4, 'AF', 'AFG', 'Afghanistan', 'Afghan'),
 (8, 'AL', 'ALB', 'Albania', 'Albanian'),
 (10, 'AQ', 'ATA', 'Antarctica', 'Antarctic'),
@@ -1690,8 +1690,8 @@ CREATE TABLE `sms_gateways` (
 --
 
 INSERT INTO `sms_gateways` (`id`, `image`, `provider_name`, `api_endpoint`, `api_key`, `secret_key`, `sender_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'ElitBuzz', 'https://880sms.com/smsapi', 'C20095786bf436075.858353215', NULL, 'GenericCommerceV1', 1, '2023-06-13 03:43:26', '2023-11-29 03:58:07'),
-(2, NULL, 'Reve', 'https://smpp.ajuratech.com:7790/sendtext', '69cff06995a4a85', '20cdf1d28', 'GenericCommerceV1', 0, '2023-06-13 03:43:26', '2023-11-29 03:58:07');
+(1, NULL, 'ElitBuzz', 'https://msg.elitbuzz-bd.com/smsapi', 'C20088596566d0bf500bf5.83588267', NULL, '8809601011409', 1, '2023-06-13 03:43:26', '2023-11-29 21:54:07'),
+(2, NULL, 'Reve', 'https://smpp.ajuratech.com:7790/sendtext', '69cff06995a4a85', '20cdf1d28', 'GenericCommerceV1', 0, '2023-06-13 03:43:26', '2023-11-29 21:54:07');
 
 -- --------------------------------------------------------
 
@@ -6857,7 +6857,9 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
 (46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
 (47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
-(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005035', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27');
+(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005038', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27'),
+(49, 'Brendan Morrow', NULL, NULL, NULL, '01969005039', '862837', '2023-11-29 21:57:27', '$2y$12$Y7s4dqdGEoMrKGGAPCKJs.shZUZd2CiRJnfqZwBugMwQCDusmBqOC', 'Quidem qui ea eu aut', 3, 1, NULL, '2023-11-29 05:16:36', '2023-11-29 21:57:27'),
+(50, 'Emery Larson', NULL, NULL, NULL, '01969005035', '383430', '2023-11-29 21:58:42', '$2y$12$3MgEJHgaXqoh1bi.Yo7rZO1j5Hxwf86gKNgdp/ffXduq.F/BjtBrC', 'Asperiores magna qui', 3, 1, NULL, '2023-11-29 21:58:32', '2023-11-29 21:58:42');
 
 -- --------------------------------------------------------
 
@@ -7011,7 +7013,7 @@ ALTER TABLE `contact_requests`
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
-  ADD PRIMARY KEY (`num_code`),
+  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `alpha_2_code` (`alpha_2_code`),
   ADD UNIQUE KEY `alpha_3_code` (`alpha_3_code`);
 
@@ -7504,7 +7506,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

@@ -59,98 +59,114 @@
                                                             {{__('label.general_info')}}
                                                         </h2>
                                                         <div class="edit-biodata-form-data">
-                                                            <div class="form-group">
-                                                                <label>{{__('label.biodata_type')}}<span>*</span></label>
-                                                                <select class="select2 hero-search-filter-select" name="biodata_type_id" required>
-                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    @foreach ($biodataTypes as $type)
-                                                                    <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>{{__('label.hero_marital_status')}}<span>*</span></label>
-                                                                <select class="select2 hero-search-filter-select" name="marital_condition_id" required>
-                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    @foreach ($maritalConditions as $condition)
-                                                                    <option value="{{$condition->id}}">{{ App::currentLocale() == 'en' ? $condition->title : $condition->title_bn }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>{{__('label.date_of_birth')}}<span>*</span></label>
-                                                                <input type="date" name="birth_date" placeholder="dd/mm/yyyy" required />
-                                                                <p>{{__('label.date_of_birth_hints')}}</p>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>উচ্চতা<span>*</span></label>
-                                                                <div class="row">
-                                                                    <div class="col-6">
-                                                                        <select class="select2 hero-search-filter-select" required>
-                                                                            <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                            <option value="3">3′</option>
-                                                                            <option value="3">3′</option>
-                                                                            <option value="4">4′</option>
-                                                                            <option value="5">5′</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-6">
-                                                                        <select class="select2 hero-search-filter-select"
-                                                                            required>
-                                                                            <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                            <option value="1">১″</option>
-                                                                            <option value="2">২″</option>
-                                                                            <option value="3">৩″</option>
-                                                                            <option value="4">৪″</option>
-                                                                            <option value="5">৫″</option>
-                                                                            <option value="6">৬″</option>
-                                                                            <option value="7">৭″</option>
-                                                                            <option value="8">৮″</option>
-                                                                            <option value="9">৯″</option>
-                                                                            <option value="10">১০″</option>
-                                                                            <option value="11">১১″</option>
-                                                                            <option value="12">১২″</option>
-                                                                        </select>
+                                                            <form action="" method="">
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.biodata_type')}}<span>*</span></label>
+                                                                    <select class="select2 hero-search-filter-select" name="biodata_type_id" required>
+                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                        @foreach ($biodataTypes as $type)
+                                                                        <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.hero_marital_status')}}<span>*</span></label>
+                                                                    <select class="select2 hero-search-filter-select" name="marital_condition_id" required>
+                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                        @foreach ($maritalConditions as $condition)
+                                                                        <option value="{{$condition->id}}">{{ App::currentLocale() == 'en' ? $condition->title : $condition->title_bn }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.date_of_birth')}}<span>*</span></label>
+                                                                    <input type="date" name="birth_date" placeholder="dd/mm/yyyy" required />
+                                                                    <p>{{__('label.date_of_birth_hints')}}</p>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.height')}}<span>*</span></label>
+                                                                    <div class="row">
+                                                                        <div class="col-6">
+                                                                            <select class="select2 hero-search-filter-select" required>
+                                                                                <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                                <option value="2">2′</option>
+                                                                                <option value="3">3′</option>
+                                                                                <option value="4">4′</option>
+                                                                                <option value="5">5′</option>
+                                                                                <option value="6">6′</option>
+                                                                                <option value="7">7′</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-6">
+                                                                            <select class="select2 hero-search-filter-select"
+                                                                                required>
+                                                                                <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                                <option value="1">1″</option>
+                                                                                <option value="2">2″</option>
+                                                                                <option value="3">3″</option>
+                                                                                <option value="4">4″</option>
+                                                                                <option value="5">5″</option>
+                                                                                <option value="6">6″</option>
+                                                                                <option value="7">7″</option>
+                                                                                <option value="8">8″</option>
+                                                                                <option value="9">9″</option>
+                                                                                <option value="10">10″</option>
+                                                                                <option value="11">11″</option>
+                                                                                <option value="12">12″</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>গাত্রবর্ণ<span>*</span></label>
-                                                                <select class="select2 hero-search-filter-select" required>
-                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    <option value="1">কালো</option>
-                                                                    <option value="2">শ্যামলা</option>
-                                                                    <option value="3">উজ্জ্বল শ্যামলা</option>
-                                                                    <option value="4">ফর্সা</option>
-                                                                    <option value="5">উজ্জ্বল ফর্সা</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>ওজন<span>*</span></label>
-                                                                <input type="text" name="weight" placeholder="আপনার ওজন" required />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>রক্তের গ্রুপ<span>*</span></label>
-                                                                <select class="select2 hero-search-filter-select" required>
-                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    <option value="1">A+</option>
-                                                                    <option value="2">A-</option>
-                                                                    <option value="3">B+</option>
-                                                                    <option value="4">B-</option>
-                                                                    <option value="5">AB+</option>
-                                                                    <option value="6">AB-</option>
-                                                                    <option value="7">O+</option>
-                                                                    <option value="8">O-</option>
-                                                                    <option value="9">জানা নেই</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>জাতীয়তা<span>*</span></label>
-                                                                <select class="select2 hero-search-filter-select" required>
-                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    <option value="1">বাংলাদেশী</option>
-                                                                </select>
-                                                            </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.skin_tone')}}<span>*</span></label>
+                                                                    <select class="select2 hero-search-filter-select" required>
+                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                        <option value="1">{{__('label.skin_tone_black')}}</option>
+                                                                        <option value="2">{{__('label.skin_tone_brown')}}</option>
+                                                                        <option value="3">{{__('label.skin_tone_bright_brown')}}</option>
+                                                                        <option value="4">{{__('label.skin_tone_white')}}</option>
+                                                                        <option value="5">{{__('label.skin_tone_bright_white')}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.weight')}}<span>*</span></label>
+                                                                    <input type="text" name="weight" placeholder="{{__('label.your_weight')}}" required />
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.blood_group')}}<span>*</span></label>
+                                                                    <select class="select2 hero-search-filter-select" required>
+                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                        <option value="1">A+</option>
+                                                                        <option value="2">A-</option>
+                                                                        <option value="3">B+</option>
+                                                                        <option value="4">B-</option>
+                                                                        <option value="5">AB+</option>
+                                                                        <option value="6">AB-</option>
+                                                                        <option value="7">O+</option>
+                                                                        <option value="8">O-</option>
+                                                                        <option value="9">{{__('label.dont_know')}}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>{{__('label.nationality')}}<span>*</span></label>
+                                                                    <select class="select2 hero-search-filter-select" required>
+                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                        @foreach ($nationalities as $nationality)
+                                                                        <option value="{{$nationality->id}}">{{$nationality->nationality}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+
+                                                                <div class="user-d-edit-biodata-form-button">
+                                                                    <button type="button" class="theme-btn secondary">
+                                                                        Back
+                                                                    </button>
+                                                                    <button type="submit" class="theme-btn">
+                                                                        Save & Next
+                                                                    </button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -505,14 +521,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="user-d-edit-biodata-form-button">
-                                                <button type="button" class="theme-btn secondary">
-                                                    Back
-                                                </button>
-                                                <button type="submit" class="theme-btn">
-                                                    Save & Next
-                                                </button>
-                                            </div>
+
                                         </form>
                                     </div>
                                     <!-- End Tab Details -->

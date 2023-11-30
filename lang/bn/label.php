@@ -100,6 +100,18 @@ return [
     'biodata_type' => 'বায়োডাটার ধরন',
     'date_of_birth' => 'জন্মসন',
     'date_of_birth_hints' => '* অবশ্যই আসল জন্মসন দিবেন। NID বা জন্মনিবন্ধনে কমানো বয়স থাকলে সেটা দিবেন না।',
+    'height' => 'উচ্চতা',
+    'skin_tone' => 'গাত্রবর্ণ',
+    'skin_tone_black' => 'কালো',
+    'skin_tone_brown' => 'শ্যামলা',
+    'skin_tone_bright_brown' => 'উজ্জ্বল শ্যামলা',
+    'skin_tone_white' => 'ফর্সা',
+    'skin_tone_bright_white' => 'উজ্জ্বল ফর্সা',
+    'weight' => 'ওজন',
+    'your_weight' => 'আপনার ওজন',
+    'blood_group' => 'রক্তের গ্রুপ',
+    'dont_know' => 'জানা নেই',
+    'nationality' => 'জাতীয়তা',
 
 
 ];

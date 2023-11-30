@@ -6,6 +6,7 @@ use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserDashboardController extends Controller
 {
@@ -46,7 +47,8 @@ class UserDashboardController extends Controller
         $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
         $biodataTypes = BiodataType::where('status', 1)->orderBy('serial', 'asc')->get();
         $maritalConditions = MaritalCondition::where('status', 1)->orderBy('serial', 'asc')->get();
-        return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions'));
+        $nationalities = DB::table('countries')->get();
+        return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities'));
     }
     public function userCreateReport(){
         return view('frontend.auth.create_report');

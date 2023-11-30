@@ -66,7 +66,7 @@ class LoginController extends Controller
                         "type" => "text",
                         "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
                         "senderid" => $smsGateway->sender_id,
-                        "msg" => "Verification Code is : ". $randomCode
+                        "msg" => $randomCode . " is your OTP verification code for shadikorun.com"
                     ]);
 
                     if($response->status() != 200){
@@ -130,7 +130,7 @@ class LoginController extends Controller
                         "type" => "text",
                         "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
                         "senderid" => $smsGateway->sender_id,
-                        "msg" => "Verification Code is : ". $randomCode
+                        "msg" => $randomCode . " is your OTP verification code for shadikorun.com"
                     ]);
 
                     if($response->status() != 200){
@@ -235,7 +235,7 @@ class LoginController extends Controller
                         "type" => "text",
                         "contacts" => $userInfo->contact, //“88017xxxxxxxx,88018xxxxxxxx”
                         "senderid" => $smsGateway->sender_id,
-                        "msg" => "Verification Code is : ". $randomCode
+                        "msg" => $randomCode . " is your OTP verification code for shadikorun.com"
                     ]);
 
                     if($response->status() != 200){
@@ -278,6 +278,7 @@ class LoginController extends Controller
         $userInfo = User::where('email', $username)->where('verification_code', $code)->first();
         if($userInfo){
             $userInfo->password = Hash::make($password);
+            $userInfo->email_verified_at = Carbon::now();
             $userInfo->save();
             Auth::login($userInfo);
 
@@ -288,6 +289,7 @@ class LoginController extends Controller
             $userInfo = User::where('contact', $username)->where('verification_code', $code)->first();
             if($userInfo){
                 $userInfo->password = Hash::make($password);
+                $userInfo->email_verified_at = Carbon::now();
                 $userInfo->save();
                 Auth::login($userInfo);
 
