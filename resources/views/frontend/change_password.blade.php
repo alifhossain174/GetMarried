@@ -59,8 +59,7 @@
                             </form>
                             <div class="auth-card-bottom">
                                 <p class="auth-card-bottom-link" style="margin-top: 32px">
-                                    {{ __('label.remember_credential') }}<a
-                                        href="{{ url('login') }}">{{ __('label.sign_in') }}</a></p>
+                                    {{ __('label.remember_credential') }}<a href="{{ url('user/login') }}">{{ __('label.sign_in') }}</a></p>
                             </div>
                         </div>
                     </div>

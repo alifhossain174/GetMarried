@@ -197,7 +197,11 @@
                 <div class="logo-box">
                     <a href="{{ url('/home') }}" class="logo logo-dark">
                         <span class="logo-sm text-left">
-                            <span class="logo-lg-text-dark">GM</span>
+                            <span class="logo-lg-text-dark">
+                                @if ($logoFavicon->favicon && file_exists(public_path($logoFavicon->favicon)))
+                                    <img src="{{ url($logoFavicon->favicon) }}" style="width: 90%; max-height: 60px;" alt="Logo" />
+                                @endif
+                            </span>
                         </span>
                         <span class="logo-lg text-center">
                             @if ($logoFavicon->logo && file_exists(public_path($logoFavicon->logo)))

@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <span class="text-muted text-uppercase fs-12 fw-bold">Total Students</span>
+                            <span class="text-muted text-uppercase fs-12 fw-bold">Biodata of Brides</span>
                             <h3 class="mb-0">
                                 {{-- @if($schoolInfo->current_students > 0 && $schoolInfo->current_students)
                                     {{number_format($schoolInfo->current_students)}}
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <span class="text-muted text-uppercase fs-12 fw-bold">Total Teachers</span>
+                            <span class="text-muted text-uppercase fs-12 fw-bold">Biodata of Grooms</span>
                             <h3 class="mb-0">
                                 {{-- {{number_format($aboutUsInfo->total_teachers)}} --}}
                                 203
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <span class="text-muted text-uppercase fs-12 fw-bold">Committee Members</span>
+                            <span class="text-muted text-uppercase fs-12 fw-bold">Quesrions for Biodata</span>
                             <h3 class="mb-0">
                                 {{-- {{$comitteeMembers}} --}}
                                 854
@@ -89,7 +89,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <span class="text-muted text-uppercase fs-12 fw-bold">Total Office Employees</span>
+                            <span class="text-muted text-uppercase fs-12 fw-bold">Total Users</span>
                             <h3 class="mb-0">
                                 {{-- {{$aboutUsInfo->total_employees}} --}}
                                 125
@@ -174,7 +174,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">1234</h4>
-                            <span class="text-muted">Total ICT Lab</span>
+                            <span class="text-muted">Total Liked Biodata</span>
                         </div>
                         {{-- <i data-feather="users" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class="uil uil-desktop" style="font-size: 25px;"></i>
@@ -184,7 +184,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">234</h4>
-                            <span class="text-muted">Total Science Lab</span>
+                            <span class="text-muted">Total Disliked Biodata</span>
                         </div>
                         {{-- <i data-feather="film" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class="uil uil-science" style="font-size: 25px;"></i>
@@ -194,7 +194,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">345</h4>
-                            <span class="text-muted">Total Classroom</span>
+                            <span class="text-muted">Total Paid View</span>
                         </div>
                         {{-- <i data-feather="mouse-pointer" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class="uil uil-home-alt" style="font-size: 25px;"></i>
@@ -208,7 +208,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-0 header-title">SSC (Secondary School Certificate) Results</h5>
+                    <h5 class="card-title mb-0 header-title">Biodata View Graph</h5>
                     <div id="revenue-chart" class="apex-charts mt-3" dir="ltr"></div>
                 </div>
             </div>
@@ -225,7 +225,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">8547</h4>
-                            <span class="text-muted">Total Groups</span>
+                            <span class="text-muted">Total Pricing Packages</span>
                         </div>
                         {{-- <i data-feather="layout" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class=" uil-layer-group" style="font-size: 25px;"></i>
@@ -235,7 +235,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">5434</h4>
-                            <span class="text-muted">Total Shifts</span>
+                            <span class="text-muted">Total Purchased Packages</span>
                         </div>
                         {{-- <i data-feather="film" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class="bi-brightness-high-fill" style="font-size: 25px;"></i>
@@ -245,7 +245,7 @@
                     <div class="d-flex p-3 border-bottom">
                         <div class="flex-grow-1">
                             <h4 class="mt-0 mb-1 fs-22">345</h4>
-                            <span class="text-muted">Total Classes</span>
+                            <span class="text-muted">Total Spent</span>
                         </div>
                         {{-- <i data-feather="mouse-pointer" class="align-self-center icon-dual icon-md"></i> --}}
                         <i class="uil uil-upload-alt" style="font-size: 25px;"></i>
@@ -263,7 +263,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mt-0 mb-0 header-title">Recent Biodata Requests</h5>
+                    <h5 class="card-title mt-0 mb-0 header-title">Recent Pending Biodata Requests</h5>
 
                     <div class="table-responsive mt-2">
                         <table class="table table-hover table-nowrap mb-0">
@@ -271,29 +271,30 @@
                                 <tr>
                                     <th scope="col" class="text-center">SL</th>
                                     <th scope="col" class="text-center">Type</th>
-                                    <th scope="col" class="text-center">Publish Date</th>
-                                    <th scope="col" class="text-center">Notice</th>
-                                    <th scope="col" class="text-center">Attachment</th>
-                                    <th scope="col" class="text-center">Status</th>
+                                    <th scope="col" class="text-center">Name</th>
+                                    <th scope="col" class="text-center">Marital Condition</th>
+                                    <th scope="col" class="text-center">Birth Date</th>
+                                    <th scope="col" class="text-center">Height</th>
+                                    <th scope="col" class="text-center">Skin Tone</th>
+                                    <th scope="col" class="text-center">Weight</th>
+                                    <th scope="col" class="text-center">Blood Group</th>
                                     <th scope="col" class="text-center">Go to</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
-                                    <td class="text-center">asdasd</td>
-                                    <td class="text-center">asdasd</td>
-                                    <td class="text-center">asdasd</td>
-                                    <td class="text-center">asdasdasdasdsdsadasd</td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">Biodata of Brides</td>
+                                    <td class="text-center">Al Sajidul Islam</td>
+                                    <td class="text-center">Married</td>
+                                    <td class="text-center">10th December, 2023</td>
+                                    <td class="text-center">5' 6"</td>
+                                    <td class="text-center">Brown</td>
+                                    <td class="text-center">66 Kg</td>
+                                    <td class="text-center">A+</td>
                                     <td class="text-center">
-                                        <a href="#" download class="d-inline-block btn btn-info btn-sm rounded">Download Attachment</a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="javascript:void(0)" class="d-inline-block btn btn-success btn-sm rounded">Active</a>
-                                        <a href="javascript:void(0)" class="d-inline-block btn btn-danger btn-sm rounded">Inactive</a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" target="_blank" class="d-inline-block btn btn-sm btn-warning rounded py-1"><b>Go To</b></a>
+                                        <a href="#" target="_blank" class="d-inline-block btn btn-sm btn-info rounded py-1"><b>View Biodata</b></a>
                                     </td>
                                 </tr>
                             </tbody>
