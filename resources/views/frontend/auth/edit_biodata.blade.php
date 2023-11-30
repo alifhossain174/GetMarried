@@ -1,5 +1,15 @@
 @extends('frontend.master')
 
+
+@section('header_css')
+    <style>
+        input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea{
+            color: #1e1e1e;
+        }
+    </style>
+@endsection
+
+
 @section('content')
     <section class="user-dashboard-area">
         <div class="user-d-container">
@@ -24,8 +34,7 @@
                                     <!-- Tab Menu -->
                                     <div class="user-d-edit-biodata-tab-menu">
                                         <div class="list-group" id="list-tab" role="tablist">
-                                            <a class="list-group-item active" data-bs-toggle="list" href="#tab1"
-                                                role="tab">
+                                            <a class="list-group-item active" data-bs-toggle="list" href="#tab1" role="tab">
                                                 <span>1</span>
                                                 {{__('label.general_info')}}
                                             </a>
@@ -48,367 +57,206 @@
                                             </a>
                                         </div>
                                     </div>
+
                                     <!-- Tab Details -->
                                     <div class="user-d-edit-biodata-tab-details">
-                                        <form class="user-d-edit-biodata-form" action="#" method="post">
-                                            <div class="tab-content" id="nav-tabContent">
-                                                <!-- Tab One -->
-                                                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                                                    <div class="edit-biodata-form-widget">
-                                                        <h2 class="edit-biodata-form-title">
-                                                            {{__('label.general_info')}}
-                                                        </h2>
-                                                        <div class="edit-biodata-form-data">
-                                                            <form action="" method="">
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.biodata_type')}}<span>*</span></label>
-                                                                    <select class="select2 hero-search-filter-select" name="biodata_type_id" required>
-                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                        @foreach ($biodataTypes as $type)
-                                                                        <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.hero_marital_status')}}<span>*</span></label>
-                                                                    <select class="select2 hero-search-filter-select" name="marital_condition_id" required>
-                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                        @foreach ($maritalConditions as $condition)
-                                                                        <option value="{{$condition->id}}">{{ App::currentLocale() == 'en' ? $condition->title : $condition->title_bn }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.date_of_birth')}}<span>*</span></label>
-                                                                    <input type="date" name="birth_date" placeholder="dd/mm/yyyy" required />
-                                                                    <p>{{__('label.date_of_birth_hints')}}</p>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.height')}}<span>*</span></label>
-                                                                    <div class="row">
-                                                                        <div class="col-6">
-                                                                            <select class="select2 hero-search-filter-select" required>
-                                                                                <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                                <option value="2">2′</option>
-                                                                                <option value="3">3′</option>
-                                                                                <option value="4">4′</option>
-                                                                                <option value="5">5′</option>
-                                                                                <option value="6">6′</option>
-                                                                                <option value="7">7′</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <select class="select2 hero-search-filter-select"
-                                                                                required>
-                                                                                <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                                <option value="1">1″</option>
-                                                                                <option value="2">2″</option>
-                                                                                <option value="3">3″</option>
-                                                                                <option value="4">4″</option>
-                                                                                <option value="5">5″</option>
-                                                                                <option value="6">6″</option>
-                                                                                <option value="7">7″</option>
-                                                                                <option value="8">8″</option>
-                                                                                <option value="9">9″</option>
-                                                                                <option value="10">10″</option>
-                                                                                <option value="11">11″</option>
-                                                                                <option value="12">12″</option>
-                                                                            </select>
-                                                                        </div>
+
+                                        <div class="tab-content" id="nav-tabContent">
+
+                                            <!-- Tab One -->
+                                            <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                                <div class="edit-biodata-form-widget">
+                                                    <h2 class="edit-biodata-form-title">
+                                                        {{__('label.general_info')}}
+                                                    </h2>
+                                                    <div class="edit-biodata-form-data">
+                                                        <form action="" method="">
+                                                            <div class="form-group">
+                                                                <label>{{__('label.biodata_type')}}<span>*</span></label>
+                                                                <select class="select2 hero-search-filter-select" id="biodata_type_id" name="biodata_type_id" required>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    @foreach ($biodataTypes as $type)
+                                                                    <option value="{{$type->id}}" @if($biodata && $biodata->biodata_type_id == $type->id) selected @endif>{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.hero_marital_status')}}<span>*</span></label>
+                                                                <select class="select2 hero-search-filter-select" id="marital_condition_id" name="marital_condition_id" required>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    @foreach ($maritalConditions as $condition)
+                                                                    <option value="{{$condition->id}}" @if($biodata && $biodata->marital_condition_id == $condition->id) selected @endif>{{ App::currentLocale() == 'en' ? $condition->title : $condition->title_bn }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.date_of_birth')}}<span>*</span></label>
+                                                                <input type="date" id="birth_date" name="birth_date" placeholder="dd/mm/yyyy" required />
+                                                                <p>{{__('label.date_of_birth_hints')}}</p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.height')}}<span>*</span></label>
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <select class="select2 hero-search-filter-select" id="height_foot" name="height_foot" required>
+                                                                            <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                            <option value="2">2′</option>
+                                                                            <option value="3">3′</option>
+                                                                            <option value="4">4′</option>
+                                                                            <option value="5">5′</option>
+                                                                            <option value="6">6′</option>
+                                                                            <option value="7">7′</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        <select class="select2 hero-search-filter-select" id="height_inch" name="height_inch" required>
+                                                                            <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                            <option value="1">1″</option>
+                                                                            <option value="2">2″</option>
+                                                                            <option value="3">3″</option>
+                                                                            <option value="4">4″</option>
+                                                                            <option value="5">5″</option>
+                                                                            <option value="6">6″</option>
+                                                                            <option value="7">7″</option>
+                                                                            <option value="8">8″</option>
+                                                                            <option value="9">9″</option>
+                                                                            <option value="10">10″</option>
+                                                                            <option value="11">11″</option>
+                                                                            <option value="12">12″</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.skin_tone')}}<span>*</span></label>
-                                                                    <select class="select2 hero-search-filter-select" required>
-                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                        <option value="1">{{__('label.skin_tone_black')}}</option>
-                                                                        <option value="2">{{__('label.skin_tone_brown')}}</option>
-                                                                        <option value="3">{{__('label.skin_tone_bright_brown')}}</option>
-                                                                        <option value="4">{{__('label.skin_tone_white')}}</option>
-                                                                        <option value="5">{{__('label.skin_tone_bright_white')}}</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.weight')}}<span>*</span></label>
-                                                                    <input type="text" name="weight" placeholder="{{__('label.your_weight')}}" required />
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.blood_group')}}<span>*</span></label>
-                                                                    <select class="select2 hero-search-filter-select" required>
-                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                        <option value="1">A+</option>
-                                                                        <option value="2">A-</option>
-                                                                        <option value="3">B+</option>
-                                                                        <option value="4">B-</option>
-                                                                        <option value="5">AB+</option>
-                                                                        <option value="6">AB-</option>
-                                                                        <option value="7">O+</option>
-                                                                        <option value="8">O-</option>
-                                                                        <option value="9">{{__('label.dont_know')}}</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label>{{__('label.nationality')}}<span>*</span></label>
-                                                                    <select class="select2 hero-search-filter-select" required>
-                                                                        <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                        @foreach ($nationalities as $nationality)
-                                                                        <option value="{{$nationality->id}}">{{$nationality->nationality}}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.skin_tone')}}<span>*</span></label>
+                                                                <select class="select2 hero-search-filter-select" id="skin_tone" name="skin_tone" required>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    <option value="1">{{__('label.skin_tone_black')}}</option>
+                                                                    <option value="2">{{__('label.skin_tone_brown')}}</option>
+                                                                    <option value="3">{{__('label.skin_tone_bright_brown')}}</option>
+                                                                    <option value="4">{{__('label.skin_tone_white')}}</option>
+                                                                    <option value="5">{{__('label.skin_tone_bright_white')}}</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.weight')}}<span>*</span></label>
+                                                                <input type="text" id="weight" name="weight" placeholder="{{__('label.your_weight')}}" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.blood_group')}}<span>*</span></label>
+                                                                <select class="select2 hero-search-filter-select" id="blood_group" name="blood_group" required>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    <option value="1">A+</option>
+                                                                    <option value="2">A-</option>
+                                                                    <option value="3">B+</option>
+                                                                    <option value="4">B-</option>
+                                                                    <option value="5">AB+</option>
+                                                                    <option value="6">AB-</option>
+                                                                    <option value="7">O+</option>
+                                                                    <option value="8">O-</option>
+                                                                    <option value="9">{{__('label.dont_know')}}</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{__('label.nationality')}}<span>*</span></label>
+                                                                <select class="select2 hero-search-filter-select" id="nationality" name="nationality" required>
+                                                                    <option value="">{{__('label.form_biodata_report_select_option')}}</option>
+                                                                    @foreach ($nationalities as $nationality)
+                                                                    <option value="{{$nationality->id}}">{{$nationality->nationality}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
 
+                                                            <div class="user-d-edit-biodata-form-button" style="margin-top: 40px;">
+                                                                {{-- <button type="button" class="theme-btn secondary">Back</button> --}}
+                                                                <button type="button" onclick="saveGeneralInfo()" class="theme-btn">Save & Next</button>
+                                                            </div>
 
-                                                                <div class="user-d-edit-biodata-form-button">
-                                                                    <button type="button" class="theme-btn secondary">
-                                                                        Back
-                                                                    </button>
-                                                                    <button type="submit" class="theme-btn">
-                                                                        Save & Next
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <!-- Tab Two -->
-                                                <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                            <!-- Tab Two -->
+                                            <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                                <form action="" method="">
                                                     <div class="edit-biodata-form-widget">
                                                         <h2 class="edit-biodata-form-title">
                                                             {{__('label.address')}}
                                                         </h2>
                                                         <div class="edit-biodata-form-data">
                                                             <div class="form-group">
-                                                                <label>জেলা<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="state" required>
-                                                                    <option value="0">সকল জেলা</option>
-                                                                    <option value="1">কুমিল্লা</option>
-                                                                    <option value="2">ফেনী</option>
-                                                                    <option value="3">ব্রাহ্মণবাড়িয়া</option>
-                                                                    <option value="4">রাঙ্গামাটি</option>
-                                                                    <option value="5">নোয়াখালী</option>
-                                                                    <option value="6">চাঁদপুর</option>
-                                                                    <option value="7">লক্ষ্মীপুর</option>
-                                                                    <option value="8">চট্টগ্রাম</option>
-                                                                    <option value="9">কক্সবাজার</option>
-                                                                    <option value="10">খাগড়াছড়ি</option>
-                                                                    <option value="11">বান্দরবান</option>
-                                                                    <option value="12">সিরাজগঞ্জ</option>
-                                                                    <option value="13">পাবনা</option>
-                                                                    <option value="14">বগুড়া</option>
-                                                                    <option value="15">রাজশাহী</option>
-                                                                    <option value="16">নাটোর</option>
-                                                                    <option value="17">জয়পুরহাট</option>
-                                                                    <option value="18">চাঁপাইনবাবগঞ্জ</option>
-                                                                    <option value="19">নওগাঁ</option>
-                                                                    <option value="20">যশোর</option>
-                                                                    <option value="21">সাতক্ষীরা</option>
-                                                                    <option value="22">মেহেরপুর</option>
-                                                                    <option value="23">নড়াইল</option>
-                                                                    <option value="24">চুয়াডাঙ্গা</option>
-                                                                    <option value="25">কুষ্টিয়া</option>
-                                                                    <option value="26">মাগুরা</option>
-                                                                    <option value="27">খুলনা</option>
-                                                                    <option value="28">বাগেরহাট</option>
-                                                                    <option value="29">ঝিনাইদহ</option>
-                                                                    <option value="30">ঝালকাঠি</option>
-                                                                    <option value="31">পটুয়াখালী</option>
-                                                                    <option value="32">পিরোজপুর</option>
-                                                                    <option value="33">বরিশাল</option>
-                                                                    <option value="34">ভোলা</option>
-                                                                    <option value="35">বরগুনা</option>
-                                                                    <option value="36">সিলেট</option>
-                                                                    <option value="37">মৌলভীবাজার</option>
-                                                                    <option value="38">হবিগঞ্জ</option>
-                                                                    <option value="39">সুনামগঞ্জ</option>
-                                                                    <option value="40">নরসিংদী</option>
-                                                                    <option value="41">গাজীপুর</option>
-                                                                    <option value="42">শরীয়তপুর</option>
-                                                                    <option value="43">নারায়ণগঞ্জ</option>
-                                                                    <option value="44">টাঙ্গাইল</option>
-                                                                    <option value="45">কিশোরগঞ্জ</option>
-                                                                    <option value="46">মানিকগঞ্জ</option>
-                                                                    <option value="47">ঢাকা</option>
-                                                                    <option value="48">মুন্সিগঞ্জ</option>
-                                                                    <option value="49">রাজবাড়ী</option>
-                                                                    <option value="50">মাদারীপুর</option>
-                                                                    <option value="51">গোপালগঞ্জ</option>
-                                                                    <option value="52">ফরিদপুর</option>
-                                                                    <option value="53">পঞ্চগড়</option>
-                                                                    <option value="54">দিনাজপুর</option>
-                                                                    <option value="55">লালমনিরহাট</option>
-                                                                    <option value="56">নীলফামারী</option>
-                                                                    <option value="57">গাইবান্ধা</option>
-                                                                    <option value="58">ঠাকুরগাঁও</option>
-                                                                    <option value="59">রংপুর</option>
-                                                                    <option value="60">কুড়িগ্রাম</option>
-                                                                    <option value="61">শেরপুর</option>
-                                                                    <option value="62">ময়মনসিংহ</option>
-                                                                    <option value="63">জামালপুর</option>
-                                                                    <option value="64">নেত্রকোণা</option>
+                                                                <label>{{__('label.district')}}<span>*</span></label>
+                                                                <select class="hero-search-filter-select select2" name="permenant_district_id" required>
+                                                                    <option value="">{{__('label.hero_all_district')}}</option>
+                                                                    @foreach ($districts as $district)
+                                                                    <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>উপজেলা<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="state" required>
-                                                                    <option value="0">সকল উপজেলা</option>
-                                                                    <option value="1">দেবিদ্বার</option>
-                                                                    <option value="2">বরুড়া</option>
-                                                                    <option value="3">ব্রাহ্মণপাড়া</option>
-                                                                    <option value="4">চান্দিনা</option>
-                                                                    <option value="5">চৌদ্দগ্রাম</option>
-                                                                    <option value="6">দাউদকান্দি</option>
-                                                                    <option value="7">হোমনা</option>
-                                                                    <option value="8">লাকসাম</option>
-                                                                    <option value="9">মুরাদনগর</option>
-                                                                    <option value="10">নাঙ্গলকোট</option>
-                                                                    <option value="11">কুমিল্লা সদর</option>
-                                                                    <option value="12">মেঘনা</option>
-                                                                    <option value="13">মনোহরগঞ্জ</option>
-                                                                    <option value="14">সদর দক্ষিণ</option>
-                                                                    <option value="15">তিতাস</option>
-                                                                    <option value="16">বুড়িচং</option>
-                                                                    <option value="17">লালমাই</option>
+                                                                <label>{{__('label.upazila')}}<span>*</span></label>
+                                                                <select class="hero-search-filter-select select2" name="permenant_upazila_id" required>
+                                                                    <option value="">{{__('label.all_upazila')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>এলাকার নাম<span>*</span></label>
-                                                                <input type="text" name="area-name" required />
-                                                                <p>
-                                                                    * বাসার নাম্বার না লিখে শুধু গ্রাম বা এলাকার
-                                                                    নাম লিখুন। যেমন- মিরপুর ১০, বাঘমারা।
-                                                                </p>
+                                                                <label>{{__('label.area_name')}}<span>*</span></label>
+                                                                <input type="text" name="permenant_address" required />
+                                                                <p>{{__('label.area_name_hints')}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <div class="edit-biodata-form-widget" style="margin-top: 24px">
                                                         <h2 class="edit-biodata-form-title">
-                                                            বর্তমান ঠিকানা
+                                                            {{__('label.present_address')}}
                                                         </h2>
                                                         <div class="edit-biodata-form-data">
                                                             <div class="form-group">
-                                                                <label>জেলা<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="state" required>
-                                                                    <option value="0">সকল জেলা</option>
-                                                                    <option value="1">কুমিল্লা</option>
-                                                                    <option value="2">ফেনী</option>
-                                                                    <option value="3">ব্রাহ্মণবাড়িয়া</option>
-                                                                    <option value="4">রাঙ্গামাটি</option>
-                                                                    <option value="5">নোয়াখালী</option>
-                                                                    <option value="6">চাঁদপুর</option>
-                                                                    <option value="7">লক্ষ্মীপুর</option>
-                                                                    <option value="8">চট্টগ্রাম</option>
-                                                                    <option value="9">কক্সবাজার</option>
-                                                                    <option value="10">খাগড়াছড়ি</option>
-                                                                    <option value="11">বান্দরবান</option>
-                                                                    <option value="12">সিরাজগঞ্জ</option>
-                                                                    <option value="13">পাবনা</option>
-                                                                    <option value="14">বগুড়া</option>
-                                                                    <option value="15">রাজশাহী</option>
-                                                                    <option value="16">নাটোর</option>
-                                                                    <option value="17">জয়পুরহাট</option>
-                                                                    <option value="18">চাঁপাইনবাবগঞ্জ</option>
-                                                                    <option value="19">নওগাঁ</option>
-                                                                    <option value="20">যশোর</option>
-                                                                    <option value="21">সাতক্ষীরা</option>
-                                                                    <option value="22">মেহেরপুর</option>
-                                                                    <option value="23">নড়াইল</option>
-                                                                    <option value="24">চুয়াডাঙ্গা</option>
-                                                                    <option value="25">কুষ্টিয়া</option>
-                                                                    <option value="26">মাগুরা</option>
-                                                                    <option value="27">খুলনা</option>
-                                                                    <option value="28">বাগেরহাট</option>
-                                                                    <option value="29">ঝিনাইদহ</option>
-                                                                    <option value="30">ঝালকাঠি</option>
-                                                                    <option value="31">পটুয়াখালী</option>
-                                                                    <option value="32">পিরোজপুর</option>
-                                                                    <option value="33">বরিশাল</option>
-                                                                    <option value="34">ভোলা</option>
-                                                                    <option value="35">বরগুনা</option>
-                                                                    <option value="36">সিলেট</option>
-                                                                    <option value="37">মৌলভীবাজার</option>
-                                                                    <option value="38">হবিগঞ্জ</option>
-                                                                    <option value="39">সুনামগঞ্জ</option>
-                                                                    <option value="40">নরসিংদী</option>
-                                                                    <option value="41">গাজীপুর</option>
-                                                                    <option value="42">শরীয়তপুর</option>
-                                                                    <option value="43">নারায়ণগঞ্জ</option>
-                                                                    <option value="44">টাঙ্গাইল</option>
-                                                                    <option value="45">কিশোরগঞ্জ</option>
-                                                                    <option value="46">মানিকগঞ্জ</option>
-                                                                    <option value="47">ঢাকা</option>
-                                                                    <option value="48">মুন্সিগঞ্জ</option>
-                                                                    <option value="49">রাজবাড়ী</option>
-                                                                    <option value="50">মাদারীপুর</option>
-                                                                    <option value="51">গোপালগঞ্জ</option>
-                                                                    <option value="52">ফরিদপুর</option>
-                                                                    <option value="53">পঞ্চগড়</option>
-                                                                    <option value="54">দিনাজপুর</option>
-                                                                    <option value="55">লালমনিরহাট</option>
-                                                                    <option value="56">নীলফামারী</option>
-                                                                    <option value="57">গাইবান্ধা</option>
-                                                                    <option value="58">ঠাকুরগাঁও</option>
-                                                                    <option value="59">রংপুর</option>
-                                                                    <option value="60">কুড়িগ্রাম</option>
-                                                                    <option value="61">শেরপুর</option>
-                                                                    <option value="62">ময়মনসিংহ</option>
-                                                                    <option value="63">জামালপুর</option>
-                                                                    <option value="64">নেত্রকোণা</option>
+                                                                <label>{{__('label.district')}}<span>*</span></label>
+                                                                <select class="hero-search-filter-select select2" name="present_district_id" required>
+                                                                    <option value="">{{__('label.hero_all_district')}}</option>
+                                                                    @foreach ($districts as $district)
+                                                                    <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>উপজেলা<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="state" required>
-                                                                    <option value="0">সকল উপজেলা</option>
-                                                                    <option value="1">দেবিদ্বার</option>
-                                                                    <option value="2">বরুড়া</option>
-                                                                    <option value="3">ব্রাহ্মণপাড়া</option>
-                                                                    <option value="4">চান্দিনা</option>
-                                                                    <option value="5">চৌদ্দগ্রাম</option>
-                                                                    <option value="6">দাউদকান্দি</option>
-                                                                    <option value="7">হোমনা</option>
-                                                                    <option value="8">লাকসাম</option>
-                                                                    <option value="9">মুরাদনগর</option>
-                                                                    <option value="10">নাঙ্গলকোট</option>
-                                                                    <option value="11">কুমিল্লা সদর</option>
-                                                                    <option value="12">মেঘনা</option>
-                                                                    <option value="13">মনোহরগঞ্জ</option>
-                                                                    <option value="14">সদর দক্ষিণ</option>
-                                                                    <option value="15">তিতাস</option>
-                                                                    <option value="16">বুড়িচং</option>
-                                                                    <option value="17">লালমাই</option>
+                                                                <label>{{__('label.upazila')}}<span>*</span></label>
+                                                                <select class="hero-search-filter-select select2" name="present_upazila_id" required>
+                                                                    <option value="">{{__('label.all_upazila')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>এলাকার নাম<span>*</span></label>
-                                                                <input type="text" name="area-name" required />
-                                                                <p>
-                                                                    * বাসার নাম্বার না লিখে শুধু গ্রাম বা এলাকার
-                                                                    নাম লিখুন। যেমন- মিরপুর ১০, বাঘমারা।
-                                                                </p>
+                                                                <label>{{__('label.area_name')}}<span>*</span></label>
+                                                                <input type="text" name="present_address" required />
+                                                                <p>{{__('label.area_name_hints')}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+
+                                                    <div class="user-d-edit-biodata-form-button">
+                                                        <button type="button" class="theme-btn secondary">Back</button>
+                                                        <button type="submit" class="theme-btn">Save & Next</button>
+                                                    </div>
+                                                </form>
+                                            </div>
 
 
-                                                <!-- Tab Three -->
-                                                @php $sl=3; @endphp
-                                                @foreach ($questionSets as $set)
-                                                @php
-                                                    $questions = DB::table('questions')->where('question_set_id', $set->id)->where('status', 1)->orderBy('serial', 'asc')->get();
-                                                @endphp
-                                                <div class="tab-pane fade" id="tab{{$sl++}}" role="tabpanel">
-                                                    <div class="edit-biodata-form-widget">
-                                                        <h2 class="edit-biodata-form-title">
-                                                            {{ App::currentLocale() == 'en' ? $set->title : $set->title_bn }}
-                                                        </h2>
-                                                        <div class="edit-biodata-form-data">
-
+                                            <!-- Tab Three -->
+                                            @php $sl=3; @endphp
+                                            @foreach ($questionSets as $set)
+                                            @php
+                                                $questions = DB::table('questions')->where('question_set_id', $set->id)->where('status', 1)->orderBy('serial', 'asc')->get();
+                                            @endphp
+                                            <div class="tab-pane fade" id="tab{{$sl++}}" role="tabpanel">
+                                                <div class="edit-biodata-form-widget">
+                                                    <h2 class="edit-biodata-form-title">
+                                                        {{ App::currentLocale() == 'en' ? $set->title : $set->title_bn }}
+                                                    </h2>
+                                                    <div class="edit-biodata-form-data">
+                                                        <form action="" method="">
                                                             @foreach ($questions as $question)
                                                             @php
                                                                 if($question->type == 2){
@@ -439,90 +287,73 @@
                                                             </div>
                                                             @endforeach
 
-                                                        </div>
+                                                            <div class="user-d-edit-biodata-form-button">
+                                                                <button type="button" class="theme-btn secondary">Back</button>
+                                                                <button type="submit" class="theme-btn">Save & Next</button>
+                                                            </div>
+
+                                                        </form>
                                                     </div>
                                                 </div>
-                                                @endforeach
+                                            </div>
+                                            @endforeach
 
 
-                                                <!-- Tab Ten -->
-                                                <div class="tab-pane fade" id="tab10" role="tabpanel">
-                                                    <div class="edit-biodata-form-widget">
-                                                        <h2 class="edit-biodata-form-title">{{__('label.contact')}}</h2>
-                                                        <div class="edit-biodata-form-data">
+                                            <!-- Tab Ten -->
+                                            <div class="tab-pane fade" id="tab10" role="tabpanel">
+                                                <div class="edit-biodata-form-widget">
+                                                    <h2 class="edit-biodata-form-title">{{__('label.contact')}}</h2>
+                                                    <div class="edit-biodata-form-data">
+                                                        <form action="" method="">
                                                             <div class="form-group">
-                                                                <label>পাত্র/ পাত্রীর নাম<span>*</span></label>
+                                                                <label>{{__('label.candidate_name')}}<span>*</span></label>
                                                                 <input type="text" name="name" required />
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>পাত্র/ পাত্রীর ছবি<span>*</span></label>
+                                                                <label>{{__('label.candidate_image')}}<span>*</span></label>
                                                                 <div class="upload-img-input">
                                                                     <div class="library-photo-input">
-                                                                        <input type="file" accept="image/*"
-                                                                            id="library-photo-input" class="hidden"
-                                                                            onchange="uploadLibraryPhoto()" />
+                                                                        <input type="file" accept="image/*" id="library-photo-input" class="hidden" name="image" onchange="uploadLibraryPhoto()" />
                                                                         <label for="library-photo-input">
-                                                                            <i class="fi fi-rr-upload"></i>
-                                                                            <span>Upload photo</span>
+                                                                            <i class="fi fi-rr-upload"></i> <span>Upload photo</span>
                                                                         </label>
                                                                     </div>
                                                                     <div style="position: relative">
-                                                                        <div class="remove-icon" id="remove-icon"
-                                                                            style="display: none" onclick="removeImage()">
+                                                                        <div class="remove-icon" id="remove-icon" style="display: none" onclick="removeImage()">
                                                                             <i class="fi fi-rr-cross"></i>
                                                                         </div>
                                                                         <img id="uploaded-image" style="display: none" />
                                                                     </div>
                                                                 </div>
-                                                                <p>
-                                                                    আপনার ছবি সাদিকরুন কর্তৃপক্ষ বাদে অন্য কারো
-                                                                    কাছে প্রকাশ করা হবে না। ছবিটি নেয়া হচ্ছে
-                                                                    শুধুমাত্র আইডেন্টিটি ভেরিফিকেশনের জন্য।
-                                                                    সাম্প্রতিক সময়ে তোলা একটি ছবি আপলোড করুন
-                                                                    যেখানে চেহারা স্পষ্টভাবে বোঝা যায়।
-                                                                </p>
+                                                                <p>{{__('label.candidate_image_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>অভিভাবকের মোবাইল নাম্বার<span>*</span></label>
-                                                                <input type="tel" name="name"
-                                                                    placeholder="01700-000000" required />
-                                                                <p>
-                                                                    কেউ আপনার অভিভাবকের সাথে যোগাযোগ করতে চাইলে
-                                                                    এই নাম্বারটি দেয়া হবে। এই নাম্বারে কল দিয়ে
-                                                                    ভেরিফাই করার পর বায়োডাটা এপ্রুভ করা হবে।
-                                                                    এখানে
-                                                                    <b>
-                                                                        বন্ধু, কলিগ, কাজিন বা পাত্রপাত্রীর নিজের
-                                                                        নাম্বার
-                                                                    </b>
-                                                                    লিখলে বায়োডাটা
-                                                                    <b> স্থায়ীভাবে ব্যান করা হবে।</b>
-                                                                </p>
+                                                                <label>{{__('label.gurdians_contact')}}<span>*</span></label>
+                                                                <input type="tel" name="gurdians_mobile_no" placeholder="01700-000000" required />
+                                                                <p>{{__('label.gurdians_contact_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>অভিভাবকের সাথে সম্পর্ক<span>*</span></label>
-                                                                <input type="text" name="name" placeholder="বাবা"
-                                                                    required />
-                                                                <p>
-                                                                    উক্ত অভিভাবক আপনার সম্পর্কে কি হয় তা লিখুন।
-                                                                    যেমনঃ বাবা।
-                                                                </p>
+                                                                <label>{{__('label.relation_with_girdian')}}<span>*</span></label>
+                                                                <input type="text" name="relation_with_gurdian" placeholder="" required />
+                                                                <p>{{__('label.relation_with_girdian_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>বায়োডাটা গ্রহণের ই-মেইল<span>*</span></label>
-                                                                <input type="email" name="name"
-                                                                    placeholder="your-email@gmail.com" required />
-                                                                <p>
-                                                                    অনাকাঙ্ক্ষিত ঘটনা এড়াতে, সম্ভব হলে অভিভাবকের
-                                                                    মেইল এড্রেস লিখুন।
-                                                                </p>
+                                                                <label>{{__('label.biodata_email')}}<span>*</span></label>
+                                                                <input type="email" name="email" placeholder="your-email@gmail.com" required />
+                                                                <p>{{__('label.biodata_email_hints')}}</p>
                                                             </div>
-                                                        </div>
+
+                                                            <div class="user-d-edit-biodata-form-button">
+                                                                <button type="button" class="theme-btn secondary">Back</button>
+                                                                <button type="submit" class="theme-btn">Save & Next</button>
+                                                            </div>
+
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                        </form>
                                     </div>
                                     <!-- End Tab Details -->
                                 </div>
@@ -534,4 +365,55 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('footer_js')
+    <script>
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function saveGeneralInfo(){
+
+            if(!$("#biodata_type_id").val() || !$("#marital_condition_id").val() || !$("#birth_date").val() || !$("#height_foot").val() || !$("#height_inch").val() || !$("#skin_tone").val() || !$("#weight").val() || !$("#blood_group").val() || !$("#nationality").val()){
+                toastr.error("All the Fields are Required", "Please fill up all the Fields");
+                return false;
+            }
+
+            var formData = new FormData();
+            formData.append("biodata_type_id", $("#biodata_type_id").val());
+            formData.append("marital_condition_id", $("#marital_condition_id").val());
+            formData.append("birth_date", $("#birth_date").val());
+            formData.append("height_foot", $("#height_foot").val());
+            formData.append("height_inch", $("#height_inch").val());
+            formData.append("skin_tone", $("#skin_tone").val());
+            formData.append("weight", $("#weight").val());
+            formData.append("blood_group", $("#blood_group").val());
+            formData.append("nationality", $("#nationality").val());
+
+            $.ajax({
+                data: formData,
+                url: "{{ url('save/general/info/biodata') }}",
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    $('#saveBtn').html('Save');
+                    $('#productForm2').trigger("reset");
+                    $('#exampleModal2').modal('hide');
+                    toastr.success("Data Saved", "Created Successfully");
+                    return false;
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    toastr.error("Failed to Save Data", "Something Went Wrong");
+                    return false;
+                }
+            });
+        }
+    </script>
 @endsection

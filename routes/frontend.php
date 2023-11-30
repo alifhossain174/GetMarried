@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\user\LoginController;
 use Spatie\Honeypot\ProtectAgainstSpam;
@@ -57,6 +58,8 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
             Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
             Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+
+            Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
         });
     });
 

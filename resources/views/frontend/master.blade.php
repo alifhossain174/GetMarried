@@ -14,6 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @stack('site-seo')
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Site Title -->
     <title>{{ $logoFavicon->tab_title }}</title>

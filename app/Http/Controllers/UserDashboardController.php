@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BioData;
 use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserDashboardController extends Controller
@@ -48,7 +50,9 @@ class UserDashboardController extends Controller
         $biodataTypes = BiodataType::where('status', 1)->orderBy('serial', 'asc')->get();
         $maritalConditions = MaritalCondition::where('status', 1)->orderBy('serial', 'asc')->get();
         $nationalities = DB::table('countries')->get();
-        return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities'));
+        $districts = DB::table('districts')->get();
+        $biodata = BioData::where('user_id', Auth::user()->id)->first();
+        return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities', 'districts', 'biodata'));
     }
     public function userCreateReport(){
         return view('frontend.auth.create_report');
