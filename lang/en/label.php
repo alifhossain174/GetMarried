@@ -127,4 +127,7 @@ return [
     'biodata_email' => 'Biodata Receipt E-mail',
     'biodata_email_hints' => 'To avoid untoward incidents, enter the parents email address if possible.',
 
+    'biodata_preview_label' => 'Preview Biodata',
+    'edit_more' => 'Edit More',
+
 ];

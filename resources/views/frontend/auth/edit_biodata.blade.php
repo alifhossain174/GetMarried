@@ -574,7 +574,7 @@
                 processData: false,
                 success: function (data) {
 
-                    toastr.success("Successfully Submitted for Approval", "Congrats!");
+                    toastr.success("Biodata Submitted for Approval", "Congrats!");
                     $("#loader"+crntTab).hide();
 
                     return false;

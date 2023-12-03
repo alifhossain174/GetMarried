@@ -47,7 +47,7 @@ class BiodataController extends Controller
         } else {
             BioData::insert([
                 'user_id' => $userId,
-                'biodata_no' => 'SK-'.time(),
+                'biodata_no' => 'SK'.time(),
                 'biodata_type_id' => $request->biodata_type_id,
                 'marital_condition_id' => $request->marital_condition_id,
                 'birth_date' => $request->birth_date,
@@ -98,7 +98,7 @@ class BiodataController extends Controller
         } else {
             BioData::insert([
                 'user_id' => $userId,
-                'biodata_no' => 'SK-'.time(),
+                'biodata_no' => 'SK'.time(),
                 'permenant_district_id' => $request->permenant_district_id,
                 'permenant_upazila_id' => $request->permenant_upazila_id,
                 'permenant_address' => $request->permenant_address,
@@ -143,7 +143,7 @@ class BiodataController extends Controller
         } else {
             $biodataId = BioData::insertGetId([
                 'user_id' => $userId,
-                'biodata_no' => 'SK-'.time(),
+                'biodata_no' => 'SK'.time(),
                 'slug' => str::random(5)."-".time(),
                 'created_at' => Carbon::now()
             ]);
@@ -210,7 +210,7 @@ class BiodataController extends Controller
 
             BioData::insert([
                 'user_id' => $userId,
-                'biodata_no' => 'SK-'.time(),
+                'biodata_no' => 'SK'.time(),
                 'image' => $image,
                 'name' => $request->candidate_name,
                 'gurdians_mobile_no' => $request->gurdians_mobile_no,

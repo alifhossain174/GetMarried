@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 08:25 AM
+-- Generation Time: Dec 03, 2023 at 01:10 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -160,9 +160,9 @@ INSERT INTO `biodata_question_answers` (`id`, `user_id`, `biodata_id`, `question
 (44, 44, 2, 6, 47, '150', '2023-12-02 23:45:28', NULL),
 (45, 44, 2, 6, 48, '148', '2023-12-02 23:45:28', NULL),
 (48, 44, 2, 2, 13, NULL, '2023-12-02 23:52:34', NULL),
-(49, 44, 2, 1, 2, NULL, '2023-12-03 00:15:52', NULL),
 (51, 44, 2, 5, 39, 'হ্যাঁ', '2023-12-03 00:35:37', NULL),
-(53, 44, 2, 4, 36, '137', '2023-12-03 00:54:36', NULL);
+(53, 44, 2, 4, 36, '137', '2023-12-03 00:54:36', NULL),
+(54, 44, 2, 1, 2, '91', '2023-12-03 02:48:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +219,7 @@ CREATE TABLE `bio_data` (
   `relation_with_gurdian` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `views` double NOT NULL DEFAULT 0,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Pending; 1=>Active; 2=>Blocked',
   `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -230,7 +230,7 @@ CREATE TABLE `bio_data` (
 --
 
 INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 44, '1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 01:19:56');
+(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 03:31:13');
 
 -- --------------------------------------------------------
 
@@ -7367,7 +7367,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `biodata_question_answers`
 --
 ALTER TABLE `biodata_question_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `biodata_types`

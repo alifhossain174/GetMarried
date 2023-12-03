@@ -89,7 +89,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/questions', [QuestionController::class, 'rearrangeQuestions'])->name('RearrangeQuestions');
     Route::post('save/rearranged/questions', [QuestionController::class, 'saveRearrangedQuestions'])->name('SaveRearrangedQuestions');
 
-
+    // biodatas
+    Route::get('view/all/biodatas', [ConfigController::class, 'viewAllBiodatas'])->name('ViewAllBiodatas');
 
 
 });

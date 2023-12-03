@@ -34,6 +34,7 @@
         <li><a href="{{url('view/all/marital/condition')}}"><i data-feather="users"></i><span> Marital Condition </span></a></li>
         <li><a href="{{url('view/all/question/set')}}"><i class="bi bi-receipt" style="font-size: 16px;"></i><span> Question Set </span></a></li>
         <li><a href="{{url('view/all/questions')}}"><i class="bi bi-question-circle" style="font-size: 16px;"></i><span> Questions </span></a></li>
+        <li><a href="{{url('view/all/biodatas')}}"><i class="bi-file-earmark-text" style="font-size: 16px;"></i><span> Biodatas </span></a></li>
 
 
         <li class="menu-title mt-2">Website Content Modules</li>

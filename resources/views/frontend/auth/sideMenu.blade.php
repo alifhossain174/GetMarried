@@ -7,7 +7,6 @@
             <h3>{{__('label.user_menu_biodata_progress')}}</h3>
             <div class="user-d-bio-status">
                 <span class="user-d-complete">Status: <b>Pending</b></span>
-                <!-- <span class="user-d-incomplete">Incomplete</span> -->
             </div>
         </div>
         <div class="user-d-preview-biodata-link">

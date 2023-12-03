@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\BioData;
 use App\Models\PaymentGateway;
 use App\Models\WebsiteLanguage;
 use Carbon\Carbon;
@@ -442,6 +443,50 @@ class ConfigController extends Controller
         }
         Toastr::success('Item has been Rerranged', 'Success');
         return redirect('view/all/question/set');
+    }
+
+
+    public function viewAllBiodatas(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('bio_data')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                        ->leftJoin('countries', 'bio_data.nationality', 'countries.id')
+                        ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                        ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
+                        ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
+                        ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
+                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                        ->orderBy('id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('image', function($data) {
+                        if($data->image && file_exists(public_path($data->image)))
+                            return url($data->image);
+                    })
+                    ->editColumn('height_foot', function($data) {
+                        return $data->height_foot." ".$data->height_inch;
+                    })
+                    ->editColumn('status', function($data) {
+                        if($data->status == 1){
+                            return "<span class='btn btn-sm btn-success rounded' style='padding: .1rem .5rem !important;'>Active</span>";
+                        }else{
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Inactive</span>";
+                        }
+                    })
+                    ->addColumn('action', function($data){
+                        $btn = ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Edit" class="mb-1 btn-sm btn-warning rounded editBtn"><i class="bi bi-pencil-square"></i> Edit</a>';
+                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$data->id.'" data-original-title="Delete" class="btn-sm btn-danger rounded deleteBtn"><i class="bi bi-trash"></i> Delete</a>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'status'])
+                    ->make(true);
+
+        }
+        return view('backend.biodata.view');
     }
 
 

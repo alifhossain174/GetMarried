@@ -38,7 +38,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->double('views')->default(0);
 
-            $table->tinyInteger('status')->default(1)->comment('1=>Active; 0=>Inactive');
+            $table->tinyInteger('status')->default(0)->comment('0=>Pending; 1=>Active; 2=>Blocked');
+            $table->string('remarks')->nullable();
+
             $table->string('slug');
             $table->timestamps();
         });

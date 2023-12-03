@@ -105,8 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="biodata-card-btn">
-                                        <a href="biodata-details.html" target="_blank" class="theme-btn">সম্পূর্ণ
-                                            বায়োডাটা</a>
+                                        <a href="{{url('biodata/details')}}/{{12321331}}" target="_blank" class="theme-btn">সম্পূর্ণ বায়োডাটা</a>
                                     </div>
                                 </div>
                             </div>
