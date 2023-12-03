@@ -60,6 +60,8 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
 
             Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
+            Route::post('/district/wise/upazila', [BiodataController::class, 'districtWiseUpazila'])->name('Frontend.DistrictWiseUpazila');
+            Route::post('/save/address/biodata', [BiodataController::class, 'saveAddressBiodata'])->name('Frontend.SaveAddressBiodata');
         });
     });
 

@@ -34,11 +34,11 @@
                                     <!-- Tab Menu -->
                                     <div class="user-d-edit-biodata-tab-menu">
                                         <div class="list-group" id="list-tab" role="tablist">
-                                            <a class="list-group-item active" data-bs-toggle="list" href="#tab1" role="tab">
+                                            <a class="list-group-item active" data-bs-toggle="list" href="#tab1" id="tabButton1" role="tab">
                                                 <span>1</span>
                                                 {{__('label.general_info')}}
                                             </a>
-                                            <a class="list-group-item" data-bs-toggle="list" href="#tab2" role="tab">
+                                            <a class="list-group-item" data-bs-toggle="list" href="#tab2" id="tabButton2" role="tab">
                                                 <span>2</span>
                                                 {{__('label.address')}}
                                             </a>
@@ -91,7 +91,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.date_of_birth')}}<span>*</span></label>
-                                                                <input type="date" id="birth_date" name="birth_date" placeholder="dd/mm/yyyy" required />
+                                                                <input type="date" id="birth_date" name="birth_date" value="{{$biodata ? $biodata->birth_date : ''}}" placeholder="dd/mm/yyyy" required />
                                                                 <p>{{__('label.date_of_birth_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
@@ -100,29 +100,29 @@
                                                                     <div class="col-6">
                                                                         <select class="select2 hero-search-filter-select" id="height_foot" name="height_foot" required>
                                                                             <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                            <option value="2">2′</option>
-                                                                            <option value="3">3′</option>
-                                                                            <option value="4">4′</option>
-                                                                            <option value="5">5′</option>
-                                                                            <option value="6">6′</option>
-                                                                            <option value="7">7′</option>
+                                                                            <option value="2" @if($biodata && $biodata->height_foot == 2) selected @endif>2′</option>
+                                                                            <option value="3" @if($biodata && $biodata->height_foot == 3) selected @endif>3′</option>
+                                                                            <option value="4" @if($biodata && $biodata->height_foot == 4) selected @endif>4′</option>
+                                                                            <option value="5" @if($biodata && $biodata->height_foot == 5) selected @endif>5′</option>
+                                                                            <option value="6" @if($biodata && $biodata->height_foot == 6) selected @endif>6′</option>
+                                                                            <option value="7" @if($biodata && $biodata->height_foot == 7) selected @endif>7′</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-6">
                                                                         <select class="select2 hero-search-filter-select" id="height_inch" name="height_inch" required>
                                                                             <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                            <option value="1">1″</option>
-                                                                            <option value="2">2″</option>
-                                                                            <option value="3">3″</option>
-                                                                            <option value="4">4″</option>
-                                                                            <option value="5">5″</option>
-                                                                            <option value="6">6″</option>
-                                                                            <option value="7">7″</option>
-                                                                            <option value="8">8″</option>
-                                                                            <option value="9">9″</option>
-                                                                            <option value="10">10″</option>
-                                                                            <option value="11">11″</option>
-                                                                            <option value="12">12″</option>
+                                                                            <option value="1" @if($biodata && $biodata->height_inch == 1) selected @endif>1″</option>
+                                                                            <option value="2" @if($biodata && $biodata->height_inch == 2) selected @endif>2″</option>
+                                                                            <option value="3" @if($biodata && $biodata->height_inch == 3) selected @endif>3″</option>
+                                                                            <option value="4" @if($biodata && $biodata->height_inch == 4) selected @endif>4″</option>
+                                                                            <option value="5" @if($biodata && $biodata->height_inch == 5) selected @endif>5″</option>
+                                                                            <option value="6" @if($biodata && $biodata->height_inch == 6) selected @endif>6″</option>
+                                                                            <option value="7" @if($biodata && $biodata->height_inch == 7) selected @endif>7″</option>
+                                                                            <option value="8" @if($biodata && $biodata->height_inch == 8) selected @endif>8″</option>
+                                                                            <option value="9" @if($biodata && $biodata->height_inch == 9) selected @endif>9″</option>
+                                                                            <option value="10" @if($biodata && $biodata->height_inch == 10) selected @endif>10″</option>
+                                                                            <option value="11" @if($biodata && $biodata->height_inch == 11) selected @endif>11″</option>
+                                                                            <option value="12" @if($biodata && $biodata->height_inch == 12) selected @endif>12″</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -131,30 +131,30 @@
                                                                 <label>{{__('label.skin_tone')}}<span>*</span></label>
                                                                 <select class="select2 hero-search-filter-select" id="skin_tone" name="skin_tone" required>
                                                                     <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    <option value="1">{{__('label.skin_tone_black')}}</option>
-                                                                    <option value="2">{{__('label.skin_tone_brown')}}</option>
-                                                                    <option value="3">{{__('label.skin_tone_bright_brown')}}</option>
-                                                                    <option value="4">{{__('label.skin_tone_white')}}</option>
-                                                                    <option value="5">{{__('label.skin_tone_bright_white')}}</option>
+                                                                    <option value="1" @if($biodata && $biodata->skin_tone == 1) selected @endif>{{__('label.skin_tone_black')}}</option>
+                                                                    <option value="2" @if($biodata && $biodata->skin_tone == 2) selected @endif>{{__('label.skin_tone_brown')}}</option>
+                                                                    <option value="3" @if($biodata && $biodata->skin_tone == 3) selected @endif>{{__('label.skin_tone_bright_brown')}}</option>
+                                                                    <option value="4" @if($biodata && $biodata->skin_tone == 4) selected @endif>{{__('label.skin_tone_white')}}</option>
+                                                                    <option value="5" @if($biodata && $biodata->skin_tone == 5) selected @endif>{{__('label.skin_tone_bright_white')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.weight')}}<span>*</span></label>
-                                                                <input type="text" id="weight" name="weight" placeholder="{{__('label.your_weight')}}" required />
+                                                                <input type="text" id="weight" name="weight" value="{{$biodata ? $biodata->weight : ''}}" placeholder="{{__('label.your_weight')}}" required />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.blood_group')}}<span>*</span></label>
                                                                 <select class="select2 hero-search-filter-select" id="blood_group" name="blood_group" required>
                                                                     <option value="">{{__('label.form_biodata_report_select_option')}}</option>
-                                                                    <option value="1">A+</option>
-                                                                    <option value="2">A-</option>
-                                                                    <option value="3">B+</option>
-                                                                    <option value="4">B-</option>
-                                                                    <option value="5">AB+</option>
-                                                                    <option value="6">AB-</option>
-                                                                    <option value="7">O+</option>
-                                                                    <option value="8">O-</option>
-                                                                    <option value="9">{{__('label.dont_know')}}</option>
+                                                                    <option value="1" @if($biodata && $biodata->blood_group == 1) selected @endif>A+</option>
+                                                                    <option value="2" @if($biodata && $biodata->blood_group == 2) selected @endif>A-</option>
+                                                                    <option value="3" @if($biodata && $biodata->blood_group == 3) selected @endif>B+</option>
+                                                                    <option value="4" @if($biodata && $biodata->blood_group == 4) selected @endif>B-</option>
+                                                                    <option value="5" @if($biodata && $biodata->blood_group == 5) selected @endif>AB+</option>
+                                                                    <option value="6" @if($biodata && $biodata->blood_group == 6) selected @endif>AB-</option>
+                                                                    <option value="7" @if($biodata && $biodata->blood_group == 7) selected @endif>O+</option>
+                                                                    <option value="8" @if($biodata && $biodata->blood_group == 8) selected @endif>O-</option>
+                                                                    <option value="9" @if($biodata && $biodata->blood_group == 9) selected @endif>{{__('label.dont_know')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -162,14 +162,16 @@
                                                                 <select class="select2 hero-search-filter-select" id="nationality" name="nationality" required>
                                                                     <option value="">{{__('label.form_biodata_report_select_option')}}</option>
                                                                     @foreach ($nationalities as $nationality)
-                                                                    <option value="{{$nationality->id}}">{{$nationality->nationality}}</option>
+                                                                    <option value="{{$nationality->id}}" @if($biodata && $biodata->nationality == $nationality->id) selected @endif>{{$nationality->nationality}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
 
                                                             <div class="user-d-edit-biodata-form-button" style="margin-top: 40px;">
                                                                 {{-- <button type="button" class="theme-btn secondary">Back</button> --}}
-                                                                <button type="button" onclick="saveGeneralInfo()" class="theme-btn">Save & Next</button>
+                                                                <button type="button" onclick="saveGeneralInfo()" class="theme-btn">
+                                                                    <img id="loader" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Save & Next
+                                                                </button>
                                                             </div>
 
                                                         </form>
@@ -187,22 +189,22 @@
                                                         <div class="edit-biodata-form-data">
                                                             <div class="form-group">
                                                                 <label>{{__('label.district')}}<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2" name="permenant_district_id" required>
+                                                                <select class="hero-search-filter-select select2" name="permenant_district_id" id="permenant_district_id" required>
                                                                     <option value="">{{__('label.hero_all_district')}}</option>
                                                                     @foreach ($districts as $district)
-                                                                    <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                                                    <option value="{{$district->id}}" @if($biodata && $biodata->permenant_district_id == $district->id) selected @endif>{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.upazila')}}<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2" name="permenant_upazila_id" required>
+                                                                <select class="hero-search-filter-select select2" name="permenant_upazila_id" id="permenant_upazila_id" required>
                                                                     <option value="">{{__('label.all_upazila')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.area_name')}}<span>*</span></label>
-                                                                <input type="text" name="permenant_address" required />
+                                                                <input type="text" name="permenant_address" id="permenant_address" value="{{$biodata ? $biodata->permenant_address : ''}}" required />
                                                                 <p>{{__('label.area_name_hints')}}</p>
                                                             </div>
                                                         </div>
@@ -215,22 +217,22 @@
                                                         <div class="edit-biodata-form-data">
                                                             <div class="form-group">
                                                                 <label>{{__('label.district')}}<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2" name="present_district_id" required>
+                                                                <select class="hero-search-filter-select select2" name="present_district_id" id="present_district_id" required>
                                                                     <option value="">{{__('label.hero_all_district')}}</option>
                                                                     @foreach ($districts as $district)
-                                                                    <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                                                    <option value="{{$district->id}}" @if($biodata && $biodata->present_district_id == $district->id) selected @endif>{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.upazila')}}<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2" name="present_upazila_id" required>
+                                                                <select class="hero-search-filter-select select2" name="present_upazila_id" id="present_upazila_id" required>
                                                                     <option value="">{{__('label.all_upazila')}}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.area_name')}}<span>*</span></label>
-                                                                <input type="text" name="present_address" required />
+                                                                <input type="text" name="present_address" id="present_address" value="{{$biodata ? $biodata->present_address : ''}}" required />
                                                                 <p>{{__('label.area_name_hints')}}</p>
                                                             </div>
                                                         </div>
@@ -238,8 +240,11 @@
 
                                                     <div class="user-d-edit-biodata-form-button">
                                                         <button type="button" class="theme-btn secondary">Back</button>
-                                                        <button type="submit" class="theme-btn">Save & Next</button>
+                                                        <button type="button" onclick="saveAddress()" class="theme-btn">
+                                                            <img id="loader2" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Save & Next
+                                                        </button>
                                                     </div>
+
                                                 </form>
                                             </div>
 
@@ -394,6 +399,7 @@
             formData.append("blood_group", $("#blood_group").val());
             formData.append("nationality", $("#nationality").val());
 
+            $("#loader").show();
             $.ajax({
                 data: formData,
                 url: "{{ url('save/general/info/biodata') }}",
@@ -402,10 +408,16 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    $('#saveBtn').html('Save');
-                    $('#productForm2').trigger("reset");
-                    $('#exampleModal2').modal('hide');
+
                     toastr.success("Data Saved", "Created Successfully");
+                    $("#loader").hide();
+
+                    $('#tabButton1').removeClass('active');
+                    $('#tab1').removeClass('active show');
+
+                    $('#tabButton2').addClass('active');
+                    $('#tab2').addClass('active show');
+
                     return false;
                 },
                 error: function (data) {
@@ -415,5 +427,102 @@
                 }
             });
         }
+
+        function saveAddress(){
+
+            if(!$("#permenant_district_id").val() || !$("#permenant_upazila_id").val() || !$("#permenant_address").val() || !$("#present_district_id").val() || !$("#present_upazila_id").val() || !$("#present_address").val()){
+                toastr.error("All the Fields are Required", "Please fill up all the Fields");
+                return false;
+            }
+
+            var formData = new FormData();
+            formData.append("permenant_district_id", $("#permenant_district_id").val());
+            formData.append("permenant_upazila_id", $("#permenant_upazila_id").val());
+            formData.append("permenant_address", $("#permenant_address").val());
+            formData.append("present_district_id", $("#present_district_id").val());
+            formData.append("present_upazila_id", $("#present_upazila_id").val());
+            formData.append("present_address", $("#present_address").val());
+
+            $("#loader2").show();
+            $.ajax({
+                data: formData,
+                url: "{{ url('save/address/biodata') }}",
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+
+                    toastr.success("Data Saved", "Created Successfully");
+                    $("#loader2").hide();
+
+                    $('#tabButton2').removeClass('active');
+                    $('#tab2').removeClass('active show');
+
+                    $('#tabButton3').addClass('active');
+                    $('#tab3').addClass('active show');
+
+                    return false;
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    toastr.error("Failed to Save Data", "Something Went Wrong");
+                    return false;
+                }
+            });
+        }
+
+        // dependency dropdown
+        $(document).ready(function () {
+            $('#permenant_district_id').on('change', function () {
+                var permenantDistrictId = this.value;
+                $("#permenant_upazila_id").html('');
+                $.ajax({
+                    url: "{{url('/district/wise/upazila')}}",
+                    type: "POST",
+                    data: {
+                        permenant_district_id: permenantDistrictId,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#permenant_upazila_id').html('<option value="">Select Option</option>');
+                        $.each(result, function (key, value) {
+                            @if(App::currentLocale() == 'en')
+                            $("#permenant_upazila_id").append('<option value="' + value.id + '" @if($biodata && $biodata->permenant_upazila_id == "'+value.id+'") selected @endif>' + value.name + '</option>');
+                            @else
+                            $("#permenant_upazila_id").append('<option value="' + value.id + '" @if($biodata && $biodata->permenant_upazila_id == "'+value.id+'") selected @endif>' + value.bn_name + '</option>');
+                            @endif
+                        });
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#present_district_id').on('change', function () {
+                var permenantDistrictId = this.value;
+                $("#present_upazila_id").html('');
+                $.ajax({
+                    url: "{{url('/district/wise/upazila')}}",
+                    type: "POST",
+                    data: {
+                        permenant_district_id: permenantDistrictId,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#present_upazila_id').html('<option value="">Select Option</option>');
+                        $.each(result, function (key, value) {
+                            @if(App::currentLocale() == 'en')
+                            $("#present_upazila_id").append('<option value="' + value.id + '" @if($biodata && $biodata->present_upazila_id == "'+value.id+'") selected @endif>' + value.name + '</option>');
+                            @else
+                            $("#present_upazila_id").append('<option value="' + value.id + '" @if($biodata && $biodata->present_upazila_id == "'+value.id+'") selected @endif>' + value.bn_name + '</option>');
+                            @endif
+                        });
+                    }
+                });
+            });
+        });
     </script>
 @endsection
