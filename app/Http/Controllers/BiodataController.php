@@ -57,7 +57,7 @@ class BiodataController extends Controller
                 'weight' => $request->weight,
                 'blood_group' => $request->blood_group,
                 'nationality' => $request->nationality,
-                'slug' => str::random(5)."-".time(),
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
 
@@ -105,7 +105,7 @@ class BiodataController extends Controller
                 'present_district_id' => $request->present_district_id,
                 'present_upazila_id' => $request->present_upazila_id,
                 'present_address' => $request->present_address,
-                'slug' => str::random(5)."-".time(),
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
 
@@ -144,7 +144,7 @@ class BiodataController extends Controller
             $biodataId = BioData::insertGetId([
                 'user_id' => $userId,
                 'biodata_no' => 'SK'.time(),
-                'slug' => str::random(5)."-".time(),
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
 
@@ -216,7 +216,7 @@ class BiodataController extends Controller
                 'gurdians_mobile_no' => $request->gurdians_mobile_no,
                 'relation_with_gurdian' => $request->relation_with_gurdian,
                 'email' => $request->email,
-                'slug' => str::random(5)."-".time(),
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
 

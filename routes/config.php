@@ -90,7 +90,11 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('save/rearranged/questions', [QuestionController::class, 'saveRearrangedQuestions'])->name('SaveRearrangedQuestions');
 
     // biodatas
-    Route::get('view/all/biodatas', [ConfigController::class, 'viewAllBiodatas'])->name('ViewAllBiodatas');
+    Route::get('view/pending/biodatas', [ConfigController::class, 'viewPendingBiodatas'])->name('ViewPendingBiodatas');
+    Route::get('view/approved/biodatas', [ConfigController::class, 'viewApprovedBiodatas'])->name('ViewApprovedBiodatas');
+    Route::get('view/blocked/biodatas', [ConfigController::class, 'viewBlockedBiodatas'])->name('ViewBlockedBiodatas');
+    Route::get('edit/biodata/{slug}', [ConfigController::class, 'editBiodata'])->name('EditBiodata');
+    Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
 
 
 });
