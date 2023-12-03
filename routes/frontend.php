@@ -62,6 +62,8 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
             Route::post('/district/wise/upazila', [BiodataController::class, 'districtWiseUpazila'])->name('Frontend.DistrictWiseUpazila');
             Route::post('/save/address/biodata', [BiodataController::class, 'saveAddressBiodata'])->name('Frontend.SaveAddressBiodata');
+            Route::post('/save/biodata/info', [BiodataController::class, 'saveBiodataInfo'])->name('Frontend.SaveBiodataInfo');
+            Route::post('/save/contact/info/biodata', [BiodataController::class, 'saveContactInfoBiodata'])->name('Frontend.SaveContactInfoBiodata');
         });
     });
 

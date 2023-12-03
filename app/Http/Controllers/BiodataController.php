@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BioData;
+use App\Models\BiodataQuestionAnswer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,8 @@ class BiodataController extends Controller
             'nationality' => ['required'],
         ]);
 
+        session(['currentTab' => 1]);
+
         $userId = Auth::user()->id;
         $biodata = BioData::where('user_id', $userId)->first();
         if($biodata){
@@ -44,7 +47,7 @@ class BiodataController extends Controller
         } else {
             BioData::insert([
                 'user_id' => $userId,
-                'biodata_no' => time(),
+                'biodata_no' => 'SK-'.time(),
                 'biodata_type_id' => $request->biodata_type_id,
                 'marital_condition_id' => $request->marital_condition_id,
                 'birth_date' => $request->birth_date,
@@ -77,6 +80,8 @@ class BiodataController extends Controller
             'present_address' => ['required'],
         ]);
 
+        session(['currentTab' => 2]);
+
         $userId = Auth::user()->id;
         $biodata = BioData::where('user_id', $userId)->first();
         if($biodata){
@@ -93,7 +98,7 @@ class BiodataController extends Controller
         } else {
             BioData::insert([
                 'user_id' => $userId,
-                'biodata_no' => time(),
+                'biodata_no' => 'SK-'.time(),
                 'permenant_district_id' => $request->permenant_district_id,
                 'permenant_upazila_id' => $request->permenant_upazila_id,
                 'permenant_address' => $request->permenant_address,
@@ -107,5 +112,115 @@ class BiodataController extends Controller
             return response()->json(['success'=> 'Saved Successfully']);
         }
 
+    }
+
+    public function saveBiodataInfo(Request $request){
+        $userId = Auth::user()->id;
+        $biodata = BioData::where('user_id', $userId)->first();
+        if($biodata){
+
+            $index = 0;
+            foreach($request->question as $question){
+
+                $alreadyAnswered = BiodataQuestionAnswer::where([['user_id', $userId],['biodata_id', $biodata->id], ['question_set_id', $request->question_set_id[$index]], ['question_id', $question], ['answer', $request->answer[$index]]])->first();
+
+                if(!$alreadyAnswered){
+                    BiodataQuestionAnswer::where([['user_id', $userId],['biodata_id', $biodata->id], ['question_id', $question]])->delete();
+                    BiodataQuestionAnswer::insert([
+                        'user_id' => $userId,
+                        'biodata_id' => $biodata->id,
+                        'question_set_id' => $request->question_set_id[$index],
+                        'question_id' => $question,
+                        'answer' => $request->answer[$index],
+                        'created_at' => Carbon::now()
+                    ]);
+                }
+
+                $index++;
+            }
+
+            return response()->json(['success'=> 'Saved Successfully']);
+        } else {
+            $biodataId = BioData::insertGetId([
+                'user_id' => $userId,
+                'biodata_no' => 'SK-'.time(),
+                'slug' => str::random(5)."-".time(),
+                'created_at' => Carbon::now()
+            ]);
+
+            $index = 0;
+            foreach($request->question as $question){
+                BiodataQuestionAnswer::insert([
+                    'user_id' => $userId,
+                    'biodata_id' => $biodataId,
+                    'question_set_id' => $request->question_set_id[$index],
+                    'question_id' => $question,
+                    'answer' => $request->answer[$index],
+                    'created_at' => Carbon::now()
+                ]);
+                $index++;
+            }
+
+
+            return response()->json(['success'=> 'Saved Successfully']);
+        }
+    }
+
+    public function saveContactInfoBiodata(Request $request){
+
+        $request->validate([
+            'candidate_name' => ['required'],
+            'gurdians_mobile_no' => ['required'],
+            'relation_with_gurdian' => ['required'],
+            'email' => ['required'],
+        ]);
+
+        $userId = Auth::user()->id;
+        $biodata = BioData::where('user_id', $userId)->first();
+        if($biodata){
+
+            $image = $biodata->image;
+            if ($request->hasFile('image')){
+                $get_image = $request->file('image');
+                $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+                $location = public_path('biodata_images/');
+                $get_image->move($location, $image_name);
+                $image = "biodata_images/" . $image_name;
+            }
+
+            $biodata->image = $image;
+            $biodata->name = $request->candidate_name;
+            $biodata->gurdians_mobile_no = $request->gurdians_mobile_no;
+            $biodata->relation_with_gurdian = $request->relation_with_gurdian;
+            $biodata->email = $request->email;
+            $biodata->updated_at = Carbon::now();
+            $biodata->save();
+
+            return response()->json(['success'=> 'Updated Successfully']);
+        } else {
+
+            $image = null;
+            if ($request->hasFile('image')){
+                $get_image = $request->file('image');
+                $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+                $location = public_path('biodata_images/');
+                $get_image->move($location, $image_name);
+                $image = "biodata_images/" . $image_name;
+            }
+
+            BioData::insert([
+                'user_id' => $userId,
+                'biodata_no' => 'SK-'.time(),
+                'image' => $image,
+                'name' => $request->candidate_name,
+                'gurdians_mobile_no' => $request->gurdians_mobile_no,
+                'relation_with_gurdian' => $request->relation_with_gurdian,
+                'email' => $request->email,
+                'slug' => str::random(5)."-".time(),
+                'created_at' => Carbon::now()
+            ]);
+
+            return response()->json(['success'=> 'Saved Successfully']);
+        }
     }
 }

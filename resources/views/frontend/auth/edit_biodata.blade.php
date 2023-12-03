@@ -45,13 +45,13 @@
 
                                             @php $sl=3; @endphp
                                             @foreach ($questionSets as $set)
-                                            <a class="list-group-item" data-bs-toggle="list" href="#tab{{$sl}}" role="tab">
+                                            <a class="list-group-item" data-bs-toggle="list" href="#tab{{$sl}}" id="tabButton{{$sl}}" role="tab">
                                                 <span>{{$sl++}}</span>
                                                 {{ App::currentLocale() == 'en' ? $set->title : $set->title_bn }}
                                             </a>
                                             @endforeach
 
-                                            <a class="list-group-item" data-bs-toggle="list" href="#tab10" role="tab">
+                                            <a class="list-group-item" data-bs-toggle="list" href="#tab{{$sl}}" id="tabButton{{$sl}}" role="tab">
                                                 <span>10</span>
                                                 {{__('label.contact')}}
                                             </a>
@@ -200,6 +200,14 @@
                                                                 <label>{{__('label.upazila')}}<span>*</span></label>
                                                                 <select class="hero-search-filter-select select2" name="permenant_upazila_id" id="permenant_upazila_id" required>
                                                                     <option value="">{{__('label.all_upazila')}}</option>
+                                                                    @if($biodata && $biodata->permenant_upazila_id > 0 && $biodata->permenant_district_id > 0)
+                                                                        @php
+                                                                            $permenantUpazilas = DB::table('upazilas')->where('district_id', $biodata->permenant_district_id)->get();
+                                                                        @endphp
+                                                                        @foreach ($permenantUpazilas as $upazila)
+                                                                        <option value="{{$upazila->id}}" @if($biodata->permenant_upazila_id == $upazila->id) selected @endif>{{ App::currentLocale() == 'en' ? $upazila->name : $upazila->bn_name }}</option>
+                                                                        @endforeach
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -228,6 +236,14 @@
                                                                 <label>{{__('label.upazila')}}<span>*</span></label>
                                                                 <select class="hero-search-filter-select select2" name="present_upazila_id" id="present_upazila_id" required>
                                                                     <option value="">{{__('label.all_upazila')}}</option>
+                                                                    @if($biodata && $biodata->present_upazila_id > 0 && $biodata->present_district_id > 0)
+                                                                        @php
+                                                                            $presentUpazilas = DB::table('upazilas')->where('district_id', $biodata->present_district_id)->get();
+                                                                        @endphp
+                                                                        @foreach ($presentUpazilas as $upazila)
+                                                                        <option value="{{$upazila->id}}" @if($biodata->present_upazila_id == $upazila->id) selected @endif>{{ App::currentLocale() == 'en' ? $upazila->name : $upazila->bn_name }}</option>
+                                                                        @endforeach
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -239,7 +255,7 @@
                                                     </div>
 
                                                     <div class="user-d-edit-biodata-form-button">
-                                                        <button type="button" class="theme-btn secondary">Back</button>
+                                                        <button type="button" onclick="goToPrevTab(2)" class="theme-btn secondary">Back</button>
                                                         <button type="button" onclick="saveAddress()" class="theme-btn">
                                                             <img id="loader2" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Save & Next
                                                         </button>
@@ -255,34 +271,39 @@
                                             @php
                                                 $questions = DB::table('questions')->where('question_set_id', $set->id)->where('status', 1)->orderBy('serial', 'asc')->get();
                                             @endphp
-                                            <div class="tab-pane fade" id="tab{{$sl++}}" role="tabpanel">
+                                            <div class="tab-pane fade" id="tab{{$sl}}" role="tabpanel">
                                                 <div class="edit-biodata-form-widget">
                                                     <h2 class="edit-biodata-form-title">
                                                         {{ App::currentLocale() == 'en' ? $set->title : $set->title_bn }}
                                                     </h2>
                                                     <div class="edit-biodata-form-data">
-                                                        <form action="" method="">
+                                                        <form id="productForm{{$sl}}" name="productForm{{$sl}}" action="" method="">
                                                             @foreach ($questions as $question)
                                                             @php
                                                                 if($question->type == 2){
                                                                     $options = DB::table('m_c_q_s')->where('question_id', $question->id)->where('status', 1)->orderBy('serial', 'asc')->get();
                                                                 }
                                                             @endphp
+                                                            <input type="hidden" name="question_set_id[]" value="{{$set->id}}">
                                                             <div class="form-group">
                                                                 <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }} @if($question->required)<span>*</span>@endif</label>
                                                                 <input type="hidden" name="question[]" value="{{$question->id}}">
 
+                                                                @php
+                                                                    $questionAnswer = DB::table('biodata_question_answers')->where('user_id', Auth::user()->id)->where('question_id', $question->id)->first();
+                                                                @endphp
+
                                                                 @if($question->type == 1)
-                                                                <textarea name="answer[]" @if($question->required) required @endif></textarea>
+                                                                <textarea class="answer" name="answer[]" @if($question->required) required @endif>{{$questionAnswer ? $questionAnswer->answer : ''}}</textarea>
                                                                 @elseif($question->type == 2)
-                                                                <select class="hero-search-filter-select select2" name="answer[]" @if($question->required) required @endif>
+                                                                <select class="hero-search-filter-select select2 answer" name="answer[]" @if($question->required) required @endif>
                                                                     <option value="">{{__('label.form_biodata_report_select_option')}}</option>
                                                                     @foreach ($options as $option)
-                                                                    <option value="{{$option->id}}">{{ App::currentLocale() == 'en' ? $option->option : $option->option_bn }}</option>
+                                                                    <option value="{{$option->id}}" @if($questionAnswer && $questionAnswer->answer == $option->id) selected @endif>{{ App::currentLocale() == 'en' ? $option->option : $option->option_bn }}</option>
                                                                     @endforeach
                                                                 </select>
                                                                 @else
-                                                                <input type="text" name="asnser[]" @if($question->required) required @endif>
+                                                                <input type="text" class="answer" name="answer[]" value="{{$questionAnswer ? $questionAnswer->answer : ''}}" @if($question->required) required @endif>
                                                                 @endif
 
                                                                 @if($question->required)
@@ -293,26 +314,29 @@
                                                             @endforeach
 
                                                             <div class="user-d-edit-biodata-form-button">
-                                                                <button type="button" class="theme-btn secondary">Back</button>
-                                                                <button type="submit" class="theme-btn">Save & Next</button>
+                                                                <button type="button" onclick="goToPrevTab({{$sl}})" class="theme-btn secondary">Back</button>
+                                                                <button type="button" onclick="saveBioDataInfo({{$sl}})" class="theme-btn">
+                                                                    <img id="loader{{$sl}}" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;"> Save & Next
+                                                                </button>
                                                             </div>
 
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @php $sl++; @endphp
                                             @endforeach
 
 
                                             <!-- Tab Ten -->
-                                            <div class="tab-pane fade" id="tab10" role="tabpanel">
+                                            <div class="tab-pane fade" id="tab{{$sl}}" role="tabpanel">
                                                 <div class="edit-biodata-form-widget">
                                                     <h2 class="edit-biodata-form-title">{{__('label.contact')}}</h2>
                                                     <div class="edit-biodata-form-data">
                                                         <form action="" method="">
                                                             <div class="form-group">
                                                                 <label>{{__('label.candidate_name')}}<span>*</span></label>
-                                                                <input type="text" name="name" required />
+                                                                <input type="text" name="candidate_name" value="{{$biodata ? $biodata->name : ''}}" id="candidate_name" required />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.candidate_image')}}<span>*</span></label>
@@ -324,39 +348,42 @@
                                                                         </label>
                                                                     </div>
                                                                     <div style="position: relative">
-                                                                        <div class="remove-icon" id="remove-icon" style="display: none" onclick="removeImage()">
+                                                                        <div class="remove-icon" id="remove-icon" @if($biodata && file_exists(public_path($biodata->image))) style="display: block" @else style="display: none" @endif onclick="removeImage()">
                                                                             <i class="fi fi-rr-cross"></i>
                                                                         </div>
-                                                                        <img id="uploaded-image" style="display: none" />
+                                                                        <img id="uploaded-image" @if($biodata && file_exists(public_path($biodata->image))) src="{{url($biodata->image)}}" style="display: block" @else style="display: none" @endif />
                                                                     </div>
                                                                 </div>
                                                                 <p>{{__('label.candidate_image_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.gurdians_contact')}}<span>*</span></label>
-                                                                <input type="tel" name="gurdians_mobile_no" placeholder="01700-000000" required />
+                                                                <input type="tel" name="gurdians_mobile_no" id="gurdians_mobile_no" value="{{$biodata ? $biodata->gurdians_mobile_no : ''}}" placeholder="01700-000000" required />
                                                                 <p>{{__('label.gurdians_contact_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.relation_with_girdian')}}<span>*</span></label>
-                                                                <input type="text" name="relation_with_gurdian" placeholder="" required />
+                                                                <input type="text" name="relation_with_gurdian" id="relation_with_gurdian" value="{{$biodata ? $biodata->relation_with_gurdian : ''}}" placeholder="" required />
                                                                 <p>{{__('label.relation_with_girdian_hints')}}</p>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{__('label.biodata_email')}}<span>*</span></label>
-                                                                <input type="email" name="email" placeholder="your-email@gmail.com" required />
+                                                                <input type="text" name="email" id="email" value="{{$biodata ? $biodata->email : ''}}" placeholder="your-email@gmail.com" required />
                                                                 <p>{{__('label.biodata_email_hints')}}</p>
                                                             </div>
 
                                                             <div class="user-d-edit-biodata-form-button">
-                                                                <button type="button" class="theme-btn secondary">Back</button>
-                                                                <button type="submit" class="theme-btn">Save & Next</button>
+                                                                <button type="button" onclick="goToPrevTab({{$sl}})" class="theme-btn secondary">Back</button>
+                                                                <button type="button" onclick="saveContactInfo({{$sl}})" class="theme-btn">
+                                                                    <img id="loader{{$sl}}" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Save
+                                                                </button>
                                                             </div>
 
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
 
                                     </div>
@@ -384,7 +411,7 @@
         function saveGeneralInfo(){
 
             if(!$("#biodata_type_id").val() || !$("#marital_condition_id").val() || !$("#birth_date").val() || !$("#height_foot").val() || !$("#height_inch").val() || !$("#skin_tone").val() || !$("#weight").val() || !$("#blood_group").val() || !$("#nationality").val()){
-                toastr.error("All the Fields are Required", "Please fill up all the Fields");
+                toastr.error("Please fill up the required fields", "Failed to Save Info");
                 return false;
             }
 
@@ -409,7 +436,7 @@
                 processData: false,
                 success: function (data) {
 
-                    toastr.success("Data Saved", "Created Successfully");
+                    toastr.success("Information Saved", "Created Successfully");
                     $("#loader").hide();
 
                     $('#tabButton1').removeClass('active');
@@ -431,7 +458,7 @@
         function saveAddress(){
 
             if(!$("#permenant_district_id").val() || !$("#permenant_upazila_id").val() || !$("#permenant_address").val() || !$("#present_district_id").val() || !$("#present_upazila_id").val() || !$("#present_address").val()){
-                toastr.error("All the Fields are Required", "Please fill up all the Fields");
+                toastr.error("Please fill up the required fields", "Failed to Save Info");
                 return false;
             }
 
@@ -453,7 +480,7 @@
                 processData: false,
                 success: function (data) {
 
-                    toastr.success("Data Saved", "Created Successfully");
+                    toastr.success("Information Saved", "Created Successfully");
                     $("#loader2").hide();
 
                     $('#tabButton2').removeClass('active');
@@ -470,6 +497,106 @@
                     return false;
                 }
             });
+        }
+
+        function saveBioDataInfo(crntTab){
+
+            // input field validation start
+            var selectFields = Number($('#productForm'+crntTab+' select.answer').length);
+            var inputFields = Number($('#productForm'+crntTab+' input.answer').length);
+            var textareaFields = Number($('#productForm'+crntTab+' textarea.answer').length);
+            var totalFields = selectFields+inputFields+textareaFields;
+
+            for(var i=0; i<totalFields; i++){
+                var selectElem = $('#productForm'+crntTab+' select.answer')[i];
+                var inputElem = $('#productForm'+crntTab+' input.answer')[i];
+                var textareaElem = $('#productForm'+crntTab+' textarea.answer')[i];
+
+                if((selectElem && selectElem.hasAttribute('required') && selectElem.value == '') || (inputElem && inputElem.hasAttribute('required') && inputElem.value == '') || (textareaElem && textareaElem.hasAttribute('required') && textareaElem.value == '')){
+                    toastr.error("Please fill up the required fields", "Failed to Save Info");
+                    return false;
+                }
+            }
+            // input field validation end
+
+
+            $("#loader"+crntTab).show();
+            $.ajax({
+                data: $('#productForm'+crntTab).serialize(),
+                url: "{{ url('save/biodata/info') }}",
+                type: "POST",
+                dataType: 'json',
+                success: function (data) {
+
+                    $("#loader"+crntTab).hide();
+                    var currentTab = crntTab;
+                    var nextTab = Number(crntTab) + 1;
+
+                    $('#tabButton'+nextTab).addClass('active');
+                    $('#tab'+nextTab).addClass('active show');
+
+                    $('#tabButton'+currentTab).removeClass('active');
+                    $('#tab'+currentTab).removeClass('active show');
+
+                    toastr.success("Information Saved", "Saved Successfully");
+                    return false;
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    toastr.error("Failed to Save Data", "Something Went Wrong");
+                    return false;
+                }
+            });
+
+        }
+
+        function saveContactInfo(crntTab){
+
+            if(!$("#candidate_name").val() || !$("#gurdians_mobile_no").val() || !$("#relation_with_gurdian").val() || !$("#email").val()){
+                toastr.error("Please fill up the required fields", "Failed to Save Info");
+                return false;
+            }
+
+            var formData = new FormData();
+            formData.append("candidate_name", $("#candidate_name").val());
+            formData.append("gurdians_mobile_no", $("#gurdians_mobile_no").val());
+            formData.append("relation_with_gurdian", $("#relation_with_gurdian").val());
+            formData.append("email", $("#email").val());
+            formData.append('image', $("#library-photo-input")[0].files[0]);
+
+            $("#loader"+crntTab).show();
+            $.ajax({
+                data: formData,
+                url: "{{ url('save/contact/info/biodata') }}",
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+
+                    toastr.success("Information Saved", "Created Successfully");
+                    $("#loader"+crntTab).hide();
+
+                    return false;
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                    toastr.error("Failed to Save Data", "Something Went Wrong");
+                    return false;
+                }
+            });
+
+        }
+
+        function goToPrevTab(crntTab){
+            var currentTab = crntTab;
+            var prevTab = Number(crntTab) - 1;
+
+            $('#tabButton'+prevTab).addClass('active');
+            $('#tab'+prevTab).addClass('active show');
+
+            $('#tabButton'+currentTab).removeClass('active');
+            $('#tab'+currentTab).removeClass('active show');
         }
 
         // dependency dropdown
@@ -524,5 +651,51 @@
                 });
             });
         });
+
+
+        function uploadLibraryPhoto() {
+            // Get the file that the user selected.
+            const fileInput = document.getElementById("library-photo-input");
+            const file = fileInput.files[0];
+
+            // Check if a file was selected
+            if (file) {
+            // Create a new FileReader
+            const reader = new FileReader();
+
+            // Set up the onload event handler for the reader
+            reader.onload = function () {
+                // Get the element where you want to display the uploaded image.
+                const imageElement = document.getElementById("uploaded-image");
+                // Get the remove icon element
+                const removeIcon = document.getElementById("remove-icon");
+                // Set the source of the image element to the data URL from the FileReader.
+                imageElement.src = reader.result;
+                // Show the image element.
+                imageElement.style.display = "block";
+                // Show the remove icon.
+                removeIcon.style.display = "block";
+            };
+
+            // Read the file as a data URL
+            reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage() {
+            // Get the image element
+            const imageElement = document.getElementById("uploaded-image");
+            // Get the remove icon element
+            const removeIcon = document.getElementById("remove-icon");
+            // Hide the image element
+            imageElement.style.display = "none";
+            // Clear the source (removes the image)
+            imageElement.src = "";
+            // Hide the remove icon again
+            removeIcon.style.display = "none";
+            // Reset the file input
+            const fileInput = document.getElementById("library-photo-input");
+            fileInput.value = "";
+        }
     </script>
 @endsection

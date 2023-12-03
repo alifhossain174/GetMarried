@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 01:24 PM
+-- Generation Time: Dec 03, 2023 at 08:25 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -98,6 +98,75 @@ INSERT INTO `banners` (`id`, `background_image`, `background_color`, `banner_tit
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `biodata_question_answers`
+--
+
+CREATE TABLE `biodata_question_answers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `biodata_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `question_set_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `question_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `biodata_question_answers`
+--
+
+INSERT INTO `biodata_question_answers` (`id`, `user_id`, `biodata_id`, `question_set_id`, `question_id`, `answer`, `created_at`, `updated_at`) VALUES
+(1, 44, 2, 1, 1, '87', '2023-12-02 23:33:01', NULL),
+(3, 44, 2, 1, 3, 'BSc in CSE', '2023-12-02 23:33:01', NULL),
+(4, 44, 2, 2, 5, '98', '2023-12-02 23:33:18', NULL),
+(5, 44, 2, 2, 4, 'Md Alamgir Hossain', '2023-12-02 23:33:18', NULL),
+(6, 44, 2, 2, 6, 'Businessman', '2023-12-02 23:33:18', NULL),
+(7, 44, 2, 2, 8, '100', '2023-12-02 23:34:56', NULL),
+(8, 44, 2, 2, 7, 'Farzana Mujatab', '2023-12-02 23:34:56', NULL),
+(9, 44, 2, 2, 9, 'Service Holder', '2023-12-02 23:34:56', NULL),
+(10, 44, 2, 2, 10, '103', '2023-12-02 23:36:24', NULL),
+(11, 44, 2, 2, 11, 'Studying BSc Eng.', '2023-12-02 23:36:24', NULL),
+(12, 44, 2, 2, 12, '113', '2023-12-02 23:36:24', NULL),
+(13, 44, 2, 2, 14, 'Most of then are Businessman', '2023-12-02 23:36:24', NULL),
+(14, 44, 2, 2, 15, '126', '2023-12-02 23:36:24', NULL),
+(15, 44, 2, 2, 16, 'বসত বাড়ি (নিজস্ব)', '2023-12-02 23:36:24', NULL),
+(16, 44, 2, 2, 17, 'দ্বীন পালন', '2023-12-02 23:36:24', NULL),
+(17, 44, 2, 3, 18, 'Shirt Pant', '2023-12-02 23:42:56', NULL),
+(18, 44, 2, 3, 19, 'বায়োলজিক্যাল কারণে দাড়ি কম উঠে', '2023-12-02 23:42:56', NULL),
+(19, 44, 2, 3, 20, 'Trying', '2023-12-02 23:42:56', NULL),
+(20, 44, 2, 3, 21, 'Trying', '2023-12-02 23:42:56', NULL),
+(21, 44, 2, 3, 22, '2-3', '2023-12-02 23:42:56', NULL),
+(22, 44, 2, 3, 51, 'No', '2023-12-02 23:42:56', NULL),
+(23, 44, 2, 3, 52, 'No', '2023-12-02 23:42:56', NULL),
+(24, 44, 2, 3, 25, '129', '2023-12-02 23:42:56', NULL),
+(25, 44, 2, 3, 26, 'Yes', '2023-12-02 23:42:56', NULL),
+(26, 44, 2, 3, 27, 'No', '2023-12-02 23:42:56', NULL),
+(27, 44, 2, 3, 29, 'I dont beleive these', '2023-12-02 23:42:56', NULL),
+(28, 44, 2, 3, 31, 'কামালউদ্দিন জাফরী, মিজানুর রহমান আযহারী, ডঃ সাইফুল্লাহ', '2023-12-02 23:42:56', NULL),
+(29, 44, 2, 3, 30, '১ ) ইমাম আবু হানিফার রাহ্. - আল ফিকহুল আকবার । ২ ) ইমাম তাহাভির রাহ্. - আক্বিদাতুত তাহাভি। ৩ ) ইমাম আবু বকর আল জাস্সাসের - আহকামুল ক্বোরান', '2023-12-02 23:42:56', NULL),
+(30, 44, 2, 3, 32, 'নওমুসলিম', '2023-12-02 23:42:56', NULL),
+(31, 44, 2, 3, 34, 'আমার কোন শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন নেই', '2023-12-02 23:42:56', NULL),
+(32, 44, 2, 3, 35, '01969005035', '2023-12-02 23:42:56', NULL),
+(33, 44, 2, 4, 38, '30000', '2023-12-02 23:43:43', NULL),
+(34, 44, 2, 4, 37, 'Software Engineer', '2023-12-02 23:43:43', NULL),
+(36, 44, 2, 5, 45, 'বিয়ে মহান আল্লাহ তাআলার এক বিশেষ নেয়ামত ও রাসূল সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম-এর গুরুত্বপূর্ণ একটি সুন্নত।', '2023-12-02 23:45:14', NULL),
+(37, 44, 2, 5, 44, 'না', '2023-12-02 23:45:14', NULL),
+(38, 44, 2, 5, 43, 'in my Home', '2023-12-02 23:45:14', NULL),
+(39, 44, 2, 5, 42, 'না', '2023-12-02 23:45:14', NULL),
+(40, 44, 2, 5, 41, 'হ্যাঁ', '2023-12-02 23:45:14', NULL),
+(41, 44, 2, 5, 40, 'হ্যাঁ', '2023-12-02 23:45:14', NULL),
+(43, 44, 2, 6, 46, '146', '2023-12-02 23:45:28', NULL),
+(44, 44, 2, 6, 47, '150', '2023-12-02 23:45:28', NULL),
+(45, 44, 2, 6, 48, '148', '2023-12-02 23:45:28', NULL),
+(48, 44, 2, 2, 13, NULL, '2023-12-02 23:52:34', NULL),
+(49, 44, 2, 1, 2, NULL, '2023-12-03 00:15:52', NULL),
+(51, 44, 2, 5, 39, 'হ্যাঁ', '2023-12-03 00:35:37', NULL),
+(53, 44, 2, 4, 36, '137', '2023-12-03 00:54:36', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `biodata_types`
 --
 
@@ -155,6 +224,13 @@ CREATE TABLE `bio_data` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bio_data`
+--
+
+INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
+(2, 44, '1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 01:19:56');
 
 -- --------------------------------------------------------
 
@@ -1022,7 +1098,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (96, '2023_11_28_120900_create_m_c_q_s_table', 61),
 (97, '2023_11_29_054853_create_bio_data_table', 62),
 (98, '2023_11_29_094605_create_sms_gateways_table', 63),
-(99, '2023_11_29_105300_create_payment_gateways_table', 64);
+(99, '2023_11_29_105300_create_payment_gateways_table', 64),
+(101, '2023_12_03_041516_create_biodata_question_answers_table', 65);
 
 -- --------------------------------------------------------
 
@@ -1550,7 +1627,7 @@ INSERT INTO `questions` (`id`, `question_set_id`, `question`, `question_bn`, `hi
 (29, 3, 'What are your ideas or beliefs about shrines?', 'মাজার সম্পর্কে আপনার ধারণা বা বিশ্বাস কি?', NULL, NULL, 3, 28, 1, 1, '1701170501KkWTo', '2023-11-28 05:21:41', '2023-11-29 03:39:11'),
 (30, 3, 'Name at least 3 Islamic books you have read', 'আপনার পড়া হয়েছে এমন অন্তত ৩ টি ইসলামি বই এর নাম লিখুন', NULL, NULL, 3, 30, 1, 1, '1701170560lX5rB', '2023-11-28 05:22:40', '2023-11-29 03:39:21'),
 (31, 3, 'Write the names of at least 3 islamic scholars of your choice', 'আপনার পছন্দের অন্তত ৩ জন আলেমের নাম লিখুন', NULL, NULL, 3, 29, 1, 1, '1701170593GeW2f', '2023-11-28 05:23:13', '2023-11-29 03:39:16'),
-(32, 3, 'Select the category that applies to you. (Otherwise leave the cell blank)', 'আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন)', 'Example: If you are a non-Muslim, select the non-Muslim category. If you are associated with Tabligh, select Tabligh category. In this way you can select one or more of the mentioned categories.', 'উদাহরণঃ আপনি নওমুসলিম হলে, নওমুসলিম ক্যাটাগরি সিলেক্ট করুন। আপনি তাবলীগের সাথে যুক্ত থাকলে, তাবলীগ ক্যাটাগরি সিলেক্ট করুন। এভাবে উল্লিখিত এক বা একাধিক ক্যাটাগরি সিলেক্ট করতে পারবেন।', 3, 31, 1, 1, '1701170617JflZK', '2023-11-28 05:23:37', '2023-11-29 03:39:29'),
+(32, 3, 'Select the category that applies to you. (Otherwise leave the cell blank)', 'আপনার ক্ষেত্রে প্রযোজ্য হয় এমন ক্যাটাগরি সিলেক্ট করুন। (অন্যথায় ঘরটি ফাঁকা রাখুন)', 'Example: If you are a non-Muslim, select the non-Muslim category. If you are associated with Tabligh, select Tabligh category. In this way you can select one or more of the mentioned categories.', 'উদাহরণঃ আপনি নওমুসলিম হলে, নওমুসলিম ক্যাটাগরি সিলেক্ট করুন। আপনি তাবলীগের সাথে যুক্ত থাকলে, তাবলীগ ক্যাটাগরি সিলেক্ট করুন। এভাবে উল্লিখিত এক বা একাধিক ক্যাটাগরি সিলেক্ট করতে পারবেন।', 3, 31, 0, 1, '1701170617JflZK', '2023-11-28 05:23:37', '2023-12-02 23:39:24'),
 (34, 3, 'Write about your hobbies, likes and dislikes, tastes, dreams etc', 'নিজের শখ, পছন্দ-অপছন্দ, রুচিবোধ, স্বপ্ন ইত্যাদি বিষয়ে লিখুন', '* The more details you write, the easier it will be for the other party to get to know you and the more likely you will get an offer.', '* যত বিস্তারিত লিখবেন, অপরপক্ষের জন্য আপনার সম্পর্কে জানা সহজ হবে এবং প্রস্তাব পাওয়ার সম্ভাবনা বৃদ্ধি পাবে।', 1, 32, 1, 1, '1701170818RZ9FR', '2023-11-28 05:26:58', '2023-11-29 03:12:07'),
 (35, 3, 'Groom\'s mobile number', 'পাত্রের মোবাইল নাম্বার', 'Candidate\'s personal mobile number is being taken for biodata verification. It will not be disclosed to anyone except the authorities.', 'বায়োডাটা ভেরিফিকেশনের জন্য পাত্রের ব্যক্তিগত মোবাইল নাম্বার নেয়া হচ্ছে। এটি কর্তৃপক্ষ বাদে কারো কাছে প্রকাশ করা হবে না।', 3, 33, 1, 1, '1701170932J9Rio', '2023-11-28 05:28:52', '2023-11-29 03:39:52'),
 (36, 4, 'Occupation', 'পেশা', NULL, NULL, 2, 36, 1, 1, '1701171933ENp1l', '2023-11-28 05:45:33', '2023-11-29 03:12:07'),
@@ -6986,6 +7063,12 @@ ALTER TABLE `banners`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `biodata_question_answers`
+--
+ALTER TABLE `biodata_question_answers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `biodata_types`
 --
 ALTER TABLE `biodata_types`
@@ -7281,6 +7364,12 @@ ALTER TABLE `banners`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `biodata_question_answers`
+--
+ALTER TABLE `biodata_question_answers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
 -- AUTO_INCREMENT for table `biodata_types`
 --
 ALTER TABLE `biodata_types`
@@ -7290,7 +7379,7 @@ ALTER TABLE `biodata_types`
 -- AUTO_INCREMENT for table `bio_data`
 --
 ALTER TABLE `bio_data`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`
@@ -7404,7 +7493,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
