@@ -328,7 +328,7 @@
                                             @endforeach
 
 
-                                            <!-- Tab Ten -->
+                                            <!-- Last Tab -->
                                             <div class="tab-pane fade" id="tab{{$sl}}" role="tabpanel">
                                                 <div class="edit-biodata-form-widget">
                                                     <h2 class="edit-biodata-form-title">{{__('label.contact')}}</h2>
@@ -375,7 +375,7 @@
                                                             <div class="user-d-edit-biodata-form-button">
                                                                 <button type="button" onclick="goToPrevTab({{$sl}})" class="theme-btn secondary">Back</button>
                                                                 <button type="button" onclick="saveContactInfo({{$sl}})" class="theme-btn">
-                                                                    <img id="loader{{$sl}}" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Save
+                                                                    <img id="loader{{$sl}}" src="{{url('frontend_assets')}}/assets/images/loader.gif" style="display:none; width: 20px; margin-right: 5px;">Submit Biodata
                                                                 </button>
                                                             </div>
 
@@ -574,7 +574,7 @@
                 processData: false,
                 success: function (data) {
 
-                    toastr.success("Information Saved", "Created Successfully");
+                    toastr.success("Successfully Submitted for Approval", "Congrats!");
                     $("#loader"+crntTab).hide();
 
                     return false;
