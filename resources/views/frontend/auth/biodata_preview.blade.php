@@ -183,7 +183,7 @@
                                                         <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }}</label>
                                                         @if($question->type == 2)
                                                         @php
-                                                            $option = App\Models\Mcq::where('id', $questionAnswer->answer)->first();
+                                                            $option = App\Models\MCQ::where('id', $questionAnswer->answer)->first();
                                                         @endphp
                                                         <p>
                                                             <span>{{App::currentLocale() == 'en' ? $option->option : $option->option_bn}}</span>
