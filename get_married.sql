@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 01:30 PM
+-- Generation Time: Dec 04, 2023 at 06:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -230,7 +230,7 @@ CREATE TABLE `bio_data` (
 --
 
 INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 03:31:13');
+(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 22:01:30');
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1099,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (97, '2023_11_29_054853_create_bio_data_table', 62),
 (98, '2023_11_29_094605_create_sms_gateways_table', 63),
 (99, '2023_11_29_105300_create_payment_gateways_table', 64),
-(101, '2023_12_03_041516_create_biodata_question_answers_table', 65);
+(101, '2023_12_03_041516_create_biodata_question_answers_table', 65),
+(104, '2023_12_04_031341_create_pricing_packages_table', 66);
 
 -- --------------------------------------------------------
 
@@ -1550,6 +1551,36 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pricing_packages`
+--
+
+CREATE TABLE `pricing_packages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `connections` double DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `serial` double NOT NULL DEFAULT 1,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pricing_packages`
+--
+
+INSERT INTO `pricing_packages` (`id`, `title`, `title_bn`, `connections`, `price`, `description`, `description_bn`, `status`, `serial`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Basic', 'বেসিক', 1, 100, '1 biodata contact information will be displayed.', '১টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে। ', 1, 1, '4xC0H1701666704', '2023-12-03 23:11:44', '2023-12-03 23:14:53'),
+(3, 'Standard', 'স্ট্যান্ডার্ড', 5, 400, '৫টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', NULL, 1, 2, 'ek3nB1701666746', '2023-12-03 23:12:26', '2023-12-03 23:14:53'),
+(4, 'Popular', 'পপুলার', 10, 700, '১০টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', NULL, 1, 3, 'iHdSL1701666774', '2023-12-03 23:12:54', '2023-12-03 23:14:53');
 
 -- --------------------------------------------------------
 
@@ -7243,6 +7274,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `pricing_packages`
+--
+ALTER TABLE `pricing_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `privacy_policies`
 --
 ALTER TABLE `privacy_policies`
@@ -7493,7 +7530,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -7524,6 +7561,12 @@ ALTER TABLE `permission_routes`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pricing_packages`
+--
+ALTER TABLE `pricing_packages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `privacy_policies`

@@ -43,7 +43,7 @@
                 <div class="card-body pb-0">
                     <div class="text-center">
                         @if ($data->image && file_exists(public_path($data->image)))
-                            <img src="{{ url($data->image) }}" style="max-width: 250px; margin-bottom: 20px">
+                            <img src="{{ url($data->image) }}" style="max-width: 250px; margin-bottom: 20px; border-radius: 6px;">
                         @endif
                     </div>
                     <table class="table table-bordered w-100">
@@ -195,10 +195,10 @@
                     <div class="card-body">
                         @php
                             $questions = DB::table('questions')
-                                ->where('question_set_id', $set->id)
-                                ->where('status', 1)
-                                ->orderBy('serial', 'asc')
-                                ->get();
+                                    ->where('question_set_id', $set->id)
+                                    ->where('status', 1)
+                                    ->orderBy('serial', 'asc')
+                                    ->get();
                         @endphp
 
 
@@ -214,7 +214,7 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $question->question }}</td>
-                                    <td>{{ $question->type == 2 ? $option->option : $questionAnswer->answer }}</td>
+                                    <td>{{ $question->type == 2 ? ($option ? $option->option : '') : ($questionAnswer ? $questionAnswer->answer : '') }}</td>
                                 </tr>
                             @endforeach
                         </table>

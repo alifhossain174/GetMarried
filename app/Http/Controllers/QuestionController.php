@@ -35,7 +35,7 @@ class QuestionController extends Controller
                     })
                     ->editColumn('required', function($data) {
                         if($data->required == 1){
-                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Reuired</span>";
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Required</span>";
                         }
                     })
                     ->editColumn('type', function($data) {

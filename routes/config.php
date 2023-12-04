@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\PricingPackageController;
 
 
 // Route::get('/link', function () {
@@ -95,6 +96,15 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('view/blocked/biodatas', [ConfigController::class, 'viewBlockedBiodatas'])->name('ViewBlockedBiodatas');
     Route::get('edit/biodata/{slug}', [ConfigController::class, 'editBiodata'])->name('EditBiodata');
     Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
+
+    // pricing package
+    Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');
+    Route::post('save/pricing/package', [PricingPackageController::class, 'savePricingPackage'])->name('SavePricingPackage');
+    Route::get('delete/pricing/package/{slug}', [PricingPackageController::class, 'deletePricingPackage'])->name('DeletePricingPackage');
+    Route::get('get/pricing/package/info/{slug}', [PricingPackageController::class, 'getPricingPackageInfo'])->name('GetPricingPackageInfo');
+    Route::post('update/pricing/package', [PricingPackageController::class, 'updatePricingPackageInfo'])->name('UpdatePricingPackageInfo');
+    Route::get('rearrange/pricing/packages', [PricingPackageController::class, 'rearrangePricingPackages'])->name('RearrangePricingPackages');
+    Route::post('save/rearranged/pricing/packages', [PricingPackageController::class, 'saveRearrangedPricingPackages'])->name('SaveRearrangedPricingPackages');
 
 
 });
