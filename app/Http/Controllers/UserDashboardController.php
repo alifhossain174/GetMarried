@@ -7,6 +7,7 @@ use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\PaymentGateway;
 use App\Models\PricingPackage;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\QuestionSet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,16 @@ class UserDashboardController extends Controller
     }
     public function userCreateReport(){
         return view('frontend.auth.create_report');
+    }
+
+    public function purchaseConnection(Request $request){
+        $packageInfo = DB::table('payment_gateways')->where('id', $request->payment_gateway[0])->select('payment_gateways.provider_name', 'payment_gateways.id')->first();
+        if($packageInfo->provider_name == 'ssl_commerz'){
+            return redirect('sslcommerz/order/payment/'.$packageInfo->id);
+        } else {
+            Toastr::error('Only SSL Commerz is Available', 'Failed');
+            return back();
+        }
     }
 
 

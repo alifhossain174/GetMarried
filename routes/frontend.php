@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\user\LoginController;
+use App\Http\Controllers\PaymentController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
 
@@ -58,12 +59,23 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
             Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
             Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+            Route::post('purchase/connection', [UserDashboardController::class, 'purchaseConnection'])->name('Frontend.PurchaseConnection');
 
             Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
             Route::post('/district/wise/upazila', [BiodataController::class, 'districtWiseUpazila'])->name('Frontend.DistrictWiseUpazila');
             Route::post('/save/address/biodata', [BiodataController::class, 'saveAddressBiodata'])->name('Frontend.SaveAddressBiodata');
             Route::post('/save/biodata/info', [BiodataController::class, 'saveBiodataInfo'])->name('Frontend.SaveBiodataInfo');
             Route::post('/save/contact/info/biodata', [BiodataController::class, 'saveContactInfoBiodata'])->name('Frontend.SaveContactInfoBiodata');
+
+
+            // payment routes start
+            Route::get('sslcommerz/order/payment/{id}', [PaymentController::class, 'orderPayment'])->name('order.payment');
+            Route::post('sslcommerz/success', [PaymentController::class, 'success'])->name('payment.success');
+            Route::post('sslcommerz/failure', [PaymentController::class, 'failure'])->name('failure');
+            Route::post('sslcommerz/cancel', [PaymentController::class, 'cancel'])->name('cancel');
+            Route::post('sslcommerz/ipn', [PaymentController::class, 'ipn'])->name('payment.ipn');
+            // payment routes end
+
         });
     });
 
