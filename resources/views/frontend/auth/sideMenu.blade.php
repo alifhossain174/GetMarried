@@ -7,7 +7,7 @@
             <h3>{{__('label.user_menu_biodata_progress')}}</h3>
             <div class="user-d-bio-status">
                 @php
-                    $biodata = App\Models\Biodata::where('user_id', Auth::user()->id)->first();
+                    $biodata = App\Models\BioData::where('user_id', Auth::user()->id)->first();
                 @endphp
 
                 @if($biodata && $biodata->status == 0)
