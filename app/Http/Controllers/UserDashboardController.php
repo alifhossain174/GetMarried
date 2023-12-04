@@ -27,9 +27,17 @@ class UserDashboardController extends Controller
     public function userIgnoreList(){
         return view('frontend.auth.ignore_list');
     }
+
     public function userMyPurchased(){
-        return view('frontend.auth.my_purchased');
+        $data = DB::table('payment_histories')
+                    ->join('pricing_packages', 'payment_histories.package_id', 'pricing_packages.id')
+                    ->select('payment_histories.*', 'pricing_packages.title', 'pricing_packages.title_bn')
+                    ->where('payment_histories.user_id', Auth::user()->id)
+                    ->paginate(15);
+
+        return view('frontend.auth.my_purchased', compact('data'));
     }
+    
     public function userConnection(){
         $pricingPackages = PricingPackage::where('status', 1)->orderBy('serial', 'asc')->get();
         return view('frontend.auth.connection', compact('pricingPackages'));
