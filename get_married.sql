@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 06:55 AM
+-- Generation Time: Dec 04, 2023 at 08:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1100,7 +1100,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (98, '2023_11_29_094605_create_sms_gateways_table', 63),
 (99, '2023_11_29_105300_create_payment_gateways_table', 64),
 (101, '2023_12_03_041516_create_biodata_question_answers_table', 65),
-(104, '2023_12_04_031341_create_pricing_packages_table', 66);
+(104, '2023_12_04_031341_create_pricing_packages_table', 66),
+(106, '2023_12_04_065045_create_payment_histories_table', 67);
 
 -- --------------------------------------------------------
 
@@ -1261,10 +1262,51 @@ CREATE TABLE `payment_gateways` (
 --
 
 INSERT INTO `payment_gateways` (`id`, `provider_name`, `title`, `image`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'ssl_commerz', 'SSL Commerz', 'images/ssl_commerz.png', 'sodai644d7015e8eb1', 'sodai644d7015e8eb1@ssl', 'alifhossain174', '12345678', 1, 1, NULL, '2023-10-18 08:16:01'),
+(1, 'ssl_commerz', 'SSL Commerz', 'images/ssl_commerz.png', 'getup656d6edfc6c20', 'getup656d6edfc6c20@ssl', 'Redwona', 'amarroll_113', 0, 1, NULL, '2023-12-04 00:38:06'),
 (2, 'stripe', 'Stripe', 'images/stripe_payment_gatway.png', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
 (3, 'bkash', 'bKash Payment', 'images/bkash_payment_gateway.png', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
-(4, 'amar_pay', 'Amar Pay', 'images/amar_pay.png', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 0, NULL, '2023-11-29 05:06:01');
+(4, 'amar_pay', 'Amar Pay', 'images/amar_pay.png', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 1, NULL, '2023-11-29 05:06:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_histories`
+--
+
+CREATE TABLE `payment_histories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `package_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `purchased_connections` double NOT NULL DEFAULT 0,
+  `payment_through` varchar(255) NOT NULL DEFAULT 'SSL COMMERZ',
+  `tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `val_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_type` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_no` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `bank_tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `status` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `tran_date` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `currency` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_sub_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer_country` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_histories`
+--
+
+INSERT INTO `payment_histories` (`id`, `user_id`, `package_id`, `purchased_connections`, `payment_through`, `tran_id`, `val_id`, `amount`, `card_type`, `store_amount`, `card_no`, `bank_tran_id`, `status`, `tran_date`, `currency`, `card_issuer`, `card_brand`, `card_sub_brand`, `card_issuer_country`, `store_id`, `created_at`, `updated_at`) VALUES
+(1, 44, 1, 1, 'SSL COMMERZ', 'tg1fG1701673416', '2312041303490A5tJ9Fd7amTqkZ', '100.00', 'BKASH-BKash', '97.50', NULL, '2312041303491LrHiKFDhnfp8E0', 'VALID', '2023-12-04 13:03:37', 'BDT', 'BKash Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:03:54', NULL),
+(2, 44, 1, 1, 'SSL COMMERZ', 'gDUGJ1701673938', '231204131228SxLJpEJKM550oFe', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041312281fUWHBkfXQ0omPq', 'VALID', '2023-12-04 13:12:19', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:12:33', NULL),
+(3, 44, 1, 1, 'SSL COMMERZ', 'u5Teb1701674104', '231204131514dtbGbhYFwlvqpUC', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041315140meFVvCGRnr8Q4S', 'VALID', '2023-12-04 13:15:05', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:15:19', NULL),
+(4, 44, 3, 5, 'SSL COMMERZ', 'S7z5Y1701674400', '2312041320120Jp8BplJTx48MFd', '400.00', 'DBBLMOBILEB-Dbbl Mobile Banking', '390.00', NULL, '231204132012F1uwi3pk8A9ZIOs', 'VALID', '2023-12-04 13:20:02', 'BDT', 'DBBL Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:20:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -6966,7 +7008,7 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-09-17 10:49:44', NULL),
 (2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, 0, NULL, NULL, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
 (7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, 0, NULL, NULL, NULL, '2023-11-26 04:20:44', NULL),
-(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, 22, '2023-12-01', NULL, NULL, NULL, NULL),
+(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, 30, '2023-12-04 07:20:18', NULL, NULL, NULL, '2023-12-04 01:20:18'),
 (45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
 (46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
 (47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
@@ -7265,6 +7307,12 @@ ALTER TABLE `payment_gateways`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment_histories`
+--
+ALTER TABLE `payment_histories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permission_routes`
 --
 ALTER TABLE `permission_routes`
@@ -7535,7 +7583,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -7553,6 +7601,12 @@ ALTER TABLE `m_c_q_s`
 -- AUTO_INCREMENT for table `payment_gateways`
 --
 ALTER TABLE `payment_gateways`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `payment_histories`
+--
+ALTER TABLE `payment_histories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --

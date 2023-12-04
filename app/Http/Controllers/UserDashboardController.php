@@ -79,8 +79,9 @@ class UserDashboardController extends Controller
     }
 
     public function purchaseConnection(Request $request){
-        $packageInfo = DB::table('payment_gateways')->where('id', $request->payment_gateway[0])->select('payment_gateways.provider_name', 'payment_gateways.id')->first();
-        if($packageInfo->provider_name == 'ssl_commerz'){
+        $packageInfo = PricingPackage::where('id', $request->pricing_package_id)->first();
+        $paymentGateway = DB::table('payment_gateways')->where('id', $request->payment_gateway[0])->select('payment_gateways.provider_name', 'payment_gateways.id')->first();
+        if($paymentGateway->provider_name == 'ssl_commerz'){
             return redirect('sslcommerz/order/payment/'.$packageInfo->id);
         } else {
             Toastr::error('Only SSL Commerz is Available', 'Failed');

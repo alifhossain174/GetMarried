@@ -51,7 +51,7 @@ class PaymentController extends Controller
         if($validate)
         {
             // dd($request->all());
-            $packageInfo = PricingPackage::where('price', $request->amount)->first();
+            $packageInfo = PricingPackage::where('price', (int) $request->amount)->first();
 
             $userInfo = User::where('id', Auth::user()->id)->first();
             $userInfo->connections = $userInfo->connections + $packageInfo->connections;
@@ -61,6 +61,7 @@ class PaymentController extends Controller
             PaymentHistory::insert([
                 'user_id' => $userInfo->id,
                 'package_id' => $packageInfo->id,
+                'purchased_connections' => $packageInfo->connections,
                 'payment_through' => "SSL COMMERZ",
                 'tran_id' => $request->tran_id,
                 'bank_tran_id' => $request->bank_tran_id,
@@ -76,10 +77,11 @@ class PaymentController extends Controller
                 'card_brand' => $request->card_brand,
                 'card_sub_brand' => $request->card_sub_brand,
                 'card_issuer_country' => $request->card_issuer_country,
+                'store_id' => $request->store_id,
                 'created_at' => Carbon::now()
             ]);
 
-            Toastr::error('Successfully Purchased Connections', 'Congratulation!');
+            Toastr::success('Successfully Purchased Connections', 'Congratulation!');
             return redirect('user/dashboard');
 
         }
