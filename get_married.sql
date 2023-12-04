@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 06:16 AM
+-- Generation Time: Dec 04, 2023 at 06:55 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1244,6 +1244,8 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `payment_gateways` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `provider_name` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `api_key` varchar(255) DEFAULT NULL COMMENT 'StoreID/ApiKey',
   `secret_key` varchar(255) DEFAULT NULL COMMENT 'StorePassword/SecretKey',
   `username` varchar(255) DEFAULT NULL,
@@ -1258,11 +1260,11 @@ CREATE TABLE `payment_gateways` (
 -- Dumping data for table `payment_gateways`
 --
 
-INSERT INTO `payment_gateways` (`id`, `provider_name`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'ssl_commerz', 'sodai644d7015e8eb1', 'sodai644d7015e8eb1@ssl', 'alifhossain174', '12345678', 1, 1, NULL, '2023-10-18 08:16:01'),
-(2, 'stripe', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
-(3, 'bkash', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
-(4, 'amar_pay', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 0, NULL, '2023-11-29 05:06:01');
+INSERT INTO `payment_gateways` (`id`, `provider_name`, `title`, `image`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ssl_commerz', 'SSL Commerz', 'images/ssl_commerz.png', 'sodai644d7015e8eb1', 'sodai644d7015e8eb1@ssl', 'alifhossain174', '12345678', 1, 1, NULL, '2023-10-18 08:16:01'),
+(2, 'stripe', 'Stripe', 'images/stripe_payment_gatway.png', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
+(3, 'bkash', 'bKash Payment', 'images/bkash_payment_gateway.png', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
+(4, 'amar_pay', 'Amar Pay', 'images/amar_pay.png', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 0, NULL, '2023-11-29 05:06:01');
 
 -- --------------------------------------------------------
 
@@ -1579,8 +1581,8 @@ CREATE TABLE `pricing_packages` (
 
 INSERT INTO `pricing_packages` (`id`, `title`, `title_bn`, `connections`, `price`, `description`, `description_bn`, `status`, `serial`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Basic', 'বেসিক', 1, 100, '1 biodata contact information will be displayed.', '১টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে। ', 1, 1, '4xC0H1701666704', '2023-12-03 23:11:44', '2023-12-03 23:14:53'),
-(3, 'Standard', 'স্ট্যান্ডার্ড', 5, 400, '৫টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', NULL, 1, 2, 'ek3nB1701666746', '2023-12-03 23:12:26', '2023-12-03 23:14:53'),
-(4, 'Popular', 'পপুলার', 10, 700, '১০টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', NULL, 1, 3, 'iHdSL1701666774', '2023-12-03 23:12:54', '2023-12-03 23:14:53');
+(3, 'Standard', 'স্ট্যান্ডার্ড', 5, 400, '5 biodata contact information will be displayed.', '৫টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', 1, 2, 'ek3nB1701666746', '2023-12-03 23:12:26', '2023-12-03 23:14:53'),
+(4, 'Popular', 'পপুলার', 10, 700, '10 biodata contact information will be displayed.', '১০টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', 1, 3, 'iHdSL1701666774', '2023-12-03 23:12:54', '2023-12-03 23:14:53');
 
 -- --------------------------------------------------------
 
@@ -6948,6 +6950,9 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '1=>Admin; 2=>User/Shop;',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `connections` double NOT NULL DEFAULT 0,
+  `last_purchase_date` varchar(255) DEFAULT NULL,
+  `expire_date` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -6957,17 +6962,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
-(2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
-(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, NULL, NULL, NULL),
-(45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
-(46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
-(47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
-(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005038', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27'),
-(49, 'Brendan Morrow', NULL, NULL, NULL, '01969005039', '862837', '2023-11-29 21:57:27', '$2y$12$Y7s4dqdGEoMrKGGAPCKJs.shZUZd2CiRJnfqZwBugMwQCDusmBqOC', 'Quidem qui ea eu aut', 3, 1, NULL, '2023-11-29 05:16:36', '2023-11-29 21:57:27'),
-(50, 'Emery Larson', NULL, NULL, NULL, '01969005035', '383430', '2023-11-29 21:58:42', '$2y$12$3MgEJHgaXqoh1bi.Yo7rZO1j5Hxwf86gKNgdp/ffXduq.F/BjtBrC', 'Asperiores magna qui', 3, 1, NULL, '2023-11-29 21:58:32', '2023-11-29 21:58:42');
+INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `connections`, `last_purchase_date`, `expire_date`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-09-17 10:49:44', NULL),
+(2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, 0, NULL, NULL, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
+(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, 0, NULL, NULL, NULL, '2023-11-26 04:20:44', NULL),
+(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, 22, '2023-12-01', NULL, NULL, NULL, NULL),
+(45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
+(46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
+(47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
+(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005038', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27'),
+(49, 'Brendan Morrow', NULL, NULL, NULL, '01969005039', '862837', '2023-11-29 21:57:27', '$2y$12$Y7s4dqdGEoMrKGGAPCKJs.shZUZd2CiRJnfqZwBugMwQCDusmBqOC', 'Quidem qui ea eu aut', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 05:16:36', '2023-11-29 21:57:27'),
+(50, 'Emery Larson', NULL, NULL, NULL, '01969005035', '383430', '2023-11-29 21:58:42', '$2y$12$3MgEJHgaXqoh1bi.Yo7rZO1j5Hxwf86gKNgdp/ffXduq.F/BjtBrC', 'Asperiores magna qui', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 21:58:32', '2023-11-29 21:58:42');
 
 -- --------------------------------------------------------
 

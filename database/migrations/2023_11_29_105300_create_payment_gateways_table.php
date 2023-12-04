@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('payment_gateways', function (Blueprint $table) {
             $table->id();
             $table->string('provider_name');
+            $table->string('title')->nullable();
+            $table->string('image')->nullable();
             $table->string('api_key')->nullable()->comment("StoreID/ApiKey");
             $table->string('secret_key')->nullable()->comment("StorePassword/SecretKey");
             $table->string('username')->nullable();

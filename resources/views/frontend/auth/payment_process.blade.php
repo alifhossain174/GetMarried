@@ -1,5 +1,10 @@
 @extends('frontend.master')
 
+@php
+    use Rakibhstu\Banglanumber\NumberToBangla;
+    $numto = new NumberToBangla();
+@endphp
+
 @section('content')
     <section class="user-dashboard-area">
         <div class="user-d-container">
@@ -30,15 +35,15 @@
                                                 <ul>
                                                     <li>
                                                         <span>{{__('message.user_package_name')}}</span>
-                                                        <p>বেসিক</p>
+                                                        <p>{{ App::currentLocale() == 'en' ? $package->title : $package->title_bn }}</p>
                                                     </li>
                                                     <li>
                                                         <span>{{__('message.user_connection_no')}}</span>
-                                                        <p>1</p>
+                                                        <p>{{ App::currentLocale() == 'en' ? $package->connections : $numto->bnNum($package->connections) }}</p>
                                                     </li>
                                                     <li>
                                                         <span>{{__('message.user_package_price')}}</span>
-                                                        <p>৳১০০</p>
+                                                        <p>{{ App::currentLocale() == 'en' ? "BDT ".$package->price : "৳".$numto->bnNum($package->price) }}</p>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -51,22 +56,19 @@
                                                     {{__('message.user_select_payment_gateway')}}
                                                 </h3>
                                                 <div class="payment-process-widget-inner">
+
+                                                     @foreach($paymentGateways as $gateway)
                                                     <div class="single-payment-gateway">
-                                                        <label class="form-check-label" for="exampleRadios1"><input
-                                                                class="form-check-input" type="radio" name="exampleRadios"
-                                                                id="exampleRadios1" value="option1" checked />
-                                                            <img src="{{url('frontend_assets')}}/assets/images/bkash-icon.svg" alt="#" />
-                                                            Bkash Payment
+                                                        <label class="form-check-label" for="payment_gateway{{$gateway->id}}">
+                                                            <input class="form-check-input" type="radio" name="payment_gateway" id="payment_gateway{{$gateway->id}}" value="{{$gateway->id}}" />
+                                                            @if(file_exists(public_path($gateway->image)))
+                                                            <img src="{{url($gateway->image)}}" alt="#" />
+                                                            @endif
+                                                            {{$gateway->title}}
                                                         </label>
                                                     </div>
-                                                    <div class="single-payment-gateway">
-                                                        <label class="form-check-label" for="exampleRadios2"><input
-                                                                class="form-check-input" type="radio" name="exampleRadios"
-                                                                id="exampleRadios2" value="option2" />
-                                                            <img src="{{url('frontend_assets')}}/assets/images/nagad-icon.svg" alt="#" />
-                                                            Nagad Payment
-                                                        </label>
-                                                    </div>
+                                                    @endforeach
+
                                                 </div>
                                             </div>
                                             <div class="payment-gateway-btn">

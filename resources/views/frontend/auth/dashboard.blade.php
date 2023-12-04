@@ -58,7 +58,7 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="user-d-home-card-2">
                                 <div class="user-d-home-card-2-content">
-                                    <span class="counter">2</span>
+                                    <span class="counter">{{Auth::user()->connections}}</span>
                                     <h3>{{__('message.user_dashboard_remaining_connection')}}</h3>
                                     <p>
                                         {{__('message.user_dashboard_remaining_connection_msg')}}

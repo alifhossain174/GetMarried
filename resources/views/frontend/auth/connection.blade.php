@@ -1,5 +1,10 @@
 @extends('frontend.master')
 
+@php
+    use Rakibhstu\Banglanumber\NumberToBangla;
+    $numto = new NumberToBangla();
+@endphp
+
 @section('content')
     <section class="user-dashboard-area">
         <div class="user-d-container">
@@ -28,60 +33,39 @@
                         <div class="col-lg-9 col-12">
                             <div class="user-d-connection-bottom">
                                 <div class="row">
+
+                                    @foreach ($pricingPackages as $package)
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="user-d-pricing-plan">
                                             <div class="user-d-pricing-plan-title">
-                                                <h3>বেসিক</h3>
+                                                <h3>{{ App::currentLocale() == 'en' ? $package->title : $package->title_bn }}</h3>
                                             </div>
                                             <div class="user-d-pricing-plan-content">
-                                                <h4>১টি কানেকশন</h4>
-                                                <p>৳১০০</p>
-                                                <span>১টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।</span>
+                                                <h4>{{ App::currentLocale() == 'en' ? $package->connections." Connections" : $numto->bnNum($package->connections)."টি কানেকশন" }}</h4>
+                                                <p>{{ App::currentLocale() == 'en' ? "BDT ".$package->price : "৳".$numto->bnNum($package->price) }}</p>
+                                                <span>{{ App::currentLocale() == 'en' ? $package->description : $package->description_bn }}</span>
                                             </div>
                                             <div class="user-d-pricing-plan-action">
-                                                <a href="{{url('user/payment/process')}}" class="theme-btn secondary"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_buy_connection')}}</a>
+                                                <a href="{{url('user/payment/process')}}/{{$package->slug}}" class="theme-btn secondary"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_buy_connection')}}</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="user-d-pricing-plan">
-                                            <div class="user-d-pricing-plan-title">
-                                                <h3>স্ট্যান্ডার্ড</h3>
-                                            </div>
-                                            <div class="user-d-pricing-plan-content">
-                                                <h4>৫টি কানেকশন</h4>
-                                                <p>৳৪০০</p>
-                                                <span>৫টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।</span>
-                                            </div>
-                                            <div class="user-d-pricing-plan-action">
-                                                <a href="{{url('user/payment/process')}}" class="theme-btn secondary"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_buy_connection')}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="user-d-pricing-plan">
-                                            <div class="user-d-pricing-plan-title">
-                                                <h3>পপুলার</h3>
-                                            </div>
-                                            <div class="user-d-pricing-plan-content">
-                                                <h4>১০টি কানেকশন</h4>
-                                                <p>৳৭০০</p>
-                                                <span>১০টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।</span>
-                                            </div>
-                                            <div class="user-d-pricing-plan-action">
-                                                <a href="{{url('user/payment/process')}}" class="theme-btn secondary"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_buy_connection')}}</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-12">
                             <div class="user-d-connection-top">
                                 <div class="user-d-c-total-widget">
-                                    <span class="total-connection">2</span>
+                                    <span class="total-connection">{{ App::currentLocale() == 'en' ? Auth::user()->connections : $numto->bnNum(Auth::user()->connections) }}</span>
                                     <h4>{{__('label.user_menu_has_connection')}}</h4>
-                                    <p>{{__('label.user_menu_last_purchase')}} October 22, 2023</p>
+                                    <p>
+                                        @if(Auth::user()->last_purchase_date)
+                                        {{__('label.user_menu_last_purchase')}}
+                                        {{date("F d, Y", strtotime(Auth::user()->last_purchase_date))}}
+                                        @endif
+                                    </p>
                                 </div>
                                 <div class="user-d-connection-top-btn">
                                     <a href="https://www.youtube.com/watch?v=gyGsPlt06bo" target="_blank" class="theme-btn popup-video"><i class="icofont-youtube-play"></i>{{__('label.user_menu_buy_connection_video')}}</a>

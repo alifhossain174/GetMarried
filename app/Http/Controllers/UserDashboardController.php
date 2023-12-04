@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\BiodataType;
 use App\Models\MaritalCondition;
+use App\Models\PaymentGateway;
+use App\Models\PricingPackage;
 use App\Models\QuestionSet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +30,13 @@ class UserDashboardController extends Controller
         return view('frontend.auth.my_purchased');
     }
     public function userConnection(){
-        return view('frontend.auth.connection');
+        $pricingPackages = PricingPackage::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.auth.connection', compact('pricingPackages'));
     }
-    public function userPaymentProcess(){
-        return view('frontend.auth.payment_process');
+    public function userPaymentProcess($slug){
+        $package = PricingPackage::where('slug', $slug)->first();
+        $paymentGateways = PaymentGateway::where('status', 1)->get();
+        return view('frontend.auth.payment_process', compact('package', 'paymentGateways'));
     }
     public function userCheckedBiodata(){
         return view('frontend.auth.checked_biodata');
