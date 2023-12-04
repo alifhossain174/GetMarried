@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 08:31 AM
+-- Generation Time: Dec 04, 2023 at 10:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -1306,7 +1306,9 @@ INSERT INTO `payment_histories` (`id`, `user_id`, `package_id`, `purchased_conne
 (1, 44, 1, 1, 'SSL COMMERZ', 'tg1fG1701673416', '2312041303490A5tJ9Fd7amTqkZ', '100.00', 'BKASH-BKash', '97.50', NULL, '2312041303491LrHiKFDhnfp8E0', 'VALID', '2023-12-04 13:03:37', 'BDT', 'BKash Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:03:54', NULL),
 (2, 44, 1, 1, 'SSL COMMERZ', 'gDUGJ1701673938', '231204131228SxLJpEJKM550oFe', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041312281fUWHBkfXQ0omPq', 'VALID', '2023-12-04 13:12:19', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:12:33', NULL),
 (3, 44, 1, 1, 'SSL COMMERZ', 'u5Teb1701674104', '231204131514dtbGbhYFwlvqpUC', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041315140meFVvCGRnr8Q4S', 'VALID', '2023-12-04 13:15:05', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:15:19', NULL),
-(4, 44, 3, 5, 'SSL COMMERZ', 'S7z5Y1701674400', '2312041320120Jp8BplJTx48MFd', '400.00', 'DBBLMOBILEB-Dbbl Mobile Banking', '390.00', NULL, '231204132012F1uwi3pk8A9ZIOs', 'VALID', '2023-12-04 13:20:02', 'BDT', 'DBBL Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:20:18', NULL);
+(4, 44, 3, 5, 'SSL COMMERZ', 'S7z5Y1701674400', '2312041320120Jp8BplJTx48MFd', '400.00', 'DBBLMOBILEB-Dbbl Mobile Banking', '390.00', NULL, '231204132012F1uwi3pk8A9ZIOs', 'VALID', '2023-12-04 13:20:02', 'BDT', 'DBBL Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:20:18', NULL),
+(5, 44, 4, 10, 'SSL COMMERZ', 'E61dl1701676557', '231204135608yhmbr6gxDDVuEZm', '700.00', 'NAGAD-Nagad', '682.50', NULL, '231204135608GkRbcROWqBTnSS6', 'VALID', '2023-12-04 13:55:58', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:56:12', NULL),
+(6, 44, 3, 5, 'SSL COMMERZ', '9d1rp1701681310', '231204151838SKn2VapVyTqyds5', '400.00', 'VISA-Dutch Bangla', '390.00', '418117XXXXXX7814', '23120415183805zvbFp6NBVE46x', 'VALID', '2023-12-04 15:15:11', 'BDT', 'TRUST BANK, LTD.', 'VISA', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 03:18:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -7008,7 +7010,7 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-09-17 10:49:44', NULL),
 (2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, 0, NULL, NULL, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
 (7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, 0, NULL, NULL, NULL, '2023-11-26 04:20:44', NULL),
-(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, 30, '2023-12-04 07:20:18', NULL, NULL, NULL, '2023-12-04 01:20:18'),
+(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, 45, '2023-12-04 09:18:42', NULL, NULL, NULL, '2023-12-04 03:18:42'),
 (45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
 (46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
 (47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
@@ -7607,7 +7609,7 @@ ALTER TABLE `payment_gateways`
 -- AUTO_INCREMENT for table `payment_histories`
 --
 ALTER TABLE `payment_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permission_routes`
