@@ -46,7 +46,7 @@
                                     <i class="fi fi-rr-shopping-bag"></i>
                                 </div>
                                 <div class="user-d-home-card-info">
-                                    <h4><span class="counter">0</span></h4>
+                                    <h4><span class="counter">{{DB::table('payment_histories')->where('user_id', Auth::user()->id)->count()}}</span></h4>
                                     <h5>{{__('message.user_dashboard_my_purchases')}}</h5>
                                     <p>{{__('message.user_dashboard_my_purchases_msg')}}</p>
                                 </div>

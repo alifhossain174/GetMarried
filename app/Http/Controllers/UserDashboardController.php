@@ -33,7 +33,8 @@ class UserDashboardController extends Controller
                     ->join('pricing_packages', 'payment_histories.package_id', 'pricing_packages.id')
                     ->select('payment_histories.*', 'pricing_packages.title', 'pricing_packages.title_bn')
                     ->where('payment_histories.user_id', Auth::user()->id)
-                    ->paginate(15);
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
 
         return view('frontend.auth.my_purchased', compact('data'));
     }

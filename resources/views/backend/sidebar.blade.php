@@ -18,6 +18,7 @@
                     <li><a href="{{ url('/setup/sms/gateways') }}">SMS Gateways</a></li>
                     <li><a href="{{ url('/setup/payment/gateways') }}">Payment Gateways</a></li>
                     <li><a href="{{ url('/view/pricing/packages') }}">Pricing Packages</a></li>
+                    <li><a href="{{ url('/view/payment/histories') }}">Payment Histories</a></li>
                 </ul>
             </div>
         </li>

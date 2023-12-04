@@ -106,5 +106,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/pricing/packages', [PricingPackageController::class, 'rearrangePricingPackages'])->name('RearrangePricingPackages');
     Route::post('save/rearranged/pricing/packages', [PricingPackageController::class, 'saveRearrangedPricingPackages'])->name('SaveRearrangedPricingPackages');
 
+    Route::get('view/payment/histories', [ConfigController::class, 'viewPaymentHistories'])->name('ViewPaymentHistories');
+
 
 });
