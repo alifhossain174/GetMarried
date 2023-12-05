@@ -48,6 +48,8 @@ Route::group(['middleware' => ['SetLocale']], function () {
         Route::group(['middleware' => ['CheckUserVerification']], function () {
             Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
             Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
+            Route::post('/user/password/change', [UserDashboardController::class, 'userPasswordChange'])->name('Frontend.UserPasswordChange');
+            Route::post('/user/biodata/remove', [UserDashboardController::class, 'userBiodataRemove'])->name('Frontend.UserBiodataRemove');
             Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
             Route::get('/user/ignore/list', [UserDashboardController::class, 'userIgnoreList'])->name('Frontend.UserIgnoreList');
             Route::get('/user/my/purchased', [UserDashboardController::class, 'userMyPurchased'])->name('Frontend.UserMyPurchased');

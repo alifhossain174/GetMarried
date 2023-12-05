@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\BioData;
+use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
+use App\Models\User;
 use App\Models\MaritalCondition;
 use App\Models\PaymentGateway;
 use App\Models\PricingPackage;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\QuestionSet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 class UserDashboardController extends Controller
@@ -20,6 +24,47 @@ class UserDashboardController extends Controller
     }
     public function userSettings(){
         return view('frontend.auth.settings');
+    }
+
+    public function userPasswordChange(Request $request){
+
+        $request->validate([
+            'password' => ['required', 'string', 'min:8'],
+            'confirm_password' => ['required', 'string', 'min:8'],
+        ]);
+
+        if($request->password != $request->confirm_password){
+            Toastr::error('Password & Confirm Password have to be same', 'Missmatch Found !');
+            return back();
+        }
+
+        User::where('id', Auth::user()->id)->update([
+            'password' => Hash::make($request->password),
+            'updated_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Successfully Changed the Password', 'Password Changed !');
+        return back();
+    }
+
+    public function userBiodataRemove(Request $request){
+        $request->validate([
+            'check' => ['required'],
+        ]);
+
+        $biodataInfo = BioData::where('user_id', Auth::user()->id)->first();
+        if(!$biodataInfo){
+            Toastr::error("You Haven't Submitted the Biodata", 'Biodata Not Found !');
+            return back();
+        } else {
+            BiodataQuestionAnswer::where('user_id', Auth::user()->id)->where('biodata_id', $biodataInfo->id)->delete();
+            if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
+                unlink(public_path($biodataInfo->image));
+            }
+            $biodataInfo->delete();
+            Toastr::success('Successfully Deleted the Biodata', 'Biodata Deleted !');
+            return back();
+        }
     }
     public function userShortList(){
         return view('frontend.auth.short_list');
@@ -38,7 +83,7 @@ class UserDashboardController extends Controller
 
         return view('frontend.auth.my_purchased', compact('data'));
     }
-    
+
     public function userConnection(){
         $pricingPackages = PricingPackage::where('status', 1)->orderBy('serial', 'asc')->get();
         return view('frontend.auth.connection', compact('pricingPackages'));
