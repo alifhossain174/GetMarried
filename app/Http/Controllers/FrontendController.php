@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\BioData;
 use App\Models\BiodataType;
 use App\Models\FaqConfig;
 use App\Models\Faq;
@@ -10,6 +11,7 @@ use App\Models\HomepageBioData;
 use App\Models\MaritalCondition;
 use App\Models\MobileApp;
 use App\Models\PrivacyPolicy;
+use App\Models\QuestionSet;
 use App\Models\RefundPolicy;
 use App\Models\TermsCondition;
 use Illuminate\Http\Request;
@@ -112,7 +114,6 @@ class FrontendController extends Controller
             'message.required' => 'Message is Required'
         ]);
 
-
         ContactRequest::insert([
             'name' => $request->name,
             'email' => $request->email,
@@ -126,8 +127,48 @@ class FrontendController extends Controller
         return back();
     }
 
-    public function searchResults(){
-        return view('frontend.search_results');
+    public function searchResults(Request $request){
+
+        $biodataType = $request->biodata_type;
+        $maritalStatus = $request->marital_status;
+        $district = $request->district;
+
+        $data = DB::table('bio_data')
+                            ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                            ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                            ->select('bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->where('bio_data.status', 1)
+                            ->when($biodataType, function($query) use ($biodataType){
+                                return $query->where('bio_data.biodata_type_id', $biodataType);
+                            })
+                            ->when($maritalStatus, function($query) use ($maritalStatus){
+                                return $query->where('bio_data.marital_condition_id', $maritalStatus);
+                            })
+                            ->when($district, function($query) use ($district){
+                                return $query->where('bio_data.marital_condition_id', $district);
+                            })
+                            ->orderBy('bio_data.id', 'desc')
+                            ->paginate(12);
+
+        return view('frontend.search_results', compact('data'));
+    }
+
+    public function biodataDetails($slug){
+
+        $biodata = DB::table('bio_data')
+                ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                ->leftJoin('countries', 'bio_data.nationality', 'countries.id')
+                ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
+                ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
+                ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
+                ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                ->where('bio_data.slug', $slug)
+                ->first();
+
+        $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.biodata_details', compact('biodata', 'questionSets'));
     }
 
 }

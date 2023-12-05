@@ -2,12 +2,26 @@
 
 @push('site-seo')
     @php
+        use Rakibhstu\Banglanumber\NumberToBangla;
+        $numto = new NumberToBangla();
         $homePageSeo = App\Models\Seo::where('id', 1)->first();
     @endphp
     <meta name="title" content="{{ $homePageSeo->meta_title }}" />
     <meta name="description" content="{{ $homePageSeo->meta_description }}" />
     <meta name="keywords" content="{{ str_replace(',', ', ', $homePageSeo->meta_keywords) }}" />
 @endpush
+
+@section('header_css')
+    <style>
+        .active > .page-link, .page-link.active{
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+        }
+        .page-link{
+            color: var(--primary-color);
+        }
+    </style>
+@endsection
 
 @section('content')
     <!-- Breadcrumbs Area -->
@@ -17,7 +31,7 @@
                 <div class="col-lg-8 col-md-8 col-12">
                     <div class="breadcrumbs-content">
                         <h3 class="breadcrumbs-title">{{ __('label.biodata') }}</h3>
-                        <p class="breadcrumbs-text">5597 {{ __('label.biodata_found') }}</p>
+                        <p class="breadcrumbs-text">{{App::currentLocale() == 'en' ? $data->total() : $numto->bnNum($data->total())}} {{ __('label.biodata_found') }}</p>
                         <ul class="breadcrumbs-menu">
                             <li>
                                 <a href="{{ url('/') }}">{{ __('label.menu_home') }}</a><i class="fi fi-rs-angle-small-right"></i>
@@ -75,15 +89,19 @@
                         <div class="biodata-main-inner-card">
 
                             <!-- Single BioData Card -->
+                            @foreach ($data as $item)
                             <div class="biodata-card">
                                 <div class="biodata-card-top">
                                     <div class="biodata-card-icon">
+                                        @if($item->biodata_type_id == 1)
                                         <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg" alt="#" />
-                                        {{-- <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="#" /> --}}
+                                        @else
+                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="#" />
+                                        @endif
                                     </div>
                                     <div class="biodata-card-top-info">
-                                        <h4>বায়োডাটা নং</h4>
-                                        <p>ODF10729</p>
+                                        <h4>{{ __('label.biodata_no') }}</h4>
+                                        <p>{{$item->biodata_no}}</p>
                                     </div>
                                     <button class="wishlist-btn">
                                         <i class="fi fi-rs-heart"></i>
@@ -92,40 +110,60 @@
                                 <div class="biodata-card-bottom">
                                     <div class="biodata-card-bottom-info">
                                         <div class="biodata-card-each-item">
-                                            <label>জন্মসন</label>
-                                            <p>August, 2000</p>
+                                            <label>{{ __('label.date_of_birth') }}</label>
+                                            <p>{{date("F, Y", strtotime($item->birth_date))}}</p>
                                         </div>
                                         <div class="biodata-card-each-item">
-                                            <label>উচ্চতা</label>
-                                            <p>৫′</p>
+                                            <label>{{ __('label.height') }}</label>
+                                            @if(App::currentLocale() == 'en')
+                                            <p>{{$item->height_foot}}′ {{$item->height_inch}}′′</p>
+                                            @else
+                                            <p>{{$numto->bnNum($item->height_foot)}}′ {{$numto->bnNum($item->height_inch)}}′′</p>
+                                            @endif
                                         </div>
                                         <div class="biodata-card-each-item">
-                                            <label>গাত্রবর্ণ</label>
-                                            <p>উজ্জ্বল শ্যামলা</p>
+                                            <label>{{ __('label.skin_tone') }}</label>
+                                            <p>
+                                                @if ($item->skin_tone == 1)
+                                                    {{ __('label.skin_tone_black') }}
+                                                @elseif ($item->skin_tone == 2)
+                                                    {{ __('label.skin_tone_brown') }}
+                                                @elseif ($item->skin_tone == 3)
+                                                    {{ __('label.skin_tone_bright_brown') }}
+                                                @elseif ($item->skin_tone == 4)
+                                                    {{ __('label.skin_tone_white') }}
+                                                @elseif ($item->skin_tone == 5)
+                                                    {{ __('label.skin_tone_bright_white') }}
+                                                @endif
+                                            </p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>{{ __('label.marital_status') }}</label>
+                                            <p>{{App::currentLocale() == 'en' ? $item->title : $item->title_bn}}</p>
+                                        </div>
+                                        <div class="biodata-card-each-item">
+                                            <label>{{ __('label.district') }}</label>
+                                            <p>{{App::currentLocale() == 'en' ? $item->district_name : $item->district_name_bn}}</p>
                                         </div>
                                     </div>
                                     <div class="biodata-card-btn">
-                                        <a href="{{url('biodata/details')}}/{{12321331}}" target="_blank" class="theme-btn">সম্পূর্ণ বায়োডাটা</a>
+                                        <a href="{{url('biodata/details')}}/{{$item->slug}}" target="_blank" class="theme-btn">{{ __('label.view_details') }}</a>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
 
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="biodata-pagination">
-                                    <ul class="pagination-list">
-                                        <li>
-                                            <a href="#"><i class="fi fi-rs-angle-small-left"></i></a>
-                                        </li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">...</a></li>
-                                        <li><a href="#">512</a></li>
-                                        <li>
-                                            <a href="#"><i class="fi fi-rs-angle-small-right"></i></a>
-                                        </li>
-                                    </ul>
+
+                                    <div class="d-flex">
+                                        <div class="mx-auto">
+                                            {{$data->appends($_GET)->links()}}
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

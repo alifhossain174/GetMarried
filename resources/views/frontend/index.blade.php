@@ -32,38 +32,41 @@
                             {{ App::currentLocale() == 'en' ? $banner->banner_description : $banner->banner_description_bn }}
                         </p>
                     </div>
-                    <div class="hero-search-filter">
-                        <div class="form-group">
-                            <label>{{ __('label.hero_searching_for') }}</label>
-                            <select class="select2 hero-search-filter-select">
-                                <option value="">{{ __('label.hero_all') }}</option>
-                                @foreach ($biodataTypes as $type)
-                                <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
-                                @endforeach
-                            </select>
+                    <form action="{{url('search/results')}}" method="GET">
+                        @csrf
+                        <div class="hero-search-filter">
+                            <div class="form-group">
+                                <label>{{ __('label.hero_searching_for') }}</label>
+                                <select class="select2 hero-search-filter-select" name="biodata_type">
+                                    <option value="">{{ __('label.hero_all') }}</option>
+                                    @foreach ($biodataTypes as $type)
+                                    <option value="{{$type->id}}">{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ __('label.hero_marital_status') }}</label>
+                                <select class="select2 hero-search-filter-select" name="marital_status">
+                                    <option value="">{{ __('label.hero_all') }}</option>
+                                    @foreach ($maritalConditions as $mc)
+                                    <option value="{{$mc->id}}">{{ App::currentLocale() == 'en' ? $mc->title : $mc->title_bn }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ __('label.hero_permenant_address') }}</label>
+                                <select class="hero-search-filter-select select2" name="district">
+                                    <option value="">{{ __('label.hero_all_district') }}</option>
+                                    @foreach ($districts as $district)
+                                    <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="h-search-filter-btn">
+                                <i class="fi fi-rs-search"></i>{{ __('label.hero_search') }}
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label>{{ __('label.hero_marital_status') }}</label>
-                            <select class="select2 hero-search-filter-select">
-                                <option value="">{{ __('label.hero_all') }}</option>
-                                @foreach ($maritalConditions as $mc)
-                                <option value="{{$mc->id}}">{{ App::currentLocale() == 'en' ? $mc->title : $mc->title_bn }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>{{ __('label.hero_permenant_address') }}</label>
-                            <select class="hero-search-filter-select select2" name="state">
-                                <option value="">{{ __('label.hero_all_district') }}</option>
-                                @foreach ($districts as $district)
-                                <option value="{{$district->id}}">{{ App::currentLocale() == 'en' ? $district->name : $district->bn_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <a href="{{ url('search/results') }}" class="h-search-filter-btn">
-                            <i class="fi fi-rs-search"></i>{{ __('label.hero_search') }}
-                        </a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

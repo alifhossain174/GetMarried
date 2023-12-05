@@ -24,6 +24,7 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
     Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
+    Route::get('/biodata/details/{slug}', [FrontendController::class, 'biodataDetails'])->name('Frontend.BiodataDetails');
 
 
     // user login dashboard
