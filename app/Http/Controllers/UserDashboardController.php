@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
+use App\Models\SavedBiodata;
 use App\Models\User;
 use App\Models\MaritalCondition;
 use App\Models\PaymentGateway;
@@ -128,6 +129,7 @@ class UserDashboardController extends Controller
         $biodata = BioData::where('user_id', Auth::user()->id)->first();
         return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities', 'districts', 'biodata'));
     }
+
     public function userCreateReport(){
         return view('frontend.auth.create_report');
     }
@@ -141,6 +143,26 @@ class UserDashboardController extends Controller
             Toastr::error('Only SSL Commerz is Available', 'Failed');
             return back();
         }
+    }
+
+    public function addToLikedList($slug){
+        $biodataInfo = Biodata::where('slug', $slug)->first();
+        $alreadySaved = SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 1]])->first();
+        if($alreadySaved){
+            Toastr::warning('Already Added in Liked List', 'Already Added');
+            return redirect(session('call_back_url'));
+        }else {
+            SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 2]])->delete();
+            SavedBiodata::insert([
+                'user_id' => Auth::user()->id,
+                'biodata_id' => $biodataInfo->id,
+                'status' => 1,
+                'created_at' => Carbon::now()
+            ]);
+            Toastr::success('Added to the Liked List', 'Liked');
+            return redirect(session('call_back_url'));
+        }
+
     }
 
 

@@ -27,7 +27,13 @@ class GoogleController extends Controller
 
             if($finduser){
                 Auth::login($finduser);
+
+                if(session('last_visited_url') != '' && session('last_visited_url') == 'add/to/liked/list/{slug}'){
+                    return redirect(session('last_visited_url'));
+                }
+
                 return redirect('/user/dashboard');
+
             } else{
 
                 $newUserId = User::insertGetId([

@@ -112,12 +112,23 @@
                                 </div>
                                 <div class="biodata-general-links">
                                     <div class="biodata-general-btn">
-                                        <a href="#" class="theme-btn shortlist-btn"><i
-                                                class="fi fi-rr-star"></i>ShortList</a><a href="#"
-                                            class="theme-btn ignore-btn"><i class="fi fi-br-ban"></i>Ignore</a>
+
+                                        @auth
+                                            @php
+                                                $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodata->id], ['status', 1]])->first();
+                                            @endphp
+                                            @if($isLiked)
+                                            <a href="javascript:void(0)" onclick="alreadyAddedToLikeList()" @if($isLiked) style="background: var(--success-color);; color: white" @endif class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                            @else
+                                            <a href="{{url('add/to/liked/list')}}/{{$biodata->slug}}" class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                            @endif
+                                        @else
+                                        <a href="{{url('add/to/liked/list')}}/{{$biodata->slug}}" class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                        @endauth
+
+                                        <a href="#" class="theme-btn ignore-btn"><i class="fi fi-br-ban"></i>{{__('label.ignore')}}</a>
                                     </div>
-                                    <a href="#" class="theme-btn copy-btn">
-                                        <i class="fi fi-rr-duplicate"></i>Copy Biodata Link</a>
+                                    <a href="javascript:void(0)" onclick="copyToClipboard('{{ $biodata->slug }}')" class="theme-btn copy-btn"><i class="fi fi-rr-duplicate"></i>Copy Biodata Link</a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +199,7 @@
                                             @foreach ($questions as $question)
                                                 @php
                                                     $questionAnswer = DB::table('biodata_question_answers')
-                                                        ->where('user_id', Auth::user()->id)
+                                                        ->where('user_id', $biodata->user_id)
                                                         ->where('question_id', $question->id)
                                                         ->first();
                                                 @endphp
@@ -242,3 +253,20 @@
     </section>
     <!-- End Biodata Details Area -->
 @endsection
+
+@section('footer_js')
+    <script>
+        function alreadyAddedToLikeList(){
+            toastr.warning("Already Added in Liked List");
+            return false;
+        }
+
+        function copyToClipboard(slug) {
+            var baseUrl = window.location.origin;
+            navigator.clipboard.writeText(baseUrl + '/biodata/details/' + slug);
+            toastr.success("Copied to Clipboard");
+            return false;
+        }
+    </script>
+@endsection
+

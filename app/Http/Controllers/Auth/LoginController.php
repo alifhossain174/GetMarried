@@ -39,6 +39,11 @@ class LoginController extends Controller
                 return '/home';
                 break;
             case 3:
+
+                if(session('last_visited_url') != '' && session('last_visited_url') == 'add/to/liked/list/{slug}'){
+                    return session('last_visited_url');
+                } 
+                
                 return '/user/dashboard';
                 break;
 

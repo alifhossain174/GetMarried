@@ -132,4 +132,7 @@ return [
     'view_details' => 'View Details',
     'marital_status'=> 'Marrital Status',
 
+    'short_list' => 'ShortList',
+    'ignore' => 'Ignore'
+
 ];

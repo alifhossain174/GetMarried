@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\PaymentGateway;
-use App\Models\PaymentHistory;
 use App\Models\WebsiteLanguage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,7 +13,6 @@ use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use App\Models\SmsGateway;
-use Illuminate\Support\Str;
 
 class ConfigController extends Controller
 {
@@ -675,16 +673,5 @@ class ConfigController extends Controller
         Toastr::success('Status Changed Successfully', 'Success');
         return back();
     }
-
-    public function viewPaymentHistories(Request $request){
-        if ($request->ajax()) {
-            $data = PaymentHistory::orderBy('id', 'desc')->get();
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->make(true);
-        }
-        return view('backend.payment_histories');
-    }
-
 
 }

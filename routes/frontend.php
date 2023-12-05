@@ -11,7 +11,7 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 
 // frontend web pages
-Route::group(['middleware' => ['SetLocale']], function () {
+Route::group(['middleware' => ['SetLocale', 'web']], function () {
 
     Route::get('/', [FrontendController::class, 'index'])->name('Frontend.Index');
     Route::get('/about', [FrontendController::class, 'about'])->name('Frontend.About');
@@ -39,7 +39,8 @@ Route::group(['middleware' => ['SetLocale']], function () {
     Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('Frontend.RedirectToGoogle');
     Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('Frontend.HandleGoogleCallback');
 
-    Route::group(['middleware' => ['auth', 'CheckCustomer']], function () {
+
+    Route::group(['middleware' => ['CheckCustomer']], function () {
 
         // verify routes
         Route::get('/user/verification', [LoginController::class, 'userVerification'])->name('Frontend.UserVerification');
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['SetLocale']], function () {
         Route::get('/user/verification/resend', [LoginController::class, 'userVerificationResend'])->name('Frontend.UserVerificationResend');
 
         Route::group(['middleware' => ['CheckUserVerification']], function () {
+
             Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
             Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
             Route::post('/user/password/change', [UserDashboardController::class, 'userPasswordChange'])->name('Frontend.UserPasswordChange');
@@ -69,6 +71,9 @@ Route::group(['middleware' => ['SetLocale']], function () {
             Route::post('/save/address/biodata', [BiodataController::class, 'saveAddressBiodata'])->name('Frontend.SaveAddressBiodata');
             Route::post('/save/biodata/info', [BiodataController::class, 'saveBiodataInfo'])->name('Frontend.SaveBiodataInfo');
             Route::post('/save/contact/info/biodata', [BiodataController::class, 'saveContactInfoBiodata'])->name('Frontend.SaveContactInfoBiodata');
+
+
+            Route::get('add/to/liked/list/{slug}', [UserDashboardController::class, 'addToLikedList'])->name('Frontend.AddToLikedList');
 
 
             // payment routes start

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\BioData;
 use App\Models\BiodataType;
+use App\Models\BiodataVisitHistory;
 use App\Models\FaqConfig;
 use App\Models\Faq;
 use App\Models\HomepageBioData;
@@ -29,11 +30,11 @@ use App\Models\Instruction;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
-
     public function index(){
         $banner = Banner::where('id', 1)->first();
         $homePageBiodata = HomepageBioData::where('id', 1)->first();
@@ -136,7 +137,7 @@ class FrontendController extends Controller
         $data = DB::table('bio_data')
                             ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-                            ->select('bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
                             ->when($biodataType, function($query) use ($biodataType){
                                 return $query->where('bio_data.biodata_type_id', $biodataType);
@@ -150,10 +151,121 @@ class FrontendController extends Controller
                             ->orderBy('bio_data.id', 'desc')
                             ->paginate(12);
 
+        $search_results_url = $request->path()."?".$request->getQueryString();
+        session(['call_back_url' => $search_results_url]);
+
         return view('frontend.search_results', compact('data'));
     }
 
-    public function biodataDetails($slug){
+    public function get_client_ip() {
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        else if(isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+
+    public function getBrowser()
+    {
+        $u_agent = $_SERVER['HTTP_USER_AGENT'];
+        $bname = 'Unknown';
+        $platform = 'Unknown';
+        $version= "";
+
+        //First get the platform?
+        if (preg_match('/linux/i', $u_agent)) {
+            $platform = 'linux';
+        }
+        elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+            $platform = 'mac';
+        }
+        elseif (preg_match('/windows|win32/i', $u_agent)) {
+            $platform = 'windows';
+        }
+
+        // Next get the name of the useragent yes seperately and for good reason
+        if(preg_match('/MSIE/i',$u_agent) && !preg_match('/Opera/i',$u_agent))
+        {
+            $bname = 'Internet Explorer';
+            $ub = "MSIE";
+        }
+        elseif(preg_match('/Firefox/i',$u_agent))
+        {
+            $bname = 'Mozilla Firefox';
+            $ub = "Firefox";
+        }
+        elseif(preg_match('/Chrome/i',$u_agent))
+        {
+            $bname = 'Google Chrome';
+            $ub = "Chrome";
+        }
+        elseif(preg_match('/Safari/i',$u_agent))
+        {
+            $bname = 'Apple Safari';
+            $ub = "Safari";
+        }
+        elseif(preg_match('/Opera/i',$u_agent))
+        {
+            $bname = 'Opera';
+            $ub = "Opera";
+        }
+        elseif(preg_match('/Netscape/i',$u_agent))
+        {
+            $bname = 'Netscape';
+            $ub = "Netscape";
+        }
+
+        // finally get the correct version number
+        $known = array('Version', $ub, 'other');
+        $pattern = '#(?<browser>' . join('|', $known) .
+        ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+        if (!preg_match_all($pattern, $u_agent, $matches)) {
+            // we have no matching number just continue
+        }
+
+        // see how many we have
+        $i = count($matches['browser']);
+        if ($i != 1) {
+            //we will have two since we are not using 'other' argument yet
+            //see if version is before or after the name
+            if (strripos($u_agent,"Version") < strripos($u_agent,$ub)){
+                $version= $matches['version'][0];
+            }
+            else {
+                $version= $matches['version'][1];
+            }
+        }
+        else {
+            $version= $matches['version'][0];
+        }
+
+        // check if we have a number
+        if ($version==null || $version=="") {$version="?";}
+
+        return array(
+            'userAgent' => $u_agent,
+            'name'      => $bname,
+            'version'   => $version,
+            'platform'  => $platform,
+            'pattern'    => $pattern
+        );
+    }
+
+    public function biodataDetails(Request $request, $slug){
+
+        $biodata_details_url = $request->path();
+        session(['call_back_url' => $biodata_details_url]);
 
         $biodata = DB::table('bio_data')
                 ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
@@ -163,9 +275,25 @@ class FrontendController extends Controller
                 ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
                 ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
                 ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
-                ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn')
                 ->where('bio_data.slug', $slug)
                 ->first();
+
+        BioData::where('id', $biodata->id)->increment('views');
+
+        $ua = $this->getBrowser();
+        $yourbrowser = $ua['name'];
+        $isMob = is_numeric(strpos(strtolower($_SERVER["HTTP_USER_AGENT"]), "mobile"));
+
+        BiodataVisitHistory::insert([
+            'biodata_id' => $biodata->id,
+            'user_id' => Auth::user() ? Auth::user()->id : null,
+            'from_ip_address' => $this->get_client_ip(),
+            'browser' => $yourbrowser,
+            'os' => PHP_OS,
+            'device' => $isMob ? 'Mobile' : 'Desktop',
+            'created_at' => Carbon::now()
+        ]);
 
         $questionSets = QuestionSet::where('status', 1)->orderBy('serial', 'asc')->get();
         return view('frontend.biodata_details', compact('biodata', 'questionSets'));

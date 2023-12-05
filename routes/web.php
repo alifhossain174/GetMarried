@@ -16,6 +16,10 @@ use App\Http\Controllers\HowItWorksController;
 use App\Http\Controllers\MobileAppController;
 use App\Http\Controllers\TermsPolicyController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\PricingPackageController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\InstructionController;
 
 
 Auth::routes();
@@ -93,6 +97,30 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('rearrange/how/it/works', [HowItWorksController::class, 'rearrangeHowItWorks'])->name('RearrangeHowItWorks');
     Route::post('save/rearranged/how/it/works', [HowItWorksController::class, 'saveRearrangedHowItWorks'])->name('SaveRearrangedHowItWorks');
 
+    // Faq config routes
+    Route::get('faq/config', [FaqController::class, 'faqConfig'])->name('faqConfig');
+    Route::post('update/faq/config', [FaqController::class, 'updateFaqConfig'])->name('UpdateFaqConfig');
+    Route::get('view/all/faqs', [FaqController::class, 'viewAllFaqs'])->name('ViewAllFaqs');
+    Route::get('add/new/faq', [FaqController::class, 'addFaq'])->name('AddFaq');
+    Route::post('save/faq', [FaqController::class, 'saveFaq'])->name('SaveFaq');
+    Route::get('delete/faq/{slug}', [FaqController::class, 'deleteFaq'])->name('DeleteFaq');
+    Route::get('edit/faq/{slug}', [FaqController::class, 'editFaq'])->name('EditFaq');
+    Route::post('update/faq', [FaqController::class, 'updateFaq'])->name('UpdateFaq');
+    Route::get('rearrange/faqs', [FaqController::class, 'rearrangeFaqs'])->name('RearrangeFaqs');
+    Route::post('save/rearranged/faqs', [FaqController::class, 'saveRearrangedFaqs'])->name('SaveRearrangedFaqs');
+
+    //Instructions
+    Route::get('instruction/config', [InstructionController::class, 'instructionConfig'])->name('instructionConfig');
+    Route::post('update/instruction/config', [InstructionController::class, 'updateInstructionConfig'])->name('UpdateInstructionConfig');
+    Route::get('view/all/instructions', [InstructionController::class, 'viewAllInstructions'])->name('ViewAllInstructions');
+    Route::get('add/new/instruction', [InstructionController::class, 'addInstruction'])->name('AddInstruction');
+    Route::post('save/instruction', [InstructionController::class, 'saveInstruction'])->name('SaveInstruction');
+    Route::get('delete/instruction/{slug}', [InstructionController::class, 'deleteInstruction'])->name('DeleteInstruction');
+    Route::get('edit/instruction/{slug}', [InstructionController::class, 'editInstruction'])->name('EditInstruction');
+    Route::post('update/instruction', [InstructionController::class, 'updateInstruction'])->name('UpdateInstruction');
+    Route::get('rearrange/instructions', [InstructionController::class, 'rearrangeInstructions'])->name('RearrangeInstructions');
+    Route::post('save/rearranged/instructions', [InstructionController::class, 'saveRearrangedInstructions'])->name('SaveRearrangedInstructions');
+
     // terms and policy routes
     Route::get('terms-conditions', [TermsPolicyController::class, 'termsAndConditions'])->name('TermsAndConditions');
     Route::post('update/terms/condition', [TermsPolicyController::class, 'updateTermsAndConditions'])->name('UpdateTermsAndConditions');
@@ -108,10 +136,26 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/about/us', [AboutUsController::class, 'updateAboutUs'])->name('UpdateAboutUs');
     Route::get('delete/slider/image/{index}', [AboutUsController::class, 'deleteSliderImage'])->name('DeleteSliderImage');
 
+    // biodatas
+    Route::get('view/pending/biodatas', [ConfigController::class, 'viewPendingBiodatas'])->name('ViewPendingBiodatas');
+    Route::get('view/approved/biodatas', [ConfigController::class, 'viewApprovedBiodatas'])->name('ViewApprovedBiodatas');
+    Route::get('view/blocked/biodatas', [ConfigController::class, 'viewBlockedBiodatas'])->name('ViewBlockedBiodatas');
+    Route::get('edit/biodata/{slug}', [ConfigController::class, 'editBiodata'])->name('EditBiodata');
+    Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
+
+    // pricing package & payment histories
+    Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');
+    Route::post('save/pricing/package', [PricingPackageController::class, 'savePricingPackage'])->name('SavePricingPackage');
+    Route::get('delete/pricing/package/{slug}', [PricingPackageController::class, 'deletePricingPackage'])->name('DeletePricingPackage');
+    Route::get('get/pricing/package/info/{slug}', [PricingPackageController::class, 'getPricingPackageInfo'])->name('GetPricingPackageInfo');
+    Route::post('update/pricing/package', [PricingPackageController::class, 'updatePricingPackageInfo'])->name('UpdatePricingPackageInfo');
+    Route::get('rearrange/pricing/packages', [PricingPackageController::class, 'rearrangePricingPackages'])->name('RearrangePricingPackages');
+    Route::post('save/rearranged/pricing/packages', [PricingPackageController::class, 'saveRearrangedPricingPackages'])->name('SaveRearrangedPricingPackages');
+    Route::get('view/payment/histories', [PricingPackageController::class, 'viewPaymentHistories'])->name('ViewPaymentHistories');
+
 });
 
 // linking other Routes
-require 'anonna.php';
 require 'config.php';
 require 'userRolePermission.php';
 require 'frontend.php';

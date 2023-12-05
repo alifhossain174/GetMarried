@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PricingPackage;
+use App\Models\PaymentHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -94,5 +95,15 @@ class PricingPackageController extends Controller
         }
         Toastr::success('Item has been Rerranged', 'Success');
         return redirect('view/pricing/packages');
+    }
+
+    public function viewPaymentHistories(Request $request){
+        if ($request->ajax()) {
+            $data = PaymentHistory::orderBy('id', 'desc')->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->make(true);
+        }
+        return view('backend.payment_histories');
     }
 }

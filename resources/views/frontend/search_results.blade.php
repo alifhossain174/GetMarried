@@ -47,6 +47,7 @@
     </section>
     <!-- End Breadcrumbs Area -->
 
+
     <!-- BioData Area -->
     <section class="biodata-area">
         <div class="container-fluid">
@@ -103,9 +104,26 @@
                                         <h4>{{ __('label.biodata_no') }}</h4>
                                         <p>{{$item->biodata_no}}</p>
                                     </div>
-                                    <button class="wishlist-btn">
+
+                                    @auth
+                                        @php
+                                            $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $item->id], ['status', 1]])->first();
+                                        @endphp
+                                        @if($isLiked)
+                                        <a class="wishlist-btn" @if($isLiked) style="background: var(--primary-color); color: white" @endif href="javascript:void(0)" onclick="alreadyAddedToLikeList()">
+                                            <i class="fi fi-rs-heart"></i>
+                                        </a>
+                                        @else
+                                        <a class="wishlist-btn" href="{{url('add/to/liked/list')}}/{{$item->slug}}">
+                                            <i class="fi fi-rs-heart"></i>
+                                        </a>
+                                        @endif
+                                    @else
+                                    <a class="wishlist-btn" href="{{url('add/to/liked/list')}}/{{$item->slug}}">
                                         <i class="fi fi-rs-heart"></i>
-                                    </button>
+                                    </a>
+                                    @endauth
+
                                 </div>
                                 <div class="biodata-card-bottom">
                                     <div class="biodata-card-bottom-info">
@@ -147,7 +165,7 @@
                                         </div>
                                     </div>
                                     <div class="biodata-card-btn">
-                                        <a href="{{url('biodata/details')}}/{{$item->slug}}" target="_blank" class="theme-btn">{{ __('label.view_details') }}</a>
+                                        <a href="{{url('biodata/details')}}/{{$item->slug}}" class="theme-btn">{{ __('label.view_details') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -800,4 +818,13 @@
         </div>
     </section>
     <!-- End BioData Area -->
+@endsection
+
+@section('footer_js')
+    <script>
+        function alreadyAddedToLikeList(){
+            toastr.warning("Already Added in Liked List");
+            return false;
+        }
+    </script>
 @endsection

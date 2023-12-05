@@ -133,5 +133,6 @@ return [
     'view_details' => 'সম্পূর্ণ বায়োডাটা',
     'marital_status'=> 'বৈবাহিক অবস্থা',
 
-
+    'short_list' => 'শর্টলিস্ট',
+    'ignore' => 'এড়ান'
 ];

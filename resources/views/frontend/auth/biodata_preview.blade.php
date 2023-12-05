@@ -267,7 +267,7 @@
     <script>
         function copyToClipboard(slug) {
             var baseUrl = window.location.origin;
-            navigator.clipboard.writeText(baseUrl + '/biodata/detail/' + slug);
+            navigator.clipboard.writeText(baseUrl + '/biodata/details/' + slug);
             toastr.success("Copied to Clipboard");
             return false;
         }
