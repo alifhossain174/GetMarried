@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
+use App\Models\BiodataVisitHistory;
+use App\Models\PaymentHistory;
 use App\Models\SavedBiodata;
 use App\Models\User;
 use App\Models\MaritalCondition;
@@ -22,7 +24,19 @@ use Illuminate\Support\Facades\DB;
 class UserDashboardController extends Controller
 {
     public function userDashboard(){
-        return view('frontend.auth.dashboard');
+        $likedBiodatas = SavedBiodata::where('user_id', Auth::user()->id)->where('status', 1)->count();
+        $dislikedBiodatas = SavedBiodata::where('user_id', Auth::user()->id)->where('status', 2)->count();
+        $totalPayments = PaymentHistory::where('user_id', Auth::user()->id)->count();
+        $preferred = DB::table('saved_biodatas')
+                    ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                    ->leftJoin('users', 'bio_data.user_id', 'users.id')
+                    ->where('bio_data.user_id', Auth::user()->id)
+                    ->where('saved_biodatas.status', 1)
+                    ->count();
+        $totalVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->count();
+        $todaysVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->where('created_at', 'LIKE', date("Y-m-d").'%')->count();
+        return view('frontend.auth.dashboard', compact('likedBiodatas', 'dislikedBiodatas', 'totalPayments',
+        'preferred', 'totalVisits', 'todaysVisits'));
     }
     public function userSettings(){
         return view('frontend.auth.settings');
