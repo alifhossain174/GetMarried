@@ -13,11 +13,13 @@
 
 @section('header_css')
     <style>
-        .active > .page-link, .page-link.active{
+        .active>.page-link,
+        .page-link.active {
             background-color: var(--secondary-color) !important;
             border-color: var(--secondary-color) !important;
         }
-        .page-link{
+
+        .page-link {
             color: var(--primary-color);
         }
     </style>
@@ -31,10 +33,13 @@
                 <div class="col-lg-8 col-md-8 col-12">
                     <div class="breadcrumbs-content">
                         <h3 class="breadcrumbs-title">{{ __('label.biodata') }}</h3>
-                        <p class="breadcrumbs-text">{{App::currentLocale() == 'en' ? $data->total() : $numto->bnNum($data->total())}} {{ __('label.biodata_found') }}</p>
+                        <p class="breadcrumbs-text">
+                            {{ App::currentLocale() == 'en' ? $data->total() : $numto->bnNum($data->total()) }}
+                            {{ __('label.biodata_found') }}</p>
                         <ul class="breadcrumbs-menu">
                             <li>
-                                <a href="{{ url('/') }}">{{ __('label.menu_home') }}</a><i class="fi fi-rs-angle-small-right"></i>
+                                <a href="{{ url('/') }}">{{ __('label.menu_home') }}</a><i
+                                    class="fi fi-rs-angle-small-right"></i>
                             </li>
                             <li class="active">
                                 <a href="#">{{ __('label.biodata') }}</a>
@@ -58,7 +63,8 @@
                             <div class="biodata-number-widget">
                                 <form action="#" method="post" class="biodata-number-searchbar">
                                     <div class="form-group">
-                                        <input type="search" name="search" placeholder="{{ __('label.biodata_no') }}" required />
+                                        <input type="search" name="search" placeholder="{{ __('label.biodata_no') }}"
+                                            required />
                                         <div class="biodata-number-btn">
                                             <button type="submit" class="theme-btn secondary">
                                                 <i class="fi fi-rs-search"></i>{{ __('label.biodata_search') }}
@@ -91,84 +97,92 @@
 
                             <!-- Single BioData Card -->
                             @foreach ($data as $item)
-                            <div class="biodata-card">
-                                <div class="biodata-card-top">
-                                    <div class="biodata-card-icon">
-                                        @if($item->biodata_type_id == 1)
-                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg" alt="#" />
-                                        @else
-                                        <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="#" />
-                                        @endif
-                                    </div>
-                                    <div class="biodata-card-top-info">
-                                        <h4>{{ __('label.biodata_no') }}</h4>
-                                        <p>{{$item->biodata_no}}</p>
-                                    </div>
-
-                                    @auth
-                                        @php
-                                            $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $item->id], ['status', 1]])->first();
-                                        @endphp
-                                        @if($isLiked)
-                                        <a class="wishlist-btn" @if($isLiked) style="background: var(--primary-color); color: white" @endif href="javascript:void(0)" onclick="alreadyAddedToLikeList()">
-                                            <i class="fi fi-rs-heart"></i>
-                                        </a>
-                                        @else
-                                        <a class="wishlist-btn" href="{{url('add/to/liked/list')}}/{{$item->slug}}">
-                                            <i class="fi fi-rs-heart"></i>
-                                        </a>
-                                        @endif
-                                    @else
-                                    <a class="wishlist-btn" href="{{url('add/to/liked/list')}}/{{$item->slug}}">
-                                        <i class="fi fi-rs-heart"></i>
-                                    </a>
-                                    @endauth
-
-                                </div>
-                                <div class="biodata-card-bottom">
-                                    <div class="biodata-card-bottom-info">
-                                        <div class="biodata-card-each-item">
-                                            <label>{{ __('label.date_of_birth') }}</label>
-                                            <p>{{date("F, Y", strtotime($item->birth_date))}}</p>
-                                        </div>
-                                        <div class="biodata-card-each-item">
-                                            <label>{{ __('label.height') }}</label>
-                                            @if(App::currentLocale() == 'en')
-                                            <p>{{$item->height_foot}}′ {{$item->height_inch}}′′</p>
+                                <div class="biodata-card">
+                                    <div class="biodata-card-top">
+                                        <div class="biodata-card-icon">
+                                            @if ($item->biodata_type_id == 1)
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
+                                                    alt="#" />
                                             @else
-                                            <p>{{$numto->bnNum($item->height_foot)}}′ {{$numto->bnNum($item->height_inch)}}′′</p>
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
+                                                    alt="#" />
                                             @endif
                                         </div>
-                                        <div class="biodata-card-each-item">
-                                            <label>{{ __('label.skin_tone') }}</label>
-                                            <p>
-                                                @if ($item->skin_tone == 1)
-                                                    {{ __('label.skin_tone_black') }}
-                                                @elseif ($item->skin_tone == 2)
-                                                    {{ __('label.skin_tone_brown') }}
-                                                @elseif ($item->skin_tone == 3)
-                                                    {{ __('label.skin_tone_bright_brown') }}
-                                                @elseif ($item->skin_tone == 4)
-                                                    {{ __('label.skin_tone_white') }}
-                                                @elseif ($item->skin_tone == 5)
-                                                    {{ __('label.skin_tone_bright_white') }}
-                                                @endif
-                                            </p>
+                                        <div class="biodata-card-top-info">
+                                            <h4>{{ __('label.biodata_no') }}</h4>
+                                            <p>{{ $item->biodata_no }}</p>
                                         </div>
-                                        <div class="biodata-card-each-item">
-                                            <label>{{ __('label.marital_status') }}</label>
-                                            <p>{{App::currentLocale() == 'en' ? $item->title : $item->title_bn}}</p>
-                                        </div>
-                                        <div class="biodata-card-each-item">
-                                            <label>{{ __('label.district') }}</label>
-                                            <p>{{App::currentLocale() == 'en' ? $item->district_name : $item->district_name_bn}}</p>
-                                        </div>
+
+                                        @auth
+                                            @php
+                                                $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $item->id], ['status', 1]])->first();
+                                            @endphp
+                                            @if ($isLiked)
+                                                <a class="wishlist-btn"
+                                                    @if ($isLiked) style="background: var(--primary-color); color: white" @endif
+                                                    href="javascript:void(0)" onclick="alreadyAddedToLikeList()">
+                                                    <i class="fi fi-rs-heart"></i>
+                                                </a>
+                                            @else
+                                                <a class="wishlist-btn"
+                                                    href="{{ url('add/to/liked/list') }}/{{ $item->slug }}">
+                                                    <i class="fi fi-rs-heart"></i>
+                                                </a>
+                                            @endif
+                                        @else
+                                            <a class="wishlist-btn" href="{{ url('add/to/liked/list') }}/{{ $item->slug }}">
+                                                <i class="fi fi-rs-heart"></i>
+                                            </a>
+                                        @endauth
+
                                     </div>
-                                    <div class="biodata-card-btn">
-                                        <a href="{{url('biodata/details')}}/{{$item->slug}}" class="theme-btn">{{ __('label.view_details') }}</a>
+                                    <div class="biodata-card-bottom">
+                                        <div class="biodata-card-bottom-info">
+                                            <div class="biodata-card-each-item">
+                                                <label>{{ __('label.date_of_birth') }}</label>
+                                                <p>{{ date('M, Y', strtotime($item->birth_date)) }}</p>
+                                            </div>
+                                            <div class="biodata-card-each-item">
+                                                <label>{{ __('label.height') }}</label>
+                                                @if (App::currentLocale() == 'en')
+                                                    <p>{{ $item->height_foot }}′ {{ $item->height_inch }}′′</p>
+                                                @else
+                                                    <p>{{ $numto->bnNum($item->height_foot) }}′
+                                                        {{ $numto->bnNum($item->height_inch) }}′′</p>
+                                                @endif
+                                            </div>
+                                            <div class="biodata-card-each-item">
+                                                <label>{{ __('label.skin_tone') }}</label>
+                                                <p>
+                                                    @if ($item->skin_tone == 1)
+                                                        {{ __('label.skin_tone_black') }}
+                                                    @elseif ($item->skin_tone == 2)
+                                                        {{ __('label.skin_tone_brown') }}
+                                                    @elseif ($item->skin_tone == 3)
+                                                        {{ __('label.skin_tone_bright_brown') }}
+                                                    @elseif ($item->skin_tone == 4)
+                                                        {{ __('label.skin_tone_white') }}
+                                                    @elseif ($item->skin_tone == 5)
+                                                        {{ __('label.skin_tone_bright_white') }}
+                                                    @endif
+                                                </p>
+                                            </div>
+                                            <div class="biodata-card-each-item">
+                                                <label>{{ __('label.marital_status') }}</label>
+                                                <p>{{ App::currentLocale() == 'en' ? $item->title : $item->title_bn }}</p>
+                                            </div>
+                                            <div class="biodata-card-each-item">
+                                                <label>{{ __('label.district') }}</label>
+                                                <p>{{ App::currentLocale() == 'en' ? $item->district_name : $item->district_name_bn }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="biodata-card-btn">
+                                            <a href="{{ url('biodata/details') }}/{{ $item->slug }}"
+                                                class="theme-btn">{{ __('label.view_details') }}</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
 
                         </div>
@@ -178,7 +192,7 @@
 
                                     <div class="d-flex">
                                         <div class="mx-auto">
-                                            {{$data->appends($_GET)->links()}}
+                                            {{ $data->appends($_GET)->links() }}
                                         </div>
                                     </div>
 
@@ -301,11 +315,13 @@
                                                                 <div class="biodata-accordion-body">
                                                                     <div class="form-group">
                                                                         <label>জেলা</label>
-                                                                        <select class="hero-search-filter-select select2" name="state">
+                                                                        <select class="hero-search-filter-select select2"
+                                                                            name="state">
                                                                             <option value="0">সকল জেলা</option>
                                                                             <option value="1">কুমিল্লা</option>
                                                                             <option value="2">ফেনী</option>
-                                                                            <option value="3">ব্রাহ্মণবাড়িয়া</option>
+                                                                            <option value="3">ব্রাহ্মণবাড়িয়া
+                                                                            </option>
                                                                             <option value="4">রাঙ্গামাটি</option>
                                                                             <option value="5">নোয়াখালী</option>
                                                                             <option value="6">চাঁদপুর</option>
@@ -822,7 +838,7 @@
 
 @section('footer_js')
     <script>
-        function alreadyAddedToLikeList(){
+        function alreadyAddedToLikeList() {
             toastr.warning("Already Added in Liked List");
             return false;
         }

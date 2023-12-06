@@ -72,8 +72,9 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::post('/save/biodata/info', [BiodataController::class, 'saveBiodataInfo'])->name('Frontend.SaveBiodataInfo');
             Route::post('/save/contact/info/biodata', [BiodataController::class, 'saveContactInfoBiodata'])->name('Frontend.SaveContactInfoBiodata');
 
-
+            // redirect after login routes
             Route::get('add/to/liked/list/{slug}', [UserDashboardController::class, 'addToLikedList'])->name('Frontend.AddToLikedList');
+            Route::get('add/to/disliked/list/{slug}', [UserDashboardController::class, 'addToDislikedList'])->name('Frontend.addToDislikedList');
 
 
             // payment routes start
