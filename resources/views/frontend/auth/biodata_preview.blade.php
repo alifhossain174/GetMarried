@@ -44,17 +44,20 @@
                                                     </div>
                                                     <div class="biodata-general-head-info">
                                                         <h4>{{ __('label.biodata_no') }}:
-                                                            <span>{{ $biodata ? $biodata->biodata_no : '' }}</span></h4>
+                                                            <span>{{ $biodata ? $biodata->biodata_no : '' }}</span>
+                                                        </h4>
                                                     </div>
                                                 </div>
                                                 <div class="biodata-general-content">
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.biodata_type') }}</label>
-                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->biodata_type : $biodata->biodata_type_bn) : '' }}</p>
+                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->biodata_type : $biodata->biodata_type_bn) : '' }}
+                                                        </p>
                                                     </div>
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.hero_marital_status') }}</label>
-                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->marital_condition : $biodata->marital_condition_bn) : '' }}</p>
+                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->marital_condition : $biodata->marital_condition_bn) : '' }}
+                                                        </p>
                                                     </div>
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.date_of_birth') }}</label>
@@ -201,7 +204,7 @@
                                                             @endphp
                                                             <div class="biodata-details-info-item">
                                                                 <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }}</label>
-                                                                @if ($question->type == 2)
+                                                                @if ($questionAnswer && $question->type == 2)
                                                                     @php
                                                                         $option = App\Models\MCQ::where('id', $questionAnswer->answer)->first();
                                                                     @endphp

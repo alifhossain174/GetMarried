@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullabel();
             $table->unsignedBigInteger('biodata_id')->nullabel();
             $table->tinyInteger('status')->default(0)->comment("1=>Liked; 2=>Disliked");
+            $table->string('slug');
             $table->timestamps();
         });
     }

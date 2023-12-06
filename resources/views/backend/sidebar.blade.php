@@ -68,6 +68,9 @@
         </li>
         <li><a href="{{ url('view/biodata/visits') }}"><i class="bi-clock-history" style="font-size: 16px;"></i><span>
                     Biodata Visit Histories </span></a></li>
+        <li><a href="{{ url('view/biodata/likes/dislikes') }}"><i class="bi-hand-thumbs-up"
+                    style="font-size: 16px;"></i><span>
+                    Biodata Likes/Dislikes </span></a></li>
 
 
         <li class="menu-title mt-2">Website Content Modules</li>

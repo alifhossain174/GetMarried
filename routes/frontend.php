@@ -54,6 +54,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::post('/user/password/change', [UserDashboardController::class, 'userPasswordChange'])->name('Frontend.UserPasswordChange');
             Route::post('/user/biodata/remove', [UserDashboardController::class, 'userBiodataRemove'])->name('Frontend.UserBiodataRemove');
             Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
+            Route::get('/remove/liked/biodata/{slug}', [UserDashboardController::class, 'removeLikedBiodata'])->name('Frontend.RemoveLikedBiodata');
             Route::get('/user/ignore/list', [UserDashboardController::class, 'userIgnoreList'])->name('Frontend.UserIgnoreList');
             Route::get('/user/my/purchased', [UserDashboardController::class, 'userMyPurchased'])->name('Frontend.UserMyPurchased');
             Route::get('/user/connection', [UserDashboardController::class, 'userConnection'])->name('Frontend.UserConnection');

@@ -704,4 +704,42 @@ class ConfigController extends Controller
         return view('backend.biodata.visit_history');
     }
 
+    public function viewBiodataLikesDislikes(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('saved_biodatas')
+                        ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('users', 'saved_biodatas.user_id', 'users.id')
+                        ->select('saved_biodatas.*', 'users.name as user_name', 'users.email as user_email',
+                        'users.contact as user_contact', 'bio_data.biodata_no', 'biodata_types.title as biodata_type_title')
+                        ->orderBy('saved_biodatas.id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('user_email', function ($data) {
+                        if($data->user_email){
+                            return $data->user_email;
+                        } else {
+                            return $data->user_contact;
+                        }
+                    })
+                    ->editColumn('status', function ($data) {
+                        if($data->status == 1){
+                            return "<span class='btn btn-sm btn-success rounded' style='padding: .1rem .5rem !important;'>Liked</span>";
+                        } else {
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Disliked</span>";
+                        }
+                    })
+                    ->editColumn('created_at', function ($data) {
+                        return date('H:i:s d-m-Y', strtotime($data->created_at));
+                    })
+                    ->rawColumns(['status'])
+                    ->make(true);
+
+        }
+        return view('backend.biodata.like_dislike');
+    }
+
 }

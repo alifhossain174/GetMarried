@@ -50,10 +50,10 @@ return [
 
 
     'user_dashboard_liked_list' => 'Short list',
-    'user_dashboard_liked_list_msg' => 'List biodata of your choice.',
+    'user_dashboard_liked_list_msg' => 'Biodata List of your choice.',
 
     'user_dashboard_disliked_list' => 'Block list',
-    'user_dashboard_disliked_list_msg' => 'List biodata you dislike.',
+    'user_dashboard_disliked_list_msg' => 'Biodata List that you dislike.',
 
     'user_dashboard_my_purchases' => 'My Purchases',
     'user_dashboard_my_purchases_msg' => 'All information regarding your purchase.',
