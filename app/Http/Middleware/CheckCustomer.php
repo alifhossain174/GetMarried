@@ -19,8 +19,8 @@ class CheckCustomer
         // return $next($request);
         if(!auth()->user()){
 
-            if($request->route()->uri() == 'add/to/liked/list/{slug}'){
-                session(['last_visited_url' => $request->route()->uri()]);
+            if(str_contains(parse_url($request->url())['path'], 'add/to/liked/list')){
+                session(['last_visited_url' => parse_url($request->url())['path']]);
             } else {
                 session(['last_visited_url' => '']);
             }

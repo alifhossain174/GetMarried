@@ -28,7 +28,7 @@ class GoogleController extends Controller
             if($finduser){
                 Auth::login($finduser);
 
-                if(session('last_visited_url') != '' && session('last_visited_url') == 'add/to/liked/list/{slug}'){
+                if(session('last_visited_url') != '' && str_contains(session('last_visited_url'), 'add/to/liked/list')){
                     return redirect(session('last_visited_url'));
                 }
 

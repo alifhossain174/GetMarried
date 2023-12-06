@@ -117,18 +117,27 @@
                                             @php
                                                 $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodata->id], ['status', 1]])->first();
                                             @endphp
-                                            @if($isLiked)
-                                            <a href="javascript:void(0)" onclick="alreadyAddedToLikeList()" @if($isLiked) style="background: var(--success-color);; color: white" @endif class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                            @if ($isLiked)
+                                                <a href="javascript:void(0)" onclick="alreadyAddedToLikeList()"
+                                                    @if ($isLiked) style="background: var(--success-color);; color: white" @endif
+                                                    class="theme-btn shortlist-btn"><i
+                                                        class="fi fi-rr-star"></i>{{ __('label.short_list') }}</a>
                                             @else
-                                            <a href="{{url('add/to/liked/list')}}/{{$biodata->slug}}" class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                                <a href="{{ url('add/to/liked/list') }}/{{ $biodata->slug }}"
+                                                    class="theme-btn shortlist-btn"><i
+                                                        class="fi fi-rr-star"></i>{{ __('label.short_list') }}</a>
                                             @endif
                                         @else
-                                        <a href="{{url('add/to/liked/list')}}/{{$biodata->slug}}" class="theme-btn shortlist-btn"><i class="fi fi-rr-star"></i>{{__('label.short_list')}}</a>
+                                            <a href="{{ url('add/to/liked/list') }}/{{ $biodata->slug }}"
+                                                class="theme-btn shortlist-btn"><i
+                                                    class="fi fi-rr-star"></i>{{ __('label.short_list') }}</a>
                                         @endauth
 
-                                        <a href="#" class="theme-btn ignore-btn"><i class="fi fi-br-ban"></i>{{__('label.ignore')}}</a>
+                                        <a href="#" class="theme-btn ignore-btn"><i
+                                                class="fi fi-br-ban"></i>{{ __('label.ignore') }}</a>
                                     </div>
-                                    <a href="javascript:void(0)" onclick="copyToClipboard('{{ $biodata->slug }}')" class="theme-btn copy-btn"><i class="fi fi-rr-duplicate"></i>Copy Biodata Link</a>
+                                    <a href="javascript:void(0)" onclick="copyToClipboard('{{ $biodata->slug }}')"
+                                        class="theme-btn copy-btn"><i class="fi fi-rr-duplicate"></i>Copy Biodata Link</a>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +214,8 @@
                                                 @endphp
                                                 <div class="biodata-details-info-item">
                                                     <label>{{ App::currentLocale() == 'en' ? $question->question : $question->question_bn }}</label>
-                                                    @if ($question->type == 2)
+
+                                                    @if ($questionAnswer && $question->type == 2)
                                                         @php
                                                             $option = App\Models\MCQ::where('id', $questionAnswer->answer)->first();
                                                         @endphp
@@ -256,7 +266,7 @@
 
 @section('footer_js')
     <script>
-        function alreadyAddedToLikeList(){
+        function alreadyAddedToLikeList() {
             toastr.warning("Already Added in Liked List");
             return false;
         }
@@ -269,4 +279,3 @@
         }
     </script>
 @endsection
-
