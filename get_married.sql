@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2023 at 01:30 PM
+-- Generation Time: Dec 05, 2023 at 01:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -162,7 +162,191 @@ INSERT INTO `biodata_question_answers` (`id`, `user_id`, `biodata_id`, `question
 (48, 44, 2, 2, 13, NULL, '2023-12-02 23:52:34', NULL),
 (51, 44, 2, 5, 39, 'হ্যাঁ', '2023-12-03 00:35:37', NULL),
 (53, 44, 2, 4, 36, '137', '2023-12-03 00:54:36', NULL),
-(54, 44, 2, 1, 2, '91', '2023-12-03 02:48:36', NULL);
+(54, 44, 2, 1, 2, '91', '2023-12-03 02:48:36', NULL),
+(101, 52, 4, 1, 1, '87', '2023-12-04 03:02:46', NULL),
+(102, 52, 4, 1, 2, '94', '2023-12-04 03:02:46', NULL),
+(103, 52, 4, 1, 3, NULL, '2023-12-04 03:02:46', NULL),
+(104, 52, 4, 2, 5, '98', '2023-12-04 03:07:18', NULL),
+(105, 52, 4, 2, 4, 'Md. Nurul', '2023-12-04 03:07:18', NULL),
+(106, 52, 4, 2, 6, 'Businessman', '2023-12-04 03:07:18', NULL),
+(107, 52, 4, 2, 8, '100', '2023-12-04 03:07:18', NULL),
+(108, 52, 4, 2, 7, 'Chumnki', '2023-12-04 03:07:18', NULL),
+(109, 52, 4, 2, 9, 'Housewife', '2023-12-04 03:07:18', NULL),
+(110, 52, 4, 2, 10, '104', '2023-12-04 03:07:18', NULL),
+(111, 52, 4, 2, 11, 'Students', '2023-12-04 03:07:18', NULL),
+(112, 52, 4, 2, 12, '114', '2023-12-04 03:07:18', NULL),
+(113, 52, 4, 2, 13, 'Teacher', '2023-12-04 03:07:18', NULL),
+(114, 52, 4, 2, 14, 'Engineer, Doctor', '2023-12-04 03:07:18', NULL),
+(115, 52, 4, 2, 15, '125', '2023-12-04 03:07:18', NULL),
+(116, 52, 4, 2, 16, 'Residential (own), land or family business details etc', '2023-12-04 03:07:18', NULL),
+(117, 52, 4, 2, 17, 'Follow Mahram non-Mahram', '2023-12-04 03:07:18', NULL),
+(118, 52, 4, 3, 18, 'burqa, hijab, niqab and hand-foot socks.', '2023-12-04 03:10:27', NULL),
+(119, 52, 4, 3, 19, NULL, '2023-12-04 03:10:27', NULL),
+(120, 52, 4, 3, 20, NULL, '2023-12-04 03:10:27', NULL),
+(121, 52, 4, 3, 21, 'yes, 3years', '2023-12-04 03:10:27', NULL),
+(122, 52, 4, 3, 22, '4-5', '2023-12-04 03:10:27', NULL),
+(123, 52, 4, 3, 51, 'Yes', '2023-12-04 03:10:27', NULL),
+(124, 52, 4, 3, 52, 'No', '2023-12-04 03:10:27', NULL),
+(125, 52, 4, 3, 25, '129', '2023-12-04 03:10:27', NULL),
+(126, 52, 4, 3, 26, 'no', '2023-12-04 03:10:27', NULL),
+(127, 52, 4, 3, 27, 'No', '2023-12-04 03:10:27', NULL),
+(128, 52, 4, 3, 29, 'Do not believe', '2023-12-04 03:10:27', NULL),
+(129, 52, 4, 3, 31, 'Imam Abu Hanifa (699-767 CE) was a renowned Islamic jurist and theologian who founded the Hanafi school of Islamic jurisprudence, one of the four major Sunni schools of law. He was known for his meticulous attention to detail and his ability to reconcile different legal opinions.  Image of Imam Abu HanifaOpens in a new window www.fluentarabic.net Imam Abu Hanifa  Imam Malik (711-795 CE) was another prominent Islamic jurist who founded the Maliki school of Islamic jurisprudence, one of the four major Sunni schools of law. He was known for his emphasis on the importance of consensus and his reliance on the traditions of Medina.  Image of Imam MalikOpens in a new window fr.wikipedia.org Imam Malik  Imam Ash-Shafi\'i (767-820 CE) was a brilliant Islamic scholar who founded the Shafi\'i school of Islamic jurisprudence, one of the four major Sunni schools of law. He was known for his ability to synthesize different legal opinions and his emphasis on the principles of Islamic law.  Image of Imam AshShafi\'i', '2023-12-04 03:10:27', NULL),
+(130, 52, 4, 3, 30, 'The Sealed Nectar (الرحيق المختوم) Islamic books: Tafsir ibn Kathir (تفسير ابن كثير) The Road to Mecca Islamic books: Riyad as-Salihin (رياض الصالحين) Minhaj ul Muslim (منهاج المسلم)', '2023-12-04 03:10:27', NULL),
+(131, 52, 4, 3, 32, 'gozol reciting', '2023-12-04 03:10:27', NULL),
+(132, 52, 4, 3, 34, 'gardening, cooking', '2023-12-04 03:10:27', NULL),
+(133, 52, 4, 3, 35, NULL, '2023-12-04 03:10:27', NULL),
+(134, 52, 4, 4, 38, '40000', '2023-12-04 03:10:50', NULL),
+(135, 52, 4, 4, 37, 'doctor', '2023-12-04 03:10:50', NULL),
+(136, 52, 4, 4, 36, '136', '2023-12-04 03:10:50', NULL),
+(137, 52, 4, 5, 45, 'There are many potential benefits to marriage, including increased emotional well-being, improved physical health, and greater financial stability. However, marriage can also be challenging, and it requires hard work and dedication from both partners.', '2023-12-04 03:11:53', NULL),
+(138, 52, 4, 5, 44, 'no', '2023-12-04 03:11:53', NULL),
+(139, 52, 4, 5, 43, NULL, '2023-12-04 03:11:53', NULL),
+(140, 52, 4, 5, 42, NULL, '2023-12-04 03:11:53', NULL),
+(141, 52, 4, 5, 41, NULL, '2023-12-04 03:11:53', NULL),
+(142, 52, 4, 5, 40, NULL, '2023-12-04 03:11:53', NULL),
+(143, 52, 4, 5, 39, 'yes', '2023-12-04 03:11:53', NULL),
+(144, 52, 4, 6, 46, '146', '2023-12-04 03:12:12', NULL),
+(145, 52, 4, 6, 47, '150', '2023-12-04 03:12:12', NULL),
+(146, 52, 4, 6, 48, '148', '2023-12-04 03:12:12', NULL),
+(147, 53, 5, 1, 1, '88', '2023-12-04 03:20:17', NULL),
+(148, 53, 5, 1, 2, '97', '2023-12-04 03:20:17', NULL),
+(149, 53, 5, 1, 3, NULL, '2023-12-04 03:20:17', NULL),
+(150, 53, 5, 2, 5, '99', '2023-12-04 03:22:02', NULL),
+(151, 53, 5, 2, 4, 'Md. Halim', '2023-12-04 03:22:02', NULL),
+(152, 53, 5, 2, 6, 'Imam', '2023-12-04 03:22:02', NULL),
+(153, 53, 5, 2, 8, '100', '2023-12-04 03:22:02', NULL),
+(154, 53, 5, 2, 7, 'Mst. Riya Khatun', '2023-12-04 03:22:02', NULL),
+(155, 53, 5, 2, 9, 'Housewife', '2023-12-04 03:22:02', NULL),
+(156, 53, 5, 2, 10, '105', '2023-12-04 03:22:02', NULL),
+(157, 53, 5, 2, 11, NULL, '2023-12-04 03:22:02', NULL),
+(158, 53, 5, 2, 12, '116', '2023-12-04 03:22:02', NULL),
+(159, 53, 5, 2, 13, 'Married', '2023-12-04 03:22:02', NULL),
+(160, 53, 5, 2, 14, 'Businessman', '2023-12-04 03:22:02', NULL),
+(161, 53, 5, 2, 15, '127', '2023-12-04 03:22:02', NULL),
+(162, 53, 5, 2, 16, 'Family business', '2023-12-04 03:22:02', NULL),
+(163, 53, 5, 2, 17, 'Properly maintained', '2023-12-04 03:22:02', NULL),
+(164, 53, 5, 3, 18, 'Jobba', '2023-12-04 03:25:34', NULL),
+(165, 53, 5, 3, 19, 'Yes, 10', '2023-12-04 03:25:34', NULL),
+(166, 53, 5, 3, 20, 'Yes', '2023-12-04 03:25:34', NULL),
+(167, 53, 5, 3, 21, 'Yes, 10', '2023-12-04 03:25:34', NULL),
+(168, 53, 5, 3, 22, '3-4', '2023-12-04 03:25:34', NULL),
+(169, 53, 5, 3, 51, 'Of course', '2023-12-04 03:25:34', NULL),
+(170, 53, 5, 3, 52, 'Yes', '2023-12-04 03:25:34', NULL),
+(171, 53, 5, 3, 25, '131', '2023-12-04 03:25:34', NULL),
+(172, 53, 5, 3, 26, 'No', '2023-12-04 03:25:34', NULL),
+(173, 53, 5, 3, 27, 'No', '2023-12-04 03:25:34', NULL),
+(174, 53, 5, 3, 29, 'I don\'t believe', '2023-12-04 03:25:34', NULL),
+(175, 53, 5, 3, 31, 'Molana Tariq Jameel', '2023-12-04 03:25:34', NULL),
+(176, 53, 5, 3, 30, 'Sesh Bela, Paradoxical Sajid', '2023-12-04 03:25:34', NULL),
+(177, 53, 5, 3, 32, NULL, '2023-12-04 03:25:34', NULL),
+(178, 53, 5, 3, 34, 'Reciting poem', '2023-12-04 03:25:34', NULL),
+(179, 53, 5, 3, 35, '018237', '2023-12-04 03:25:34', NULL),
+(180, 53, 5, 4, 38, '30000', '2023-12-04 03:25:57', NULL),
+(181, 53, 5, 4, 37, 'Teacher', '2023-12-04 03:25:57', NULL),
+(182, 53, 5, 4, 36, '134', '2023-12-04 03:25:57', NULL),
+(183, 53, 5, 5, 45, 'can, however, offer some insights into the concept of marriage from an objective standpoint. Marriage is a complex institution that has evolved over time and that continues to take on different meanings in different cultures. In some cultures, marriage is primarily seen as a way to create a family and to ensure the continuity of the family line. In other cultures, marriage is seen as a way to express love and commitment between two people.\r\n\r\nThere are many potential benefits to marriage, including increased emotional well-being, improved physical health, and greater financial stability. However, marriage can also be challenging, and it requires hard work and dedication from both partners.', '2023-12-04 03:26:40', NULL),
+(184, 53, 5, 5, 44, 'no', '2023-12-04 03:26:40', NULL),
+(185, 53, 5, 5, 43, 'my own home', '2023-12-04 03:26:40', NULL),
+(186, 53, 5, 5, 42, 'no', '2023-12-04 03:26:40', NULL),
+(187, 53, 5, 5, 41, 'yes', '2023-12-04 03:26:40', NULL),
+(188, 53, 5, 5, 40, 'yes', '2023-12-04 03:26:40', NULL),
+(189, 53, 5, 5, 39, 'yes', '2023-12-04 03:26:40', NULL),
+(190, 53, 5, 6, 46, '146', '2023-12-04 03:26:49', NULL),
+(191, 53, 5, 6, 47, '150', '2023-12-04 03:26:49', NULL),
+(192, 53, 5, 6, 48, '148', '2023-12-04 03:26:49', NULL),
+(193, 54, 6, 1, 1, '87', '2023-12-04 03:33:04', NULL),
+(194, 54, 6, 1, 2, '96', '2023-12-04 03:33:04', NULL),
+(196, 54, 6, 1, 3, 'FST Fellowship', '2023-12-04 03:33:15', NULL),
+(197, 54, 6, 2, 5, '98', '2023-12-04 03:36:14', NULL),
+(198, 54, 6, 2, 4, 'মোশাররফ খান', '2023-12-04 03:36:14', NULL),
+(199, 54, 6, 2, 6, 'আর্মি', '2023-12-04 03:36:14', NULL),
+(200, 54, 6, 2, 8, '100', '2023-12-04 03:36:14', NULL),
+(201, 54, 6, 2, 7, 'রেখা', '2023-12-04 03:36:14', NULL),
+(202, 54, 6, 2, 9, 'শিক্ষক', '2023-12-04 03:36:14', NULL),
+(203, 54, 6, 2, 10, '102', '2023-12-04 03:36:14', NULL),
+(204, 54, 6, 2, 11, NULL, '2023-12-04 03:36:14', NULL),
+(205, 54, 6, 2, 12, '114', '2023-12-04 03:36:14', NULL),
+(206, 54, 6, 2, 13, 'প্রকৌশলী', '2023-12-04 03:36:14', NULL),
+(207, 54, 6, 2, 14, 'প্রকৌশলী', '2023-12-04 03:36:14', NULL),
+(208, 54, 6, 2, 15, '125', '2023-12-04 03:36:14', NULL),
+(209, 54, 6, 2, 16, 'বসত বাড়ি (নিজস্ব), জমি', '2023-12-04 03:36:14', NULL),
+(210, 54, 6, 2, 17, 'মাহরাম নন-মাহরাম', '2023-12-04 03:36:14', NULL),
+(211, 54, 6, 3, 18, 'শার্ট প্যান্ট', '2023-12-04 03:41:48', NULL),
+(212, 54, 6, 3, 19, 'না', '2023-12-04 03:41:48', NULL),
+(213, 54, 6, 3, 20, 'না', '2023-12-04 03:41:48', NULL),
+(214, 54, 6, 3, 21, 'না', '2023-12-04 03:41:48', NULL),
+(215, 54, 6, 3, 22, 'না', '2023-12-04 03:41:48', NULL),
+(216, 54, 6, 3, 51, 'না', '2023-12-04 03:41:48', NULL),
+(217, 54, 6, 3, 52, 'হ্যাঁ', '2023-12-04 03:41:48', NULL),
+(218, 54, 6, 3, 25, '129', '2023-12-04 03:41:48', NULL),
+(219, 54, 6, 3, 26, 'হ্যাঁ', '2023-12-04 03:41:48', NULL),
+(220, 54, 6, 3, 27, 'না', '2023-12-04 03:41:48', NULL),
+(221, 54, 6, 3, 29, 'আমি বিশ্বাস করি না', '2023-12-04 03:41:48', NULL),
+(222, 54, 6, 3, 31, 'Nouman Ali Khan, Ismail ibn Musa Menk, Khalid Yasin', '2023-12-04 03:41:48', NULL),
+(223, 54, 6, 3, 30, 'একটি সুন্দর ইসলামী বই হলো “আল-কুরআন”। আরেকটি বই হলো “সহীহ আল বুখারী হাদীস গ্রন্থ”। তৃতীয় বই হলো “তাফসীর ইবনে কাছীর”।', '2023-12-04 03:41:48', NULL),
+(224, 54, 6, 3, 32, NULL, '2023-12-04 03:41:48', NULL),
+(225, 54, 6, 3, 34, 'শখ\r\n\r\nপড়াশোনা: আমি নতুন জিনিস শিখতে ভালোবাসি। আমি বিভিন্ন বিষয়ে বই পড়ি, যেমন ইতিহাস, বিজ্ঞান, প্রযুক্তি, এবং সাহিত্য।\r\nলেখালেখি: আমি গল্প, কবিতা, এবং অন্যান্য সৃজনশীল লেখালেখি করতে ভালোবাসি।\r\nভ্রমণ: আমি ভ্রমণ করতে ভালোবাসি। আমি নতুন জায়গা দেখতে এবং নতুন সংস্কৃতি সম্পর্কে জানতে ভালোবাসি।\r\nপছন্দ-অপছন্দ\r\n\r\nপছন্দ:\r\n\r\nআমি ভালোবাসা, সহানুভূতি, এবং সহযোগিতাকে পছন্দ করি।\r\nআমি সত্য, ন্যায়বিচার, এবং সমতাকে পছন্দ করি।\r\nআমি সৌন্দর্য, সৃজনশীলতা, এবং উদ্ভাবনকে পছন্দ করি।\r\nআমি শান্তি, শৃঙ্খলা, এবং স্থিতিশীলতা পছন্দ করি।\r\nঅপছন্দ:\r\n\r\nআমি ঘৃণা, সহিংসতা, এবং অবিচারকে অপছন্দ করি।\r\nআমি মিথ্যা, অবিচার, এবং বৈষম্যকে অপছন্দ করি।\r\nআমি কুৎসিত, রুচিহীন, এবং স্থবিরতাকে অপছন্দ করি।\r\nআমি যুদ্ধ, বিশৃঙ্খলা, এবং অনিশ্চয়তাকে অপছন্দ করি।\r\nরুচিবোধ\r\n\r\nসাজ-পোশাক: আমি সাধারণত সুন্দর, আরামদায়ক, এবং যুগোপযোগী পোশাক পরে থাকি।\r\nখাবার: আমি বিভিন্ন ধরনের খাবার খেতে ভালোবাসি, তবে আমি বিশেষ করে বাঙালি খাবার পছন্দ করি।\r\nসঙ্গীত: আমি বিভিন্ন ধরনের সঙ্গীত শুনতে ভালোবাসি, তবে আমি বিশেষ করে বাংলা গান পছন্দ করি।\r\nচলচ্চিত্র: আমি বিভিন্ন ধরনের চলচ্চিত্র দেখতে ভালোবাসি, তবে আমি বিশেষ করে বাংলা চলচ্চিত্র পছন্দ করি।\r\nবই: আমি বিভিন্ন ধরনের বই পড়তে ভালোবাসি, তবে আমি বিশেষ করে বাংলা বই পছন্দ করি।\r\nস্বপ্ন\r\n\r\nআমার স্বপ্ন হল একটি সুন্দর, শান্তিপূর্ণ, এবং ন্যায়সঙ্গত পৃথিবী তৈরি করা। আমি চাই যে প্রত্যেকেরই সুযোগ থাকুক শিক্ষা, স্বাস্থ্যসেবা, এবং একটি ভাল জীবনযাপনের। আমি চাই যে প্রত্যেকেরই অধিকার থাকুক তাদের নিজস্ব মতামত প্রকাশ করার এবং তাদের নিজস্ব জীবনযাপন করার।\r\n\r\nআমি বিশ্বাস করি যে সবাই একসাথে কাজ করলে আমরা এই স্বপ্নটি পূরণ করতে পারি। আমরা সবাই আমাদের শক্তি এবং প্রতিভা ব্যবহার করে বিশ্বকে একটি আরও ভালো জায়গা করে তুলতে পারি।', '2023-12-04 03:41:48', NULL),
+(226, 54, 6, 3, 35, '12368970', '2023-12-04 03:41:48', NULL),
+(227, 54, 6, 4, 38, '45000', '2023-12-04 03:42:59', NULL),
+(228, 54, 6, 4, 37, 'পুলিশ ক্যাডার', '2023-12-04 03:42:59', NULL),
+(229, 54, 6, 4, 36, '139', '2023-12-04 03:42:59', NULL),
+(230, 54, 6, 5, 45, 'বিয়ে সম্পর্কে আমার ধারণা হল এটি একটি জটিল সামাজিক প্রতিষ্ঠান যা বিভিন্ন সংস্কৃতিতে বিভিন্ন অর্থ বহন করে। কিছু সংস্কৃতিতে, বিবাহকে একটি আধ্যাত্মিক সংযোগ হিসাবে দেখা হয়, অন্যদিকে অন্য সংস্কৃতিতে এটিকে একটি আইনি চুক্তি হিসাবে দেখা হয়।\r\n\r\nবিবাহের সাধারণ উদ্দেশ্যগুলির মধ্যে রয়েছে:\r\n\r\nদু\'জন মানুষের মধ্যে প্রেম, স্নেহ এবং সমর্থনের একটি চুক্তি তৈরি করা।\r\nএকটি পরিবার তৈরি করা।\r\nআইনি এবং আর্থিক সুবিধা প্রদান করা।\r\nবিয়ে অনেক সুবিধা নিয়ে আসতে পারে, তবে এটি চ্যালেঞ্জও নিয়ে আসতে পারে। বিবাহের সুবিধাগুলির মধ্যে রয়েছে:\r\n\r\nদীর্ঘমেয়াদী সঙ্গ এবং সমর্থন।\r\nযৌনতা এবং শারীরিক ঘনিষ্ঠতা।\r\nসন্তান উৎপাদন এবং লালনপালন।\r\nআর্থিক সুবিধা, যেমন কর সুবিধা এবং স্বাস্থ্য বীমা।\r\nবিবাহের চ্যালেঞ্জগুলির মধ্যে রয়েছে:\r\n\r\nমানসিক এবং শারীরিক সংস্থান প্রয়োজন।\r\nসমন্বয় এবং সংস্কারের প্রয়োজন।\r\nবিশ্বাসঘাতকতা এবং বিচ্ছেদের সম্ভাবনা।\r\nবিয়ে একটি গুরুত্বপূর্ণ সিদ্ধান্ত, এবং এটি করার আগে আপনার সময় নেওয়া এবং আপনার এবং আপনার সম্ভাব্য সঙ্গীর জন্য কী গুরুত্বপূর্ণ তা বিবেচনা করা গুরুত্বপূর্ণ।', '2023-12-04 03:44:07', NULL),
+(231, 54, 6, 5, 44, 'না', '2023-12-04 03:44:07', NULL),
+(232, 54, 6, 5, 43, 'নিজের বাড়ি', '2023-12-04 03:44:07', NULL),
+(233, 54, 6, 5, 42, 'হ্যাঁ', '2023-12-04 03:44:07', NULL),
+(234, 54, 6, 5, 41, 'হ্যাঁ', '2023-12-04 03:44:07', NULL),
+(235, 54, 6, 5, 40, 'হ্যাঁ', '2023-12-04 03:44:07', NULL),
+(236, 54, 6, 5, 39, 'হ্যাঁ', '2023-12-04 03:44:07', NULL),
+(237, 54, 6, 6, 46, '146', '2023-12-04 03:44:16', NULL),
+(238, 54, 6, 6, 47, '150', '2023-12-04 03:44:16', NULL),
+(239, 54, 6, 6, 48, '148', '2023-12-04 03:44:16', NULL),
+(240, 55, 7, 1, 1, '89', '2023-12-04 03:52:16', NULL),
+(241, 55, 7, 1, 2, '93', '2023-12-04 03:52:16', NULL),
+(242, 55, 7, 1, 3, NULL, '2023-12-04 03:52:16', NULL),
+(243, 55, 7, 2, 5, '99', '2023-12-04 03:53:31', NULL),
+(244, 55, 7, 2, 4, 'Md. Rafik', '2023-12-04 03:53:31', NULL),
+(245, 55, 7, 2, 6, 'Businessman', '2023-12-04 03:53:31', NULL),
+(246, 55, 7, 2, 8, '100', '2023-12-04 03:53:31', NULL),
+(247, 55, 7, 2, 7, 'Hasina Khan', '2023-12-04 03:53:31', NULL),
+(248, 55, 7, 2, 9, 'Housewife', '2023-12-04 03:53:31', NULL),
+(249, 55, 7, 2, 10, '102', '2023-12-04 03:53:31', NULL),
+(250, 55, 7, 2, 11, NULL, '2023-12-04 03:53:31', NULL),
+(251, 55, 7, 2, 12, '113', '2023-12-04 03:53:31', NULL),
+(252, 55, 7, 2, 13, NULL, '2023-12-04 03:53:31', NULL),
+(253, 55, 7, 2, 14, 'Alem', '2023-12-04 03:53:31', NULL),
+(254, 55, 7, 2, 15, '126', '2023-12-04 03:53:31', NULL),
+(255, 55, 7, 2, 16, 'Good', '2023-12-04 03:53:31', NULL),
+(256, 55, 7, 2, 17, 'Maintained', '2023-12-04 03:53:31', NULL),
+(257, 55, 7, 3, 18, 'Kabli', '2023-12-04 03:56:56', NULL),
+(258, 55, 7, 3, 19, 'yes, 5years', '2023-12-04 03:56:56', NULL),
+(259, 55, 7, 3, 20, 'yes', '2023-12-04 03:56:56', NULL),
+(260, 55, 7, 3, 21, 'yes, 5years', '2023-12-04 03:56:56', NULL),
+(261, 55, 7, 3, 22, '2-3', '2023-12-04 03:56:56', NULL),
+(262, 55, 7, 3, 51, 'no', '2023-12-04 03:56:56', NULL),
+(263, 55, 7, 3, 52, 'yes', '2023-12-04 03:56:56', NULL),
+(264, 55, 7, 3, 25, '130', '2023-12-04 03:56:56', NULL),
+(265, 55, 7, 3, 26, 'no', '2023-12-04 03:56:56', NULL),
+(266, 55, 7, 3, 27, 'no', '2023-12-04 03:56:56', NULL),
+(267, 55, 7, 3, 29, 'I don\'t believe', '2023-12-04 03:56:56', NULL),
+(268, 55, 7, 3, 31, 'Nouman Ali Khan, Mufti Menk, Khalid Yasin', '2023-12-04 03:56:56', NULL),
+(269, 55, 7, 3, 30, 'সহীহ আল বুখারী হাদীস গ্রন্থ (ফুল সেট) 1 তাফসীর ইবনে কাছীর 2 দ্বীনি প্রশ্নোত্তর 3', '2023-12-04 03:56:56', NULL),
+(270, 55, 7, 3, 32, NULL, '2023-12-04 03:56:56', NULL),
+(271, 55, 7, 3, 34, 'Sure, here is my response in English:\r\n\r\nHobbies\r\n\r\nReading: I love to learn new things. I read books on a variety of topics, such as history, science, technology, and literature.\r\nWriting: I enjoy writing stories, poems, and other creative works.\r\nSinging: I enjoy singing. I can sing a variety of songs in different languages, such as Bengali, English, and Hindi.\r\nPainting: I enjoy painting. I can paint a variety of subjects, such as nature, people, and objects.\r\nTravel: I love to travel. I enjoy seeing new places and learning about new cultures.\r\nLikes and dislikes\r\n\r\nLikes:\r\n\r\nI like love, compassion, and cooperation.\r\nI like truth, justice, and equality.\r\nI like beauty, creativity, and innovation.\r\nI like peace, order, and stability.', '2023-12-04 03:56:56', NULL),
+(272, 55, 7, 3, 35, '134235', '2023-12-04 03:56:56', NULL),
+(273, 55, 7, 4, 38, '54000', '2023-12-04 03:57:13', NULL),
+(274, 55, 7, 4, 37, 'new teacher', '2023-12-04 03:57:13', NULL),
+(275, 55, 7, 4, 36, '134', '2023-12-04 03:57:13', NULL),
+(276, 55, 7, 5, 45, 'Marriage is a complex institution that has evolved over time and that continues to take on different meanings in different cultures. In some cultures, marriage is primarily seen as a way to create a family and to ensure the continuity of the family line. In other cultures, marriage is seen as a way to express love and commitment between two people.\r\n\r\nThere are many potential benefits to marriage, including increased emotional well-being, improved physical health, and greater financial stability. However, marriage can also be challenging, and it requires hard work and dedication from both partners.\r\n\r\nUltimately, the decision of whether or not to get married is a personal one that should be made based on your own individual values and beliefs. There is no right or wrong answer, and there is no one-size-fits-all solution.', '2023-12-04 03:58:01', NULL),
+(277, 55, 7, 5, 44, 'No', '2023-12-04 03:58:01', NULL),
+(278, 55, 7, 5, 43, 'My home', '2023-12-04 03:58:01', NULL),
+(279, 55, 7, 5, 42, 'No', '2023-12-04 03:58:01', NULL),
+(280, 55, 7, 5, 41, 'yes', '2023-12-04 03:58:01', NULL),
+(281, 55, 7, 5, 40, 'Yes', '2023-12-04 03:58:01', NULL),
+(282, 55, 7, 5, 39, 'Yes', '2023-12-04 03:58:01', NULL),
+(283, 55, 7, 6, 46, '146', '2023-12-04 03:58:08', NULL),
+(284, 55, 7, 6, 47, '150', '2023-12-04 03:58:08', NULL),
+(285, 55, 7, 6, 48, '148', '2023-12-04 03:58:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,6 +371,98 @@ CREATE TABLE `biodata_types` (
 INSERT INTO `biodata_types` (`id`, `title`, `title_bn`, `serial`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Biodata of Groom', 'পাত্রের বায়োডাটা', 1, 1, '2023-11-28 00:20:54', '2023-11-28 00:22:51'),
 (2, 'Biodata of Bride', 'পাত্রীর বায়োডাটা', 2, 1, '2023-11-28 00:21:47', '2023-11-28 00:22:51');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biodata_visit_histories`
+--
+
+CREATE TABLE `biodata_visit_histories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `biodata_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `from_ip_address` varchar(255) DEFAULT NULL,
+  `browser` varchar(255) DEFAULT NULL,
+  `os` varchar(255) DEFAULT NULL,
+  `device` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `biodata_visit_histories`
+--
+
+INSERT INTO `biodata_visit_histories` (`id`, `biodata_id`, `user_id`, `from_ip_address`, `browser`, `os`, `device`, `created_at`, `updated_at`) VALUES
+(1, 7, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:51:37', NULL),
+(2, 6, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:51:39', NULL),
+(3, 5, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:51:41', NULL),
+(4, 4, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:51:43', NULL),
+(5, 2, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:51:45', NULL),
+(6, 5, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:53:13', NULL),
+(7, 7, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 00:53:17', NULL),
+(8, 5, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 01:04:22', NULL),
+(9, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 04:10:46', NULL),
+(10, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 04:10:51', NULL),
+(11, 7, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:17:30', NULL),
+(12, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:43:05', NULL),
+(13, 6, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:46:12', NULL),
+(14, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:46:26', NULL),
+(15, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:46:43', NULL),
+(16, 5, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:46:53', NULL),
+(17, 5, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:53:33', NULL),
+(18, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:55:40', NULL),
+(19, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:55:42', NULL),
+(20, 6, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:55:43', NULL),
+(21, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:58:23', NULL),
+(22, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:58:26', NULL),
+(23, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:59:20', NULL),
+(24, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:59:23', NULL),
+(25, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 05:59:37', NULL),
+(26, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:00:34', NULL),
+(27, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:00:51', NULL),
+(28, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:00:51', NULL),
+(29, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:00:56', NULL),
+(30, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:00:56', NULL),
+(31, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:01:34', NULL),
+(32, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:01:42', NULL),
+(33, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:01:42', NULL),
+(34, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:01:44', NULL),
+(35, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:01:44', NULL),
+(36, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:04:57', NULL),
+(37, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:05:10', NULL),
+(38, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:06:35', NULL),
+(39, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:06:35', NULL),
+(40, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:06:41', NULL),
+(41, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:06:41', NULL),
+(42, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:45', NULL),
+(43, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:50', NULL),
+(44, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:50', NULL),
+(45, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:53', NULL),
+(46, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:53', NULL),
+(47, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:56', NULL),
+(48, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:08:56', NULL),
+(49, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:01', NULL),
+(50, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:01', NULL),
+(51, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:08', NULL),
+(52, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:08', NULL),
+(53, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:51', NULL),
+(54, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:54', NULL),
+(55, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:09:54', NULL),
+(56, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:10:10', NULL),
+(57, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:13:30', NULL),
+(58, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:13:57', NULL),
+(59, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:02', NULL),
+(60, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:11', NULL),
+(61, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:11', NULL),
+(62, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:14', NULL),
+(63, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:14', NULL),
+(64, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:17', NULL),
+(65, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:18', NULL),
+(66, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:20', NULL),
+(67, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:14:21', NULL),
+(68, 4, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 06:20:41', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,7 +506,11 @@ CREATE TABLE `bio_data` (
 --
 
 INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-03 03:31:13');
+(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 1, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-05 00:51:45'),
+(4, 52, 'SK1701687700', 2, 1, '2023-06-26', 5, 3, '2', '৬৮', '4', 50, 3, 26, 'Asuopara', 2, 19, 'nikunjo', 'Vasha', 'biodata_images/rwvew1701688382.jpg', '544232945462', 'Father', 'redwonavasha21@gmail.com', 50, 1, 'VszY41701687700', '2023-12-04 03:01:40', '2023-12-05 06:20:41'),
+(5, 53, 'SK1701688765', 1, 3, '1990-10-19', 6, 1, '3', '78', '5', 144, 16, 144, 'Fultola', 3, 28, 'Mariana', 'Md. Fazle rabbi', 'biodata_images/HHY871701689282.jpg', '932945462', 'Father', 'aframaw2021@gmail.com', 7, 1, 'M4Myy1701688765', '2023-12-04 03:19:25', '2023-12-05 05:53:33'),
+(6, 54, 'SK1701689477', 1, 1, '1997-09-22', 6, 1, '2', '৬৮', '1', 50, 13, 113, 'ফুলটোলা', 62, 465, 'বাড্ডা', 'নাজমুল হক', 'biodata_images/eyXDV1701690352.jpg', '0193454600', 'বাবা', 'islam1707113@stud.kuet.ac.bd', 12, 1, 'vZw3H1701689477', '2023-12-04 03:31:17', '2023-12-05 05:55:43'),
+(7, 55, 'SK1701690701', 1, 1, '1994-06-17', 5, 10, '3', '60', '3', 246, 6, 53, 'Ataikula', 2, 19, 'Minnjo', 'Md. Shad Alam', 'biodata_images/ACmbz1701691133.jpg', '0171354634', 'Mother', 'nodox71802@gyxmz.com', 4, 1, 'aisqn1701690701', '2023-12-04 03:51:41', '2023-12-05 05:17:30');
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1379,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (97, '2023_11_29_054853_create_bio_data_table', 62),
 (98, '2023_11_29_094605_create_sms_gateways_table', 63),
 (99, '2023_11_29_105300_create_payment_gateways_table', 64),
-(101, '2023_12_03_041516_create_biodata_question_answers_table', 65);
+(101, '2023_12_03_041516_create_biodata_question_answers_table', 65),
+(104, '2023_12_04_031341_create_pricing_packages_table', 66),
+(106, '2023_12_04_065045_create_payment_histories_table', 67),
+(107, '2023_12_05_062032_create_biodata_visit_histories_table', 68),
+(108, '2023_12_05_112421_create_saved_biodatas_table', 69);
 
 -- --------------------------------------------------------
 
@@ -1243,6 +1527,8 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `payment_gateways` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `provider_name` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `api_key` varchar(255) DEFAULT NULL COMMENT 'StoreID/ApiKey',
   `secret_key` varchar(255) DEFAULT NULL COMMENT 'StorePassword/SecretKey',
   `username` varchar(255) DEFAULT NULL,
@@ -1257,11 +1543,54 @@ CREATE TABLE `payment_gateways` (
 -- Dumping data for table `payment_gateways`
 --
 
-INSERT INTO `payment_gateways` (`id`, `provider_name`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'ssl_commerz', 'sodai644d7015e8eb1', 'sodai644d7015e8eb1@ssl', 'alifhossain174', '12345678', 1, 1, NULL, '2023-10-18 08:16:01'),
-(2, 'stripe', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
-(3, 'bkash', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
-(4, 'amar_pay', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 0, NULL, '2023-11-29 05:06:01');
+INSERT INTO `payment_gateways` (`id`, `provider_name`, `title`, `image`, `api_key`, `secret_key`, `username`, `password`, `live`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ssl_commerz', 'SSL Commerz', 'images/ssl_commerz.png', 'getup656d6edfc6c20', 'getup656d6edfc6c20@ssl', 'Redwona', 'amarroll_113', 0, 1, NULL, '2023-12-04 00:38:06'),
+(2, 'stripe', 'Stripe', 'images/stripe_payment_gatway.png', '98798796546', 'ASDFGHJKLERTYUI', 'test_username', 'test_password', 1, 0, NULL, '2023-11-29 05:06:06'),
+(3, 'bkash', 'bKash Payment', 'images/bkash_payment_gateway.png', '654654654', 'ZWvNGXXPHOYhR', 'bkash_test_user', '85747bkash', 1, 1, NULL, '2023-11-29 05:05:58'),
+(4, 'amar_pay', 'Amar Pay', 'images/amar_pay.png', '654654654', 'ZWvNGXXPHOYhR', 'amar_pay_test_user', '85747amar_pay', 1, 1, NULL, '2023-11-29 05:06:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_histories`
+--
+
+CREATE TABLE `payment_histories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `package_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `purchased_connections` double NOT NULL DEFAULT 0,
+  `payment_through` varchar(255) NOT NULL DEFAULT 'SSL COMMERZ',
+  `tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `val_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_type` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_no` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `bank_tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `status` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `tran_date` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `currency` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_sub_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer_country` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment_histories`
+--
+
+INSERT INTO `payment_histories` (`id`, `user_id`, `package_id`, `purchased_connections`, `payment_through`, `tran_id`, `val_id`, `amount`, `card_type`, `store_amount`, `card_no`, `bank_tran_id`, `status`, `tran_date`, `currency`, `card_issuer`, `card_brand`, `card_sub_brand`, `card_issuer_country`, `store_id`, `created_at`, `updated_at`) VALUES
+(1, 44, 1, 1, 'SSL COMMERZ', 'tg1fG1701673416', '2312041303490A5tJ9Fd7amTqkZ', '100.00', 'BKASH-BKash', '97.50', NULL, '2312041303491LrHiKFDhnfp8E0', 'VALID', '2023-12-04 13:03:37', 'BDT', 'BKash Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:03:54', NULL),
+(2, 44, 1, 1, 'SSL COMMERZ', 'gDUGJ1701673938', '231204131228SxLJpEJKM550oFe', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041312281fUWHBkfXQ0omPq', 'VALID', '2023-12-04 13:12:19', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:12:33', NULL),
+(3, 44, 1, 1, 'SSL COMMERZ', 'u5Teb1701674104', '231204131514dtbGbhYFwlvqpUC', '100.00', 'NAGAD-Nagad', '97.50', NULL, '2312041315140meFVvCGRnr8Q4S', 'VALID', '2023-12-04 13:15:05', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:15:19', NULL),
+(4, 44, 3, 5, 'SSL COMMERZ', 'S7z5Y1701674400', '2312041320120Jp8BplJTx48MFd', '400.00', 'DBBLMOBILEB-Dbbl Mobile Banking', '390.00', NULL, '231204132012F1uwi3pk8A9ZIOs', 'VALID', '2023-12-04 13:20:02', 'BDT', 'DBBL Mobile Banking', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:20:18', NULL),
+(5, 44, 4, 10, 'SSL COMMERZ', 'E61dl1701676557', '231204135608yhmbr6gxDDVuEZm', '700.00', 'NAGAD-Nagad', '682.50', NULL, '231204135608GkRbcROWqBTnSS6', 'VALID', '2023-12-04 13:55:58', 'BDT', 'Nagad', 'MOBILEBANKING', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 01:56:12', NULL),
+(6, 44, 3, 5, 'SSL COMMERZ', '9d1rp1701681310', '231204151838SKn2VapVyTqyds5', '400.00', 'VISA-Dutch Bangla', '390.00', '418117XXXXXX7814', '23120415183805zvbFp6NBVE46x', 'VALID', '2023-12-04 15:15:11', 'BDT', 'TRUST BANK, LTD.', 'VISA', 'Classic', 'Bangladesh', 'getup656d6edfc6c20', '2023-12-04 03:18:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -1554,6 +1883,36 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pricing_packages`
+--
+
+CREATE TABLE `pricing_packages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `connections` double DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `serial` double NOT NULL DEFAULT 1,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pricing_packages`
+--
+
+INSERT INTO `pricing_packages` (`id`, `title`, `title_bn`, `connections`, `price`, `description`, `description_bn`, `status`, `serial`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Basic', 'বেসিক', 1, 100, '1 biodata contact information will be displayed.', '১টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে। ', 1, 1, '4xC0H1701666704', '2023-12-03 23:11:44', '2023-12-03 23:14:53'),
+(3, 'Standard', 'স্ট্যান্ডার্ড', 5, 400, '5 biodata contact information will be displayed.', '৫টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', 1, 2, 'ek3nB1701666746', '2023-12-03 23:12:26', '2023-12-03 23:14:53'),
+(4, 'Popular', 'পপুলার', 10, 700, '10 biodata contact information will be displayed.', '১০টি বায়োডাটার যোগাযোগ তথ্য দেখা যাবে।', 1, 3, 'iHdSL1701666774', '2023-12-03 23:12:54', '2023-12-03 23:14:53');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `privacy_policies`
 --
 
@@ -1719,6 +2078,28 @@ CREATE TABLE `role_permissions` (
 INSERT INTO `role_permissions` (`id`, `role_id`, `role_name`, `permission_id`, `route`, `route_name`, `created_at`, `updated_at`) VALUES
 (3, 1, 'SEO Specialist', 94, 'update/seo/homepage', 'UpdateSeoHomePage', '2023-10-10 11:03:54', NULL),
 (4, 1, 'SEO Specialist', 93, 'seo/homepage', 'SeoHomePage', '2023-10-10 11:03:54', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saved_biodatas`
+--
+
+CREATE TABLE `saved_biodatas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `biodata_id` bigint(20) UNSIGNED NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=>Liked; 2=>Disliked',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `saved_biodatas`
+--
+
+INSERT INTO `saved_biodatas` (`id`, `user_id`, `biodata_id`, `status`, `created_at`, `updated_at`) VALUES
+(1, 44, 4, 1, '2023-12-05 05:59:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -6917,6 +7298,9 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '1=>Admin; 2=>User/Shop;',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
+  `connections` double NOT NULL DEFAULT 0,
+  `last_purchase_date` varchar(255) DEFAULT NULL,
+  `expire_date` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -6926,17 +7310,18 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, NULL, '2023-09-17 10:49:44', NULL),
-(2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
-(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, NULL, '2023-11-26 04:20:44', NULL),
-(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$X.X3N4V2NXo4VgiNBWCLHuyVREwOcrKvBbEmgB.wF74EeJpgaNW2S', NULL, 3, 1, NULL, NULL, NULL),
-(45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
-(46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
-(47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
-(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005038', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27'),
-(49, 'Brendan Morrow', NULL, NULL, NULL, '01969005039', '862837', '2023-11-29 21:57:27', '$2y$12$Y7s4dqdGEoMrKGGAPCKJs.shZUZd2CiRJnfqZwBugMwQCDusmBqOC', 'Quidem qui ea eu aut', 3, 1, NULL, '2023-11-29 05:16:36', '2023-11-29 21:57:27'),
-(50, 'Emery Larson', NULL, NULL, NULL, '01969005035', '383430', '2023-11-29 21:58:42', '$2y$12$3MgEJHgaXqoh1bi.Yo7rZO1j5Hxwf86gKNgdp/ffXduq.F/BjtBrC', 'Asperiores magna qui', 3, 1, NULL, '2023-11-29 21:58:32', '2023-11-29 21:58:42');
+INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `contact`, `verification_code`, `email_verified_at`, `password`, `address`, `user_type`, `status`, `connections`, `last_purchase_date`, `expire_date`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', NULL, NULL, 'admin@gmail.com', NULL, NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 1, 1, 0, NULL, NULL, NULL, '2023-09-17 10:49:44', NULL),
+(2, 'User', NULL, NULL, 'user@gmail.com', NULL, NULL, NULL, '$2y$10$hYN3SKa2L94s0dHOmBwPXumT3mXNLz3XJe41NV42.lOrXe/4WMSDK', NULL, 2, 1, 0, NULL, NULL, NULL, '2023-09-18 22:27:03', '2023-10-10 12:04:29'),
+(7, 'Fahad', NULL, NULL, 'fahad@gmail.com', '01969005036', NULL, '2023-09-17 10:49:43', '$2y$10$BZkFOPk5dRSLS1fYq8qqLe1sYVgj0753L8eEsJXRvqlfmV7lpZkMi', NULL, 3, 1, 0, NULL, NULL, NULL, '2023-11-26 04:20:44', NULL),
+(44, 'Md. Fahim Hossain', '106763512174170963935', 'google', 'alifhossain174@gmail.com', NULL, NULL, '2023-11-29 02:45:44', '$2y$12$alifYL37jFQJHwK9/D3q4OdaEYcdxi1a8QvCdpWeZfu6Mz9pfLByC', NULL, 3, 1, 45, '2023-12-04 09:18:42', NULL, NULL, NULL, '2023-12-05 03:37:39'),
+(45, 'Alif Hossain', NULL, NULL, NULL, '01969005039', '879454', NULL, '$2y$12$u/zlHq.9iQpgPPHOIxzjH.TuRL0S2/6nEx37tpPN6Lj1pYJVhdsOC', 'Dhaka, Bangladesh', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:15:17', '2023-11-29 04:15:17'),
+(46, 'Germane Murphy', NULL, NULL, NULL, '01969005032', '815148', NULL, '$2y$12$znerwRRZ7qlhxrWWCkCtIeJoFFmrr5D3k0Jk7KlKZIVaZ.u2sVdUm', 'Cumque quasi soluta', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:18:37', '2023-11-29 04:18:37'),
+(47, 'Yuri Lowe', NULL, NULL, NULL, '01969887744', '313383', NULL, '$2y$12$JYJEXR5WoBJKcyJ9.sfvs.mjeeufQFnzh9VaEzCOHso3.Pfl96SM6', 'Ad tempore eiusmod', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:19:12', '2023-11-29 04:19:12'),
+(48, 'Shoshana Matthews', NULL, NULL, NULL, '01969005038', '456437', NULL, '$2y$12$UDEY4kh5R4WUVvhVeuL3muiU77blieaTCb/.CNMmRjZirX3TRkrEC', 'Molestiae maxime eve', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 04:29:27', '2023-11-29 04:29:27'),
+(49, 'Brendan Morrow', NULL, NULL, NULL, '01969005039', '862837', '2023-11-29 21:57:27', '$2y$12$Y7s4dqdGEoMrKGGAPCKJs.shZUZd2CiRJnfqZwBugMwQCDusmBqOC', 'Quidem qui ea eu aut', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 05:16:36', '2023-11-29 21:57:27'),
+(50, 'Emery Larson', NULL, NULL, NULL, '01969005035', '383430', '2023-11-29 21:58:42', '$2y$12$3MgEJHgaXqoh1bi.Yo7rZO1j5Hxwf86gKNgdp/ffXduq.F/BjtBrC', 'Asperiores magna qui', 3, 1, 0, NULL, NULL, NULL, '2023-11-29 21:58:32', '2023-11-29 21:58:42'),
+(51, 'Md. Fahim Hossain', '116750798120712918592', 'google', 'fahimmit05@gmail.com', NULL, NULL, '2023-12-04 21:26:26', '$2y$12$dEMOWjlWSUiPowqYwHtWVuedJgmxon.wObrn5aSn/TsQvBn6X8I2u', NULL, 3, 1, 0, NULL, NULL, NULL, NULL, '2023-12-04 21:45:05');
 
 -- --------------------------------------------------------
 
@@ -7072,6 +7457,12 @@ ALTER TABLE `biodata_question_answers`
 -- Indexes for table `biodata_types`
 --
 ALTER TABLE `biodata_types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biodata_visit_histories`
+--
+ALTER TABLE `biodata_visit_histories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7229,6 +7620,12 @@ ALTER TABLE `payment_gateways`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment_histories`
+--
+ALTER TABLE `payment_histories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permission_routes`
 --
 ALTER TABLE `permission_routes`
@@ -7241,6 +7638,12 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `pricing_packages`
+--
+ALTER TABLE `pricing_packages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `privacy_policies`
@@ -7270,6 +7673,12 @@ ALTER TABLE `refund_policies`
 -- Indexes for table `role_permissions`
 --
 ALTER TABLE `role_permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `saved_biodatas`
+--
+ALTER TABLE `saved_biodatas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -7367,7 +7776,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `biodata_question_answers`
 --
 ALTER TABLE `biodata_question_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `biodata_types`
@@ -7376,10 +7785,16 @@ ALTER TABLE `biodata_types`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `biodata_visit_histories`
+--
+ALTER TABLE `biodata_visit_histories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
 -- AUTO_INCREMENT for table `bio_data`
 --
 ALTER TABLE `bio_data`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`
@@ -7493,7 +7908,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -7514,6 +7929,12 @@ ALTER TABLE `payment_gateways`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `payment_histories`
+--
+ALTER TABLE `payment_histories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `permission_routes`
 --
 ALTER TABLE `permission_routes`
@@ -7524,6 +7945,12 @@ ALTER TABLE `permission_routes`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pricing_packages`
+--
+ALTER TABLE `pricing_packages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `privacy_policies`
@@ -7554,6 +7981,12 @@ ALTER TABLE `refund_policies`
 --
 ALTER TABLE `role_permissions`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `saved_biodatas`
+--
+ALTER TABLE `saved_biodatas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `seos`
@@ -7595,7 +8028,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

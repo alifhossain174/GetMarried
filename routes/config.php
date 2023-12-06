@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ConfigController;
 
 
 // Route::get('/link', function () {
@@ -33,23 +33,19 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('ckeditor', [CkeditorController::class, 'index']);
     Route::post('ckeditor/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
-
     // class config routes
     Route::get('language/page', [ConfigController::class, 'languagePage'])->name('LanguagePage');
     Route::get('set/default/language/{code}/{value}', [ConfigController::class, 'setDefaultLanguage'])->name('SetDefaultLanguage');
-
 
     // system route for sms gateway
     Route::get('/setup/sms/gateways', [ConfigController::class, 'viewSmsGateways'])->name('ViewSmsGateways');
     Route::post('/update/sms/gateway/info', [ConfigController::class, 'updateSmsGatewayInfo'])->name('UpdateSmsGatewayInfo');
     Route::get('/change/gateway/status/{provider}', [ConfigController::class, 'changeGatewayStatus'])->name('ChangeGatewayStatus');
 
-
     // system route for payment gateway
     Route::get('/setup/payment/gateways', [ConfigController::class, 'viewPaymentGateways'])->name('ViewPaymentGateways');
     Route::post('/update/payment/gateway/info', [ConfigController::class, 'updatePaymentGatewayInfo'])->name('UpdatePaymentGatewayInfo');
     Route::get('/change/payment/gateway/status/{provider}', [ConfigController::class, 'changePaymentGatewayStatus'])->name('ChangePaymentGatewayStatus');
-
 
     // BioDataType
     Route::get('view/all/biodatatype', [ConfigController::class, 'viewAllBiodataType'])->name('ViewAllBiodataType');
@@ -88,13 +84,6 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('delete/question/{id}', [QuestionController::class, 'deleteQuestion'])->name('DeleteQuestion');
     Route::get('rearrange/questions', [QuestionController::class, 'rearrangeQuestions'])->name('RearrangeQuestions');
     Route::post('save/rearranged/questions', [QuestionController::class, 'saveRearrangedQuestions'])->name('SaveRearrangedQuestions');
-
-    // biodatas
-    Route::get('view/pending/biodatas', [ConfigController::class, 'viewPendingBiodatas'])->name('ViewPendingBiodatas');
-    Route::get('view/approved/biodatas', [ConfigController::class, 'viewApprovedBiodatas'])->name('ViewApprovedBiodatas');
-    Route::get('view/blocked/biodatas', [ConfigController::class, 'viewBlockedBiodatas'])->name('ViewBlockedBiodatas');
-    Route::get('edit/biodata/{slug}', [ConfigController::class, 'editBiodata'])->name('EditBiodata');
-    Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
 
 
 });

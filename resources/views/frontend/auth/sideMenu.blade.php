@@ -6,7 +6,20 @@
         <div class="user-d-bio-status-wrap">
             <h3>{{__('label.user_menu_biodata_progress')}}</h3>
             <div class="user-d-bio-status">
-                <span class="user-d-complete">Status: <b>Pending</b></span>
+                @php
+                    $biodata = App\Models\BioData::where('user_id', Auth::user()->id)->first();
+                @endphp
+
+                @if($biodata && $biodata->status == 0)
+                <span class="user-d-complete" style="background: #00b4fd">Status: <b>Pending</b></span>
+                @elseif($biodata && $biodata->status == 1)
+                <span class="user-d-complete">Status: <b>Approved</b></span>
+                @elseif($biodata && $biodata->status == 2)
+                <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Cancelled</b></span>
+                @else
+                <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Not Submitted</b></span>
+                @endif
+
             </div>
         </div>
         <div class="user-d-preview-biodata-link">
@@ -30,7 +43,7 @@
             <li class="{{ (Request::path() == 'user/checked/biodata') ? 'active' : ''}}">
                 <a href="{{url('user/checked/biodata')}}"><i class="fi fi-rr-following"></i>{{__('label.user_menu_checked_biodata')}}</a>
             </li>
-            <li class="{{ (Request::path()=='user/my/purchased') || (Request::path()=='user/connection') || (Request::path()=='user/payment/process') ? 'active' : ''}}">
+            <li class="{{ (Request::path()=='user/my/purchased') || (Request::path()=='user/connection') ? 'active' : ''}}">
                 <a href="{{url('user/my/purchased')}}"><i class="fi fi-rr-shopping-bag"></i>{{__('label.user_menu_purchased')}}</a>
             </li>
             <li class="{{ (Request::path() == 'user/support/report') || (Request::path() == 'user/report/conversation') || (Request::path() == 'user/create/report') ? 'active' : ''}}">

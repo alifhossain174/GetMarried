@@ -130,6 +130,9 @@ return [
 
     'biodata_preview_label' => 'বায়োডাটার প্রিভিউ',
     'edit_more' => 'আরও সম্পাদনা করুন',
+    'view_details' => 'সম্পূর্ণ বায়োডাটা',
+    'marital_status'=> 'বৈবাহিক অবস্থা',
 
-
+    'short_list' => 'শর্টলিস্ট',
+    'ignore' => 'এড়ান'
 ];

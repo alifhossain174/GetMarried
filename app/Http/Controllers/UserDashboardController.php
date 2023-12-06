@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\BioData;
+use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
+use App\Models\SavedBiodata;
+use App\Models\User;
 use App\Models\MaritalCondition;
+use App\Models\PaymentGateway;
+use App\Models\PricingPackage;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\QuestionSet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 class UserDashboardController extends Controller
@@ -18,20 +26,73 @@ class UserDashboardController extends Controller
     public function userSettings(){
         return view('frontend.auth.settings');
     }
+
+    public function userPasswordChange(Request $request){
+
+        $request->validate([
+            'password' => ['required', 'string', 'min:8'],
+            'confirm_password' => ['required', 'string', 'min:8'],
+        ]);
+
+        if($request->password != $request->confirm_password){
+            Toastr::error('Password & Confirm Password have to be same', 'Missmatch Found !');
+            return back();
+        }
+
+        User::where('id', Auth::user()->id)->update([
+            'password' => Hash::make($request->password),
+            'updated_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Successfully Changed the Password', 'Password Changed !');
+        return back();
+    }
+
+    public function userBiodataRemove(Request $request){
+        $request->validate([
+            'check' => ['required'],
+        ]);
+
+        $biodataInfo = BioData::where('user_id', Auth::user()->id)->first();
+        if(!$biodataInfo){
+            Toastr::error("You Haven't Submitted the Biodata", 'Biodata Not Found !');
+            return back();
+        } else {
+            BiodataQuestionAnswer::where('user_id', Auth::user()->id)->where('biodata_id', $biodataInfo->id)->delete();
+            if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
+                unlink(public_path($biodataInfo->image));
+            }
+            $biodataInfo->delete();
+            Toastr::success('Successfully Deleted the Biodata', 'Biodata Deleted !');
+            return back();
+        }
+    }
     public function userShortList(){
         return view('frontend.auth.short_list');
     }
     public function userIgnoreList(){
         return view('frontend.auth.ignore_list');
     }
+
     public function userMyPurchased(){
-        return view('frontend.auth.my_purchased');
+        $data = DB::table('payment_histories')
+                    ->join('pricing_packages', 'payment_histories.package_id', 'pricing_packages.id')
+                    ->select('payment_histories.*', 'pricing_packages.title', 'pricing_packages.title_bn')
+                    ->where('payment_histories.user_id', Auth::user()->id)
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
+
+        return view('frontend.auth.my_purchased', compact('data'));
     }
+
     public function userConnection(){
-        return view('frontend.auth.connection');
+        $pricingPackages = PricingPackage::where('status', 1)->orderBy('serial', 'asc')->get();
+        return view('frontend.auth.connection', compact('pricingPackages'));
     }
-    public function userPaymentProcess(){
-        return view('frontend.auth.payment_process');
+    public function userPaymentProcess($slug){
+        $package = PricingPackage::where('slug', $slug)->first();
+        $paymentGateways = PaymentGateway::where('status', 1)->get();
+        return view('frontend.auth.payment_process', compact('package', 'paymentGateways'));
     }
     public function userCheckedBiodata(){
         return view('frontend.auth.checked_biodata');
@@ -68,8 +129,40 @@ class UserDashboardController extends Controller
         $biodata = BioData::where('user_id', Auth::user()->id)->first();
         return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities', 'districts', 'biodata'));
     }
+
     public function userCreateReport(){
         return view('frontend.auth.create_report');
+    }
+
+    public function purchaseConnection(Request $request){
+        $packageInfo = PricingPackage::where('id', $request->pricing_package_id)->first();
+        $paymentGateway = DB::table('payment_gateways')->where('id', $request->payment_gateway[0])->select('payment_gateways.provider_name', 'payment_gateways.id')->first();
+        if($paymentGateway->provider_name == 'ssl_commerz'){
+            return redirect('sslcommerz/order/payment/'.$packageInfo->id);
+        } else {
+            Toastr::error('Only SSL Commerz is Available', 'Failed');
+            return back();
+        }
+    }
+
+    public function addToLikedList($slug){
+        $biodataInfo = Biodata::where('slug', $slug)->first();
+        $alreadySaved = SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 1]])->first();
+        if($alreadySaved){
+            Toastr::warning('Already Added in Liked List', 'Already Added');
+            return redirect(session('call_back_url'));
+        }else {
+            SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 2]])->delete();
+            SavedBiodata::insert([
+                'user_id' => Auth::user()->id,
+                'biodata_id' => $biodataInfo->id,
+                'status' => 1,
+                'created_at' => Carbon::now()
+            ]);
+            Toastr::success('Added to the Liked List', 'Liked');
+            return redirect(session('call_back_url'));
+        }
+
     }
 
 

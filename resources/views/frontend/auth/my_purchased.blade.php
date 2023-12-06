@@ -1,6 +1,24 @@
 @extends('frontend.master')
 
+@php
+    use Rakibhstu\Banglanumber\NumberToBangla;
+    $numto = new NumberToBangla();
+@endphp
+
+@section('header_css')
+    <style>
+        .active > .page-link, .page-link.active{
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+        }
+        .page-link{
+            color: var(--primary-color);
+        }
+    </style>
+@endsection 
+
 @section('content')
+
     <section class="user-dashboard-area">
         <div class="user-d-container">
             <div class="user-d-row">
@@ -34,29 +52,33 @@
                                         <h4>{{__('message.user_purchased_date')}}</h4>
                                     </div>
                                     <!-- Single List Data -->
+                                    @foreach($data as $index => $item)
                                     <div class="user-d-list-item">
                                         <div>
-                                            <p>1</p>
+                                            <p>{{ $index + $data->firstItem() }}</p>
                                         </div>
                                         <div>
-                                            <p class="package-type">Basic</p>
+                                            <p class="package-type">{{ App::currentLocale() == 'en' ? $item->title : $item->title_bn }}</p>
                                         </div>
                                         <div>
-                                            <p>৳১০০</p>
+                                            <p>{{ App::currentLocale() == 'en' ? $item->currency." ".$item->amount : "৳".$item->amount }}</p>
                                         </div>
                                         <div>
-                                            <p>1</p>
+                                            <p>{{ App::currentLocale() == 'en' ? $item->purchased_connections : $numto->bnNum($item->purchased_connections) }}</p>
                                         </div>
                                         <div>
-                                            <p>AJM9NG6KY5</p>
+                                            <p>{{$item->tran_id}}</p>
                                         </div>
                                         <div>
-                                            <p class="payment">BKASH</p>
+                                            <p class="payment">{{$item->card_type}}</p>
                                         </div>
                                         <div>
-                                            <p>Oct 22, 2023</p>
+                                            <p>{{date("M d, Y", strtotime($item->created_at))}}</p>
                                         </div>
                                     </div>
+                                    @endforeach
+
+                                    {{ $data->links() }}
                                 </div>
                             </div>
                         </div>

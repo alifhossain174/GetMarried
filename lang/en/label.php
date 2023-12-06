@@ -129,5 +129,10 @@ return [
 
     'biodata_preview_label' => 'Preview Biodata',
     'edit_more' => 'Edit More',
+    'view_details' => 'View Details',
+    'marital_status'=> 'Marrital Status',
+
+    'short_list' => 'ShortList',
+    'ignore' => 'Ignore'
 
 ];

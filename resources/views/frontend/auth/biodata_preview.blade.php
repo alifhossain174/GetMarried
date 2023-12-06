@@ -50,13 +50,11 @@
                                                 <div class="biodata-general-content">
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.biodata_type') }}</label>
-                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->biodata_type : $biodata->biodata_type_bn) : '' }}
-                                                        </p>
+                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->biodata_type : $biodata->biodata_type_bn) : '' }}</p>
                                                     </div>
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.hero_marital_status') }}</label>
-                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->marital_condition : $biodata->marital_condition_bn) : '' }}
-                                                        </p>
+                                                        <p>{{ $biodata ? (App::currentLocale() == 'en' ? $biodata->marital_condition : $biodata->marital_condition_bn) : '' }}</p>
                                                     </div>
                                                     <div class="biodata-general-each-item">
                                                         <label>{{ __('label.date_of_birth') }}</label>
@@ -269,7 +267,7 @@
     <script>
         function copyToClipboard(slug) {
             var baseUrl = window.location.origin;
-            navigator.clipboard.writeText(baseUrl + '/biodata/detail/' + slug);
+            navigator.clipboard.writeText(baseUrl + '/biodata/details/' + slug);
             toastr.success("Copied to Clipboard");
             return false;
         }

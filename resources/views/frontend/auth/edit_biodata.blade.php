@@ -559,8 +559,7 @@
                                                                             onclick="removeImage()">
                                                                             <i class="fi fi-rr-cross"></i>
                                                                         </div>
-                                                                        <img id="uploaded-image"
-                                                                            @if ($biodata && file_exists(public_path($biodata->image))) src="{{ url($biodata->image) }}" style="display: block" @else style="display: none" @endif />
+                                                                        <img id="uploaded-image" @if($biodata && $biodata->image && file_exists(public_path($biodata->image))) src="{{ url($biodata->image) }}" style="display: block" @else style="display: none" @endif />
                                                                     </div>
                                                                 </div>
                                                                 <p>{{ __('label.candidate_image_hints') }}</p>

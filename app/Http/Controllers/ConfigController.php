@@ -13,7 +13,6 @@ use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use App\Models\SmsGateway;
-use Illuminate\Support\Str;
 
 class ConfigController extends Controller
 {
@@ -674,6 +673,5 @@ class ConfigController extends Controller
         Toastr::success('Status Changed Successfully', 'Success');
         return back();
     }
-
 
 }

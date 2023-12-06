@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BiodataQuestionAnswer;
 use App\Models\MCQ;
 use App\Models\Question;
 use App\Models\QuestionSet;
@@ -35,7 +36,7 @@ class QuestionController extends Controller
                     })
                     ->editColumn('required', function($data) {
                         if($data->required == 1){
-                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Reuired</span>";
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Required</span>";
                         }
                     })
                     ->editColumn('type', function($data) {
@@ -177,6 +178,7 @@ class QuestionController extends Controller
     public function deleteQuestion($id){
         MCQ::where('question_id', $id)->delete();
         Question::where('id', $id)->delete();
+        BiodataQuestionAnswer::where('question_id', $id)->delete();
         return response()->json(['success' => 'Deleted Successfully']);
     }
 
