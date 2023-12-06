@@ -165,5 +165,25 @@ class UserDashboardController extends Controller
 
     }
 
+    public function addToDislikedList($slug){
+        $biodataInfo = Biodata::where('slug', $slug)->first();
+        $alreadySaved = SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 2]])->first();
+        if($alreadySaved){
+            Toastr::warning('Already Added in Disliked List', 'Already Added');
+            return redirect(session('call_back_url'));
+        }else {
+            SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 1]])->delete();
+            SavedBiodata::insert([
+                'user_id' => Auth::user()->id,
+                'biodata_id' => $biodataInfo->id,
+                'status' => 2,
+                'created_at' => Carbon::now()
+            ]);
+            Toastr::success('Added to the Disliked List', 'Liked');
+            return redirect(session('call_back_url'));
+        }
+
+    }
+
 
 }

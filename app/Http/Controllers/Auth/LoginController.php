@@ -40,7 +40,7 @@ class LoginController extends Controller
                 break;
             case 3:
 
-                if(session('last_visited_url') != '' && str_contains(session('last_visited_url'), 'add/to/liked/list')){
+                if(session('last_visited_url') != ''){
                     return session('last_visited_url');
                 }
 
