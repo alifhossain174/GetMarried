@@ -113,13 +113,14 @@
                                 <div class="biodata-general-links">
                                     <div class="biodata-general-btn">
 
+                                        {{-- liked route --}}
                                         @auth
                                             @php
                                                 $isLiked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodata->id], ['status', 1]])->first();
                                             @endphp
                                             @if ($isLiked)
                                                 <a href="javascript:void(0)" onclick="alreadyAddedToLikeList()"
-                                                    @if ($isLiked) style="background: var(--success-color);; color: white" @endif
+                                                    @if ($isLiked) style="background: var(--success-color); color: white" @endif
                                                     class="theme-btn shortlist-btn"><i
                                                         class="fi fi-rr-star"></i>{{ __('label.short_list') }}</a>
                                             @else
@@ -133,8 +134,28 @@
                                                     class="fi fi-rr-star"></i>{{ __('label.short_list') }}</a>
                                         @endauth
 
-                                        <a href="#" class="theme-btn ignore-btn"><i
-                                                class="fi fi-br-ban"></i>{{ __('label.ignore') }}</a>
+                                        {{-- disliked route --}}
+                                        @auth
+                                            @php
+                                                $isDisliked = App\Models\SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodata->id], ['status', 2]])->first();
+                                            @endphp
+                                            @if ($isDisliked)
+                                                <a href="javascript:void(0)" onclick="alreadyAddedToDislikeList()"
+                                                    @if ($isDisliked) style="background: var(--primary-color); color: white; border: 1px solid var(--primary-color);" @endif
+                                                    class="theme-btn shortlist-btn"><i
+                                                        class="fi fi-br-ban"></i>{{ __('label.ignore') }}</a>
+                                            @else
+                                                <a href="{{ url('add/to/disliked/list') }}/{{ $biodata->slug }}"
+                                                    class="theme-btn ignore-btn"><i
+                                                        class="fi fi-br-ban"></i>{{ __('label.ignore') }}</a>
+                                            @endif
+                                        @else
+                                            <a href="{{ url('add/to/disliked/list') }}/{{ $biodata->slug }}"
+                                                class="theme-btn ignore-btn"><i
+                                                    class="fi fi-br-ban"></i>{{ __('label.ignore') }}</a>
+                                        @endauth
+
+
                                     </div>
                                     <a href="javascript:void(0)" onclick="copyToClipboard('{{ $biodata->slug }}')"
                                         class="theme-btn copy-btn"><i class="fi fi-rr-duplicate"></i>Copy Biodata Link</a>
@@ -268,6 +289,11 @@
     <script>
         function alreadyAddedToLikeList() {
             toastr.warning("Already Added in Liked List");
+            return false;
+        }
+
+        function alreadyAddedToDislikeList() {
+            toastr.warning("Already Added in Disliked List");
             return false;
         }
 

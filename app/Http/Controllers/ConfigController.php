@@ -456,7 +456,7 @@ class ConfigController extends Controller
                         ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
                         ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
                         ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
-                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn')
                         ->where('bio_data.status', 0)
                         ->orderBy('id', 'desc')
                         ->get();
@@ -521,7 +521,7 @@ class ConfigController extends Controller
                         ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
                         ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
                         ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
-                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn')
                         ->where('bio_data.status', 1)
                         ->orderBy('id', 'desc')
                         ->get();
@@ -586,7 +586,7 @@ class ConfigController extends Controller
                         ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
                         ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
                         ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
-                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn',)
+                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn')
                         ->where('bio_data.status', 2)
                         ->orderBy('id', 'desc')
                         ->get();
@@ -672,6 +672,74 @@ class ConfigController extends Controller
         ]);
         Toastr::success('Status Changed Successfully', 'Success');
         return back();
+    }
+
+    public function viewBiodataVisits(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('biodata_visit_histories')
+                        ->leftJoin('bio_data', 'biodata_visit_histories.biodata_id', 'bio_data.id')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('users', 'biodata_visit_histories.user_id', 'users.id')
+                        ->select('biodata_visit_histories.*', 'users.name as visitor', 'bio_data.biodata_no',
+                        'biodata_types.title as biodata_type_title')
+                        ->orderBy('biodata_visit_histories.id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('visitor', function ($data) {
+                        if(!$data->visitor){
+                            return 'Unknown';
+                        } else {
+                            return $data->visitor;
+                        }
+                    })
+                    ->editColumn('created_at', function ($data) {
+                        return date('H:i:s d-m-Y', strtotime($data->created_at));
+                    })
+                    ->make(true);
+
+        }
+        return view('backend.biodata.visit_history');
+    }
+
+    public function viewBiodataLikesDislikes(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('saved_biodatas')
+                        ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('users', 'saved_biodatas.user_id', 'users.id')
+                        ->select('saved_biodatas.*', 'users.name as user_name', 'users.email as user_email',
+                        'users.contact as user_contact', 'bio_data.biodata_no', 'biodata_types.title as biodata_type_title')
+                        ->orderBy('saved_biodatas.id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('user_email', function ($data) {
+                        if($data->user_email){
+                            return $data->user_email;
+                        } else {
+                            return $data->user_contact;
+                        }
+                    })
+                    ->editColumn('status', function ($data) {
+                        if($data->status == 1){
+                            return "<span class='btn btn-sm btn-success rounded' style='padding: .1rem .5rem !important;'>Liked</span>";
+                        } else {
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Disliked</span>";
+                        }
+                    })
+                    ->editColumn('created_at', function ($data) {
+                        return date('H:i:s d-m-Y', strtotime($data->created_at));
+                    })
+                    ->rawColumns(['status'])
+                    ->make(true);
+
+        }
+        return view('backend.biodata.like_dislike');
     }
 
 }

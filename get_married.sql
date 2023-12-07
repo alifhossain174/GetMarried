@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 05:12 AM
+-- Generation Time: Dec 06, 2023 at 07:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -862,7 +862,36 @@ INSERT INTO `biodata_visit_histories` (`id`, `biodata_id`, `user_id`, `from_ip_a
 (72, 8, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 21:57:17', NULL),
 (73, 8, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 21:59:50', NULL),
 (74, 13, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:07:51', NULL),
-(75, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:08:07', NULL);
+(75, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:08:07', NULL),
+(76, 14, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:14:46', NULL),
+(77, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:14:53', NULL),
+(78, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:14:59', NULL),
+(79, 4, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:25:46', NULL),
+(80, 14, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:27:36', NULL),
+(81, 14, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:27:51', NULL),
+(82, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:27:55', NULL),
+(83, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:27:59', NULL),
+(84, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:31:13', NULL),
+(85, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:31:29', NULL),
+(86, 13, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:33:03', NULL),
+(87, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:33:51', NULL),
+(88, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:34:00', NULL),
+(89, 2, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:34:16', NULL),
+(90, 2, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:35:20', NULL),
+(91, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:35:32', NULL),
+(92, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:36:14', NULL),
+(93, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:36:32', NULL),
+(94, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:36:45', NULL),
+(95, 14, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:37:17', NULL),
+(96, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:37:32', NULL),
+(97, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:38:04', NULL),
+(98, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-05 22:38:13', NULL),
+(99, 14, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 04:59:49', NULL),
+(100, 2, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 05:41:57', NULL),
+(101, 15, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 05:46:30', NULL),
+(102, 15, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 05:46:34', NULL),
+(103, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 06:03:21', NULL),
+(104, 8, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 06:04:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -906,20 +935,20 @@ CREATE TABLE `bio_data` (
 --
 
 INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 0, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-04 02:29:45'),
+(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 10, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-06 05:41:57'),
 (3, 51, 'SK1701684204', 2, 1, '2000-02-21', 5, 5, '2', '72', '7', 50, 13, 116, 'দিলালপুর', 47, 366, 'বাড্ডা', 'রিদওয়ানা ইসলাম', 'biodata_images/uc68E1701687010.jpg', '0171000462', 'মা', 'redwonaislam113@gmail.com', 0, 1, 'ljkK81701684204', '2023-12-04 02:03:24', '2023-12-04 02:50:10'),
-(4, 52, 'SK1701687700', 2, 1, '2023-06-26', 5, 3, '2', '৬৮', '4', 50, 3, 26, 'Asuopara', 2, 19, 'nikunjo', 'Vasha', 'biodata_images/rwvew1701688382.jpg', '544232945462', 'Father', 'redwonavasha21@gmail.com', 0, 1, 'VszY41701687700', '2023-12-04 03:01:40', '2023-12-04 07:10:13'),
+(4, 52, 'SK1701687700', 2, 1, '2023-06-26', 5, 3, '2', '৬৮', '4', 50, 3, 26, 'Asuopara', 2, 19, 'nikunjo', 'Vasha', 'biodata_images/rwvew1701688382.jpg', '544232945462', 'Father', 'redwonavasha21@gmail.com', 3, 1, 'VszY41701687700', '2023-12-04 03:01:40', '2023-12-05 22:25:46'),
 (5, 53, 'SK1701688765', 1, 3, '1990-10-19', 6, 1, '3', '78', '5', 144, 16, 144, 'Fultola', 3, 28, 'Mariana', 'Md. Fazle rabbi', 'biodata_images/HHY871701689282.jpg', '932945462', 'Father', 'aframaw2021@gmail.com', 1, 1, 'M4Myy1701688765', '2023-12-04 03:19:25', '2023-12-05 21:57:12'),
 (6, 54, 'SK1701689477', 1, 1, '1997-09-22', 6, 1, '2', '৬৮', '1', 50, 13, 113, 'ফুলটোলা', 62, 465, 'বাড্ডা', 'নাজমুল হক', 'biodata_images/eyXDV1701690352.jpg', '0193454600', 'বাবা', 'islam1707113@stud.kuet.ac.bd', 0, 1, 'vZw3H1701689477', '2023-12-04 03:31:17', '2023-12-04 03:45:52'),
 (7, 55, 'SK1701690701', 1, 1, '1994-06-17', 5, 10, '3', '60', '3', 246, 6, 53, 'Ataikula', 2, 19, 'Minnjo', 'Md. Shad Alam', 'biodata_images/ACmbz1701691133.jpg', '0171354634', 'Mother', 'nodox71802@gyxmz.com', 0, 1, 'aisqn1701690701', '2023-12-04 03:51:41', '2023-12-04 03:58:53'),
-(8, 56, 'SK1701758306', 2, 4, '1991-06-01', 5, 1, '5', '৬', '5', 36, 5, 48, 'শেনাবাগ', 5, 48, 'শেনাবাগ', 'Sadia', 'biodata_images/X5FkC1701760658.jpg', '0171868862', 'বাবা', 'wefijit973@getmola.com', 3, 1, 'BGdkp1701758306', '2023-12-04 22:38:26', '2023-12-05 21:59:50'),
+(8, 56, 'SK1701758306', 2, 4, '1991-06-01', 5, 1, '5', '৬', '5', 36, 5, 48, 'শেনাবাগ', 5, 48, 'শেনাবাগ', 'Sadia', 'biodata_images/X5FkC1701760658.jpg', '0171868862', 'বাবা', 'wefijit973@getmola.com', 4, 1, 'BGdkp1701758306', '2023-12-04 22:38:26', '2023-12-06 06:04:08'),
 (9, 57, 'SK1701770277', 2, 1, '2000-09-04', 5, 2, '3', '৫০ কেজি', '2', 50, 2, 19, 'শিমুলতলা', 47, 366, 'শাহবাগ', 'Afasna Jannat', 'biodata_images/y5tYK1701771784.jpg', '01900186886', 'বাবা', 'lohec96208@gearstag.com', 0, 1, '36evs1701770277', '2023-12-05 01:57:57', '2023-12-05 02:23:04'),
 (10, 58, 'SK1701772091', 1, 1, '1998-12-01', 5, 10, '5', '৬২', '7', 50, 41, 320, 'ফুলটোলা', 7, 61, 'শাহবাগ', 'Farhan Sadaf', 'biodata_images/Ng3Jg1701772696.jpg', '0192324', 'বাবা', 'pikepo9215@getmola.com', 0, 1, 'H0H6n1701772091', '2023-12-05 02:28:11', '2023-12-05 02:38:16'),
 (11, 59, 'SK1701773073', 1, 1, '2000-09-04', 5, 11, '2', '৫৫কেজি', '7', 50, 27, 209, 'সোনাডাঙ্গা', 28, 218, 'সোনাডাঙ্গা', 'Titu Khondokar', 'biodata_images/Key2k1701773958.jpg', '19029445', 'Father', 'rotiti4268@gearstag.com', 0, 1, '4aJx31701773073', '2023-12-05 02:44:33', '2023-12-05 02:59:18'),
 (12, 60, 'SK1701774114', 1, 3, '1994-04-04', 5, 9, '4', '79', '3', 50, NULL, NULL, NULL, NULL, NULL, NULL, 'Rohit', 'biodata_images/9M7aN1701774506.jpg', '134235346', 'father', 'yevedeg138@gearstag.com', 0, 1, 'fXQ1w1701774114', '2023-12-05 03:01:54', '2023-12-05 03:08:26'),
-(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', 'biodata_images/MOhQc1701775660.jpg', '0171246578', 'Mother', 'hewof86115@gyxmz.com', 2, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-05 22:08:07'),
-(14, 62, 'SK1701775885', 2, 1, '2002-05-25', 5, 1, '5', '৫০ কেজি', '1', 50, 60, 449, 'ফুলটোলা', 47, 365, 'শাহবাগ', 'ফারিহা তাসনিম', 'biodata_images/UOhE91701776361.jpg', '098578758', 'মা', 'losiye7025@getmola.com', 1, 1, 'w7bEz1701775885', '2023-12-05 03:31:25', '2023-12-05 21:29:52'),
-(15, 63, 'SK1701776507', 1, 1, '2001-03-01', 5, 8, '5', '৬৮', '1', 50, 9, 83, 'জামালপুর', 3, 32, 'বাড্ডা', 'আনিসুর রহমান', 'biodata_images/7lUSx1701777286.jpg', '098899862', 'বাবা', 'xarij20954@gearstag.com', 0, 1, 'w7ZAU1701776507', '2023-12-05 03:41:47', '2023-12-05 21:25:44');
+(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', 'biodata_images/MOhQc1701775660.jpg', '0171246578', 'Mother', 'hewof86115@gyxmz.com', 10, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-06 06:03:21'),
+(14, 62, 'SK1701775885', 2, 1, '2002-05-25', 5, 1, '5', '৫০ কেজি', '1', 50, 60, 449, 'ফুলটোলা', 47, 365, 'শাহবাগ', 'ফারিহা তাসনিম', 'biodata_images/UOhE91701776361.jpg', '098578758', 'মা', 'losiye7025@getmola.com', 6, 1, 'w7bEz1701775885', '2023-12-05 03:31:25', '2023-12-06 04:59:49'),
+(15, 63, 'SK1701776507', 1, 1, '2001-03-01', 5, 8, '5', '৬৮', '1', 50, 9, 83, 'জামালপুর', 3, 32, 'বাড্ডা', 'আনিসুর রহমান', 'biodata_images/7lUSx1701777286.jpg', '098899862', 'বাবা', 'xarij20954@gearstag.com', 2, 1, 'w7ZAU1701776507', '2023-12-05 03:41:47', '2023-12-06 05:46:34');
 
 -- --------------------------------------------------------
 
@@ -2499,6 +2528,7 @@ CREATE TABLE `saved_biodatas` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `biodata_id` bigint(20) UNSIGNED NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=>Liked; 2=>Disliked',
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2507,9 +2537,18 @@ CREATE TABLE `saved_biodatas` (
 -- Dumping data for table `saved_biodatas`
 --
 
-INSERT INTO `saved_biodatas` (`id`, `user_id`, `biodata_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 44, 8, 1, '2023-12-05 21:56:29', NULL),
-(2, 44, 13, 1, '2023-12-05 22:08:06', NULL);
+INSERT INTO `saved_biodatas` (`id`, `user_id`, `biodata_id`, `status`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 1, '123', '2023-12-05 22:27:29', NULL),
+(6, 44, 2, 2, 'RTRYY', '2023-12-05 22:38:13', NULL),
+(7, 44, 13, 2, 'TZtlj1701841360', '2023-12-06 05:42:40', NULL),
+(9, 44, 11, 1, 'UM3Lv1701841367', '2023-12-06 05:42:47', NULL),
+(10, 44, 10, 1, 'TLk5B1701841370', '2023-12-06 05:42:50', NULL),
+(11, 44, 9, 1, 'Hrei31701841373', '2023-12-06 05:42:53', NULL),
+(12, 44, 8, 2, 'YIFzm1701841376', '2023-12-06 05:42:56', NULL),
+(13, 44, 7, 1, 'xLlda1701841380', '2023-12-06 05:43:00', NULL),
+(14, 44, 6, 1, 'lK6qe1701841398', '2023-12-06 05:43:18', NULL),
+(15, 44, 5, 2, '1NdLO1701841413', '2023-12-06 05:43:33', NULL),
+(16, 44, 4, 1, '7v13S1701841418', '2023-12-06 05:43:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -8210,7 +8249,7 @@ ALTER TABLE `biodata_types`
 -- AUTO_INCREMENT for table `biodata_visit_histories`
 --
 ALTER TABLE `biodata_visit_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `bio_data`
@@ -8408,7 +8447,7 @@ ALTER TABLE `role_permissions`
 -- AUTO_INCREMENT for table `saved_biodatas`
 --
 ALTER TABLE `saved_biodatas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `seos`

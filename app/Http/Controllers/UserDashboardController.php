@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
+use App\Models\BiodataVisitHistory;
+use App\Models\PaymentHistory;
 use App\Models\SavedBiodata;
 use App\Models\User;
 use App\Models\MaritalCondition;
@@ -16,12 +18,25 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
 class UserDashboardController extends Controller
 {
     public function userDashboard(){
-        return view('frontend.auth.dashboard');
+        $likedBiodatas = SavedBiodata::where('user_id', Auth::user()->id)->where('status', 1)->count();
+        $dislikedBiodatas = SavedBiodata::where('user_id', Auth::user()->id)->where('status', 2)->count();
+        $totalPayments = PaymentHistory::where('user_id', Auth::user()->id)->count();
+        $preferred = DB::table('saved_biodatas')
+                    ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                    ->leftJoin('users', 'bio_data.user_id', 'users.id')
+                    ->where('bio_data.user_id', Auth::user()->id)
+                    ->where('saved_biodatas.status', 1)
+                    ->count();
+        $totalVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->count();
+        $todaysVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->where('created_at', 'LIKE', date("Y-m-d").'%')->count();
+        return view('frontend.auth.dashboard', compact('likedBiodatas', 'dislikedBiodatas', 'totalPayments',
+        'preferred', 'totalVisits', 'todaysVisits'));
     }
     public function userSettings(){
         return view('frontend.auth.settings');
@@ -68,10 +83,42 @@ class UserDashboardController extends Controller
         }
     }
     public function userShortList(){
-        return view('frontend.auth.short_list');
+
+        $data = DB::table('saved_biodatas')
+                    ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                    ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                    ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
+                    ->select('saved_biodatas.status', 'saved_biodatas.user_id', 'saved_biodatas.slug', 'bio_data.biodata_no',
+                    'bio_data.birth_date', 'bio_data.slug as biodata_slug', 'districts.name as district_name',
+                    'upazilas.name as upazila_name', 'bio_data.permenant_address')
+                    ->where('saved_biodatas.user_id', Auth::user()->id)
+                    ->where('saved_biodatas.status', 1)
+                    ->orderBy('saved_biodatas.id', 'desc')
+                    ->paginate(10);
+
+        return view('frontend.auth.short_list', compact('data'));
+    }
+
+    public function removeLikedBiodata($slug){
+        SavedBiodata::where('slug', $slug)->delete();
+        Toastr::error('Removed From Liked List');
+        return back();
     }
     public function userIgnoreList(){
-        return view('frontend.auth.ignore_list');
+
+        $data = DB::table('saved_biodatas')
+                ->leftJoin('bio_data', 'saved_biodatas.biodata_id', 'bio_data.id')
+                ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
+                ->select('saved_biodatas.status', 'saved_biodatas.user_id', 'saved_biodatas.slug',
+                'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.slug as biodata_slug', 'districts.name as district_name',
+                'upazilas.name as upazila_name', 'bio_data.permenant_address')
+                ->where('saved_biodatas.user_id', Auth::user()->id)
+                ->where('saved_biodatas.status', 2)
+                ->orderBy('saved_biodatas.id', 'desc')
+                ->paginate(10);
+
+        return view('frontend.auth.ignore_list', compact('data'));
     }
 
     public function userMyPurchased(){
@@ -157,9 +204,31 @@ class UserDashboardController extends Controller
                 'user_id' => Auth::user()->id,
                 'biodata_id' => $biodataInfo->id,
                 'status' => 1,
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
             Toastr::success('Added to the Liked List', 'Liked');
+            return redirect(session('call_back_url'));
+        }
+
+    }
+
+    public function addToDislikedList($slug){
+        $biodataInfo = Biodata::where('slug', $slug)->first();
+        $alreadySaved = SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 2]])->first();
+        if($alreadySaved){
+            Toastr::warning('Already Added in Disliked List', 'Already Added');
+            return redirect(session('call_back_url'));
+        }else {
+            SavedBiodata::where([['user_id', Auth::user()->id], ['biodata_id', $biodataInfo->id], ['status', 1]])->delete();
+            SavedBiodata::insert([
+                'user_id' => Auth::user()->id,
+                'biodata_id' => $biodataInfo->id,
+                'status' => 2,
+                'slug' => str::random(5).time(),
+                'created_at' => Carbon::now()
+            ]);
+            Toastr::success('Added to the Disliked List', 'Liked');
             return redirect(session('call_back_url'));
         }
 
