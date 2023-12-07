@@ -144,6 +144,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
     Route::get('view/biodata/visits', [ConfigController::class, 'viewBiodataVisits'])->name('ViewBiodataVisits');
     Route::get('view/biodata/likes/dislikes', [ConfigController::class, 'viewBiodataLikesDislikes'])->name('ViewBiodataLikesDislikes');
+    Route::get('view/biodata/paid/views', [ConfigController::class, 'viewBiodataPaidViews'])->name('ViewBiodataPaidViews');
 
     // pricing package & payment histories
     Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');

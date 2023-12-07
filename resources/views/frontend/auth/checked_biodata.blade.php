@@ -1,5 +1,19 @@
 @extends('frontend.master')
 
+@section('header_css')
+    <style>
+        .active>.page-link,
+        .page-link.active {
+            background-color: var(--secondary-color) !important;
+            border-color: var(--secondary-color) !important;
+        }
+
+        .page-link {
+            color: var(--primary-color);
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="user-dashboard-area">
         <div class="user-d-container">
@@ -21,7 +35,7 @@
                         <div class="col-12">
                             <div class="user-d-list-widget">
                                 <h4 class="user-d-list-item-title">
-                                    {{__('message.user_checked_biodata_till_now')}} <span>1</span>
+                                    {{__('message.user_checked_biodata_till_now')}} <span>{{App\Models\PaidView::where('user_id', Auth::user()->id)->count()}}</span>
                                 </h4>
                                 <div class="user-d-list-items myPurchased">
                                     <div class="user-d-list-item list-head">
@@ -31,20 +45,24 @@
                                         <h4>{{__('message.user_checked_biodata_option')}}</h4>
                                     </div>
                                     <!-- Single List Data -->
+                                    @foreach ($data as $index => $item)
                                     <div class="user-d-list-item">
                                         <div>
-                                            <p>1</p>
+                                            <p>{{ $index + $data->firstItem() }}</p>
                                         </div>
                                         <div>
-                                            <a href="#" target="_blank" class="bio-num">10912</a>
+                                            <a href="{{ url('biodata/details') }}/{{ $item->biodata_slug }}" target="_blank" class="bio-num">{{ $item->biodata_no }}</a>
                                         </div>
                                         <div>
-                                            <p>Oct 22, 2023</p>
+                                            <p>{{ date('h:i:s a M d, Y', strtotime($item->created_at)) }}</p>
                                         </div>
                                         <div class="user-d-list-item-option">
                                             <a class="create-report-btn" href="{{url('user/create/report')}}">{{__('message.user_checked_biodata_report_now')}}</a>
                                         </div>
                                     </div>
+                                    @endforeach
+
+                                    {{ $data->links() }}
                                 </div>
                             </div>
                         </div>

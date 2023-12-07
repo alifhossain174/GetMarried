@@ -742,4 +742,35 @@ class ConfigController extends Controller
         return view('backend.biodata.like_dislike');
     }
 
+    public function viewBiodataPaidViews(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('paid_views')
+                        ->leftJoin('bio_data', 'paid_views.biodata_id', 'bio_data.id')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('users', 'paid_views.user_id', 'users.id')
+                        ->select('paid_views.*', 'users.name as user_name', 'users.email as user_email',
+                        'users.contact as user_contact', 'bio_data.biodata_no', 'biodata_types.title as biodata_type_title')
+                        ->orderBy('paid_views.id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->editColumn('user_email', function ($data) {
+                        if($data->user_email){
+                            return $data->user_email;
+                        } else {
+                            return $data->user_contact;
+                        }
+                    })
+                    ->editColumn('created_at', function ($data) {
+                        return date('H:i:s d-m-Y', strtotime($data->created_at));
+                    })
+                    ->rawColumns(['status'])
+                    ->make(true);
+
+        }
+        return view('backend.biodata.paid_views');
+    }
+
 }

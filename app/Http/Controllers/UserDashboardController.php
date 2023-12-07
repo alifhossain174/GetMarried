@@ -146,7 +146,15 @@ class UserDashboardController extends Controller
         return view('frontend.auth.payment_process', compact('package', 'paymentGateways'));
     }
     public function userCheckedBiodata(){
-        return view('frontend.auth.checked_biodata');
+
+        $data = DB::table('paid_views')
+                ->leftJoin('bio_data', 'paid_views.biodata_id', 'bio_data.id')
+                ->select('paid_views.*', 'bio_data.biodata_no', 'bio_data.slug as biodata_slug')
+                ->where('paid_views.user_id', Auth::user()->id)
+                ->orderBy('paid_views.id', 'desc')
+                ->paginate(10);
+
+        return view('frontend.auth.checked_biodata', compact('data'));
     }
     public function userSupportReport(){
         return view('frontend.auth.support_report');
@@ -248,6 +256,7 @@ class UserDashboardController extends Controller
             PaidView::insert([
                 'user_id' => $userInfo->id,
                 'biodata_id' => $biodataInfo->id,
+                'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
             Toastr::success('You have spent 1 Connection', 'Details Showing in Contact');

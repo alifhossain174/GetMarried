@@ -71,6 +71,9 @@
         <li><a href="{{ url('view/biodata/likes/dislikes') }}"><i class="bi-hand-thumbs-up"
                     style="font-size: 16px;"></i><span>
                     Biodata Likes/Dislikes </span></a></li>
+        <li><a href="{{ url('view/biodata/paid/views') }}"><i class="bi-cash-coin"
+                    style="font-size: 16px;"></i><span>
+                    Biodata Paid Views </span></a></li>
 
 
         <li class="menu-title mt-2">Website Content Modules</li>

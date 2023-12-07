@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('biodata_id')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }
