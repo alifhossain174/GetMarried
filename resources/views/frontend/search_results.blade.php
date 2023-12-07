@@ -61,10 +61,10 @@
                     <div class="row">
                         <div class="col-lg-12 col-xl-6 col-12">
                             <div class="biodata-number-widget">
-                                <form action="#" method="post" class="biodata-number-searchbar">
+                                <form action="{{url('search/biodata/no')}}" method="GET" class="biodata-number-searchbar">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="search" name="search" placeholder="{{ __('label.biodata_no') }}"
-                                            required />
+                                        <input type="search" value="{{isset($biodata_no) ? $biodata_no : ''}}" style="color: #4f4f4f;" name="biodata_no" placeholder="{{ __('label.biodata_no') }}" />
                                         <div class="biodata-number-btn">
                                             <button type="submit" class="theme-btn secondary">
                                                 <i class="fi fi-rs-search"></i>{{ __('label.biodata_search') }}
