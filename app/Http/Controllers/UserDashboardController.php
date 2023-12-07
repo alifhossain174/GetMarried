@@ -254,6 +254,10 @@ class UserDashboardController extends Controller
             return redirect(session('call_back_url'));
         } else {
             $biodataInfo = Biodata::where('slug', $slug)->first();
+
+            $userInfo->connections = $userInfo->connections - 1;
+            $userInfo->save();
+
             PaidView::insert([
                 'user_id' => $userInfo->id,
                 'biodata_id' => $biodataInfo->id,
