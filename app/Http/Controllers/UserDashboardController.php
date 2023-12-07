@@ -6,6 +6,7 @@ use App\Models\BioData;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
 use App\Models\BiodataVisitHistory;
+use App\Models\PaidView;
 use App\Models\PaymentHistory;
 use App\Models\SavedBiodata;
 use App\Models\User;
@@ -232,6 +233,24 @@ class UserDashboardController extends Controller
                 'created_at' => Carbon::now()
             ]);
             Toastr::success('Added to the Disliked List', 'Liked');
+            return redirect(session('call_back_url'));
+        }
+
+    }
+
+    public function viewBiodataContactInfo($slug){
+        $userInfo = User::where('id', Auth::user()->id)->first();
+        if($userInfo->connections <= 0){
+            Toastr::error('You have to Purchase Connection', 'Not Enough Balance !');
+            return redirect(session('call_back_url'));
+        } else {
+            $biodataInfo = Biodata::where('slug', $slug)->first();
+            PaidView::insert([
+                'user_id' => $userInfo->id,
+                'biodata_id' => $biodataInfo->id,
+                'created_at' => Carbon::now()
+            ]);
+            Toastr::success('You have spent 1 Connection', 'Details Showing in Contact');
             return redirect(session('call_back_url'));
         }
 

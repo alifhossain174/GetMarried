@@ -21,8 +21,13 @@ class CheckCustomer
 
             if(str_contains(parse_url($request->url())['path'], 'add/to/liked/list')){
                 session(['last_visited_url' => parse_url($request->url())['path']]);
+
             } elseif(str_contains(parse_url($request->url())['path'], 'add/to/disliked/list')){
                 session(['last_visited_url' => parse_url($request->url())['path']]);
+
+            } elseif(str_contains(parse_url($request->url())['path'], 'view/biodata/contact/info')){
+                session(['last_visited_url' => parse_url($request->url())['path']]);
+                
             } else {
                 session(['last_visited_url' => '']);
             }

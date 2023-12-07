@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2023 at 07:24 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 07, 2023 at 05:44 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `about_us` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `images` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `images` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -53,10 +53,10 @@ INSERT INTO `about_us` (`id`, `images`, `title`, `title_bn`, `description`, `des
 
 CREATE TABLE `about_us_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `page_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `page_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -77,12 +77,12 @@ INSERT INTO `about_us_configs` (`id`, `page_title`, `page_title_bn`, `background
 
 CREATE TABLE `banners` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `banner_description_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `banner_title` varchar(255) DEFAULT NULL,
+  `banner_title_bn` varchar(255) DEFAULT NULL,
+  `banner_description` varchar(255) DEFAULT NULL,
+  `banner_description_bn` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -107,7 +107,7 @@ CREATE TABLE `biodata_question_answers` (
   `biodata_id` bigint(20) UNSIGNED DEFAULT NULL,
   `question_set_id` bigint(20) UNSIGNED DEFAULT NULL,
   `question_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `answer` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -749,8 +749,8 @@ INSERT INTO `biodata_question_answers` (`id`, `user_id`, `biodata_id`, `question
 
 CREATE TABLE `biodata_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -775,10 +775,10 @@ CREATE TABLE `biodata_visit_histories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `biodata_id` bigint(20) UNSIGNED DEFAULT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `from_ip_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `browser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `os` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `device` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `from_ip_address` varchar(255) DEFAULT NULL,
+  `browser` varchar(255) DEFAULT NULL,
+  `os` varchar(255) DEFAULT NULL,
+  `device` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -891,7 +891,33 @@ INSERT INTO `biodata_visit_histories` (`id`, `biodata_id`, `user_id`, `from_ip_a
 (101, 15, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 05:46:30', NULL),
 (102, 15, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 05:46:34', NULL),
 (103, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 06:03:21', NULL),
-(104, 8, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 06:04:08', NULL);
+(104, 8, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-06 06:04:08', NULL),
+(105, 13, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 03:45:38', NULL),
+(106, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 03:46:29', NULL),
+(107, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 03:46:36', NULL),
+(108, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:24:38', NULL),
+(109, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:26:27', NULL),
+(110, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:26:30', NULL),
+(111, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:26:30', NULL),
+(112, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:28:12', NULL),
+(113, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:28:19', NULL),
+(114, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:28:20', NULL),
+(115, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:32:24', NULL),
+(116, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:32:54', NULL),
+(117, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:32:56', NULL),
+(118, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:33:09', NULL),
+(119, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:33:24', NULL),
+(120, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:33:31', NULL),
+(121, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:33:31', NULL),
+(122, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:37:30', NULL),
+(123, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:37:34', NULL),
+(124, 12, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:37:44', NULL),
+(125, 13, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:38:58', NULL),
+(126, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:39:06', NULL),
+(127, 12, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:39:22', NULL),
+(128, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:39:31', NULL),
+(129, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:41:42', NULL),
+(130, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:41:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -902,30 +928,30 @@ INSERT INTO `biodata_visit_histories` (`id`, `biodata_id`, `user_id`, `from_ip_a
 CREATE TABLE `bio_data` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `biodata_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `biodata_no` varchar(255) DEFAULT NULL,
   `biodata_type_id` int(11) DEFAULT NULL,
   `marital_condition_id` int(11) DEFAULT NULL,
-  `birth_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `birth_date` varchar(255) DEFAULT NULL,
   `height_foot` double NOT NULL DEFAULT 1,
   `height_inch` double NOT NULL DEFAULT 0,
-  `skin_tone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '1=>Black; 2=>Brown; 3=>Light Brown; 4=>White; 5=>Bright White',
-  `weight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `blood_group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '1=>A+; 2=>A-; 3=>B+; 4=>B-; 5=>AB+; 6=>AB-; 7=>O+; 8=>O-',
+  `skin_tone` varchar(255) DEFAULT NULL COMMENT '1=>Black; 2=>Brown; 3=>Light Brown; 4=>White; 5=>Bright White',
+  `weight` varchar(255) DEFAULT NULL,
+  `blood_group` varchar(255) DEFAULT NULL COMMENT '1=>A+; 2=>A-; 3=>B+; 4=>B-; 5=>AB+; 6=>AB-; 7=>O+; 8=>O-',
   `nationality` int(11) DEFAULT NULL,
   `permenant_district_id` int(11) DEFAULT NULL,
   `permenant_upazila_id` int(11) DEFAULT NULL,
-  `permenant_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `permenant_address` varchar(255) DEFAULT NULL,
   `present_district_id` int(11) DEFAULT NULL,
   `present_upazila_id` int(11) DEFAULT NULL,
-  `present_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gurdians_mobile_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `relation_with_gurdian` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `present_address` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `gurdians_mobile_no` varchar(255) DEFAULT NULL,
+  `relation_with_gurdian` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `views` double NOT NULL DEFAULT 0,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Pending; 1=>Active; 2=>Blocked',
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -945,8 +971,8 @@ INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marit
 (9, 57, 'SK1701770277', 2, 1, '2000-09-04', 5, 2, '3', '৫০ কেজি', '2', 50, 2, 19, 'শিমুলতলা', 47, 366, 'শাহবাগ', 'Afasna Jannat', 'biodata_images/y5tYK1701771784.jpg', '01900186886', 'বাবা', 'lohec96208@gearstag.com', 0, 1, '36evs1701770277', '2023-12-05 01:57:57', '2023-12-05 02:23:04'),
 (10, 58, 'SK1701772091', 1, 1, '1998-12-01', 5, 10, '5', '৬২', '7', 50, 41, 320, 'ফুলটোলা', 7, 61, 'শাহবাগ', 'Farhan Sadaf', 'biodata_images/Ng3Jg1701772696.jpg', '0192324', 'বাবা', 'pikepo9215@getmola.com', 0, 1, 'H0H6n1701772091', '2023-12-05 02:28:11', '2023-12-05 02:38:16'),
 (11, 59, 'SK1701773073', 1, 1, '2000-09-04', 5, 11, '2', '৫৫কেজি', '7', 50, 27, 209, 'সোনাডাঙ্গা', 28, 218, 'সোনাডাঙ্গা', 'Titu Khondokar', 'biodata_images/Key2k1701773958.jpg', '19029445', 'Father', 'rotiti4268@gearstag.com', 0, 1, '4aJx31701773073', '2023-12-05 02:44:33', '2023-12-05 02:59:18'),
-(12, 60, 'SK1701774114', 1, 3, '1994-04-04', 5, 9, '4', '79', '3', 50, NULL, NULL, NULL, NULL, NULL, NULL, 'Rohit', 'biodata_images/9M7aN1701774506.jpg', '134235346', 'father', 'yevedeg138@gearstag.com', 0, 1, 'fXQ1w1701774114', '2023-12-05 03:01:54', '2023-12-05 03:08:26'),
-(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', 'biodata_images/MOhQc1701775660.jpg', '0171246578', 'Mother', 'hewof86115@gyxmz.com', 10, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-06 06:03:21'),
+(12, 60, 'SK1701774114', 1, 3, '1994-04-04', 5, 9, '4', '79', '3', 50, NULL, NULL, NULL, NULL, NULL, NULL, 'Rohit', 'biodata_images/9M7aN1701774506.jpg', '134235346', 'father', 'yevedeg138@gearstag.com', 22, 1, 'fXQ1w1701774114', '2023-12-05 03:01:54', '2023-12-07 04:41:46'),
+(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', 'biodata_images/MOhQc1701775660.jpg', '0171246578', 'Mother', 'hewof86115@gyxmz.com', 14, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-07 04:39:06'),
 (14, 62, 'SK1701775885', 2, 1, '2002-05-25', 5, 1, '5', '৫০ কেজি', '1', 50, 60, 449, 'ফুলটোলা', 47, 365, 'শাহবাগ', 'ফারিহা তাসনিম', 'biodata_images/UOhE91701776361.jpg', '098578758', 'মা', 'losiye7025@getmola.com', 6, 1, 'w7bEz1701775885', '2023-12-05 03:31:25', '2023-12-06 04:59:49'),
 (15, 63, 'SK1701776507', 1, 1, '2001-03-01', 5, 8, '5', '৬৮', '1', 50, 9, 83, 'জামালপুর', 3, 32, 'বাড্ডা', 'আনিসুর রহমান', 'biodata_images/7lUSx1701777286.jpg', '098899862', 'বাবা', 'xarij20954@gearstag.com', 2, 1, 'w7ZAU1701776507', '2023-12-05 03:41:47', '2023-12-06 05:46:34');
 
@@ -958,12 +984,12 @@ INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marit
 
 CREATE TABLE `contact_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `page_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `page_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
-  `google_map_link` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_map_link` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -983,12 +1009,12 @@ INSERT INTO `contact_configs` (`id`, `page_title`, `page_title_bn`, `background_
 
 CREATE TABLE `contact_requests` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `subject` longtext DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Pending; 1=>Approved; 2=>Cancel',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1028,7 +1054,7 @@ CREATE TABLE `countries` (
   `alpha_3_code` varchar(3) DEFAULT NULL,
   `en_short_name` varchar(52) DEFAULT NULL,
   `nationality` varchar(39) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `countries`
@@ -1293,8 +1319,8 @@ INSERT INTO `countries` (`id`, `alpha_2_code`, `alpha_3_code`, `en_short_name`, 
 
 CREATE TABLE `custom_css_js` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `custom_css` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `custom_js` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `custom_css` longtext DEFAULT NULL,
+  `custom_js` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1320,7 +1346,7 @@ CREATE TABLE `districts` (
   `lat` varchar(15) DEFAULT NULL,
   `lon` varchar(15) DEFAULT NULL,
   `url` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `districts`
@@ -1403,7 +1429,7 @@ CREATE TABLE `divisions` (
   `name` varchar(25) NOT NULL,
   `bn_name` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `divisions`
@@ -1427,11 +1453,11 @@ INSERT INTO `divisions` (`id`, `name`, `bn_name`, `url`) VALUES
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1443,12 +1469,12 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `faqs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `question_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `answer` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `answer_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `answer_bn` longtext DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1472,10 +1498,10 @@ INSERT INTO `faqs` (`id`, `question`, `question_bn`, `answer`, `answer_bn`, `ser
 
 CREATE TABLE `faq_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `section_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `section_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1496,8 +1522,8 @@ INSERT INTO `faq_configs` (`id`, `section_title`, `section_title_bn`, `backgroun
 
 CREATE TABLE `google_recaptchas` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `recaptcha_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `recaptcha_secret` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `recaptcha_key` varchar(255) DEFAULT NULL,
+  `recaptcha_secret` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Not Active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1518,20 +1544,20 @@ INSERT INTO `google_recaptchas` (`id`, `recaptcha_key`, `recaptcha_secret`, `sta
 
 CREATE TABLE `homepage_bio_data` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button1_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button1_text_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button1_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button2_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button2_text_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button2_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `button1_text` varchar(255) DEFAULT NULL,
+  `button1_text_bn` varchar(255) DEFAULT NULL,
+  `button1_url` varchar(255) DEFAULT NULL,
+  `button2_text` varchar(255) DEFAULT NULL,
+  `button2_text_bn` varchar(255) DEFAULT NULL,
+  `button2_url` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1552,10 +1578,10 @@ INSERT INTO `homepage_bio_data` (`id`, `background_color`, `background_image`, `
 
 CREATE TABLE `homepage_statistics` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `number` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1580,10 +1606,10 @@ INSERT INTO `homepage_statistics` (`id`, `image`, `title`, `title_bn`, `number`,
 
 CREATE TABLE `homepage_statistics_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `section_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `section_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1605,11 +1631,11 @@ INSERT INTO `homepage_statistics_configs` (`id`, `section_title`, `section_title
 
 CREATE TABLE `how_it_works` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1634,10 +1660,10 @@ INSERT INTO `how_it_works` (`id`, `image`, `title`, `title_bn`, `description`, `
 
 CREATE TABLE `how_it_works_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `section_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `section_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1659,12 +1685,12 @@ INSERT INTO `how_it_works_configs` (`id`, `section_title`, `section_title_bn`, `
 
 CREATE TABLE `instructions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `question_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `answer` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `answer_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `answer` longtext DEFAULT NULL,
+  `answer_bn` longtext DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1688,10 +1714,10 @@ INSERT INTO `instructions` (`id`, `question`, `question_bn`, `answer`, `answer_b
 
 CREATE TABLE `instruction_configs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `page_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `page_title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `page_title` varchar(255) DEFAULT NULL,
+  `page_title_bn` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1713,10 +1739,10 @@ INSERT INTO `instruction_configs` (`id`, `page_title`, `page_title_bn`, `backgro
 
 CREATE TABLE `logo_favicons` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `favicon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tab_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payment_banner` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `favicon` varchar(255) DEFAULT NULL,
+  `tab_title` varchar(255) DEFAULT NULL,
+  `payment_banner` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1736,8 +1762,8 @@ INSERT INTO `logo_favicons` (`id`, `logo`, `favicon`, `tab_title`, `payment_bann
 
 CREATE TABLE `marital_conditions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1763,7 +1789,7 @@ INSERT INTO `marital_conditions` (`id`, `title`, `title_bn`, `serial`, `status`,
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1821,7 +1847,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (104, '2023_12_04_031341_create_pricing_packages_table', 66),
 (106, '2023_12_04_065045_create_payment_histories_table', 67),
 (107, '2023_12_05_062032_create_biodata_visit_histories_table', 68),
-(108, '2023_12_05_112421_create_saved_biodatas_table', 69);
+(108, '2023_12_05_112421_create_saved_biodatas_table', 69),
+(109, '2023_12_07_104226_create_paid_views_table', 70);
 
 -- --------------------------------------------------------
 
@@ -1831,17 +1858,17 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `mobile_apps` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `play_store_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `play_store_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `app_store_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `app_store_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` text DEFAULT NULL,
+  `title_bn` text DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
+  `play_store_image` varchar(255) DEFAULT NULL,
+  `play_store_link` varchar(255) DEFAULT NULL,
+  `app_store_image` varchar(255) DEFAULT NULL,
+  `app_store_link` varchar(255) DEFAULT NULL,
+  `background_color` varchar(255) DEFAULT NULL,
+  `background_image` varchar(255) DEFAULT NULL,
   `priority` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Background Image; 2=>Background Color',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1864,8 +1891,8 @@ INSERT INTO `mobile_apps` (`id`, `image`, `title`, `title_bn`, `description`, `d
 CREATE TABLE `m_c_q_s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `question_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `option` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `option_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `option` varchar(255) DEFAULT NULL,
+  `option_bn` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1947,12 +1974,26 @@ INSERT INTO `m_c_q_s` (`id`, `question_id`, `option`, `option_bn`, `serial`, `st
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `paid_views`
+--
+
+CREATE TABLE `paid_views` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `biodata_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1964,13 +2005,13 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `payment_gateways` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `provider_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `api_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'StoreID/ApiKey',
-  `secret_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'StorePassword/SecretKey',
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider_name` varchar(255) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `api_key` varchar(255) DEFAULT NULL COMMENT 'StoreID/ApiKey',
+  `secret_key` varchar(255) DEFAULT NULL COMMENT 'StorePassword/SecretKey',
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `live` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Test/Sandbox; 1=>Product/Live',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Inactive; 1=>Active',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1998,22 +2039,22 @@ CREATE TABLE `payment_histories` (
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `package_id` bigint(20) UNSIGNED DEFAULT NULL,
   `purchased_connections` double NOT NULL DEFAULT 0,
-  `payment_through` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'SSL COMMERZ',
-  `tran_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `val_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `amount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `store_amount` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `bank_tran_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `tran_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `currency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_issuer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_sub_brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `card_issuer_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
-  `store_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `payment_through` varchar(255) NOT NULL DEFAULT 'SSL COMMERZ',
+  `tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `val_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_type` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_amount` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_no` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `bank_tran_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `status` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `tran_date` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `currency` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_sub_brand` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `card_issuer_country` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
+  `store_id` varchar(255) DEFAULT NULL COMMENT 'Response From Payment Gateway',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2038,9 +2079,9 @@ INSERT INTO `payment_histories` (`id`, `user_id`, `package_id`, `purchased_conne
 
 CREATE TABLE `permission_routes` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `route` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `method` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2307,11 +2348,11 @@ INSERT INTO `permission_routes` (`id`, `route`, `name`, `method`, `created_at`, 
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2326,15 +2367,15 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `pricing_packages` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `connections` double DEFAULT NULL,
   `price` double DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `description_bn` longtext DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `serial` double NOT NULL DEFAULT 1,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2356,8 +2397,8 @@ INSERT INTO `pricing_packages` (`id`, `title`, `title_bn`, `connections`, `price
 
 CREATE TABLE `privacy_policies` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext DEFAULT NULL,
+  `details_bn` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2378,15 +2419,15 @@ INSERT INTO `privacy_policies` (`id`, `details`, `details_bn`, `created_at`, `up
 CREATE TABLE `questions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `question_set_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `question_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hints` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hints_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question` varchar(255) DEFAULT NULL,
+  `question_bn` varchar(255) DEFAULT NULL,
+  `hints` longtext DEFAULT NULL,
+  `hints_bn` longtext DEFAULT NULL,
   `type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Open Ended; 2=>MCQ; 3=>Short Question',
   `serial` double NOT NULL DEFAULT 1,
   `required` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Yes; 0=>No',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2451,8 +2492,8 @@ INSERT INTO `questions` (`id`, `question_set_id`, `question`, `question_bn`, `hi
 
 CREATE TABLE `question_sets` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_bn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_bn` varchar(255) DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2479,8 +2520,8 @@ INSERT INTO `question_sets` (`id`, `title`, `title_bn`, `serial`, `status`, `cre
 
 CREATE TABLE `refund_policies` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext DEFAULT NULL,
+  `details_bn` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2501,10 +2542,10 @@ INSERT INTO `refund_policies` (`id`, `details`, `details_bn`, `created_at`, `upd
 CREATE TABLE `role_permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL,
-  `role_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_name` varchar(255) DEFAULT NULL,
   `permission_id` bigint(20) UNSIGNED NOT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `route` varchar(255) NOT NULL,
+  `route_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2528,7 +2569,7 @@ CREATE TABLE `saved_biodatas` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `biodata_id` bigint(20) UNSIGNED NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=>Liked; 2=>Disliked',
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2558,10 +2599,10 @@ INSERT INTO `saved_biodatas` (`id`, `user_id`, `biodata_id`, `status`, `slug`, `
 
 CREATE TABLE `seos` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_keywords` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sitemap_generate_time` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `meta_description` longtext DEFAULT NULL,
+  `sitemap_generate_time` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2581,12 +2622,12 @@ INSERT INTO `seos` (`id`, `meta_title`, `meta_keywords`, `meta_description`, `si
 
 CREATE TABLE `sms_gateways` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `provider_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `api_endpoint` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `api_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `secret_key` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sender_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `provider_name` varchar(255) NOT NULL,
+  `api_endpoint` varchar(255) NOT NULL,
+  `api_key` varchar(255) DEFAULT NULL,
+  `secret_key` varchar(255) DEFAULT NULL,
+  `sender_id` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=>Inactive; 1=>Active',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -2608,14 +2649,14 @@ INSERT INTO `sms_gateways` (`id`, `image`, `provider_name`, `api_endpoint`, `api
 
 CREATE TABLE `social_media_links` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `messenger` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `whatsapp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `telegram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `linkedin` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
+  `messenger` varchar(255) DEFAULT NULL,
+  `whatsapp` varchar(255) DEFAULT NULL,
+  `telegram` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2635,8 +2676,8 @@ INSERT INTO `social_media_links` (`id`, `facebook`, `instagram`, `twitter`, `lin
 
 CREATE TABLE `terms_conditions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `details` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `details_bn` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `details` longtext DEFAULT NULL,
+  `details_bn` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2660,7 +2701,7 @@ CREATE TABLE `unions` (
   `name` varchar(25) NOT NULL,
   `bn_name` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `unions`
@@ -7226,7 +7267,7 @@ CREATE TABLE `upazilas` (
   `name` varchar(25) NOT NULL,
   `bn_name` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `upazilas`
@@ -7736,21 +7777,21 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `provider_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `provider_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contact` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `verification_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `provider_id` varchar(255) DEFAULT NULL,
+  `provider_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contact` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `verification_code` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '1=>Admin; 2=>User/Shop;',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `connections` double NOT NULL DEFAULT 0,
-  `last_purchase_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `expire_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_purchase_date` varchar(255) DEFAULT NULL,
+  `expire_date` varchar(255) DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -7792,8 +7833,8 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 
 CREATE TABLE `user_roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -7815,10 +7856,10 @@ CREATE TABLE `user_role_permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `role_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_name` varchar(255) DEFAULT NULL,
   `permission_id` bigint(20) UNSIGNED NOT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `route_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `route` varchar(255) NOT NULL,
+  `route_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -7839,10 +7880,10 @@ INSERT INTO `user_role_permissions` (`id`, `user_id`, `role_id`, `role_name`, `p
 
 CREATE TABLE `website_languages` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
   `serial` double NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -7865,16 +7906,16 @@ INSERT INTO `website_languages` (`id`, `icon`, `name`, `code`, `description`, `s
 
 CREATE TABLE `wesbite_theme_colors` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `primary_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `secondary_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tertiary_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `white_color_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `white_color_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `white_color_3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `title_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `paragraph_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `hints_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `border_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `primary_color` varchar(255) DEFAULT NULL,
+  `secondary_color` varchar(255) DEFAULT NULL,
+  `tertiary_color` varchar(255) DEFAULT NULL,
+  `white_color_1` varchar(255) DEFAULT NULL,
+  `white_color_2` varchar(255) DEFAULT NULL,
+  `white_color_3` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) DEFAULT NULL,
+  `paragraph_color` varchar(255) DEFAULT NULL,
+  `hints_color` varchar(255) DEFAULT NULL,
+  `border_color` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -8069,6 +8110,12 @@ ALTER TABLE `m_c_q_s`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `paid_views`
+--
+ALTER TABLE `paid_views`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -8249,7 +8296,7 @@ ALTER TABLE `biodata_types`
 -- AUTO_INCREMENT for table `biodata_visit_histories`
 --
 ALTER TABLE `biodata_visit_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `bio_data`
@@ -8369,7 +8416,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
@@ -8382,6 +8429,12 @@ ALTER TABLE `mobile_apps`
 --
 ALTER TABLE `m_c_q_s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
+
+--
+-- AUTO_INCREMENT for table `paid_views`
+--
+ALTER TABLE `paid_views`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment_gateways`

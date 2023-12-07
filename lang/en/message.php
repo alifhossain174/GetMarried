@@ -70,4 +70,7 @@ return [
 
     'user_dashboard_biodata_liked' => 'Your biodata is listed as preferred',
     'user_dashboard_biodata_liked_msg' => 'So many people have favorited your biodata.',
+
+    'biodata_details_contact_msg' => 'Caution - Check all biodata details by checking locally before deciding to marry.',
+    'biodata_details_contact_msg2' => 'Viewing contact information of the parent of this biodata will cost you 1 connection.',
 ];

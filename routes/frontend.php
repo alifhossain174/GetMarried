@@ -78,6 +78,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             // redirect after login routes
             Route::get('add/to/liked/list/{slug}', [UserDashboardController::class, 'addToLikedList'])->name('Frontend.AddToLikedList');
             Route::get('add/to/disliked/list/{slug}', [UserDashboardController::class, 'addToDislikedList'])->name('Frontend.addToDislikedList');
+            Route::get('view/biodata/contact/info/{slug}', [UserDashboardController::class, 'viewBiodataContactInfo'])->name('Frontend.ViewBiodataContactInfo');
 
 
             // payment routes start

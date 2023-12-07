@@ -32,6 +32,7 @@ class PaymentController extends Controller
             $userInfo = User::where('id', Auth::user()->id)->first();
             $userEmailContact = ($userInfo->email != '' && $userInfo->email != NULL) ? $userInfo->email : $userInfo->contact;
 
+
             $sslc = new SSLCommerz();
             $sslc->amount($pricingPackageInfo->price)
                 ->trxid(str::random(5).time())

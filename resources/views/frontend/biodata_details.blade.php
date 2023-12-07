@@ -255,25 +255,86 @@
                                 @endforeach
 
                                 <!-- Single Biodata Details (contact) -->
-                                <div class="single-biodata-details">
-                                    <h4>যোগাযোগ</h4>
-                                    <div class="biodata-details-info-group single-biodata-contact">
-                                        <p>
-                                            সতর্কতা - বিয়ের সিদ্ধান্ত নেয়ার পূর্বে স্থানীয়ভাবে খোঁজ
-                                            নিয়ে বায়োডাটার সমস্ত তথ্য যাচাই করবেন।
-                                        </p>
-                                        <span>এই বায়োডাটার অভিভাবকের যোগাযোগের তথ্য দেখতে আপনার ১টি
-                                            কানেকশন খরচ হবে।
-                                        </span>
-                                        <div class="biodata-details-contact-link">
-                                            <a href="#" class="theme-btn">যোগাযোগের তথ্য দেখুন</a>
-                                            <a href="https://www.youtube.com/watch?v=gyGsPlt06bo" target="_blank"
-                                                class="theme-btn tutorial-btn popup-video"><i
-                                                    class="icofont-youtube-play"></i>যেভাবে যোগাযোগ
-                                                তথ্য দেখবেন</a>
+                                @auth
+                                    @php
+                                        $paidForBiodata = App\Models\PaidView::where('user_id', Auth::user()->id)->where('biodata_id', $biodata->id)->first();
+                                    @endphp
+                                @else
+                                    @php
+                                        $paidForBiodata = '';
+                                    @endphp
+                                @endauth
+
+
+                                @auth
+                                    @if($paidForBiodata == '')
+                                    <div class="single-biodata-details">
+                                        <h4>{{__('label.contact')}}</h4>
+                                        <div class="biodata-details-info-group single-biodata-contact">
+                                            <p>
+                                                {{__('message.biodata_details_contact_msg')}}
+                                            </p>
+                                            <span>
+                                                {{__('message.biodata_details_contact_msg2')}}
+                                            </span>
+                                            <div class="biodata-details-contact-link">
+                                                <a href="{{url('view/biodata/contact/info')}}/{{$biodata->slug}}" class="theme-btn">{{__('label.biodata_details_contact_view_btn')}}</a>
+                                                <a href="https://www.youtube.com/watch?v=gyGsPlt06bo" target="_blank" class="theme-btn tutorial-btn popup-video"><i class="icofont-youtube-play"></i>{{__('label.biodata_details_contact_view_btn2')}}</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    @else
+                                    {{-- show actual info --}}
+                                    <div class="single-biodata-details">
+                                        <h4>{{ __('label.contact') }}</h4>
+                                        <div class="biodata-details-info-group">
+                                            <!-- Single Bio Info Item -->
+                                            <div class="biodata-details-info-item">
+                                                <label>{{ __('label.candidate_name') }}</label>
+                                                <p>
+                                                    <span>{{ $biodata ? $biodata->name : '' }}</span>
+                                                </p>
+                                            </div>
+                                            <div class="biodata-details-info-item">
+                                                <label>{{ __('label.gurdians_contact') }}</label>
+                                                <p>
+                                                    <span>{{ $biodata ? $biodata->gurdians_mobile_no : '' }}</span>
+                                                </p>
+                                            </div>
+                                            <div class="biodata-details-info-item">
+                                                <label>{{ __('label.relation_with_girdian') }}</label>
+                                                <p>
+                                                    <span>{{ $biodata ? $biodata->relation_with_gurdian : '' }}</span>
+                                                </p>
+                                            </div>
+                                            <div class="biodata-details-info-item">
+                                                <label>{{ __('label.biodata_email') }}</label>
+                                                <p>
+                                                    <span>{{ $biodata ? $biodata->email : '' }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                @else
+                                    <div class="single-biodata-details">
+                                        <h4>{{__('label.contact')}}</h4>
+                                        <div class="biodata-details-info-group single-biodata-contact">
+                                            <p>
+                                                {{__('message.biodata_details_contact_msg')}}
+                                            </p>
+                                            <span>
+                                                {{__('message.biodata_details_contact_msg2')}}
+                                            </span>
+                                            <div class="biodata-details-contact-link">
+                                                <a href="{{url('view/biodata/contact/info')}}/{{$biodata->slug}}" class="theme-btn">{{__('label.biodata_details_contact_view_btn')}}</a>
+                                                <a href="https://www.youtube.com/watch?v=gyGsPlt06bo" target="_blank" class="theme-btn tutorial-btn popup-video"><i class="icofont-youtube-play"></i>{{__('label.biodata_details_contact_view_btn2')}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endauth
+
+
 
                             </div>
                         </div>

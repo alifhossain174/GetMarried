@@ -133,6 +133,9 @@ return [
     'marital_status'=> 'Marrital Status',
 
     'short_list' => 'ShortList',
-    'ignore' => 'Ignore'
+    'ignore' => 'Ignore',
+
+    'biodata_details_contact_view_btn' => 'View Contact Info',
+    'biodata_details_contact_view_btn2' => 'How to view Contact Info',
 
 ];

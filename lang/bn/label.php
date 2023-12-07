@@ -134,5 +134,8 @@ return [
     'marital_status'=> 'বৈবাহিক অবস্থা',
 
     'short_list' => 'শর্টলিস্ট',
-    'ignore' => 'এড়ান'
+    'ignore' => 'এড়ান',
+
+    'biodata_details_contact_view_btn' => 'যোগাযোগের তথ্য দেখুন',
+    'biodata_details_contact_view_btn2' => 'যেভাবে যোগাযোগ তথ্য দেখবেন',
 ];
