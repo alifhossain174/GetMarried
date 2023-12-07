@@ -35,8 +35,11 @@ class UserDashboardController extends Controller
                     ->count();
         $totalVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->count();
         $todaysVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->where('created_at', 'LIKE', date("Y-m-d").'%')->count();
+        $lastWeekVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->whereBetween('created_at', [date("Y-m-d", strtotime("-7 days"))." 00:00:00", date("Y-m-d")." 23:59:59"])->count();
+        $lastMonthVisits = BiodataVisitHistory::where('user_id', Auth::user()->id)->whereBetween('created_at', [date("Y-m-d", strtotime("-30 days"))." 00:00:00", date("Y-m-d")." 23:59:59"])->count();
+
         return view('frontend.auth.dashboard', compact('likedBiodatas', 'dislikedBiodatas', 'totalPayments',
-        'preferred', 'totalVisits', 'todaysVisits'));
+        'preferred', 'totalVisits', 'todaysVisits', 'lastWeekVisits', 'lastMonthVisits'));
     }
     public function userSettings(){
         return view('frontend.auth.settings');

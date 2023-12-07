@@ -84,11 +84,11 @@
                                     <div class="user-d-visited-graph">
                                         <div class="visited-graph-item">
                                             <label>{{ __('message.user_dashboard_biodata_visited_last_30') }}</label>
-                                            <span>0</span>
+                                            <span>{{$lastMonthVisits}}</span>
                                         </div>
                                         <div class="visited-graph-item">
                                             <label>{{ __('message.user_dashboard_biodata_visited_last_7') }}</label>
-                                            <span>0</span>
+                                            <span>{{$lastWeekVisits}}</span>
                                         </div>
                                         <div class="visited-graph-item">
                                             <label>{{ __('message.user_dashboard_biodata_visited_today') }}</label>
