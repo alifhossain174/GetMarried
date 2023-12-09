@@ -61,10 +61,13 @@
                     <div class="row">
                         <div class="col-lg-12 col-xl-6 col-12">
                             <div class="biodata-number-widget">
-                                <form action="{{url('search/biodata/no')}}" method="GET" class="biodata-number-searchbar">
+                                <form action="{{ url('search/biodata/no') }}" method="GET"
+                                    class="biodata-number-searchbar">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="search" value="{{isset($biodata_no) ? $biodata_no : ''}}" style="color: #4f4f4f;" name="biodata_no" placeholder="{{ __('label.biodata_no') }}" />
+                                        <input type="search" value="{{ isset($biodata_no) ? $biodata_no : '' }}"
+                                            style="color: #4f4f4f;" name="biodata_no"
+                                            placeholder="{{ __('label.biodata_no') }}" />
                                         <div class="biodata-number-btn">
                                             <button type="submit" class="theme-btn secondary">
                                                 <i class="fi fi-rs-search"></i>{{ __('label.biodata_search') }}
@@ -77,16 +80,29 @@
                         <div class="col-lg-12 col-xl-6 col-12">
                             <div class="biodata-top-filter">
                                 <div class="biodata-filter-select">
-                                    <div class="form-group">
-                                        <select class="select2 hero-search-filter-select">
-                                            <option value="1">নতুন</option>
-                                            <option value="2">পুরাতন</option>
-                                        </select>
-                                    </div>
+                                    <form action={{ url('/change/search/result/order') }} type="get">
+                                        @csrf
+                                        <input type="hidden" name="biodata_type"
+                                            value="{{ isset($biodataType) ? $biodataType : '' }}">
+                                        <input type="hidden" name="marital_status"
+                                            value="{{ isset($maritalStatus) ? $maritalStatus : '' }}">
+                                        <input type="hidden" name="district"
+                                            value="{{ isset($district) ? $district : '' }}">
+                                        <div class="form-group">
+                                            <select class="select2 hero-search-filter-select" name="order"
+                                                onchange="this.form.submit()">
+                                                <option value="1">{{ __('label.biodata_search_results_new') }}
+                                                </option>
+                                                <option value="2">{{ __('label.biodata_search_results_old') }}
+                                                </option>
+                                            </select>
+                                            <noscript><input type="submit" value="Submit"></noscript>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="biodata-top-filter-btn">
                                     <button class="theme-btn secondary filter-open-btn">
-                                        <i class="fi fi-rr-settings"></i>ফিল্টার
+                                        <i class="fi fi-rr-settings"></i>{{ __('label.biodata_search_results_filter') }}
                                     </button>
                                 </div>
                             </div>
@@ -201,6 +217,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-12">
                     <div class="biodata-sidebar">
                         <div class="biodata-sidebar-close">

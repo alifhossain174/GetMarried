@@ -138,4 +138,8 @@ return [
 
     'biodata_details_contact_view_btn' => 'যোগাযোগের তথ্য দেখুন',
     'biodata_details_contact_view_btn2' => 'যেভাবে যোগাযোগ তথ্য দেখবেন',
+
+    'biodata_search_results_new' => 'নতুন',
+    'biodata_search_results_old' => 'পুরাতন',
+    'biodata_search_results_filter' => 'ফিল্টার',
 ];

@@ -24,6 +24,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
     Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
+    Route::get('/change/search/result/order', [FrontendController::class, 'changeSearchResultOrder'])->name('Frontend.ChangeSearchResultOrder');
     Route::get('/search/biodata/no', [FrontendController::class, 'searchBiodataNo'])->name('Frontend.SearchBiodataNo');
     Route::get('/biodata/details/{slug}', [FrontendController::class, 'biodataDetails'])->name('Frontend.BiodataDetails');
 

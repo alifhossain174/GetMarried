@@ -138,4 +138,8 @@ return [
     'biodata_details_contact_view_btn' => 'View Contact Info',
     'biodata_details_contact_view_btn2' => 'How to view Contact Info',
 
+    'biodata_search_results_new' => 'New',
+    'biodata_search_results_old' => 'Old',
+    'biodata_search_results_filter' => 'Filter',
+
 ];

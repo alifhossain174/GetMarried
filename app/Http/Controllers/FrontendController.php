@@ -154,7 +154,11 @@ class FrontendController extends Controller
         $search_results_url = $request->path()."?".$request->getQueryString();
         session(['call_back_url' => $search_results_url]);
 
-        return view('frontend.search_results', compact('data'));
+        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district'));
+    }
+
+    public function changeSearchResultOrder(Request $request){
+        
     }
 
     public function searchBiodataNo(Request $request){
