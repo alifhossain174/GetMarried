@@ -151,4 +151,10 @@ return [
     'biodata_search_results_filter' => 'ফিল্টার',
     'biodata_search_results_filters' => 'ফিল্টার সমূহ',
     'biodata_filter_criteria_primary' => 'প্রাথমিক',
+
+    'complain_reason_wrong_contact' => 'যোগাযোগের তথ্য সঠিক নয়',
+    'complain_reason_wrong_bio_info' => 'বায়োডাটাতে ভুল তথ্য দেওয়া আছে',
+    'complain_reason_wrong_others' => 'অন্যান্য',
+    'complain_reason_mobile_no' => 'আপনার মোবাইল নং লিখুন',
+    'complain_reason_details' => 'আপনার অভিযোগটি বিস্তারিতভাবে লিখুন',
 ];

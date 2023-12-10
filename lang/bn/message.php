@@ -38,7 +38,8 @@ return [
     'user_checked_biodata_no' => 'বায়োডাটা নং',
     'user_checked_biodata_date' => 'তারিখ',
     'user_checked_biodata_option' => 'অপশন',
-    'user_checked_biodata_report_now' => 'রিপোর্ট',
+    'user_checked_biodata_report_now' => 'রিপোর্ট করুন',
+    'user_checked_biodata_already_reported' => 'রিপোর্ট করা হয়েছে',
 
     'user_checked_biodata_report_page' => 'রিপোর্ট করুন',
 

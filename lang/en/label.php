@@ -151,4 +151,10 @@ return [
     'biodata_search_results_filters' => 'Filters',
     'biodata_filter_criteria_primary' => 'Primary Info',
 
+    'complain_reason_wrong_contact' => 'Wrong Contact Info',
+    'complain_reason_wrong_bio_info' => 'Biodata Contain Wrong Info',
+    'complain_reason_wrong_others' => 'Others',
+    'complain_reason_mobile_no' => 'Write Your Mobile No',
+    'complain_reason_details' => 'Write Your Complain in Details',
+
 ];

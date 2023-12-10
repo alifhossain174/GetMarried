@@ -39,6 +39,7 @@ return [
     'user_checked_biodata_date' => 'Date',
     'user_checked_biodata_option' => 'Option',
     'user_checked_biodata_report_now' => 'Report Now',
+    'user_checked_biodata_already_reported' => 'Already Reported',
 
     'user_checked_biodata_report_page' => 'Submit A Report',
 

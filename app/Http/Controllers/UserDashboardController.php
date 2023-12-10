@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BioData;
+use App\Models\BiodataComplain;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
 use App\Models\BiodataVisitHistory;
@@ -173,7 +174,14 @@ class UserDashboardController extends Controller
         return view('frontend.auth.checked_biodata', compact('data'));
     }
     public function userSupportReport(){
-        return view('frontend.auth.support_report');
+        $data = DB::table('biodata_complains')
+            ->leftJoin('bio_data', 'biodata_complains.biodata_id', 'bio_data.id')
+            ->leftJoin('users', 'biodata_complains.submitted_by', 'users.id')
+            ->select('biodata_complains.*', 'bio_data.biodata_no')
+            ->orderBy('biodata_complains.id', 'desc')
+            ->paginate(10);
+
+        return view('frontend.auth.support_report', compact('data'));
     }
     public function userReportConversation(){
         return view('frontend.auth.report_conversation');
@@ -205,8 +213,50 @@ class UserDashboardController extends Controller
         return view('frontend.auth.edit_biodata', compact('questionSets', 'biodataTypes', 'maritalConditions', 'nationalities', 'districts', 'biodata'));
     }
 
-    public function userCreateReport(){
-        return view('frontend.auth.create_report');
+    public function userCreateReport($slug){
+        $biodata = BioData::where('slug', $slug)->first();
+        return view('frontend.auth.create_report', compact('biodata'));
+    }
+
+    public function submitBiodataComplain(Request $request){
+
+        $request->validate([
+            'reason' => ['required'],
+            'contact_no' => ['required'],
+        ]);
+
+        $biodata = BioData::where('slug', $request->biodata_slug)->first();
+        $complainAlreadyExists = BiodataComplain::where('biodata_id', $biodata->id)->where('submitted_by', Auth::user()->id)->first();
+        if($complainAlreadyExists){
+            Toastr::error('Already Submiited a Complain', 'Failed');
+            return back();
+        } else {
+
+            $attachment = null;
+            if ($request->hasFile('attachment')){
+                $get_image = $request->file('attachment');
+                $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+                $location = public_path('complain_attachments/');
+                $get_image->move($location, $image_name);
+                $attachment = "complain_attachments/" . $image_name;
+            }
+
+            BiodataComplain::insert([
+                'complain_no' => 'C-'.str::random(5).time(),
+                'biodata_id' => $biodata->id,
+                'submitted_by' => Auth::user()->id,
+                'reason' => $request->reason,
+                'contact_no' => $request->contact_no,
+                'details' => $request->details,
+                'status' => 0,
+                'slug' => str::random(5).time(),
+                'attachment' => $attachment,
+                'created_at' => Carbon::now(),
+            ]);
+            Toastr::success('Biodata Complain Submitted', 'Submitted');
+            return redirect('user/support/report');
+        }
+
     }
 
     public function purchaseConnection(Request $request){

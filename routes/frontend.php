@@ -73,7 +73,8 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::get('/user/report/conversation', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
             Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
             Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
-            Route::get('/user/create/report', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+            Route::get('/user/create/report/{slug}', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
+            Route::post('/submit/biodata/complain', [UserDashboardController::class, 'submitBiodataComplain'])->name('Frontend.SubmitBiodataComplain');
             Route::post('purchase/connection', [UserDashboardController::class, 'purchaseConnection'])->name('Frontend.PurchaseConnection');
 
             Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
