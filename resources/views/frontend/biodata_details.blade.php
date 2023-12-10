@@ -23,16 +23,17 @@
                                 <div class="biodata-general-widget-box">
                                     <div class="biodata-general-head">
                                         <div class="biodata-general-img">
-                                            @if ($biodata && $biodata->biodata_type_id == 1)
-                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
-                                                    alt="Image" />
-                                            @elseif ($biodata && $biodata->biodata_type_id == 2)
-                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
-                                                    alt="Image" />
+
+                                            @if ($biodata && $biodata->biodata_type_id == 1 && $biodata->show_image != 1)
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg" alt="Image" />
+                                            @elseif ($biodata && $biodata->biodata_type_id == 2 && $biodata->show_image != 1)
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="Image" />
                                             @else
-                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
-                                                    alt="Image" />
+                                                @if($biodata->show_image && file_exists(public_path($biodata->image)))
+                                                    <img src="{{ url($biodata->image) }}" alt="Image" />
+                                                @endif
                                             @endif
+
                                         </div>
                                         <div class="biodata-general-head-info">
                                             <h4 style="font-size: 22px;">{{ __('label.biodata_no') }}:
@@ -293,6 +294,12 @@
                                                 <label>{{ __('label.candidate_name') }}</label>
                                                 <p>
                                                     <span>{{ $biodata ? $biodata->name : '' }}</span>
+                                                </p>
+                                            </div>
+                                            <div class="biodata-details-info-item">
+                                                <label>{{ __('label.candidate_contact_no') }}</label>
+                                                <p>
+                                                    <span>{{ $biodata ? $biodata->contact_no : '' }}</span>
                                                 </p>
                                             </div>
                                             <div class="biodata-details-info-item">

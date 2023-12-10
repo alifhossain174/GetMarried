@@ -171,12 +171,26 @@
                             <td>{{ $data->present_address }}</td>
                         </tr>
                         <tr>
+                            <td>Contact No</td>
+                            <td>{{ $data->contact_no }}</td>
+                        </tr>
+                        <tr>
                             <td>Email</td>
                             <td>{{ $data->email }}</td>
                         </tr>
                         <tr>
                             <td>Gurdian Contact</td>
                             <td>{{ $data->gurdians_mobile_no }} ({{ $data->relation_with_gurdian }})</td>
+                        </tr>
+                        <tr>
+                            <td>Show Image Publicly</td>
+                            <td>
+                                @if($data->show_image)
+                                    <span class="badge bg-success" style="padding: 0.50em .6em;">Yes</span>
+                                @else
+                                    <span class="badge bg-danger" style="padding: 0.50em .6em;">No</span>
+                                @endif
+                            </td>
                         </tr>
                     </table>
                 </div> <!-- end card-body -->

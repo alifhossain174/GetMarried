@@ -26,7 +26,8 @@ class User extends Authenticatable
         'verification_code',
         'provider_id',
         'provider_name',
-        'email_verified_at'
+        'email_verified_at',
+        'connections'
     ];
 
     /**

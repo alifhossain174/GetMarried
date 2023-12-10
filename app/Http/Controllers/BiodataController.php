@@ -172,6 +172,7 @@ class BiodataController extends Controller
             'candidate_name' => ['required'],
             'gurdians_mobile_no' => ['required'],
             'relation_with_gurdian' => ['required'],
+            'show_image' => ['required'],
             'email' => ['required'],
         ]);
 
@@ -189,7 +190,9 @@ class BiodataController extends Controller
             }
 
             $biodata->image = $image;
+            $biodata->show_image = $request->show_image;
             $biodata->name = $request->candidate_name;
+            $biodata->contact_no = $request->contact_no;
             $biodata->gurdians_mobile_no = $request->gurdians_mobile_no;
             $biodata->relation_with_gurdian = $request->relation_with_gurdian;
             $biodata->email = $request->email;
@@ -212,7 +215,9 @@ class BiodataController extends Controller
                 'user_id' => $userId,
                 'biodata_no' => 'SK'.time(),
                 'image' => $image,
+                'show_image' => $request->show_image,
                 'name' => $request->candidate_name,
+                'contact_no' => $request->contact_no,
                 'gurdians_mobile_no' => $request->gurdians_mobile_no,
                 'relation_with_gurdian' => $request->relation_with_gurdian,
                 'email' => $request->email,

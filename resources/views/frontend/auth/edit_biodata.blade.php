@@ -524,7 +524,6 @@
                                                 @php $sl++; @endphp
                                             @endforeach
 
-
                                             <!-- Last Tab -->
                                             <div class="tab-pane fade" id="tab{{ $sl }}" role="tabpanel">
                                                 <div class="edit-biodata-form-widget">
@@ -533,9 +532,11 @@
                                                         <form action="" method="">
                                                             <div class="form-group">
                                                                 <label>{{ __('label.candidate_name') }}<span>*</span></label>
-                                                                <input type="text" name="candidate_name"
-                                                                    value="{{ $biodata ? $biodata->name : '' }}"
-                                                                    id="candidate_name" required />
+                                                                <input type="text" name="candidate_name" value="{{ $biodata ? $biodata->name : '' }}" id="candidate_name" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="contact_no">{{ __('label.candidate_contact_no') }}</label>
+                                                                <input type="text" name="contact_no" value="{{ $biodata ? $biodata->contact_no : '' }}" id="contact_no" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{ __('label.candidate_image') }}<span>*</span></label>
@@ -551,7 +552,7 @@
                                                                         </label>
                                                                     </div>
                                                                     <div style="position: relative">
-                                                                        <div class="remove-icon" id="remove-icon"
+                                                                        <div class="remove-icon" style="display: none;" id="remove-icon"
                                                                             @if ($biodata && file_exists(public_path($biodata->image))) style="display: block" @else style="display: none" @endif
                                                                             onclick="removeImage()">
                                                                             <i class="fi fi-rr-cross"></i>
@@ -561,6 +562,16 @@
                                                                 </div>
                                                                 <p>{{ __('label.candidate_image_hints') }}</p>
                                                             </div>
+
+                                                            <div class="form-group">
+                                                                <label for="show_image">{{ __('label.candidate_show_image') }}<span>*</span></label>
+                                                                <select class="hero-search-filter-select select2" name="show_image" id="show_image" required>
+                                                                    <option value="1" @if($biodata && $biodata->show_image == 1) selected @endif>{{ __('label.show_image') }}</option>
+                                                                    <option value="0" @if($biodata && $biodata->show_image == 0) selected @endif>{{ __('label.hide_image') }}</option>
+                                                                </select>
+                                                                <p>{{ __('label.candidate_show_image_hints') }}</p>
+                                                            </div>
+
                                                             <div class="form-group">
                                                                 <label>{{ __('label.gurdians_contact') }}<span>*</span></label>
                                                                 <input type="tel" name="gurdians_mobile_no"
@@ -776,16 +787,17 @@
 
         function saveContactInfo(crntTab) {
 
-            if (!$("#candidate_name").val() || !$("#gurdians_mobile_no").val() || !$("#relation_with_gurdian").val() || !$(
-                    "#email").val()) {
+            if (!$("#candidate_name").val() || !$("#gurdians_mobile_no").val() || !$("#relation_with_gurdian").val() || !$("#email").val() || !$("#show_image").val()) {
                 toastr.error("Please fill up the required fields", "Failed to Save Info");
                 return false;
             }
 
             var formData = new FormData();
             formData.append("candidate_name", $("#candidate_name").val());
+            formData.append("contact_no", $("#contact_no").val());
             formData.append("gurdians_mobile_no", $("#gurdians_mobile_no").val());
             formData.append("relation_with_gurdian", $("#relation_with_gurdian").val());
+            formData.append("show_image", $("#show_image").val());
             formData.append("email", $("#email").val());
             formData.append('image', $("#library-photo-input")[0].files[0]);
 
@@ -802,9 +814,15 @@
                     toastr.success("Biodata Submitted for Approval", "Congrats!");
                     $("#loader" + crntTab).hide();
 
+                    setTimeout(() => {
+                        var origin = window.location.origin;
+                        window.location.replace(origin+"/user/biodata/preview");
+                    }, 1500)
+
                     return false;
                 },
                 error: function(data) {
+                    $("#loader" + crntTab).hide();
                     console.log('Error:', data);
                     toastr.error("Failed to Save Data", "Something Went Wrong");
                     return false;

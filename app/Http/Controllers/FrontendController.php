@@ -138,7 +138,7 @@ class FrontendController extends Controller
         $data = DB::table('bio_data')
                             ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-                            ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
                             ->when($biodataType, function($query) use ($biodataType){
                                 return $query->where('bio_data.biodata_type_id', $biodataType);
@@ -170,7 +170,7 @@ class FrontendController extends Controller
         $query = DB::table('bio_data');
         $query->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
         ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-        ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+        ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
         ->where('bio_data.status', 1)
         ->when($biodataType, function($query) use ($biodataType){
             return $query->where('bio_data.biodata_type_id', $biodataType);
@@ -218,7 +218,7 @@ class FrontendController extends Controller
         $query = DB::table('bio_data');
         $query->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
         ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-        ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+        ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
         ->where('bio_data.status', 1)
         ->when($biodataType, function($query) use ($biodataType){
             return $query->where('bio_data.biodata_type_id', $biodataType);
@@ -263,7 +263,7 @@ class FrontendController extends Controller
         $data = DB::table('bio_data')
                             ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-                            ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
                             ->when($biodataType, function($query) use ($biodataType){
                                 return $query->where('bio_data.biodata_type_id', $biodataType);
@@ -290,7 +290,7 @@ class FrontendController extends Controller
         $data = DB::table('bio_data')
                             ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
-                            ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
                             ->where('bio_data.biodata_no', 'LIKE', '%'.$biodata_no.'%')
                             ->orderBy('bio_data.id', 'desc')

@@ -118,8 +118,15 @@ return [
     'area_name_hints' => '* Just write the name of the village or area without writing the house number. For example - Mirpur 10, Baghmara.',
     'present_address' => 'Present Address',
     'candidate_name' => 'Candidates Name',
+    'candidate_contact_no' => 'Candidates Contact',
     'candidate_image' => 'Candidates Image',
     'candidate_image_hints' => 'Your photo will not be released to anyone other than Sadikrun authorities. Photo is taken for identity verification only. Upload a recent photo where the appearance is clearly defined.',
+
+    'candidate_show_image' => 'Show Image Publicly',
+    'candidate_show_image_hints' => 'Show my image to all visitors or hide it by using a placeholder image',
+    'show_image' => 'Show Image',
+    'hide_image' => 'Hide Image',
+
     'gurdians_contact' => 'Gurdians Mobile No',
     'gurdians_contact_hints' => 'This number will be given if someone wants to contact your guardian. Biodata will be approved after verification by calling this number. If you write your own number of friend, colleague, cousin or spouse here, the biodata will be permanently banned.',
     'relation_with_girdian' => 'Relation with Gurdian',

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 06:16 AM
+-- Generation Time: Dec 10, 2023 at 11:50 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -739,7 +739,10 @@ INSERT INTO `biodata_question_answers` (`id`, `user_id`, `biodata_id`, `question
 (631, 63, 15, 5, 39, 'হ্যা', '2023-12-05 03:52:48', NULL),
 (632, 63, 15, 6, 46, '146', '2023-12-05 03:53:17', NULL),
 (633, 63, 15, 6, 47, '150', '2023-12-05 03:53:17', NULL),
-(634, 63, 15, 6, 48, '148', '2023-12-05 03:53:17', NULL);
+(634, 63, 15, 6, 48, '148', '2023-12-05 03:53:17', NULL),
+(635, 64, 16, 1, 1, '87', '2023-12-10 09:22:29', NULL),
+(636, 64, 16, 1, 2, '85', '2023-12-10 09:22:29', NULL),
+(637, 64, 16, 1, 3, NULL, '2023-12-10 09:22:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -924,7 +927,17 @@ INSERT INTO `biodata_visit_histories` (`id`, `biodata_id`, `user_id`, `from_ip_a
 (134, 12, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:53:21', NULL),
 (135, 9, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:57:57', NULL),
 (136, 9, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:58:03', NULL),
-(137, 9, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:58:58', NULL);
+(137, 9, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-07 04:58:58', NULL),
+(138, 3, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 07:21:31', NULL),
+(139, 3, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 07:22:22', NULL),
+(140, 3, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 07:22:22', NULL),
+(141, 3, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 07:22:32', NULL),
+(142, 3, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 07:22:32', NULL),
+(143, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 08:37:10', NULL),
+(144, 9, NULL, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 09:15:51', NULL),
+(145, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 10:44:37', NULL),
+(146, 13, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 10:45:24', NULL),
+(147, 10, 44, '127.0.0.1', 'Mozilla Firefox', 'WINNT', 'Desktop', '2023-12-10 10:45:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -952,7 +965,9 @@ CREATE TABLE `bio_data` (
   `present_upazila_id` int(11) DEFAULT NULL,
   `present_address` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `contact_no` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `show_image` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=>Dont Show; 1=>Show',
   `gurdians_mobile_no` varchar(255) DEFAULT NULL,
   `relation_with_gurdian` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -967,21 +982,22 @@ CREATE TABLE `bio_data` (
 -- Dumping data for table `bio_data`
 --
 
-INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '80 KG', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', 'biodata_images/dbDVl1701587685.png', '01701224665', 'Father', 'father@gmail.com', 10, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-06 05:41:57'),
-(3, 51, 'SK1701684204', 2, 1, '2000-02-21', 5, 5, '2', '72', '7', 50, 13, 116, 'দিলালপুর', 47, 366, 'বাড্ডা', 'রিদওয়ানা ইসলাম', 'biodata_images/uc68E1701687010.jpg', '0171000462', 'মা', 'redwonaislam113@gmail.com', 0, 1, 'ljkK81701684204', '2023-12-04 02:03:24', '2023-12-04 02:50:10'),
-(4, 52, 'SK1701687700', 2, 1, '2023-06-26', 5, 3, '2', '৬৮', '4', 50, 3, 26, 'Asuopara', 2, 19, 'nikunjo', 'Vasha', 'biodata_images/rwvew1701688382.jpg', '544232945462', 'Father', 'redwonavasha21@gmail.com', 3, 1, 'VszY41701687700', '2023-12-04 03:01:40', '2023-12-05 22:25:46'),
-(5, 53, 'SK1701688765', 1, 3, '1990-10-19', 6, 1, '3', '78', '5', 144, 16, 144, 'Fultola', 3, 28, 'Mariana', 'Md. Fazle rabbi', 'biodata_images/HHY871701689282.jpg', '932945462', 'Father', 'aframaw2021@gmail.com', 1, 1, 'M4Myy1701688765', '2023-12-04 03:19:25', '2023-12-05 21:57:12'),
-(6, 54, 'SK1701689477', 1, 1, '1997-09-22', 6, 1, '2', '৬৮', '1', 50, 13, 113, 'ফুলটোলা', 62, 465, 'বাড্ডা', 'নাজমুল হক', 'biodata_images/eyXDV1701690352.jpg', '0193454600', 'বাবা', 'islam1707113@stud.kuet.ac.bd', 0, 1, 'vZw3H1701689477', '2023-12-04 03:31:17', '2023-12-04 03:45:52'),
-(7, 55, 'SK1701690701', 1, 1, '1994-06-17', 5, 10, '3', '60', '3', 246, 6, 53, 'Ataikula', 2, 19, 'Minnjo', 'Md. Shad Alam', 'biodata_images/ACmbz1701691133.jpg', '0171354634', 'Mother', 'nodox71802@gyxmz.com', 0, 1, 'aisqn1701690701', '2023-12-04 03:51:41', '2023-12-04 03:58:53'),
-(8, 56, 'SK1701758306', 2, 4, '1991-06-01', 5, 1, '5', '৬', '5', 36, 5, 48, 'শেনাবাগ', 5, 48, 'শেনাবাগ', 'Sadia', 'biodata_images/X5FkC1701760658.jpg', '0171868862', 'বাবা', 'wefijit973@getmola.com', 4, 1, 'BGdkp1701758306', '2023-12-04 22:38:26', '2023-12-06 06:04:08'),
-(9, 57, 'SK1701770277', 2, 1, '2000-09-04', 5, 2, '3', '৫০ কেজি', '2', 50, 2, 19, 'শিমুলতলা', 47, 366, 'শাহবাগ', 'Afasna Jannat', 'biodata_images/y5tYK1701771784.jpg', '01900186886', 'বাবা', 'lohec96208@gearstag.com', 3, 1, '36evs1701770277', '2023-12-05 01:57:57', '2023-12-07 04:58:58'),
-(10, 58, 'SK1701772091', 1, 1, '1998-12-01', 5, 10, '5', '৬২', '7', 50, 41, 320, 'ফুলটোলা', 7, 61, 'শাহবাগ', 'Farhan Sadaf', 'biodata_images/Ng3Jg1701772696.jpg', '0192324', 'বাবা', 'pikepo9215@getmola.com', 0, 1, 'H0H6n1701772091', '2023-12-05 02:28:11', '2023-12-05 02:38:16'),
-(11, 59, 'SK1701773073', 1, 1, '2000-09-04', 5, 11, '2', '৫৫কেজি', '7', 50, 27, 209, 'সোনাডাঙ্গা', 28, 218, 'সোনাডাঙ্গা', 'Titu Khondokar', 'biodata_images/Key2k1701773958.jpg', '19029445', 'Father', 'rotiti4268@gearstag.com', 0, 1, '4aJx31701773073', '2023-12-05 02:44:33', '2023-12-05 02:59:18'),
-(12, 60, 'SK1701774114', 1, 3, '1994-04-04', 5, 9, '4', '79', '3', 50, NULL, NULL, NULL, NULL, NULL, NULL, 'Rohit', 'biodata_images/9M7aN1701774506.jpg', '134235346', 'father', 'yevedeg138@gearstag.com', 26, 1, 'fXQ1w1701774114', '2023-12-05 03:01:54', '2023-12-07 04:53:21'),
-(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', 'biodata_images/MOhQc1701775660.jpg', '0171246578', 'Mother', 'hewof86115@gyxmz.com', 14, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-07 04:39:06'),
-(14, 62, 'SK1701775885', 2, 1, '2002-05-25', 5, 1, '5', '৫০ কেজি', '1', 50, 60, 449, 'ফুলটোলা', 47, 365, 'শাহবাগ', 'ফারিহা তাসনিম', 'biodata_images/UOhE91701776361.jpg', '098578758', 'মা', 'losiye7025@getmola.com', 6, 1, 'w7bEz1701775885', '2023-12-05 03:31:25', '2023-12-06 04:59:49'),
-(15, 63, 'SK1701776507', 1, 1, '2001-03-01', 5, 8, '5', '৬৮', '1', 50, 9, 83, 'জামালপুর', 3, 32, 'বাড্ডা', 'আনিসুর রহমান', 'biodata_images/7lUSx1701777286.jpg', '098899862', 'বাবা', 'xarij20954@gearstag.com', 2, 1, 'w7ZAU1701776507', '2023-12-05 03:41:47', '2023-12-06 05:46:34');
+INSERT INTO `bio_data` (`id`, `user_id`, `biodata_no`, `biodata_type_id`, `marital_condition_id`, `birth_date`, `height_foot`, `height_inch`, `skin_tone`, `weight`, `blood_group`, `nationality`, `permenant_district_id`, `permenant_upazila_id`, `permenant_address`, `present_district_id`, `present_upazila_id`, `present_address`, `name`, `contact_no`, `image`, `show_image`, `gurdians_mobile_no`, `relation_with_gurdian`, `email`, `views`, `status`, `slug`, `created_at`, `updated_at`) VALUES
+(2, 44, 'SK1701572098', 1, 1, '1998-12-10', 5, 6, '2', '41', '1', 50, 5, 43, 'মিরপুর ১০, বাঘমারা', 5, 45, 'মিরপুর ১০, বাঘমারা।', 'Md Fahim Hossain', NULL, 'biodata_images/dbDVl1701587685.png', 1, '01701224665', 'Father', 'father@gmail.com', 10, 1, 'F4e0Z-1701572098', '2023-12-02 20:54:58', '2023-12-10 10:28:46'),
+(3, 51, 'SK1701684204', 2, 1, '2000-02-21', 5, 5, '2', '72', '7', 50, 13, 116, 'দিলালপুর', 47, 366, 'বাড্ডা', 'রিদওয়ানা ইসলাম', NULL, 'biodata_images/uc68E1701687010.jpg', 0, '0171000462', 'মা', 'redwonaislam113@gmail.com', 5, 1, 'ljkK81701684204', '2023-12-04 02:03:24', '2023-12-10 07:22:32'),
+(4, 52, 'SK1701687700', 2, 1, '2023-06-26', 5, 3, '2', '৬৮', '4', 50, 3, 26, 'Asuopara', 2, 19, 'nikunjo', 'Vasha', NULL, 'biodata_images/rwvew1701688382.jpg', 1, '544232945462', 'Father', 'redwonavasha21@gmail.com', 3, 1, 'VszY41701687700', '2023-12-04 03:01:40', '2023-12-05 22:25:46'),
+(5, 53, 'SK1701688765', 1, 3, '1990-10-19', 6, 1, '3', '78', '5', 144, 16, 144, 'Fultola', 3, 28, 'Mariana', 'Md. Fazle rabbi', NULL, 'biodata_images/HHY871701689282.jpg', 0, '932945462', 'Father', 'aframaw2021@gmail.com', 1, 1, 'M4Myy1701688765', '2023-12-04 03:19:25', '2023-12-05 21:57:12'),
+(6, 54, 'SK1701689477', 1, 1, '1997-09-22', 6, 1, '2', '৬৮', '1', 50, 13, 113, 'ফুলটোলা', 62, 465, 'বাড্ডা', 'নাজমুল হক', NULL, 'biodata_images/eyXDV1701690352.jpg', 0, '0193454600', 'বাবা', 'islam1707113@stud.kuet.ac.bd', 0, 1, 'vZw3H1701689477', '2023-12-04 03:31:17', '2023-12-04 03:45:52'),
+(7, 55, 'SK1701690701', 1, 1, '1994-06-17', 5, 10, '3', '60', '3', 246, 6, 53, 'Ataikula', 2, 19, 'Minnjo', 'Md. Shad Alam', NULL, 'biodata_images/ACmbz1701691133.jpg', 1, '0171354634', 'Mother', 'nodox71802@gyxmz.com', 0, 1, 'aisqn1701690701', '2023-12-04 03:51:41', '2023-12-04 03:58:53'),
+(8, 56, 'SK1701758306', 2, 4, '1991-06-01', 5, 1, '5', '৬', '5', 36, 5, 48, 'শেনাবাগ', 5, 48, 'শেনাবাগ', 'Sadia', NULL, 'biodata_images/X5FkC1701760658.jpg', 0, '0171868862', 'বাবা', 'wefijit973@getmola.com', 4, 1, 'BGdkp1701758306', '2023-12-04 22:38:26', '2023-12-06 06:04:08'),
+(9, 57, 'SK1701770277', 2, 1, '2000-09-04', 5, 2, '3', '৫০ কেজি', '2', 50, 2, 19, 'শিমুলতলা', 47, 366, 'শাহবাগ', 'Afasna Jannat', NULL, 'biodata_images/y5tYK1701771784.jpg', 0, '01900186886', 'বাবা', 'lohec96208@gearstag.com', 4, 1, '36evs1701770277', '2023-12-05 01:57:57', '2023-12-10 09:15:51'),
+(10, 58, 'SK1701772091', 1, 1, '1998-12-01', 5, 10, '5', '৬২', '7', 50, 41, 320, 'ফুলটোলা', 7, 61, 'শাহবাগ', 'Farhan Sadaf', NULL, 'biodata_images/Ng3Jg1701772696.jpg', 1, '0192324', 'বাবা', 'pikepo9215@getmola.com', 1, 1, 'H0H6n1701772091', '2023-12-05 02:28:11', '2023-12-10 10:45:37'),
+(11, 59, 'SK1701773073', 1, 1, '2000-09-04', 5, 11, '2', '৫৫কেজি', '7', 50, 27, 209, 'সোনাডাঙ্গা', 28, 218, 'সোনাডাঙ্গা', 'Titu Khondokar', NULL, 'biodata_images/Key2k1701773958.jpg', 0, '19029445', 'Father', 'rotiti4268@gearstag.com', 0, 1, '4aJx31701773073', '2023-12-05 02:44:33', '2023-12-05 02:59:18'),
+(12, 60, 'SK1701774114', 1, 3, '1994-04-04', 5, 9, '4', '79', '3', 50, NULL, NULL, NULL, NULL, NULL, NULL, 'Rohit', NULL, 'biodata_images/9M7aN1701774506.jpg', 0, '134235346', 'father', 'yevedeg138@gearstag.com', 26, 1, 'fXQ1w1701774114', '2023-12-05 03:01:54', '2023-12-07 04:53:21'),
+(13, 61, 'SK1701775269', 2, 1, '2000-12-20', 5, 2, '4', '56', '7', 50, 15, 135, 'Askonapara', 3, 26, 'Askonapara', 'Jannatul Ismam', NULL, 'biodata_images/MOhQc1701775660.jpg', 1, '0171246578', 'Mother', 'hewof86115@gyxmz.com', 17, 1, 'yhPL21701775269', '2023-12-05 03:21:09', '2023-12-10 10:45:24'),
+(14, 62, 'SK1701775885', 2, 1, '2002-05-25', 5, 1, '5', '৫০ কেজি', '1', 50, 60, 449, 'ফুলটোলা', 47, 365, 'শাহবাগ', 'ফারিহা তাসনিম', NULL, 'biodata_images/UOhE91701776361.jpg', 0, '098578758', 'মা', 'losiye7025@getmola.com', 6, 1, 'w7bEz1701775885', '2023-12-05 03:31:25', '2023-12-06 04:59:49'),
+(15, 63, 'SK1701776507', 1, 1, '2001-03-01', 5, 8, '5', '৬৮', '1', 50, 9, 83, 'জামালপুর', 3, 32, 'বাড্ডা', 'আনিসুর রহমান', NULL, 'biodata_images/7lUSx1701777286.jpg', 0, '098899862', 'বাবা', 'xarij20954@gearstag.com', 2, 1, 'w7ZAU1701776507', '2023-12-05 03:41:47', '2023-12-06 05:46:34'),
+(16, 64, 'SK1702200108', 1, 1, '2023-12-01', 5, 6, '2', '78', '1', 50, 15, 142, 'Seriol', 15, 142, 'Seriol', 'Test by Fahim', NULL, 'biodata_images/T7Lru1702200562.png', 1, '01254785478', 'Father', 'test@gmail.com', 0, 0, 'wiLcQ1702200108', '2023-12-10 09:21:48', '2023-12-10 10:22:43');
 
 -- --------------------------------------------------------
 
@@ -7804,7 +7820,7 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL,
   `user_type` tinyint(4) NOT NULL DEFAULT 2 COMMENT '1=>Admin; 2=>User/Shop;',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=>Active; 0=>Inactive',
-  `connections` double NOT NULL DEFAULT 0,
+  `connections` double NOT NULL DEFAULT 10,
   `last_purchase_date` varchar(255) DEFAULT NULL,
   `expire_date` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
@@ -7839,7 +7855,8 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (60, 'Rohit', NULL, NULL, 'yevedeg138@gearstag.com', NULL, '655548', '2023-12-05 03:00:51', '$2y$12$525RW10AZ.ITPrQiRfKVsuTlfNDDSOP.h2vu9pTrtRayoCxx5aJOi', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:00:29', '2023-12-05 03:00:51'),
 (61, 'Ismam', NULL, NULL, 'hewof86115@gyxmz.com', NULL, '866440', '2023-12-05 03:15:06', '$2y$12$GE70wKRax28qsPe7FlArou8MYd3asFNsLTJV1agYybAq.8cBpY/Sq', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:13:10', '2023-12-05 03:15:06'),
 (62, 'Anonna', NULL, NULL, 'losiye7025@getmola.com', NULL, '565190', '2023-12-05 03:29:40', '$2y$12$2NKgvRqikdlBaNUiyyaYIORK3JwOc7JRuZzdq3pc8.TPcIrLCjbha', 'Kurigram', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:29:06', '2023-12-05 03:29:40'),
-(63, 'Kamruzzaman', NULL, NULL, 'xarij20954@gearstag.com', NULL, '723297', '2023-12-05 03:40:58', '$2y$12$GKVM65faQahBqMfd9WmHkOXAn0SWR9TAXXF.ieoTtWIkaPPBr3cVe', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:40:36', '2023-12-05 03:40:58');
+(63, 'Kamruzzaman', NULL, NULL, 'xarij20954@gearstag.com', NULL, '723297', '2023-12-05 03:40:58', '$2y$12$GKVM65faQahBqMfd9WmHkOXAn0SWR9TAXXF.ieoTtWIkaPPBr3cVe', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:40:36', '2023-12-05 03:40:58'),
+(64, 'Test User', NULL, NULL, NULL, '01969884477', '310240', '2023-12-05 03:40:58', '$2y$12$V2niQvx2G.EbIy8xMfC8wuIpS9nB6gsEQ7sLG8MCBxf6P1sRuBhZa', 'Dhaka, Bangladesh', 3, 1, 10, NULL, NULL, NULL, '2023-12-10 09:19:12', '2023-12-10 09:19:12');
 
 -- --------------------------------------------------------
 
@@ -8300,7 +8317,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `biodata_question_answers`
 --
 ALTER TABLE `biodata_question_answers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=635;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=638;
 
 --
 -- AUTO_INCREMENT for table `biodata_types`
@@ -8312,13 +8329,13 @@ ALTER TABLE `biodata_types`
 -- AUTO_INCREMENT for table `biodata_visit_histories`
 --
 ALTER TABLE `biodata_visit_histories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `bio_data`
 --
 ALTER TABLE `bio_data`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`
@@ -8558,7 +8575,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

@@ -30,16 +30,20 @@
                                         <div class="biodata-general-widget" style="position: relative; top: 0">
                                             <div class="biodata-general-widget-box">
                                                 <div class="biodata-general-head">
-                                                    <div class="biodata-general-img">
-                                                        @if ($biodata && $biodata->biodata_type_id == 1)
-                                                            <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
-                                                                alt="Image" />
-                                                        @elseif ($biodata && $biodata->biodata_type_id == 2)
-                                                            <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
-                                                                alt="Image" />
+                                                    <div class="biodata-general-img" style="position: relative">
+                                                        @if ($biodata && $biodata->biodata_type_id == 1 && !$biodata->image && !file_exists(public_path($biodata->image)))
+                                                            <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg" alt="Image" />
+                                                        @elseif ($biodata && $biodata->biodata_type_id == 2 && !$biodata->image && !file_exists(public_path($biodata->image)))
+                                                            <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="Image" />
                                                         @else
-                                                            <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
-                                                                alt="Image" />
+                                                            @if($biodata->image && file_exists(public_path($biodata->image)))
+                                                            <img src="{{ url($biodata->image) }}" alt="Image" />
+                                                            @endif
+                                                        @endif
+                                                        @if($biodata->show_image)
+                                                        <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--secondary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Public</span>
+                                                        @else
+                                                        <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--primary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Private</span>
                                                         @endif
                                                     </div>
                                                     <div class="biodata-general-head-info">
@@ -230,6 +234,12 @@
                                                         <label>{{ __('label.candidate_name') }}</label>
                                                         <p>
                                                             <span>{{ $biodata ? $biodata->name : '' }}</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="biodata-details-info-item">
+                                                        <label>{{ __('label.candidate_contact_no') }}</label>
+                                                        <p>
+                                                            <span>{{ $biodata ? $biodata->contact_no : '' }}</span>
                                                         </p>
                                                     </div>
                                                     <div class="biodata-details-info-item">

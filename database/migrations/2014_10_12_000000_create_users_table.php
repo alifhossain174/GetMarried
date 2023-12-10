@@ -27,7 +27,7 @@ return new class extends Migration
             $table->tinyInteger('user_type')->comment("1=>Admin; 2=>User/Shop;")->default(2);
             $table->tinyInteger('status')->comment("1=>Active; 0=>Inactive")->default(1);
 
-            $table->double('connections')->default(0);
+            $table->double('connections')->default(10);
             $table->string('last_purchase_date')->nullable();
             $table->string('expire_date')->nullable();
 

@@ -32,7 +32,9 @@ return new class extends Migration
             $table->integer('present_upazila_id')->nullable();
             $table->string('present_address')->nullable();
             $table->string('name')->nullable();
+            $table->string('contact_no')->nullable();
             $table->string('image')->nullable();
+            $table->tinyInteger('show_image')->default(0)->comment("0=>Dont Show; 1=>Show");
             $table->string('gurdians_mobile_no')->nullable();
             $table->string('relation_with_gurdian')->nullable();
             $table->string('email')->nullable();

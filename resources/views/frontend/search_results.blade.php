@@ -113,12 +113,14 @@
                                 <div class="biodata-card">
                                     <div class="biodata-card-top">
                                         <div class="biodata-card-icon">
-                                            @if ($item->biodata_type_id == 1)
-                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg"
-                                                    alt="#" />
+                                            @if ($item && $item->biodata_type_id == 1 && $item->show_image != 1)
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/man.svg" alt="Image" />
+                                            @elseif ($item && $item->biodata_type_id == 2 && $item->show_image != 1)
+                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="Image" />
                                             @else
-                                                <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg"
-                                                    alt="#" />
+                                                @if($item->show_image && file_exists(public_path($item->image)))
+                                                    <img src="{{ url($item->image) }}" alt="Image" />
+                                                @endif
                                             @endif
                                         </div>
                                         <div class="biodata-card-top-info">
