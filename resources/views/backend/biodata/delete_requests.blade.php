@@ -20,11 +20,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Pending Biodatas</h4>
+                <h4 class="page-title">Biodata Delete Requests</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Functional Module</a></li>
-                        <li class="breadcrumb-item active">Pending Biodatas</li>
+                        <li class="breadcrumb-item active">Biodata Delete Requests</li>
                     </ol>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body pb-4">
-                    <h4 class="mb-3 header-title mt-0">View Pending Biodatas</h4>
+                    <h4 class="mb-3 header-title mt-0">View Biodata Delete Requests</h4>
 
                     <div class="table-responsive">
                         <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
@@ -77,7 +77,7 @@
             serverSide: true,
             pageLength: 15,
             lengthMenu: [15, 25, 50, 100],
-            ajax: "{{ url('view/pending/biodatas') }}",
+            ajax: "{{ url('view/biodata/delete/requests') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
@@ -131,4 +131,30 @@
         });
     </script>
 
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('body').on('click', '.deleteBtn', function() {
+            var slug = $(this).data("id");
+            if (confirm("Are You sure want to delete !")) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('delete/biodata') }}" + '/' + slug,
+                    success: function(data) {
+                        table.draw(false);
+                        toastr.error("Data has been Deleted", "Deleted Successfully");
+                    },
+                    error: function(data) {
+                        console.log('Error:', data);
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\BioData;
+use App\Models\BiodataQuestionAnswer;
 use App\Models\PaymentGateway;
 use App\Models\WebsiteLanguage;
 use Carbon\Carbon;
@@ -13,6 +14,7 @@ use App\Models\BiodataType;
 use App\Models\MaritalCondition;
 use App\Models\QuestionSet;
 use App\Models\SmsGateway;
+use Illuminate\Support\Facades\Auth;
 
 class ConfigController extends Controller
 {
@@ -638,6 +640,82 @@ class ConfigController extends Controller
 
         }
         return view('backend.biodata.blocked');
+    }
+
+    public function viewBiodataDeleteRequests(Request $request){
+        if ($request->ajax()) {
+
+            $data = DB::table('bio_data')
+                        ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                        ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                        ->leftJoin('countries', 'bio_data.nationality', 'countries.id')
+                        ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                        ->leftJoin('districts as present_district', 'bio_data.present_district_id', 'present_district.id')
+                        ->leftJoin('upazilas', 'bio_data.permenant_upazila_id', 'upazilas.id')
+                        ->leftJoin('upazilas as present_upazila', 'bio_data.present_upazila_id', 'present_upazila.id')
+                        ->select('bio_data.*', 'biodata_types.title as biodata_type', 'biodata_types.title_bn as biodata_type_bn', 'marital_conditions.title as marital_condition', 'marital_conditions.title_bn as marital_condition_bn', 'countries.nationality as nationality_label', 'districts.name as permenant_district_name', 'districts.bn_name as permenant_district_name_bn', 'upazilas.name as permenant_upazila_name', 'upazilas.bn_name as permenant_upazila_name_bn', 'present_district.name as present_district_name', 'present_district.bn_name as present_district_name_bn', 'present_upazila.name as present_upazila_name', 'present_upazila.bn_name as present_upazila_name_bn')
+                        ->where('bio_data.delete_request', 1)
+                        ->orderBy('id', 'desc')
+                        ->get();
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('image', function ($data) {
+                    if ($data->image && file_exists(public_path($data->image)))
+                        return url($data->image);
+                })
+                ->editColumn('height_foot', function ($data) {
+                    return $data->height_foot . "′ " . $data->height_inch . "′′";
+                })
+                ->editColumn('birth_date', function ($data) {
+                    return date('jS M, Y', strtotime($data->birth_date));
+                })
+                ->editColumn('skin_tone', function ($data) {
+                        if ($data->skin_tone == 1) {
+                            return __('label.skin_tone_black');
+                        }
+                        elseif ($data->skin_tone == 2) {
+                            return __('label.skin_tone_brown');
+                        }
+                        elseif ($data->skin_tone == 3) {
+                            return __('label.skin_tone_bright_brown');
+                        }
+                        elseif($data->skin_tone == 4){
+                            return __('label.skin_tone_white');
+                        }
+                        else{
+                            return __('label.skin_tone_bright_white');
+                        }
+                    })
+                    ->editColumn('status', function($data) {
+                        if($data->status == 1){
+                            return "<span class='btn btn-sm btn-success rounded' style='padding: .1rem .5rem !important;'>Approved</span>";
+                        } elseif($data->status == 0){
+                            return "<span class='btn btn-sm btn-info rounded' style='padding: .1rem .5rem !important;'>Pending</span>";
+                        } else {
+                            return "<span class='btn btn-sm btn-danger rounded' style='padding: .1rem .5rem !important;'>Blocked</span>";
+                        }
+                    })
+                    ->addColumn('action', function($data){
+                        $btn = ' <a href="'.url('edit/biodata')."/".$data->slug.'" class="mb-1 btn-sm btn-warning rounded d-inline-block"><i class="bi bi-pencil-square"></i> View</a>';
+                        $btn .= ' <a href="javascript:void(0)" data-toggle="tooltip" data-id="' . $data->slug . '" data-original-title="Delete" class="btn-sm mb-1 d-inline-block btn-danger rounded deleteBtn"><i class="bi bi-trash"></i> Delete</a>';
+                        return $btn;
+                    })
+                    ->rawColumns(['action', 'status'])
+                    ->make(true);
+
+        }
+        return view('backend.biodata.delete_requests');
+    }
+
+    public function deleteBiodata($slug){
+        $biodataInfo = BioData::where('slug', $slug)->first();
+        BiodataQuestionAnswer::where('user_id', $biodataInfo->user_id)->where('biodata_id', $biodataInfo->id)->delete();
+        if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
+            unlink(public_path($biodataInfo->image));
+        }
+        $biodataInfo->delete();
+        return response()->json(['success'=> 'Deleted Successfully']);
     }
 
     public function editBiodata($slug){

@@ -142,6 +142,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('view/pending/biodatas', [ConfigController::class, 'viewPendingBiodatas'])->name('ViewPendingBiodatas');
     Route::get('view/approved/biodatas', [ConfigController::class, 'viewApprovedBiodatas'])->name('ViewApprovedBiodatas');
     Route::get('view/blocked/biodatas', [ConfigController::class, 'viewBlockedBiodatas'])->name('ViewBlockedBiodatas');
+    Route::get('view/biodata/delete/requests', [ConfigController::class, 'viewBiodataDeleteRequests'])->name('ViewBiodataDeleteRequests');
+    Route::get('delete/biodata/{slug}', [ConfigController::class, 'deleteBiodata'])->name('DeleteBiodata');
     Route::get('edit/biodata/{slug}', [ConfigController::class, 'editBiodata'])->name('EditBiodata');
     Route::post('change/biodata/status', [ConfigController::class, 'changeBiodataStatus'])->name('ChangeBiodataStatus');
     Route::get('view/biodata/visits', [ConfigController::class, 'viewBiodataVisits'])->name('ViewBiodataVisits');

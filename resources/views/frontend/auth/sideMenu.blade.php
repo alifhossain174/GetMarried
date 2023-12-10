@@ -4,20 +4,25 @@
     <div class="user-d-sidebar-info">
         <img src="{{ url('frontend_assets') }}/assets/images/icons/user.svg" alt="#" />
         <div class="user-d-bio-status-wrap">
-            <h3>{{__('label.user_menu_biodata_progress')}}</h3>
+            {{-- <h3>{{__('label.user_menu_biodata_progress')}}</h3> --}}
+            <h3>{{Auth::user()->name}}</h3>
             <div class="user-d-bio-status">
                 @php
                     $biodata = App\Models\BioData::where('user_id', Auth::user()->id)->first();
                 @endphp
 
-                @if($biodata && $biodata->status == 0)
-                <span class="user-d-complete" style="background: #00b4fd">Status: <b>Pending</b></span>
-                @elseif($biodata && $biodata->status == 1)
-                <span class="user-d-complete">Status: <b>Approved</b></span>
-                @elseif($biodata && $biodata->status == 2)
-                <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Cancelled</b></span>
+                @if($biodata && $biodata->delete_request == 1)
+                    <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Delete Req. Submitted</b></span>
                 @else
-                <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Not Submitted</b></span>
+                    @if($biodata && $biodata->status == 0)
+                        <span class="user-d-complete" style="background: #00b4fd">Status: <b>Pending</b></span>
+                    @elseif($biodata && $biodata->status == 1)
+                        <span class="user-d-complete">Status: <b>Approved</b></span>
+                    @elseif($biodata && $biodata->status == 2)
+                        <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Cancelled</b></span>
+                    @else
+                        <span class="user-d-complete" style="background: var(--primary-color);">Status: <b>Not Submitted</b></span>
+                    @endif
                 @endif
 
             </div>

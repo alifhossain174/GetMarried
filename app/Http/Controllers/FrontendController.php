@@ -99,6 +99,11 @@ class FrontendController extends Controller
         return back();
     }
 
+    public function districtWiseUpazila(Request $request){
+        $data = DB::table('upazilas')->where("district_id", $request->permenant_district_id)->get();
+        return response()->json($data);
+    }
+
     public function contactRequestSubmit(Request $request){
 
         $rules = [
@@ -140,6 +145,7 @@ class FrontendController extends Controller
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
                             ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
+                            ->where('bio_data.delete_request', 0)
                             ->when($biodataType, function($query) use ($biodataType){
                                 return $query->where('bio_data.biodata_type_id', $biodataType);
                             })
@@ -172,6 +178,7 @@ class FrontendController extends Controller
         ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
         ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
         ->where('bio_data.status', 1)
+        ->where('bio_data.delete_request', 0)
         ->when($biodataType, function($query) use ($biodataType){
             return $query->where('bio_data.biodata_type_id', $biodataType);
         })
@@ -220,6 +227,7 @@ class FrontendController extends Controller
         ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
         ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
         ->where('bio_data.status', 1)
+        ->where('bio_data.delete_request', 0)
         ->when($biodataType, function($query) use ($biodataType){
             return $query->where('bio_data.biodata_type_id', $biodataType);
         })
@@ -265,6 +273,7 @@ class FrontendController extends Controller
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
                             ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
+                            ->where('bio_data.delete_request', 0)
                             ->when($biodataType, function($query) use ($biodataType){
                                 return $query->where('bio_data.biodata_type_id', $biodataType);
                             })
@@ -292,6 +301,7 @@ class FrontendController extends Controller
                             ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
                             ->select('bio_data.id', 'bio_data.image', 'bio_data.show_image', 'bio_data.contact_no', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
                             ->where('bio_data.status', 1)
+                            ->where('bio_data.delete_request', 0)
                             ->where('bio_data.biodata_no', 'LIKE', '%'.$biodata_no.'%')
                             ->orderBy('bio_data.id', 'desc')
                             ->paginate(12);

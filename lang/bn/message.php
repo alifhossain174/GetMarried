@@ -3,8 +3,9 @@
 return [
     'welcome' => 'এটি একটি স্বাগত বার্তা!',
     'user_settings_delete_biodata' => 'বায়োডাটা মুছুন',
-    'user_settings_delete_biodata_msg1' => 'এটি অস্থায়ী হলে আপনি সাইডবার মেনু থেকে এটি লুকাতে পারেন। এই ক্রিয়াটি স্থায়ীভাবে আপনার বায়োডাটা মুছে ফেলা হবে।',
+    'user_settings_delete_biodata_msg1' => 'মুছে ফেলার অনুরোধ জমা দিন এবং অ্যাডমিন ব্যবস্থা নেবে। এই ক্রিয়াটি স্থায়ীভাবে আপনার বায়োডাটা মুছে ফেলা হবে।',
     'user_settings_delete_biodata_msg2' => 'আমি বুঝি এবং এই বায়োডাটা মুছে দিতে চাই।',
+    'revoke_removal_request' => 'আপনার বায়োডাটা অপসারণের অনুরোধ প্রত্যাহার করুন',
     'user_settings_change_password' => 'পাসওয়ার্ড পরিবর্তন করুন',
     'user_settings_new_password' => 'নতুন পাসওয়ার্ড',
     'user_settings_confirm_password' => 'নিশ্চিত নতুন পাসওয়ার্ড',

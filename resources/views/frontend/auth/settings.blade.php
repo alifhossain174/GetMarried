@@ -72,6 +72,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8 col-12">
                                         <div class="delete-biodata-widget">
+                                            @if($biodataInfo->delete_request != 1)
                                             <h3 class="delete-biodata-widget-title">
                                                 {{ __('message.user_settings_delete_biodata') }}
                                             </h3>
@@ -97,6 +98,11 @@
                                                     </button>
                                                 </div>
                                             </form>
+                                            @else
+                                            <a href="{{url('remove/biodata/removal/request')}}" class="theme-btn secondary">
+                                                <i class="fi fi-rr-trash"></i> &nbsp;{{ __('message.revoke_removal_request') }}
+                                            </a>
+                                            @endif
 
                                         </div>
                                     </div>

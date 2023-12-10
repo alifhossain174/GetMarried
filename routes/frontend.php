@@ -22,6 +22,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
     Route::get('/terms-condition', [FrontendController::class, 'termsCondition'])->name('Frontend.TermsCondition');
     Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
+    Route::post('/district/wise/upazila', [FrontendController::class, 'districtWiseUpazila'])->name('Frontend.DistrictWiseUpazila');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
     Route::get('/biodata/details/{slug}', [FrontendController::class, 'biodataDetails'])->name('Frontend.BiodataDetails');
 
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');
             Route::post('/user/password/change', [UserDashboardController::class, 'userPasswordChange'])->name('Frontend.UserPasswordChange');
             Route::post('/user/biodata/remove', [UserDashboardController::class, 'userBiodataRemove'])->name('Frontend.UserBiodataRemove');
+            Route::get('/remove/biodata/removal/request', [UserDashboardController::class, 'removeBiodataRemovalReq'])->name('Frontend.RemoveBiodataRemovalReq');
             Route::get('/user/short/list', [UserDashboardController::class, 'userShortList'])->name('Frontend.UserShortList');
             Route::get('/remove/liked/biodata/{slug}', [UserDashboardController::class, 'removeLikedBiodata'])->name('Frontend.RemoveLikedBiodata');
             Route::get('/user/ignore/list', [UserDashboardController::class, 'userIgnoreList'])->name('Frontend.UserIgnoreList');
@@ -75,7 +77,6 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::post('purchase/connection', [UserDashboardController::class, 'purchaseConnection'])->name('Frontend.PurchaseConnection');
 
             Route::post('/save/general/info/biodata', [BiodataController::class, 'saveGeneralInfoBiodata'])->name('Frontend.SaveGeneralInfoBiodata');
-            Route::post('/district/wise/upazila', [BiodataController::class, 'districtWiseUpazila'])->name('Frontend.DistrictWiseUpazila');
             Route::post('/save/address/biodata', [BiodataController::class, 'saveAddressBiodata'])->name('Frontend.SaveAddressBiodata');
             Route::post('/save/biodata/info', [BiodataController::class, 'saveBiodataInfo'])->name('Frontend.SaveBiodataInfo');
             Route::post('/save/contact/info/biodata', [BiodataController::class, 'saveContactInfoBiodata'])->name('Frontend.SaveContactInfoBiodata');

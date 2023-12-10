@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->double('views')->default(0);
 
+            $table->tinyInteger('delete_request')->default(0)->comment('0=>Not Submitted Request; 1=>Submitted Delete Request');
             $table->tinyInteger('status')->default(0)->comment('0=>Pending; 1=>Active; 2=>Blocked');
             $table->string('remarks')->nullable();
 

@@ -49,16 +49,10 @@
             </a>
             <div class="collapse" id="sidebarBiodata">
                 <ul class="nav-second-level">
-                    <li><a href="{{ url('/view/pending/biodatas') }}">Pending Biodata
-                            <span
-                                style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a>
-                    </li>
-                    <li><a href="{{ url('/view/approved/biodatas') }}">Approved Biodata <span
-                                style="color: #00bd00">({{ App\Models\BioData::where('status', 1)->count() }})</span></a>
-                    </li>
-                    <li><a href="{{ url('/view/blocked/biodatas') }}">Blocked Biodata <span
-                                style="color: red">({{ App\Models\BioData::where('status', 2)->count() }})</span></a>
-                    </li>
+                    <li><a href="{{ url('/view/pending/biodatas') }}">Pending Biodata <span style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/approved/biodatas') }}">Approved Biodata <span style="color: #00bd00">({{ App\Models\BioData::where('status', 1)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/blocked/biodatas') }}">Blocked Biodata <span style="color: goldenrod">({{ App\Models\BioData::where('status', 2)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/biodata/delete/requests') }}">Delete Requests <span style="color: red">({{ App\Models\BioData::where('delete_request', 1)->count() }})</span></a></li>
                 </ul>
             </div>
         </li>

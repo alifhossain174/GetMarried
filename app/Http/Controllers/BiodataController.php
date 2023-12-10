@@ -57,17 +57,13 @@ class BiodataController extends Controller
                 'weight' => $request->weight,
                 'blood_group' => $request->blood_group,
                 'nationality' => $request->nationality,
+                'delete_request' => 0,
                 'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
 
             return response()->json(['success'=> 'Saved Successfully']);
         }
-    }
-
-    public function districtWiseUpazila(Request $request){
-        $data = DB::table('upazilas')->where("district_id", $request->permenant_district_id)->get();
-        return response()->json($data);
     }
 
     public function saveAddressBiodata(Request $request){
@@ -105,6 +101,7 @@ class BiodataController extends Controller
                 'present_district_id' => $request->present_district_id,
                 'present_upazila_id' => $request->present_upazila_id,
                 'present_address' => $request->present_address,
+                'delete_request' => 0,
                 'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
@@ -144,6 +141,7 @@ class BiodataController extends Controller
             $biodataId = BioData::insertGetId([
                 'user_id' => $userId,
                 'biodata_no' => 'SK'.time(),
+                'delete_request' => 0,
                 'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);
@@ -221,6 +219,7 @@ class BiodataController extends Controller
                 'gurdians_mobile_no' => $request->gurdians_mobile_no,
                 'relation_with_gurdian' => $request->relation_with_gurdian,
                 'email' => $request->email,
+                'delete_request' => 0,
                 'slug' => str::random(5).time(),
                 'created_at' => Carbon::now()
             ]);

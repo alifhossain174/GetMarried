@@ -3,8 +3,9 @@
 return [
     'welcome' => 'This is a welcome message !',
     'user_settings_delete_biodata' => 'Delete Biodata',
-    'user_settings_delete_biodata_msg1' => 'If it is temporary you can hide it from the sidebar menu. This action will be permanently deleted your biodata.',
+    'user_settings_delete_biodata_msg1' => 'Submit delete request and admin will take the action. This action will be permanently deleted your biodata.',
     'user_settings_delete_biodata_msg2' => 'I understand and would like to delete this biodata.',
+    'revoke_removal_request' => 'Revoke Your Biodata Removal Request',
     'user_settings_change_password' => 'Change Password',
     'user_settings_new_password' => 'New Password',
     'user_settings_confirm_password' => 'Confirm New Password',

@@ -44,7 +44,8 @@ class UserDashboardController extends Controller
         'preferred', 'totalVisits', 'todaysVisits', 'lastWeekVisits', 'lastMonthVisits'));
     }
     public function userSettings(){
-        return view('frontend.auth.settings');
+        $biodataInfo = Biodata::where('user_id', Auth::user()->id)->first();
+        return view('frontend.auth.settings', compact('biodataInfo'));
     }
 
     public function userPasswordChange(Request $request){
@@ -78,15 +79,29 @@ class UserDashboardController extends Controller
             Toastr::error("You Haven't Submitted the Biodata", 'Biodata Not Found !');
             return back();
         } else {
-            BiodataQuestionAnswer::where('user_id', Auth::user()->id)->where('biodata_id', $biodataInfo->id)->delete();
-            if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
-                unlink(public_path($biodataInfo->image));
-            }
-            $biodataInfo->delete();
-            Toastr::success('Successfully Deleted the Biodata', 'Biodata Deleted !');
+
+            // BiodataQuestionAnswer::where('user_id', Auth::user()->id)->where('biodata_id', $biodataInfo->id)->delete();
+            // if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
+            //     unlink(public_path($biodataInfo->image));
+            // }
+            // $biodataInfo->delete();
+
+            $biodataInfo->delete_request = 1;
+            $biodataInfo->save();
+
+            Toastr::error('Delete Request Submitted for Biodata', 'Biodata Deleted !');
             return back();
         }
     }
+
+    public function removeBiodataRemovalReq(Request $request){
+        BioData::where('user_id', Auth::user()->id)->update([
+            'delete_request' => 0
+        ]);
+        Toastr::success('Revoked Biodata Removal Request', 'Successfully Revoked !');
+        return back();
+    }
+
     public function userShortList(){
 
         $data = DB::table('saved_biodatas')
