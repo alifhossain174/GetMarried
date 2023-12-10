@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BioData;
 use App\Models\ContactRequest;
 use App\Models\GoogleRecaptcha;
+use App\Models\PaymentHistory;
+use App\Models\PricingPackage;
+use App\Models\SavedBiodata;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -15,6 +19,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 use App\Exports\ContactRequestExport;
 use App\Exports\CustomerExport;
+use App\Models\PaidView;
+use App\Models\Question;
 
 class HomeController extends Controller
 {
@@ -35,7 +41,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        $biodataBrides = BioData::where('biodata_type_id', 1)->count();
+        $biodataGrooms = BioData::where('biodata_type_id', 2)->count();
+        $biodataQuestions = Question::count();
+        $totalCustomers = User::where('user_type', 3)->count();
+        $totalLiked = SavedBiodata::where('status', 1)->count();
+        $totalDisLiked = SavedBiodata::where('status', 2)->count();
+        $totalPaidView = PaidView::count();
+        $totalPricingPackages = PricingPackage::count();
+        $totalPurchasedCount = PaymentHistory::count();
+        $totalPurchasedAmount = PaymentHistory::sum('amount');
+
+        $pendingBiodatas = DB::table('bio_data')
+                    ->leftJoin('biodata_types', 'bio_data.biodata_type_id', 'biodata_types.id')
+                    ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                    ->select('bio_data.*', 'biodata_types.title as biodata_type', 'marital_conditions.title as marital_condition')
+                    ->where('bio_data.status', 0)
+                    ->orderBy('bio_data.id', 'desc')
+                    ->skip(0)
+                    ->limit(5)
+                    ->get();
+
+        return view('backend.dashboard', compact('biodataBrides', 'biodataGrooms', 'biodataQuestions', 'totalCustomers',
+        'totalLiked', 'totalDisLiked', 'totalPaidView', 'totalPricingPackages', 'totalPurchasedCount',
+        'totalPurchasedAmount', 'pendingBiodatas'));
     }
 
     public function contactRequests(Request $request)
