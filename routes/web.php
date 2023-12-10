@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('change/password', [HomeController::class, 'changePassword'])->name('ChangePassword');
     Route::get('google/recaptcha', [HomeController::class, 'googleRecaptchaPage'])->name('GoogleRecaptchaPage');
     Route::post('update/google/recaptcha', [HomeController::class, 'updateGoogleRecaptcha'])->name('UpdateGoogleRecaptcha');
+    Route::get('view/all/customers', [HomeController::class, 'viewAllCustomers'])->name('ViewAllCustomers');
+    Route::get('download/registered/customer/excel', [HomeController::class, 'downloadCustomersExcel'])->name('DownloadCustomersExcel');
 
     // contact request
     Route::get('contact/requests', [HomeController::class, 'contactRequests'])->name('ContactRequests');

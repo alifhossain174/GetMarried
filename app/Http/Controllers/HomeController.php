@@ -5,15 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\ContactRequest;
 use App\Models\GoogleRecaptcha;
 use App\Models\User;
-use App\Models\SchoolInfo;
-use App\Models\SchoolCommittee;
-use App\Models\SubjectGroup;
-use App\Models\SchoolClass;
-use App\Models\Notice;
-use App\Models\Shift;
-use App\Models\AboutUs;
-use App\Models\PublicExam;
-use App\Models\PublicExamResult;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\DataTables;
 use App\Exports\ContactRequestExport;
+use App\Exports\CustomerExport;
 
 class HomeController extends Controller
 {
@@ -156,5 +148,32 @@ class HomeController extends Controller
 
     public function downloadContactRequestsExcel(){
         return Excel::download(new ContactRequestExport, 'contact_requests.xlsx');
+    }
+
+    public function viewAllCustomers(Request $request){
+        if ($request->ajax()) {
+
+            $data = User::where('user_type', 3)->orderBy('id', 'desc')->get();
+
+            return Datatables::of($data)
+                ->editColumn('email', function ($data) {
+                    if($data->email){
+                        return $data->email;
+                    } else {
+                        return $data->contact;
+                    }
+                })
+                ->editColumn('created_at', function ($data) {
+                    return date("Y-m-d H:i:s", strtotime($data->created_at));
+                })
+                ->addIndexColumn()
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('backend.customers');
+    }
+
+    public function downloadCustomersExcel(){
+        return Excel::download(new CustomerExport, 'customers.xlsx');
     }
 }
