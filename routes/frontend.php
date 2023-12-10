@@ -23,10 +23,15 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
     Route::get('/refund-policy', [FrontendController::class, 'refundPolicy'])->name('Frontend.RefundPolicy');
     Route::get('/change/lang', [FrontendController::class, 'langChange'])->name('Frontend.LangChange');
     Route::post('/contact/request/submit', [FrontendController::class, 'contactRequestSubmit'])->name('Frontend.ContactRequestSubmit')->middleware(ProtectAgainstSpam::class)->middleware(['throttle:3,1']);
-    Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
-    Route::get('/change/search/result/order', [FrontendController::class, 'changeSearchResultOrder'])->name('Frontend.ChangeSearchResultOrder');
-    Route::get('/search/biodata/no', [FrontendController::class, 'searchBiodataNo'])->name('Frontend.SearchBiodataNo');
     Route::get('/biodata/details/{slug}', [FrontendController::class, 'biodataDetails'])->name('Frontend.BiodataDetails');
+
+
+    Route::get('/search/results', [FrontendController::class, 'searchResults'])->name('Frontend.SearchResults');
+    Route::get('/remove/search/filters', [FrontendController::class, 'removeSearchFilters'])->name('Frontend.RemoveSearchFilters');
+    Route::get('/change/search/result/order', [FrontendController::class, 'changeSearchResultOrder'])->name('Frontend.ChangeSearchResultOrder');
+    Route::get('filter/search/results', [FrontendController::class, 'filterSearchResults'])->name('Frontend.FilterSearchResults');
+    Route::get('/search/biodata/no', [FrontendController::class, 'searchBiodataNo'])->name('Frontend.SearchBiodataNo');
+
 
 
     // user login dashboard

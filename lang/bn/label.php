@@ -142,4 +142,6 @@ return [
     'biodata_search_results_new' => 'নতুন',
     'biodata_search_results_old' => 'পুরাতন',
     'biodata_search_results_filter' => 'ফিল্টার',
+    'biodata_search_results_filters' => 'ফিল্টার সমূহ',
+    'biodata_filter_criteria_primary' => 'প্রাথমিক',
 ];

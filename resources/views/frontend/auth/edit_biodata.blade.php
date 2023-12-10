@@ -230,7 +230,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{ __('label.weight') }}<span>*</span></label>
-                                                                <input type="text" id="weight" name="weight"
+                                                                <input type="number" id="weight" name="weight"
                                                                     value="{{ $biodata ? $biodata->weight : '' }}"
                                                                     placeholder="{{ __('label.your_weight') }}"
                                                                     required />
@@ -328,11 +328,8 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>{{ __('label.upazila') }}<span>*</span></label>
-                                                                <select class="hero-search-filter-select select2"
-                                                                    name="permenant_upazila_id" id="permenant_upazila_id"
-                                                                    required>
-                                                                    <option value="">{{ __('label.all_upazila') }}
-                                                                    </option>
+                                                                <select class="hero-search-filter-select select2" name="permenant_upazila_id" id="permenant_upazila_id" required>
+                                                                    <option value="">{{ __('label.all_upazila') }}</option>
                                                                     @if ($biodata && $biodata->permenant_upazila_id > 0 && $biodata->permenant_district_id > 0)
                                                                         @php
                                                                             $permenantUpazilas = DB::table('upazilas')

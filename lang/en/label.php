@@ -141,5 +141,7 @@ return [
     'biodata_search_results_new' => 'New',
     'biodata_search_results_old' => 'Old',
     'biodata_search_results_filter' => 'Filter',
+    'biodata_search_results_filters' => 'Filters',
+    'biodata_filter_criteria_primary' => 'Primary Info',
 
 ];

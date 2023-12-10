@@ -34,6 +34,7 @@
                     </div>
                     <form action="{{url('search/results')}}" method="GET">
                         @csrf
+                        <input type="hidden" name="order" value="1">
                         <div class="hero-search-filter">
                             <div class="form-group">
                                 <label>{{ __('label.hero_searching_for') }}</label>
@@ -62,6 +63,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <input type="hidden" name="order" value="1">
                             <button type="submit" class="h-search-filter-btn">
                                 <i class="fi fi-rs-search"></i>{{ __('label.hero_search') }}
                             </button>

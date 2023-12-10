@@ -82,19 +82,15 @@
                                 <div class="biodata-filter-select">
                                     <form action={{ url('/change/search/result/order') }} type="get">
                                         @csrf
-                                        <input type="hidden" name="biodata_type"
-                                            value="{{ isset($biodataType) ? $biodataType : '' }}">
-                                        <input type="hidden" name="marital_status"
-                                            value="{{ isset($maritalStatus) ? $maritalStatus : '' }}">
-                                        <input type="hidden" name="district"
-                                            value="{{ isset($district) ? $district : '' }}">
+                                        <input type="hidden" name="biodata_type" value="{{ isset($biodataType) ? $biodataType : '' }}">
+                                        <input type="hidden" name="marital_status" value="{{ isset($maritalStatus) ? $maritalStatus : '' }}">
+                                        <input type="hidden" name="district" value="{{ isset($district) ? $district : '' }}">
+                                        <input type="hidden" name="upazila" value="{{ isset($upazila) ? $upazila : '' }}">
                                         <div class="form-group">
                                             <select class="select2 hero-search-filter-select" name="order"
                                                 onchange="this.form.submit()">
-                                                <option value="1">{{ __('label.biodata_search_results_new') }}
-                                                </option>
-                                                <option value="2">{{ __('label.biodata_search_results_old') }}
-                                                </option>
+                                                <option value="1" @if(isset($order) && $order == 1) selected @endif>{{ __('label.biodata_search_results_new') }}</option>
+                                                <option value="2" @if(isset($order) && $order == 2) selected @endif>{{ __('label.biodata_search_results_old') }}</option>
                                             </select>
                                             <noscript><input type="submit" value="Submit"></noscript>
                                         </div>
@@ -109,8 +105,9 @@
                         </div>
                     </div>
                     <div class="biodata-main-inner">
-                        <div class="biodata-main-inner-card">
 
+                        @if($data->total() > 0)
+                        <div class="biodata-main-inner-card">
                             <!-- Single BioData Card -->
                             @foreach ($data as $item)
                                 <div class="biodata-card">
@@ -200,8 +197,15 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
+                        @else
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="alert alert-danger text-center d-block w-100 mt-3">Sorry! No Matching Data Found</span>
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="biodata-pagination">
@@ -232,13 +236,16 @@
                                     <div class="biodata-sidebar-tab-menu">
                                         <div class="list-group" id="list-tab" role="tablist">
                                             <a class="list-group-item active" data-bs-toggle="list" role="tab">
-                                                ফিল্টার সমূহ
+                                                {{ __('label.biodata_search_results_filters') }}
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <!-- Tab Details -->
+                                    <form action="{{url('filter/search/results')}}" method="GET">
+                                    @csrf
+                                    <input type="hidden" name="order" value="{{isset($order) ? $order : 1}}">
                                     <div class="biodata-sidebar-tab-details">
                                         <div class="tab-content" id="nav-tabContent">
                                             <!-- Tab One -->
@@ -249,71 +256,146 @@
                                                         <!-- Single Accordion Item -->
                                                         <div class="biodata-accordion-item">
                                                             <h2 class="accordion-header" id="flush-headingOne">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseOne"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseOne">
-                                                                    প্রাথমিক
+                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                                    {{ __('label.biodata_filter_criteria_primary') }}
                                                                 </button>
                                                             </h2>
-                                                            <div id="flush-collapseOne"
-                                                                class="accordion-collapse collapse show"
-                                                                aria-labelledby="flush-headingOne"
-                                                                data-bs-parent="#accordionFlushExample">
+                                                            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                                                 <div class="biodata-accordion-body">
                                                                     <div class="form-group">
-                                                                        <label>আমি খুঁজছি</label>
-                                                                        <select class="select2 hero-search-filter-select">
-                                                                            <option value="1">সকল</option>
-                                                                            <option value="2">
-                                                                                পাত্রের বায়োডাটা
-                                                                            </option>
-                                                                            <option value="3">
-                                                                                পাত্রীর বায়োডাটা
-                                                                            </option>
+                                                                        @php
+                                                                            $biodataTypes = App\Models\BiodataType::where('status', 1)->orderBy('serial', 'asc')->get();
+                                                                        @endphp
+                                                                        <label>{{ __('label.hero_searching_for') }}</label>
+                                                                        <select class="select2 hero-search-filter-select" name="biodata_type">
+                                                                            <option value="">{{ __('label.hero_all') }}</option>
+                                                                            @foreach ($biodataTypes as $type)
+                                                                            <option value="{{$type->id}}" @if(isset($biodataType) && $biodataType==$type->id) selected @endif>{{ App::currentLocale() == 'en' ? $type->title : $type->title_bn }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>বৈবাহিক অবস্থা</label>
-                                                                        <select class="select2 hero-search-filter-select">
-                                                                            <option value="1">সকল</option>
-                                                                            <option value="2">অবিবাহিত</option>
-                                                                            <option value="3">বিবাহিত</option>
-                                                                            <option value="4">ডিভোর্সড</option>
-                                                                            <option value="5">বিধবা</option>
-                                                                            <option value="6">বিপত্নীক</option>
+                                                                        @php
+                                                                            $maritalConditions = App\Models\MaritalCondition::where('status', 1)->orderBy('serial', 'asc')->get();
+                                                                        @endphp
+                                                                        <label>{{ __('label.hero_marital_status') }}</label>
+                                                                        <select class="select2 hero-search-filter-select" name="marital_status">
+                                                                            <option value="">{{ __('label.hero_all') }}</option>
+                                                                            @foreach ($maritalConditions as $mc)
+                                                                            <option value="{{$mc->id}}" @if(isset($maritalStatus) && $maritalStatus==$mc->id) selected @endif>{{ App::currentLocale() == 'en' ? $mc->title : $mc->title_bn }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    <div class="form-group age-range range">
+                                                                    <div class="biodata-check-list">
+                                                                        <span> {{ __('label.skin_tone') }} </span>
+                                                                        <div class="form-check-group">
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="1" @if(isset($skinTone) && in_array(1, $skinTone)) checked @endif name="skin_tone[]"/>
+                                                                                    {{ __('label.skin_tone_black') }}
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="2" @if(isset($skinTone) && in_array(2, $skinTone)) checked @endif name="skin_tone[]"/>
+                                                                                    {{ __('label.skin_tone_brown') }}
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="3" @if(isset($skinTone) && in_array(3, $skinTone)) checked @endif name="skin_tone[]"/>
+                                                                                    {{ __('label.skin_tone_bright_brown') }}
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="4" @if(isset($skinTone) && in_array(4, $skinTone)) checked @endif name="skin_tone[]"/>
+                                                                                    {{ __('label.skin_tone_white') }}
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="5" @if(isset($skinTone) && in_array(5, $skinTone)) checked @endif name="skin_tone[]"/>
+                                                                                    {{ __('label.skin_tone_bright_white') }}
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="biodata-check-list">
+                                                                        <span> {{ __('label.blood_group') }} </span>
+                                                                        <div class="form-check-group">
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="1" @if(isset($bloodGroup) && in_array(1, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    A+
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="2" @if(isset($bloodGroup) && in_array(2, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    A-
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="3" @if(isset($bloodGroup) && in_array(3, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    B+
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="4" @if(isset($bloodGroup) && in_array(4, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    B-
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="5" @if(isset($bloodGroup) && in_array(5, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    AB+
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="6" @if(isset($bloodGroup) && in_array(6, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    AB-
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="7" @if(isset($bloodGroup) && in_array(7, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    O+
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <label class="biodata-check-box">
+                                                                                    <input class="form-check-input" type="checkbox" value="8" @if(isset($bloodGroup) && in_array(8, $bloodGroup)) checked @endif name="blood_group[]"/>
+                                                                                    O-
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- <div class="form-group age-range range">
                                                                         <label>বয়স</label>
                                                                         <div class="age-filter">
                                                                             <div class="label-input">
-                                                                                <input type="text" id="amount-one"
-                                                                                    name="age"
-                                                                                    placeholder="Add Your age" />
+                                                                                <input type="text" id="amount-one" name="age" placeholder="Add Your age" />
                                                                             </div>
                                                                             <div class="age-filter-inner">
-                                                                                <div id="slider-range-one"
-                                                                                    class="slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                                                                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                                                                        style="left: 0%; width: 100%">
+                                                                                <div id="slider-range-one" class="slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                                                                    <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%">
                                                                                     </div>
-                                                                                    <span
-                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                        tabindex="0"
-                                                                                        style="left: 0%"></span><span
-                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                        tabindex="0"
-                                                                                        style="left: 100%"></span>
+                                                                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%"></span>
+                                                                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%"></span>
                                                                                 </div>
                                                                                 <div class="age_slider_amount"></div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <!-- Single Accordion Item -->
                                                         <div class="biodata-accordion-item">
                                                             <h2 class="accordion-header" id="flush-headingTwo">
@@ -322,7 +404,7 @@
                                                                     data-bs-target="#flush-collapseTwo"
                                                                     aria-expanded="false"
                                                                     aria-controls="flush-collapseTwo">
-                                                                    ঠিকানা
+                                                                    {{ __('label.address') }}
                                                                 </button>
                                                             </h2>
                                                             <div id="flush-collapseTwo"
@@ -331,516 +413,53 @@
                                                                 data-bs-parent="#accordionFlushExample">
                                                                 <div class="biodata-accordion-body">
                                                                     <div class="form-group">
-                                                                        <label>জেলা</label>
-                                                                        <select class="hero-search-filter-select select2"
-                                                                            name="state">
-                                                                            <option value="0">সকল জেলা</option>
-                                                                            <option value="1">কুমিল্লা</option>
-                                                                            <option value="2">ফেনী</option>
-                                                                            <option value="3">ব্রাহ্মণবাড়িয়া
-                                                                            </option>
-                                                                            <option value="4">রাঙ্গামাটি</option>
-                                                                            <option value="5">নোয়াখালী</option>
-                                                                            <option value="6">চাঁদপুর</option>
-                                                                            <option value="7">লক্ষ্মীপুর</option>
-                                                                            <option value="8">চট্টগ্রাম</option>
-                                                                            <option value="9">কক্সবাজার</option>
-                                                                            <option value="10">খাগড়াছড়ি</option>
-                                                                            <option value="11">বান্দরবান</option>
-                                                                            <option value="12">সিরাজগঞ্জ</option>
-                                                                            <option value="13">পাবনা</option>
-                                                                            <option value="14">বগুড়া</option>
-                                                                            <option value="15">রাজশাহী</option>
-                                                                            <option value="16">নাটোর</option>
-                                                                            <option value="17">জয়পুরহাট</option>
-                                                                            <option value="18">চাঁপাইনবাবগঞ্জ</option>
-                                                                            <option value="19">নওগাঁ</option>
-                                                                            <option value="20">যশোর</option>
-                                                                            <option value="21">সাতক্ষীরা</option>
-                                                                            <option value="22">মেহেরপুর</option>
-                                                                            <option value="23">নড়াইল</option>
-                                                                            <option value="24">চুয়াডাঙ্গা</option>
-                                                                            <option value="25">কুষ্টিয়া</option>
-                                                                            <option value="26">মাগুরা</option>
-                                                                            <option value="27">খুলনা</option>
-                                                                            <option value="28">বাগেরহাট</option>
-                                                                            <option value="29">ঝিনাইদহ</option>
-                                                                            <option value="30">ঝালকাঠি</option>
-                                                                            <option value="31">পটুয়াখালী</option>
-                                                                            <option value="32">পিরোজপুর</option>
-                                                                            <option value="33">বরিশাল</option>
-                                                                            <option value="34">ভোলা</option>
-                                                                            <option value="35">বরগুনা</option>
-                                                                            <option value="36">সিলেট</option>
-                                                                            <option value="37">মৌলভীবাজার</option>
-                                                                            <option value="38">হবিগঞ্জ</option>
-                                                                            <option value="39">সুনামগঞ্জ</option>
-                                                                            <option value="40">নরসিংদী</option>
-                                                                            <option value="41">গাজীপুর</option>
-                                                                            <option value="42">শরীয়তপুর</option>
-                                                                            <option value="43">নারায়ণগঞ্জ</option>
-                                                                            <option value="44">টাঙ্গাইল</option>
-                                                                            <option value="45">কিশোরগঞ্জ</option>
-                                                                            <option value="46">মানিকগঞ্জ</option>
-                                                                            <option value="47">ঢাকা</option>
-                                                                            <option value="48">মুন্সিগঞ্জ</option>
-                                                                            <option value="49">রাজবাড়ী</option>
-                                                                            <option value="50">মাদারীপুর</option>
-                                                                            <option value="51">গোপালগঞ্জ</option>
-                                                                            <option value="52">ফরিদপুর</option>
-                                                                            <option value="53">পঞ্চগড়</option>
-                                                                            <option value="54">দিনাজপুর</option>
-                                                                            <option value="55">লালমনিরহাট</option>
-                                                                            <option value="56">নীলফামারী</option>
-                                                                            <option value="57">গাইবান্ধা</option>
-                                                                            <option value="58">ঠাকুরগাঁও</option>
-                                                                            <option value="59">রংপুর</option>
-                                                                            <option value="60">কুড়িগ্রাম</option>
-                                                                            <option value="61">শেরপুর</option>
-                                                                            <option value="62">ময়মনসিংহ</option>
-                                                                            <option value="63">জামালপুর</option>
-                                                                            <option value="64">নেত্রকোণা</option>
+                                                                        @php
+                                                                            $districts = DB::table('districts')->orderBy('id', 'asc')->get();
+                                                                        @endphp
+                                                                        <label>{{ __('label.hero_permenant_address') }}</label>
+                                                                        <select id="permenant_district_id" class="hero-search-filter-select select2" name="district">
+                                                                            <option value="">{{ __('label.district') }}</option>
+                                                                            @foreach ($districts as $item)
+                                                                            <option value="{{$item->id}}" @if(isset($district) && $district == $item->id) selected @endif>{{ App::currentLocale() == 'en' ? $item->name : $item->bn_name }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>উপজেলা</label>
-                                                                        <select class="hero-search-filter-select select2"
-                                                                            name="state">
-                                                                            <option value="0">সকল উপজেলা</option>
-                                                                            <option value="1">দেবিদ্বার</option>
-                                                                            <option value="2">বরুড়া</option>
-                                                                            <option value="3">ব্রাহ্মণপাড়া</option>
-                                                                            <option value="4">চান্দিনা</option>
-                                                                            <option value="5">চৌদ্দগ্রাম</option>
-                                                                            <option value="6">দাউদকান্দি</option>
-                                                                            <option value="7">হোমনা</option>
-                                                                            <option value="8">লাকসাম</option>
-                                                                            <option value="9">মুরাদনগর</option>
-                                                                            <option value="10">নাঙ্গলকোট</option>
-                                                                            <option value="11">কুমিল্লা সদর</option>
-                                                                            <option value="12">মেঘনা</option>
-                                                                            <option value="13">মনোহরগঞ্জ</option>
-                                                                            <option value="14">সদর দক্ষিণ</option>
-                                                                            <option value="15">তিতাস</option>
-                                                                            <option value="16">বুড়িচং</option>
-                                                                            <option value="17">লালমাই</option>
+                                                                        <label>{{ __('label.upazila') }}</label>
+                                                                        <select id="permenant_upazila_id" class="hero-search-filter-select select2" name="upazila">
+                                                                            <option value="">{{ __('label.upazila') }}</option>
+                                                                            @if (isset($district) && $district > 0)
+                                                                                @php
+                                                                                    $presentUpazilas = DB::table('upazilas')
+                                                                                        ->where('district_id', $district)
+                                                                                        ->get();
+                                                                                @endphp
+                                                                                @foreach ($presentUpazilas as $item)
+                                                                                    <option value="{{ $item->id }}" @if(isset($upazila) && $upazila == $item->id) selected @endif>
+                                                                                        {{ App::currentLocale() == 'en' ? $item->name : $item->bn_name }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- Single Accordion Item -->
-                                                        <div class="biodata-accordion-item">
-                                                            <h2 class="accordion-header" id="flush-headingThree">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseThree"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseThree">
-                                                                    শিক্ষা
-                                                                </button>
-                                                            </h2>
-                                                            <div id="flush-collapseThree"
-                                                                class="accordion-collapse collapse"
-                                                                aria-labelledby="flush-headingThree"
-                                                                data-bs-parent="#accordionFlushExample">
-                                                                <div class="biodata-accordion-body">
-                                                                    <div class="biodata-check-list">
-                                                                        <span>পড়াশোনার মাধ্যম</span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="1" />জেনারেল</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="2" />কওমি</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="3" />আলিয়া</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="biodata-check-list">
-                                                                        <span>দ্বীনি শিক্ষাগত যোগ্যতা</span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="4" />হাফেজ</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="5" />মাওলানা</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="6" />মুফতি</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="7" />মুফাসসির</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="8" />আদিব</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Single Accordion Item -->
-                                                        <div class="biodata-accordion-item">
-                                                            <h2 class="accordion-header" id="flush-headingFour">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseFour"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseFour">
-                                                                    ব্যক্তিগত
-                                                                </button>
-                                                            </h2>
-                                                            <div id="flush-collapseFour"
-                                                                class="accordion-collapse collapse"
-                                                                aria-labelledby="flush-headingFour"
-                                                                data-bs-parent="#accordionFlushExample">
-                                                                <div class="biodata-accordion-body">
-                                                                    <div class="form-group age-range range height-range">
-                                                                        <label> উচ্চতা </label>
-                                                                        <div class="age-filter height-filter">
-                                                                            <div class="label-input">
-                                                                                <input type="text" id="amount-two"
-                                                                                    name="age"
-                                                                                    placeholder="Add Your age" />
-                                                                            </div>
-                                                                            <div
-                                                                                class="age-filter-inner height-filter-inner">
-                                                                                <div id="slider-range-two"
-                                                                                    class="slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                                                                    <div class="ui-slider-range ui-widget-header ui-corner-all"
-                                                                                        style="left: 0%; width: 100%">
-                                                                                    </div>
-                                                                                    <span
-                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                        tabindex="0"
-                                                                                        style="left: 0%"></span><span
-                                                                                        class="ui-slider-handle ui-state-default ui-corner-all"
-                                                                                        tabindex="0"
-                                                                                        style="left: 100%"></span>
-                                                                                </div>
-                                                                                <div class="age_slider_amount"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="biodata-check-list">
-                                                                        <span> গাত্রবর্ণ </span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="1" />কালো</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="2" />শ্যামলা</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="3" />উজ্জ্বল
-                                                                                    শ্যামলা</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="4" />ফর্সা</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="5" />উজ্জ্বল
-                                                                                    ফর্সা</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="biodata-check-list">
-                                                                        <span> ফিকহ অনুসরণ </span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="6" />হানাফি</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="7" />মালিকি</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="8" />শাফিঈ</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="9" />হাম্বলি</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="10" />আহলে হাদীস /
-                                                                                    সালাফি</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Single Accordion Item -->
-                                                        <div class="biodata-accordion-item">
-                                                            <h2 class="accordion-header" id="flush-headingFive">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseFive"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseFive">
-                                                                    পেশা
-                                                                </button>
-                                                            </h2>
-                                                            <div id="flush-collapseFive"
-                                                                class="accordion-collapse collapse"
-                                                                aria-labelledby="flush-headingFive"
-                                                                data-bs-parent="#accordionFlushExample">
-                                                                <div class="biodata-accordion-body">
-                                                                    <div class="biodata-check-list">
-                                                                        <span> পেশা </span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="1" />ইমাম</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="2" />মাদ্রাসা
-                                                                                    শিক্ষক</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="3" />শিক্ষক</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="4" />ডাক্তার</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="5" />ইঞ্জিনিয়ার</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="6" />ব্যবসায়ী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="7" />সরকারী
-                                                                                    চাকুরী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="8" />বেসরকারী
-                                                                                    চাকুরী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="9" />ফ্রিল্যান্সার</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="10" />শিক্ষার্থী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="11" />প্রবাসী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="12" />অন্যান্য</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="13" />পেশা নেই</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Single Accordion Item -->
-                                                        <div class="biodata-accordion-item">
-                                                            <h2 class="accordion-header" id="flush-headingSix">
-                                                                <button class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseSix"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseSix">
-                                                                    অন্যান্য
-                                                                </button>
-                                                            </h2>
-                                                            <div id="flush-collapseSix"
-                                                                class="accordion-collapse collapse"
-                                                                aria-labelledby="flush-headingSix"
-                                                                data-bs-parent="#accordionFlushExample">
-                                                                <div class="biodata-accordion-body">
-                                                                    <div class="biodata-check-list">
-                                                                        <span> অর্থনৈতিক অবস্থা </span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="1" />উচ্চবিত্ত</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="2" />উচ্চ
-                                                                                    মধ্যবিত্ত</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="3" />মধ্যবিত্ত</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="4" />নিম্ন
-                                                                                    মধ্যবিত্ত</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="5" />নিম্নবিত্ত</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="biodata-check-list">
-                                                                        <span> ক্যাটাগরি </span>
-                                                                        <div class="form-check-group">
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="6" />প্রতিবন্ধী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="7" />বন্ধ্যা</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="8" />নওমুসলিম</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="9" />এতিম</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="10" />মাসনা হতে
-                                                                                    আগ্রহী</label>
-                                                                            </div>
-                                                                            <div class="form-check">
-                                                                                <label class="biodata-check-box">
-                                                                                    <input class="form-check-input"
-                                                                                        type="checkbox"
-                                                                                        value="11" />তাবলীগ</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                     <div class="biodata-filter-btn">
-                                                        <button type="button" class="theme-btn">
+                                                        <button type="submit" class="theme-btn">
                                                             <i class="fi fi-rs-search"></i>খুঁজুন
                                                         </button>
-                                                        <button type="button" class="theme-btn filter-remove">
+                                                        <a href="{{url('remove/search/filters')}}" class="theme-btn filter-remove">
                                                             <i class="icofont-eraser"></i>ফিল্টার মুছুন
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    </form>
                                     <!-- End Tab Details -->
                                 </div>
                             </div>
@@ -859,5 +478,51 @@
             toastr.warning("Already Added in Liked List");
             return false;
         }
+
+        $(document).ready(function() {
+            $('#permenant_district_id').on('change', function() {
+                var permenantDistrictId = this.value;
+                $("#permenant_upazila_id").html('');
+                $.ajax({
+                    url: "{{ url('/district/wise/upazila') }}",
+                    type: "POST",
+                    data: {
+                        permenant_district_id: permenantDistrictId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        $('#permenant_upazila_id').html(
+                            '<option value="">Select Option</option>');
+                        $.each(result, function(key, value) {
+                            @if (App::currentLocale() == 'en')
+                                $("#permenant_upazila_id").append('<option value="' + value.id + '" >' + value.name + '</option>');
+                            @else
+                                $("#permenant_upazila_id").append('<option value="' + value.id + '">' + value.bn_name + '</option>');
+                            @endif
+                        });
+                    }
+                });
+            });
+        });
+
+        // $(function () {
+        //     $("#slider-range-one").slider({
+        //         range: true,
+        //         min: {{isset($ageArray) ? $ageArray[0] : 0}},
+        //         max: {{isset($ageArray) ? $ageArray[1] : 100}},
+        //         values: [{{isset($ageArray) ? $ageArray[0] : 0}}, {{isset($ageArray) ? $ageArray[1] : 100}}],
+        //         slide: function (event, ui) {
+        //             // $("#amount-one").val("" + ui.values[0] + " - " + ui.values[1]);
+        //         },
+        //     });
+        //     $("#amount-one").val(""+$("#slider-range-one").slider("values", 0)+"-"+$("#slider-range-one").slider("values", 1));
+        // });
+
+        // $( document ).ready(function() {
+        //     $(".ui-slider-handle").first().css("left", "{{isset($ageArray) ? $ageArray[0] : 0}}%");
+        //     $(".ui-slider-handle").last().css("left", "{{isset($ageArray) ? $ageArray[1] : 100}}%");
+        // });
+
     </script>
 @endsection

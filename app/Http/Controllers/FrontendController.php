@@ -133,6 +133,7 @@ class FrontendController extends Controller
         $biodataType = $request->biodata_type;
         $maritalStatus = $request->marital_status;
         $district = $request->district;
+        $order = $request->order;
 
         $data = DB::table('bio_data')
                             ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
@@ -146,7 +147,7 @@ class FrontendController extends Controller
                                 return $query->where('bio_data.marital_condition_id', $maritalStatus);
                             })
                             ->when($district, function($query) use ($district){
-                                return $query->where('bio_data.marital_condition_id', $district);
+                                return $query->where('bio_data.permenant_district_id', $district);
                             })
                             ->orderBy('bio_data.id', 'desc')
                             ->paginate(12);
@@ -154,11 +155,132 @@ class FrontendController extends Controller
         $search_results_url = $request->path()."?".$request->getQueryString();
         session(['call_back_url' => $search_results_url]);
 
-        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district'));
+        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district', 'order'));
     }
 
     public function changeSearchResultOrder(Request $request){
-        
+
+        // common query parameter
+        $biodataType = $request->biodata_type;
+        $maritalStatus = $request->marital_status;
+        $district = $request->district;
+        $order = $request->order;
+        $upazila = $request->upazila;
+
+        $query = DB::table('bio_data');
+        $query->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+        ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+        ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+        ->where('bio_data.status', 1)
+        ->when($biodataType, function($query) use ($biodataType){
+            return $query->where('bio_data.biodata_type_id', $biodataType);
+        })
+        ->when($maritalStatus, function($query) use ($maritalStatus){
+            return $query->where('bio_data.marital_condition_id', $maritalStatus);
+        })
+        ->when($district, function($query) use ($district){
+            return $query->where('bio_data.permenant_district_id', $district);
+        })
+        ->when($upazila, function($query) use ($upazila){
+            return $query->where('bio_data.permenant_upazila_id', $upazila);
+        });
+
+        if($order == 1){
+            $query->orderBy('bio_data.id', 'desc');
+        } else {
+            $query->orderBy('bio_data.id', 'asc');
+        }
+        $data = $query->paginate(12);
+
+        $search_results_url = $request->path()."?".$request->getQueryString();
+        session(['call_back_url' => $search_results_url]);
+
+        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district', 'order'));
+    }
+
+    public function filterSearchResults(Request $request){
+
+        // common query parameter
+        $biodataType = $request->biodata_type;
+        $maritalStatus = $request->marital_status;
+        $order = $request->order;
+        $district = $request->district;
+        $upazila = $request->upazila;
+        // common query parameter
+
+        $skinTone = $request->skin_tone;
+        $bloodGroup = $request->blood_group;
+
+        // if($request->age){
+        //     $ageArray = explode("-", $request->age);
+        // }
+
+        $query = DB::table('bio_data');
+        $query->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+        ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+        ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+        ->where('bio_data.status', 1)
+        ->when($biodataType, function($query) use ($biodataType){
+            return $query->where('bio_data.biodata_type_id', $biodataType);
+        })
+        ->when($maritalStatus, function($query) use ($maritalStatus){
+            return $query->where('bio_data.marital_condition_id', $maritalStatus);
+        })
+        ->when($district, function($query) use ($district){
+            return $query->where('bio_data.permenant_district_id', $district);
+        })
+        ->when($upazila, function($query) use ($upazila){
+            return $query->where('bio_data.permenant_upazila_id', $upazila);
+        })
+        ->when($skinTone, function($query) use ($skinTone){
+            return $query->whereIn('bio_data.skin_tone', $skinTone);
+        })
+        ->when($bloodGroup, function($query) use ($bloodGroup){
+            return $query->whereIn('bio_data.blood_group', $bloodGroup);
+        });
+        // ->when($ageArray, function($query) use ($ageArray){
+        //     return $query->whereRaw( 'timestampdiff(year, birth_date, curdate()) between ? and ?', $ageArray);
+        // });
+        if($order == 1){
+            $query->orderBy('bio_data.id', 'desc');
+        } else {
+            $query->orderBy('bio_data.id', 'asc');
+        }
+        $data = $query->paginate(12);
+
+        $search_results_url = $request->path()."?".$request->getQueryString();
+        session(['call_back_url' => $search_results_url]);
+
+        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district', 'upazila', 'order', 'skinTone', 'bloodGroup'));
+    }
+
+    public function removeSearchFilters(Request $request){
+        $biodataType = '';
+        $maritalStatus = '';
+        $district = '';
+        $order = 1;
+
+        $data = DB::table('bio_data')
+                            ->leftJoin('marital_conditions', 'bio_data.marital_condition_id', 'marital_conditions.id')
+                            ->leftJoin('districts', 'bio_data.permenant_district_id', 'districts.id')
+                            ->select('bio_data.id', 'bio_data.biodata_type_id', 'bio_data.biodata_no', 'bio_data.birth_date', 'bio_data.height_foot', 'bio_data.height_inch', 'bio_data.skin_tone', 'bio_data.slug', 'marital_conditions.title', 'marital_conditions.title_bn', 'districts.name as district_name', 'districts.bn_name as district_name_bn')
+                            ->where('bio_data.status', 1)
+                            ->when($biodataType, function($query) use ($biodataType){
+                                return $query->where('bio_data.biodata_type_id', $biodataType);
+                            })
+                            ->when($maritalStatus, function($query) use ($maritalStatus){
+                                return $query->where('bio_data.marital_condition_id', $maritalStatus);
+                            })
+                            ->when($district, function($query) use ($district){
+                                return $query->where('bio_data.permenant_district_id', $district);
+                            })
+                            ->orderBy('bio_data.id', 'desc')
+                            ->paginate(12);
+
+        $search_results_url = $request->path()."?".$request->getQueryString();
+        session(['call_back_url' => $search_results_url]);
+
+        return view('frontend.search_results', compact('data', 'biodataType', 'maritalStatus', 'district', 'order'));
     }
 
     public function searchBiodataNo(Request $request){
