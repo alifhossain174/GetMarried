@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BioData;
+use App\Models\BiodataVisitHistory;
 use App\Models\ContactRequest;
 use App\Models\GoogleRecaptcha;
 use App\Models\PaymentHistory;
@@ -62,9 +63,29 @@ class HomeController extends Controller
                     ->limit(5)
                     ->get();
 
+        $months = array();
+        $bridesBiodataViews = array();
+        $groomsBiodataViews = array();
+
+        for ($i = 5; $i >= 0; $i--) {
+            $months[] = date("M-y%", strtotime( date( 'Y-m-01' )." -$i months"));
+            $bridesBiodataViews[] = DB::table('biodata_visit_histories')
+                ->join('bio_data', 'biodata_visit_histories.biodata_id', 'bio_data.id')
+                ->select('bio_data.biodata_type_id', 'biodata_visit_histories.created_at')
+                ->where('bio_data.biodata_type_id', 1)
+                ->where('biodata_visit_histories.created_at', 'LIKE', '%' . date("Y-m", strtotime(date('Y-m-01') . " -$i months")) . '%')
+                ->count();
+            $groomsBiodataViews[] = DB::table('biodata_visit_histories')
+                ->join('bio_data', 'biodata_visit_histories.biodata_id', 'bio_data.id')
+                ->select('bio_data.biodata_type_id', 'biodata_visit_histories.created_at')
+                ->where('bio_data.biodata_type_id', 2)
+                ->where('biodata_visit_histories.created_at', 'LIKE', '%' . date("Y-m", strtotime(date('Y-m-01') . " -$i months")) . '%')
+                ->count();
+        }
+
         return view('backend.dashboard', compact('biodataBrides', 'biodataGrooms', 'biodataQuestions', 'totalCustomers',
         'totalLiked', 'totalDisLiked', 'totalPaidView', 'totalPricingPackages', 'totalPurchasedCount',
-        'totalPurchasedAmount', 'pendingBiodatas'));
+        'totalPurchasedAmount', 'pendingBiodatas', 'months', 'bridesBiodataViews', 'groomsBiodataViews'));
     }
 
     public function contactRequests(Request $request)

@@ -348,7 +348,7 @@
     <script src="{{ url('backend_assets') }}/js/pages/dashboard.init.js"></script>
     <script>
         var now = new Date();
-        var labels = ['213', '123', '234'];
+        var labels = <?php echo json_encode($months); ?> //['Jul-23', 'Aug-23', 'Sep-23', 'Oct-23', 'Nov-23', 'Dec-23'];
 
         var options = {
             chart: {
@@ -363,12 +363,12 @@
                 width: 3
             },
             series: [{
-                    name: 'Passed',
-                    data: ['213', '123', '234']
+                    name: "Bride's Biodata",
+                    data: <?php echo json_encode($bridesBiodataViews); ?>
                 },
                 {
-                    name: 'Failed',
-                    data: ['213', '123', '234']
+                    name: "Groom's Biodata",
+                    data: <?php echo json_encode($groomsBiodataViews); ?>
                 },
             ],
             zoom: {
@@ -377,7 +377,7 @@
             legend: {
                 show: true
             },
-            colors: ['#43d39e', '#ff7675'],
+            colors: ['#43d39e', '#6489e8'],
             xaxis: {
                 type: 'string',
                 categories: labels,
@@ -395,7 +395,7 @@
                 labels: {
                     formatter: function(val) {
                         // return val + "k"
-                        return val + "%"
+                        return val
                     }
                 }
             },

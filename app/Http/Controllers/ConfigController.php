@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\BioData;
 use App\Models\BiodataQuestionAnswer;
+use App\Models\BiodataVisitHistory;
 use App\Models\PaymentGateway;
+use App\Models\SavedBiodata;
 use App\Models\WebsiteLanguage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -714,6 +716,8 @@ class ConfigController extends Controller
         if($biodataInfo->image && file_exists(public_path($biodataInfo->image))){
             unlink(public_path($biodataInfo->image));
         }
+        BiodataVisitHistory::where('biodata_id', $biodataInfo->id)->delete();
+        SavedBiodata::where('biodata_id', $biodataInfo->id)->delete();
         $biodataInfo->delete();
         return response()->json(['success'=> 'Deleted Successfully']);
     }
