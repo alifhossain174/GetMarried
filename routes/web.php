@@ -149,6 +149,7 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('view/biodata/visits', [ConfigController::class, 'viewBiodataVisits'])->name('ViewBiodataVisits');
     Route::get('view/biodata/likes/dislikes', [ConfigController::class, 'viewBiodataLikesDislikes'])->name('ViewBiodataLikesDislikes');
     Route::get('view/biodata/paid/views', [ConfigController::class, 'viewBiodataPaidViews'])->name('ViewBiodataPaidViews');
+    Route::get('view/biodata/complains', [ConfigController::class, 'viewBiodataComplains'])->name('ViewBiodataComplains');
 
     // pricing package & payment histories
     Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');
