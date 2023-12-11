@@ -19,6 +19,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\PricingPackageController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\BiodataComplainController;
 use App\Http\Controllers\InstructionController;
 
 
@@ -149,7 +150,9 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::get('view/biodata/visits', [ConfigController::class, 'viewBiodataVisits'])->name('ViewBiodataVisits');
     Route::get('view/biodata/likes/dislikes', [ConfigController::class, 'viewBiodataLikesDislikes'])->name('ViewBiodataLikesDislikes');
     Route::get('view/biodata/paid/views', [ConfigController::class, 'viewBiodataPaidViews'])->name('ViewBiodataPaidViews');
-    Route::get('view/biodata/complains', [ConfigController::class, 'viewBiodataComplains'])->name('ViewBiodataComplains');
+
+    // biodata complain
+    Route::get('view/pending/biodata/complains', [BiodataComplainController::class, 'viewPendingBiodataComplains'])->name('ViewPendingBiodataComplains');
 
     // pricing package & payment histories
     Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');

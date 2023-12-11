@@ -77,8 +77,22 @@
                     Biodata Likes/Dislikes </span></a></li>
         <li><a href="{{ url('view/biodata/paid/views') }}"><i class="bi-cash-coin" style="font-size: 16px;"></i><span>
                     Biodata Paid Views </span></a></li>
-        <li><a href="{{ url('view/biodata/complains') }}"><i data-feather="alert-triangle"></i><span>
-                    Biodata Complains </span></a></li>
+
+        <li>
+            <a href="#sidebarBiodataComplain" data-bs-toggle="collapse">
+                <i data-feather="alert-triangle"></i>
+                <span> Biodata Complains </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarBiodataComplain">
+                <ul class="nav-second-level">
+                    <li><a href="{{ url('/view/pending/biodata/complains') }}">Pending Complains <span style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/biodata/complains') }}">Running Complains <span style="color: goldenrod">({{ App\Models\BioData::where('status', 1)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/biodata/complains') }}">Complete Complains <span style="color: #00bd00">({{ App\Models\BioData::where('status', 2)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/biodata/complains') }}">Cancelled Complains <span style="color: red">({{ App\Models\BioData::where('delete_request', 1)->count() }})</span></a></li>
+                </ul>
+            </div>
+        </li>
 
 
         <li class="menu-title mt-2">Website Content Modules</li>
