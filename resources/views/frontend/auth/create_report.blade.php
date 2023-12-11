@@ -72,7 +72,7 @@
                                             <div class="form-group">
                                                 <label>{{ __('label.form_biodata_report_attachment') }}</label>
                                                 <div class="complain_attachment-file">
-                                                    <input type="file" name="attachment" />
+                                                    <input type="file" name="attachment" accept="image/*"/>
                                                 </div>
                                             </div>
                                         </div>

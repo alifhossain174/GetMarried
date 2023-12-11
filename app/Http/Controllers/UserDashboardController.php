@@ -185,9 +185,43 @@ class UserDashboardController extends Controller
     }
     public function userReportConversation($slug){
         $complain = BiodataComplain::where('slug', $slug)->first();
-        $messages = ComplainMessage::where('complain_id', $complain->id)->orderBy('id', 'desc')->get();
+        $messages = ComplainMessage::where('complain_id', $complain->id)->orderBy('id', 'asc')->get();
+        ComplainMessage::where('complain_id', $complain->id)->update([
+            'status' => 1
+        ]);
         return view('frontend.auth.report_conversation', compact('complain', 'messages'));
     }
+
+    public function sendComplainMessage(Request $request){
+        $request->validate([
+            'message' => ['required']
+        ]);
+
+        $attachment = null;
+        if ($request->hasFile('attachment')){
+            $get_image = $request->file('attachment');
+            $image_name = str::random(5) . time() . '.' . $get_image->getClientOriginalExtension();
+            $location = public_path('complain_attachments/');
+            $get_image->move($location, $image_name);
+            $attachment = "complain_attachments/" . $image_name;
+        }
+
+        $complain = BiodataComplain::where('slug', $request->complain_slug)->first();
+        ComplainMessage::insert([
+            'complain_id' => $complain->id,
+            'user_id' => Auth::user()->id,
+            'message' => $request->message,
+            'attachment' => $attachment,
+            'user_type' => 1,
+            'slug' => str::random(5).time(),
+            'status' => 1,
+            'created_at' => Carbon::now()
+        ]);
+
+        Toastr::success('Message Sent Successfully', 'Sent !');
+        return back();
+    }
+
     public function userBiodataPreview(){
 
         $biodata = DB::table('bio_data')

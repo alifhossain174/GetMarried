@@ -76,7 +76,12 @@
                                         <input type="hidden" name="complain_slug" value="{{$complain->slug}}">
                                         <div class="report-form-group-cotainer">
                                             <div class="form-group">
-                                                <textarea placeholder="{{__('label.user_menu_report_write_here')}}.." name="message" required></textarea>
+                                                <textarea class="@error('message') is-invalid @enderror" placeholder="{{__('label.user_menu_report_write_here')}}.." name="message" required></textarea>
+                                                @error('message')
+                                                    <span class="invalid-feedback" role="alert" style="display: block;">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="create-report-form-bottom">
@@ -96,8 +101,9 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="report-conversation-chat">
+                                <div class="report-conversation-chat" id="div1">
                                     <ul>
+
                                         <li class="report-conversation-client">
                                             <div class="info">
                                                 <div class="avatar">
@@ -113,35 +119,78 @@
                                                     {{$complain->details}}
                                                 </p>
                                             </div>
-                                            <div class="image">
-                                                <a href="{{url('frontend_assets')}}/assets/images/app-download-img.png" class="single-img" target="_blank" download style="font-size: 13px; padding: 0px 10px; border-radius: 4px; background: var(--secondary-color); color: #fff; font-weight: 500;">
-                                                    Download Attachment
-                                                </a>
-                                            </div>
+                                            @if($complain->attachment && file_exists(public_path($complain->attachment)))
+                                                <div class="image">
+                                                    <a href="{{url($complain->attachment)}}" class="single-img" target="_blank">
+                                                        <img src="{{url($complain->attachment)}}" alt="Client Attachment" />
+                                                    </a>
+                                                </div>
+                                            @endif
                                         </li>
 
-                                        <li class="report-conversation-admin">
-                                            <div class="info">
-                                                <div class="avatar">
-                                                    <img src="{{url('frontend_assets')}}/assets/images/icons/man.svg" alt="Male-Avatar" />
+                                        @foreach ($messages as $msg)
+                                            @if($msg->user_type == 2)
+                                            {{-- Support Agent --}}
+                                            <li class="report-conversation-admin">
+                                                <div class="info">
+                                                    <div class="avatar">
+                                                        <img src="{{url('frontend_assets')}}/assets/images/icons/user.svg" alt="Male-Avatar" />
+                                                    </div>
+                                                    <div class="details">
+                                                        <h3>Support Agent</h3>
+                                                        <p>{{time_elapsed_string($msg->created_at)}}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="details">
-                                                    <h3>Admin</h3>
-                                                    <p>2 hours ago</p>
+                                                <div class="content">
+                                                    <p>
+                                                        {{$msg->message}}
+                                                    </p>
                                                 </div>
-                                            </div>
-                                            <div class="content">
-                                                <p>
-                                                    আসসালামু আলাইকুম, আপনার অভিযোগটি গ্রহণ করা হয়েছে।
-                                                    অভিযোগটি দ্রুতই সমাধান করা হবে, ইন শা আল্লা
-                                                </p>
-                                            </div>
-                                            <div class="image">
-                                                <a href="{{url('frontend_assets')}}/assets/images/app-download-img.png" class="single-img" target="_blank" download style="font-size: 13px; padding: 0px 10px; border: 1px solid #1e1e1e; border-radius: 4px; background: #f2edf6; font-weight: 500;">
-                                                    Download Attachment
-                                                </a>
-                                            </div>
-                                        </li>
+                                                @if($msg->attachment && file_exists(public_path($msg->attachment)))
+                                                <div class="image">
+                                                    <a href="{{url($msg->attachment)}}" class="single-img" target="_blank">
+                                                        <img src="{{url($msg->attachment)}}" alt="Agent Attachment" />
+                                                    </a>
+                                                </div>
+                                                @endif
+                                            </li>
+                                            @else
+                                            <li class="report-conversation-client">
+                                                <div class="info">
+                                                    <div class="avatar">
+                                                        @php
+                                                            $biodata = App\Models\Biodata::where('user_id', Auth::user()->id)->first();
+                                                        @endphp
+
+                                                        @if($biodata && $biodata->biodata_type_id == 1)
+                                                        <img src="{{url('frontend_assets')}}/assets/images/icons/man.svg" alt="Avatar" />
+                                                        @elseif($biodata && $biodata->biodata_type_id == 2)
+                                                        <img src="{{url('frontend_assets')}}/assets/images/icons/woman.svg" alt="Avatar" />
+                                                        @else
+                                                        <img src="{{url('frontend_assets')}}/assets/images/icons/man.svg" alt="Avatar" />
+                                                        @endif
+                                                    </div>
+                                                    <div class="details">
+                                                        <h3>{{Auth::user()->name}}</h3>
+                                                        <p>{{time_elapsed_string($msg->created_at)}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <p>
+                                                        {{$msg->message}}
+                                                    </p>
+                                                </div>
+                                                @if($msg->attachment && file_exists(public_path($msg->attachment)))
+                                                <div class="image">
+                                                    <a href="{{url($msg->attachment)}}" class="single-img" target="_blank">
+                                                        <img src="{{url($msg->attachment)}}" alt="Agent Attachment" />
+                                                    </a>
+                                                </div>
+                                                @endif
+                                            </li>
+                                            @endif
+                                        @endforeach
+
 
                                     </ul>
                                 </div>
@@ -153,4 +202,13 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('footer_js')
+    <script>
+        $(document).ready(function() {
+            $("#div1").animate({ scrollTop: $('#div1').prop("scrollHeight")}, 1000);
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+        });
+    </script>
 @endsection

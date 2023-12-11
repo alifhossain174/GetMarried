@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 05:01 AM
+-- Generation Time: Dec 11, 2023 at 08:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -121,8 +121,8 @@ CREATE TABLE `biodata_complains` (
 --
 
 INSERT INTO `biodata_complains` (`id`, `complain_no`, `biodata_id`, `submitted_by`, `reason`, `contact_no`, `details`, `attachment`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'C-ni7Pv1702228639', 13, 44, 2, '01969005035', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/SUTz71702228639.pdf', 0, 'tObYD1702228639', '2023-12-10 17:17:19', NULL),
-(2, 'C-KNN8j1702228707', 12, 44, 3, '০১২৩৪৫৬৭৮৯০', 'document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/w0iPH1702228707.pdf', 0, 'u0Nft1702228707', '2023-12-10 17:18:27', NULL);
+(1, 'C-ni7Pv1702228639', 13, 44, 2, '01969005035', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/SUTz71702228639.jpg', 0, 'tObYD1702228639', '2023-12-10 17:17:19', NULL),
+(2, 'C-KNN8j1702228707', 12, 44, 3, '০১২৩৪৫৬৭৮৯০', 'document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/w0iPH1702228707.jpg', 0, 'u0Nft1702228707', '2023-12-10 17:18:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -1043,9 +1043,20 @@ CREATE TABLE `complain_messages` (
   `message` longtext DEFAULT NULL,
   `attachment` varchar(255) DEFAULT NULL,
   `user_type` tinyint(4) DEFAULT NULL COMMENT '1=>User; 2=>Agent',
+  `slug` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL COMMENT '1=>Read; 0=>Unread',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `complain_messages`
+--
+
+INSERT INTO `complain_messages` (`id`, `complain_id`, `user_id`, `message`, `attachment`, `user_type`, `slug`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'If you want to specify the image file extensions, try the following example. Example of restricting the file input type to image file extensions.If you use, it will accept all file types. But it is possible to restrict the file types to only images, or certain image file extensions. To achieve this, you need to use the HTML accept attribute. This attribute is only used with and serves as a filter to select file inputs from the file input dialog box.', NULL, 2, '123213UYTUGFT', 1, '2023-12-11 05:08:07', '2023-12-11 07:02:31'),
+(2, 1, 44, 'it will accept all file types. But it is possible to restrict the file types to only images, or certain image file extensions. To achieve this, you need to use the HTML accept attribute.', 'complain_attachments/LQ3zg1702276736.png', 1, 'mtgiL1702276736', 1, '2023-12-11 06:38:56', '2023-12-11 07:02:31'),
+(3, 1, 44, 'If you want to specify the image file extensions, try the following example. Example of restricting the file input type to image file extensions.', NULL, 1, 'hbY4A1702276770', 1, '2023-12-11 06:39:30', '2023-12-11 07:02:31');
 
 -- --------------------------------------------------------
 
@@ -1921,7 +1932,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (108, '2023_12_05_112421_create_saved_biodatas_table', 69),
 (109, '2023_12_07_104226_create_paid_views_table', 70),
 (110, '2023_12_10_215127_create_biodata_complains_table', 71),
-(111, '2023_12_11_095735_create_complain_messages_table', 72);
+(112, '2023_12_11_095735_create_complain_messages_table', 72);
 
 -- --------------------------------------------------------
 
@@ -8410,7 +8421,7 @@ ALTER TABLE `bio_data`
 -- AUTO_INCREMENT for table `complain_messages`
 --
 ALTER TABLE `complain_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`
@@ -8524,7 +8535,7 @@ ALTER TABLE `marital_conditions`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `mobile_apps`
