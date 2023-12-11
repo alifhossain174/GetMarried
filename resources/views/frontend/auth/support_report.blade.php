@@ -57,11 +57,13 @@
                                             <p>{{ date('d/m/Y h:i:s a', strtotime($item->created_at)) }}</p>
                                         </div>
                                         <div>
-                                            <p>0</p>
+                                            @php
+                                                $messages = App\Models\ComplainMessage::where('complain_id', $item->id)->where('status', 0)->count();
+                                            @endphp
+                                            <p>{{$messages}}</p>
                                         </div>
                                         <div>
-                                            <a class="create-report-btn"
-                                                href="{{ url('user/report/conversation') }}">{{ __('message.user_support_report_details') }}</a>
+                                            <a class="create-report-btn" href="{{ url('user/report/conversation') }}/{{$item->slug}}">{{ __('message.user_support_report_details') }}</a>
                                         </div>
                                     </div>
                                 @endforeach

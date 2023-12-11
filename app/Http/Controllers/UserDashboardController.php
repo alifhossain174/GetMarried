@@ -7,6 +7,7 @@ use App\Models\BiodataComplain;
 use App\Models\BiodataQuestionAnswer;
 use App\Models\BiodataType;
 use App\Models\BiodataVisitHistory;
+use App\Models\ComplainMessage;
 use App\Models\PaidView;
 use App\Models\PaymentHistory;
 use App\Models\SavedBiodata;
@@ -163,7 +164,6 @@ class UserDashboardController extends Controller
         return view('frontend.auth.payment_process', compact('package', 'paymentGateways'));
     }
     public function userCheckedBiodata(){
-
         $data = DB::table('paid_views')
                 ->leftJoin('bio_data', 'paid_views.biodata_id', 'bio_data.id')
                 ->select('paid_views.*', 'bio_data.biodata_no', 'bio_data.slug as biodata_slug')
@@ -175,16 +175,18 @@ class UserDashboardController extends Controller
     }
     public function userSupportReport(){
         $data = DB::table('biodata_complains')
-            ->leftJoin('bio_data', 'biodata_complains.biodata_id', 'bio_data.id')
-            ->leftJoin('users', 'biodata_complains.submitted_by', 'users.id')
-            ->select('biodata_complains.*', 'bio_data.biodata_no')
-            ->orderBy('biodata_complains.id', 'desc')
-            ->paginate(10);
+                ->leftJoin('bio_data', 'biodata_complains.biodata_id', 'bio_data.id')
+                ->leftJoin('users', 'biodata_complains.submitted_by', 'users.id')
+                ->select('biodata_complains.*', 'bio_data.biodata_no')
+                ->orderBy('biodata_complains.id', 'desc')
+                ->paginate(10);
 
         return view('frontend.auth.support_report', compact('data'));
     }
-    public function userReportConversation(){
-        return view('frontend.auth.report_conversation');
+    public function userReportConversation($slug){
+        $complain = BiodataComplain::where('slug', $slug)->first();
+        $messages = ComplainMessage::where('complain_id', $complain->id)->orderBy('id', 'desc')->get();
+        return view('frontend.auth.report_conversation', compact('complain', 'messages'));
     }
     public function userBiodataPreview(){
 

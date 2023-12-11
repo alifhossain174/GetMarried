@@ -70,7 +70,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
             Route::get('/user/payment/process/{slug}', [UserDashboardController::class, 'userPaymentProcess'])->name('Frontend.UserPaymentProcess');
             Route::get('/user/checked/biodata', [UserDashboardController::class, 'userCheckedBiodata'])->name('Frontend.UserCheckedBiodata');
             Route::get('/user/support/report', [UserDashboardController::class, 'userSupportReport'])->name('Frontend.UserSupportReport');
-            Route::get('/user/report/conversation', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
+            Route::get('/user/report/conversation/{slug}', [UserDashboardController::class, 'userReportConversation'])->name('Frontend.UserReportConversation');
             Route::get('/user/biodata/preview', [UserDashboardController::class, 'userBiodataPreview'])->name('Frontend.UserBiodataPreview');
             Route::get('/user/edit/biodata', [UserDashboardController::class, 'userEditBiodata'])->name('Frontend.UserEditBiodata');
             Route::get('/user/create/report/{slug}', [UserDashboardController::class, 'userCreateReport'])->name('Frontend.UserCreateReport');
