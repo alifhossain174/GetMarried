@@ -168,11 +168,15 @@
 
                             @auth
                                 @if (Auth::user()->user_type == 3 && Auth::user()->email_verified_at)
-                                    <a href="{{ url('/user/dashboard') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                    <a href="{{ url('/user/dashboard') }}"
+                                        class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
                                 @elseif(Auth::user()->user_type == 3 && !Auth::user()->email_verified_at)
-                                    <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="theme-btn">{{ __('label.user_menu_logout') }}</a>
+                                    <a href="javascript:void(0)"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        class="theme-btn">{{ __('label.user_menu_logout') }}</a>
                                 @else
-                                    <a href="{{ url('/home') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                    <a href="{{ url('/home') }}"
+                                        class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
                                 @endif
                             @endauth
 
@@ -230,7 +234,8 @@
                             </div>
                             <div class="header-login">
                                 @guest
-                                    <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
+                                    <a href="{{ url('/user/login') }}"
+                                        class="theme-btn">{{ __('label.menu_login') }}</a>
                                 @endguest
 
                                 @auth
@@ -273,20 +278,38 @@
 
     <div class="mobile-bottom-navogation show">
         <div class="container">
-           <div class="row">
-              <div class="col-12">
-                 <ul class="mobile-bottom-navigation-list">
-                    <li><a class="{{ (Request::path() == '/') ? 'active' : ''}}" href="{{url('/')}}"><i class="fi-rr-home "></i><span>Home</span></a></li>
-                    <li>
-                        <button type="submit"><i class="fi fi-rr-portrait"></i><span>Biodata</span></button>
-                    </li>
-                    <li><a class="{{ (Request::path() == 'contact') ? 'active' : ''}}" href="{{url('/contact')}}"><i class="fi fi-rr-phone-call"></i><span>Contact</span></a></li>
-                    <li><a class="{{ (Request::path() == 'user/dashboard') ? 'active' : ''}}" href="{{url('/user/dashboard')}}"><i class="fi-rr-user"></i><span>My account</span></a></li>
-                 </ul>
-              </div>
-           </div>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="mobile-bottom-navigation-list">
+                        <li>
+                            <a class="{{ Request::path() == '/' ? 'active' : '' }}" href="{{ url('/') }}">
+                                <i class="fi-rr-home "></i><span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <form action="{{ url('search/results') }}" method="GET">
+                                @csrf
+                                <input type="hidden" name="order" value="1">
+                                <input type="hidden" name="biodata_type" value="">
+                                <input type="hidden" name="marital_status" value="">
+                                <input type="hidden" name="district" value="">
+                                <button type="submit"><i class="fi fi-rr-portrait"></i><span>Biodata</span></button>
+                            </form>
+                        </li>
+                        <li>
+                            <a class="{{ Request::path() == 'contact' ? 'active' : '' }}"
+                                href="{{ url('/contact') }}">
+                                <i class="fi fi-rr-phone-call"></i><span>Contact</span>
+                            </a>
+                        </li>
+                        <li><a class="{{ str_contains(Request::path(), 'user/') ? 'active' : '' }}"
+                                href="{{ url('/user/dashboard') }}"><i class="fi-rr-user"></i><span>My
+                                    account</span></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-     </div>
+    </div>
 
 
 

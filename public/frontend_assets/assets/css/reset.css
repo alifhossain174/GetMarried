@@ -985,6 +985,10 @@ p {
     text-align: center;
     opacity: 0.6;
   }
+  .mobile-bottom-navigation-list li button {
+    text-align: center;
+    opacity: 0.6;
+  }
   .mobile-bottom-navigation-list li i {
     font-size: 24px;
   }
