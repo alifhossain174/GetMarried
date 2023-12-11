@@ -53,6 +53,7 @@
                         <a href="{{url('rearrange/homepage/statistics')}}" class="btn btn-success btn-sm" style="margin-left: 0px"><b><i class="bi bi-shuffle"></i> Rearrange Items</b></a>
                     </label>
 
+                    <div class="table-responsive">
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
@@ -69,6 +70,7 @@
 
                         </tbody>
                     </table>
+                    </div>
 
                 </div> <!-- end card-body -->
             </div> <!-- end card -->

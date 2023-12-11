@@ -53,6 +53,7 @@
                         <a href="{{url('add/new/system/user')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><b><i class="feather-repeat"></i> Create System User</b></a>
                     </label>
 
+                    <div class="table-responsive">
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
@@ -68,6 +69,7 @@
 
                         </tbody>
                     </table>
+                    </div>
 
                 </div> <!-- end card-body -->
             </div> <!-- end card -->

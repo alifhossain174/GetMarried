@@ -45,6 +45,7 @@
                         <a href="{{url('download/contact/requests/excel')}}" class="btn btn-sm btn-success rounded" style="display:inline-block; margin-left: 10px;"><i class="feather-download"></i> Download As Excel</a>
                     </label>
 
+                    <div class="table-responsive">
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
@@ -61,6 +62,7 @@
 
                         </tbody>
                     </table>
+                    </div>
 
                 </div> <!-- end card-body -->
             </div> <!-- end card -->

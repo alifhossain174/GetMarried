@@ -64,6 +64,7 @@
                         <a href="{{url('regenerate/permission/routes')}}" class="btn btn-success btn-sm d-inline-block text-white" style="margin-left: 5px; cursor:pointer"><i class="bi bi-arrow-repeat" style="margin-right: 2px; font-size: 14px;"></i> Regenerate Routes</b></a>
                     </label>
 
+                    <div class="table-responsive">
                     <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
                         <thead>
                             <tr>
@@ -78,6 +79,7 @@
                         <tbody>
                         </tbody>
                     </table>
+                    </div>
 
                 </div> <!-- end card-body -->
             </div> <!-- end card -->

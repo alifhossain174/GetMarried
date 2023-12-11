@@ -162,7 +162,20 @@
                     <div class="mobile-menu-modal-main-bottom">
                         <!-- offcanvas-menu end -->
                         <div class="mobile-menu-modal-bottom header-menu-btn">
-                            <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
+                            @guest
+                                <a href="{{ url('/user/login') }}" class="theme-btn">{{ __('label.menu_login') }}</a>
+                            @endguest
+
+                            @auth
+                                @if (Auth::user()->user_type == 3 && Auth::user()->email_verified_at)
+                                    <a href="{{ url('/user/dashboard') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                @elseif(Auth::user()->user_type == 3 && !Auth::user()->email_verified_at)
+                                    <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="theme-btn">{{ __('label.user_menu_logout') }}</a>
+                                @else
+                                    <a href="{{ url('/home') }}" class="theme-btn">{{ __('label.menu_user_dashboard') }}</a>
+                                @endif
+                            @endauth
+
                         </div>
                     </div>
 

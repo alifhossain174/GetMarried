@@ -41,21 +41,23 @@
                         <a href="{{url('rearrange/pricing/packages')}}" class="btn btn-success btn-sm" style="margin-left: 5px"><b><i class="bi bi-shuffle"></i> Rearrange</b></a>
                     </label>
 
-                    <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
-                        <thead>
-                            <tr>
-                                <th class="text-center">SL</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Title (Bangla)</th>
-                                <th class="text-center">Connections</th>
-                                <th class="text-center">Price (BDT)</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">SL</th>
+                                    <th class="text-center">Title</th>
+                                    <th class="text-center">Title (Bangla)</th>
+                                    <th class="text-center">Connections</th>
+                                    <th class="text-center">Price (BDT)</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div> <!-- end card-body -->
             </div> <!-- end card -->
