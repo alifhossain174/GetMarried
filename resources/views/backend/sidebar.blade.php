@@ -86,10 +86,10 @@
             </a>
             <div class="collapse" id="sidebarBiodataComplain">
                 <ul class="nav-second-level">
-                    <li><a href="{{ url('/view/pending/biodata/complains') }}">Pending Complains <span style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/biodata/complains') }}">Running Complains <span style="color: goldenrod">({{ App\Models\BioData::where('status', 1)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/biodata/complains') }}">Complete Complains <span style="color: #00bd00">({{ App\Models\BioData::where('status', 2)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/biodata/complains') }}">Cancelled Complains <span style="color: red">({{ App\Models\BioData::where('delete_request', 1)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/pending/biodata/complains') }}">Pending Complains <span style="color: skyblue">({{ App\Models\BiodataComplain::where('status', 0)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/running/biodata/complains') }}">Running Complains <span style="color: goldenrod">({{ App\Models\BiodataComplain::where('status', 1)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/complete/biodata/complains') }}">Complete Complains <span style="color: #00bd00">({{ App\Models\BiodataComplain::where('status', 2)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/cancelled/biodata/complains') }}">Cancelled Complains <span style="color: red">({{ App\Models\BiodataComplain::where('status', 3)->count() }})</span></a></li>
                 </ul>
             </div>
         </li>

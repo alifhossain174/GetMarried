@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 08:42 AM
+-- Generation Time: Dec 11, 2023 at 11:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -121,8 +121,7 @@ CREATE TABLE `biodata_complains` (
 --
 
 INSERT INTO `biodata_complains` (`id`, `complain_no`, `biodata_id`, `submitted_by`, `reason`, `contact_no`, `details`, `attachment`, `status`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'C-ni7Pv1702228639', 13, 44, 2, '01969005035', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/SUTz71702228639.jpg', 0, 'tObYD1702228639', '2023-12-10 17:17:19', NULL),
-(2, 'C-KNN8j1702228707', 12, 44, 3, '০১২৩৪৫৬৭৮৯০', 'document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'complain_attachments/w0iPH1702228707.jpg', 0, 'u0Nft1702228707', '2023-12-10 17:18:27', NULL);
+(3, 'C-gCOg81702285757', 13, 44, 1, '01969005035', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', 'complain_attachments/Yqnsp1702285757.png', 3, 'TKGEW1702285757', '2023-12-11 09:09:17', '2023-12-11 10:26:36');
 
 -- --------------------------------------------------------
 
@@ -1054,9 +1053,11 @@ CREATE TABLE `complain_messages` (
 --
 
 INSERT INTO `complain_messages` (`id`, `complain_id`, `user_id`, `message`, `attachment`, `user_type`, `slug`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'If you want to specify the image file extensions, try the following example. Example of restricting the file input type to image file extensions.If you use, it will accept all file types. But it is possible to restrict the file types to only images, or certain image file extensions. To achieve this, you need to use the HTML accept attribute. This attribute is only used with and serves as a filter to select file inputs from the file input dialog box.', NULL, 2, '123213UYTUGFT', 1, '2023-12-11 05:08:07', '2023-12-11 07:02:31'),
-(2, 1, 44, 'it will accept all file types. But it is possible to restrict the file types to only images, or certain image file extensions. To achieve this, you need to use the HTML accept attribute.', 'complain_attachments/LQ3zg1702276736.png', 1, 'mtgiL1702276736', 1, '2023-12-11 06:38:56', '2023-12-11 07:02:31'),
-(3, 1, 44, 'If you want to specify the image file extensions, try the following example. Example of restricting the file input type to image file extensions.', NULL, 1, 'hbY4A1702276770', 1, '2023-12-11 06:39:30', '2023-12-11 07:02:31');
+(4, 3, 1, 'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. ', NULL, 2, 'IJUIYH98754', 1, '2023-12-11 09:41:31', '2023-12-11 10:20:54'),
+(5, 3, 1, 'demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without', 'complain_attachments/Oci8F1702289812.png', 2, 'ld4oO1702289812', 1, '2023-12-11 10:16:52', '2023-12-11 10:20:54'),
+(6, 3, 1, 'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.  Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', NULL, 2, 'WHAyK1702289829', 1, '2023-12-11 10:17:09', '2023-12-11 10:20:54'),
+(7, 3, 44, 'Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', NULL, 1, 'w6sH61702289856', 1, '2023-12-11 10:17:36', '2023-12-11 10:20:54'),
+(8, 3, 1, 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', NULL, 2, 'bfR6D1702290032', 1, '2023-12-11 10:20:32', '2023-12-11 10:20:54');
 
 -- --------------------------------------------------------
 
@@ -8391,7 +8392,7 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `biodata_complains`
 --
 ALTER TABLE `biodata_complains`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `biodata_question_answers`
@@ -8421,7 +8422,7 @@ ALTER TABLE `bio_data`
 -- AUTO_INCREMENT for table `complain_messages`
 --
 ALTER TABLE `complain_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `contact_configs`

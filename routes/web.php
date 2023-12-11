@@ -153,6 +153,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
 
     // biodata complain
     Route::get('view/pending/biodata/complains', [BiodataComplainController::class, 'viewPendingBiodataComplains'])->name('ViewPendingBiodataComplains');
+    Route::get('view/running/biodata/complains', [BiodataComplainController::class, 'viewRunningBiodataComplains'])->name('ViewRunningBiodataComplains');
+    Route::get('view/complete/biodata/complains', [BiodataComplainController::class, 'viewCompleteBiodataComplains'])->name('ViewCompleteBiodataComplains');
+    Route::get('view/cancelled/biodata/complains', [BiodataComplainController::class, 'viewCancelledBiodataComplains'])->name('ViewCancelledBiodataComplains');
+    Route::get('delete/biodata/complain/{slug}', [BiodataComplainController::class, 'deleteBiodataComplain'])->name('deleteBiodataComplain');
+    Route::get('approve/biodata/complain/{slug}', [BiodataComplainController::class, 'approveBiodataComplain'])->name('ApproveBiodataComplain');
+    Route::get('cancel/biodata/complain/{slug}', [BiodataComplainController::class, 'cancelBiodataComplain'])->name('CancelBiodataComplain');
+    Route::get('view/complain/messages/{slug}', [BiodataComplainController::class, 'viewComplainMessages'])->name('ViewComplainMessages');
+    Route::post('reply/complain/message', [BiodataComplainController::class, 'replyComplainMessage'])->name('ReplyComplainMessage');
 
     // pricing package & payment histories
     Route::get('view/pricing/packages', [PricingPackageController::class, 'viewPricingPackage'])->name('ViewPricingPackage');

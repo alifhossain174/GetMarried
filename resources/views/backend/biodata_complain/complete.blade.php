@@ -20,11 +20,11 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
-                <h4 class="page-title">Pending Complains Against Biodata</h4>
+                <h4 class="page-title">Complete Complains Against Biodata</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Functional Module</a></li>
-                        <li class="breadcrumb-item active">Pending Complains Against Biodata</li>
+                        <li class="breadcrumb-item active">Complete Complains Against Biodata</li>
                     </ol>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body pb-4">
-                    <h4 class="mb-3 header-title mt-0">View Pending Complains Against Biodatas</h4>
+                    <h4 class="mb-3 header-title mt-0">View Complete Complains Against Biodatas</h4>
 
                     <div class="table-responsive">
                         <table class="table table-sm table-striped table-bordered table-hover yajra-datatable">
@@ -76,7 +76,7 @@
             serverSide: true,
             pageLength: 15,
             lengthMenu: [15, 25, 50, 100],
-            ajax: "{{ url('view/pending/biodata/complains') }}",
+            ajax: "{{ url('view/complete/biodata/complains') }}",
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
@@ -136,40 +136,6 @@
                     success: function(data) {
                         table.draw(false);
                         toastr.error("Data has been Deleted", "Deleted Successfully");
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                    }
-                });
-            }
-        });
-
-        $('body').on('click', '.approveBtn', function() {
-            var slug = $(this).data("id");
-            if (confirm("Are You sure want to Approve ?")) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('approve/biodata/complain') }}" + '/' + slug,
-                    success: function(data) {
-                        table.draw(false);
-                        toastr.success("Data has been Approved", "Approved Successfully");
-                    },
-                    error: function(data) {
-                        console.log('Error:', data);
-                    }
-                });
-            }
-        });
-
-        $('body').on('click', '.cancelBtn', function() {
-            var slug = $(this).data("id");
-            if (confirm("Are You sure want to Cancel ?")) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('cancel/biodata/complain') }}" + '/' + slug,
-                    success: function(data) {
-                        table.draw(false);
-                        toastr.error("Data has been Cancelled", "Cancelled Successfully");
                     },
                     error: function(data) {
                         console.log('Error:', data);
