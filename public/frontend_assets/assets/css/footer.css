@@ -48,8 +48,9 @@
   text-align: right;
 }
 .footer-social-list li {
-  display: inline-block;
-  margin-right: 10px;
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 10px;
 }
 .footer-social-list li:last-child {
   margin: 0;

@@ -15162,10 +15162,10 @@ span[class*="fi-br-"]:before {
 
 @font-face {
   font-family: "uicons-solid-rounded";
-  src: url("../webfonts/uicons-solid-rounded.eot#iefix")
+  src: url("../../fonts/uicons-solid-rounded.eot#iefix")
       format("embedded-opentype"),
-    url("../webfonts/uicons-solid-rounded.woff2") format("woff2"),
-    url("../webfonts/uicons-solid-rounded.woff") format("woff");
+    url("../../fonts/uicons-solid-rounded.woff2") format("woff2"),
+    url("../../fonts/uicons-solid-rounded.woff") format("woff");
 }
 
 i[class^="fi-sr-"]:before,

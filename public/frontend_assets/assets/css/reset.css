@@ -820,7 +820,7 @@ p {
 .progress-wrap {
   position: fixed;
   right: 50px;
-  bottom: 50px;
+  bottom: 100px;
   height: 46px;
   width: 46px;
   cursor: pointer;
@@ -964,6 +964,95 @@ p {
     top: 2px;
   }
 }
+
+/* Mobile Bottom Navigation */
+.mobile-bottom-navogation {
+    background: var(--secondary-color);
+    position: fixed;
+    bottom: 0;
+    z-index: 888;
+    width: 100%;
+  }
+  .mobile-bottom-navigation-list {
+    display: flex;
+    justify-content: center;
+    gap: 29px;
+    padding: 14px 0px;
+    align-items: center;
+    line-height: 22px;
+  }
+  .mobile-bottom-navigation-list li a {
+    text-align: center;
+    opacity: 0.6;
+  }
+  .mobile-bottom-navigation-list li i {
+    font-size: 24px;
+  }
+  .mobile-bottom-navigation-list li i {
+    color: var(--white-color);
+  }
+  .mobile-bottom-navigation-list li span {
+    color: var(--white-color);
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+  }
+  .mobile-bottom-navigation-list li button {
+	background: transparent;
+	padding: 0;
+}
+  .mobile-bottom-navigation-list li .active {
+    opacity: 1;
+  }
+
+  /* For Desktop */
+  .mobile-bottom-navogation.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(75px);
+    transition: all 0.4s ease;
+  }
+  .mobile-bottom-navogation.show {
+    opacity: 1;
+    visibility: hidden;
+  }
+
+  @media only screen and (min-width: 1024px) and (max-width: 1200px) {
+    .mobile-bottom-navogation.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0px);
+      transition: all 0.4s ease;
+    }
+    .mobile-bottom-navigation-list {
+      gap: 38px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mobile-bottom-navogation.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0px);
+      transition: all 0.4s ease;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .mobile-bottom-navogation.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0px);
+      transition: all 0.4s ease;
+    }
+    .mobile-bottom-navigation-list {
+      gap: 30px;
+    }
+  }
+
+
+
 
 /*============================================================================================
 	End Theme Reset

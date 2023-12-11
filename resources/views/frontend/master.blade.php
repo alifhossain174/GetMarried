@@ -270,6 +270,26 @@
 
     @yield('content')
 
+
+    <div class="mobile-bottom-navogation show">
+        <div class="container">
+           <div class="row">
+              <div class="col-12">
+                 <ul class="mobile-bottom-navigation-list">
+                    <li><a class="{{ (Request::path() == '/') ? 'active' : ''}}" href="{{url('/')}}"><i class="fi-rr-home "></i><span>Home</span></a></li>
+                    <li>
+                        <button type="submit"><i class="fi fi-rr-portrait"></i><span>Biodata</span></button>
+                    </li>
+                    <li><a class="{{ (Request::path() == 'contact') ? 'active' : ''}}" href="{{url('/contact')}}"><i class="fi fi-rr-phone-call"></i><span>Contact</span></a></li>
+                    <li><a class="{{ (Request::path() == 'user/dashboard') ? 'active' : ''}}" href="{{url('/user/dashboard')}}"><i class="fi-rr-user"></i><span>My account</span></a></li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+     </div>
+
+
+
     <!-- Footer Area -->
     <footer class="footer-area">
         <div class="container">
