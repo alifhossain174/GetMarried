@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 11:47 AM
+-- Generation Time: Dec 12, 2023 at 06:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -7357,8 +7357,8 @@ INSERT INTO `unions` (`id`, `upazilla_id`, `name`, `bn_name`, `url`) VALUES
 --
 
 CREATE TABLE `upazilas` (
-  `id` int(3) NOT NULL,
-  `district_id` int(2) NOT NULL,
+  `id` int(11) NOT NULL,
+  `district_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `bn_name` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL
@@ -7862,7 +7862,48 @@ INSERT INTO `upazilas` (`id`, `district_id`, `name`, `bn_name`, `url`) VALUES
 (491, 64, 'Netrokona Sadar', 'নেত্রকোণা সদর', 'netrokonasadar.netrokona.gov.bd'),
 (492, 9, 'Eidgaon', 'ঈদগাঁও', 'null'),
 (493, 39, 'Madhyanagar', 'মধ্যনগর', 'null'),
-(494, 50, 'Dasar', 'ডাসার', 'null');
+(494, 50, 'Dasar', 'ডাসার', 'null'),
+(495, 47, 'Ramna', 'রমনা', ''),
+(496, 47, 'Motijheel', 'মতিঝিল', ''),
+(497, 47, 'Kotwali', 'কোতোয়ালী', ''),
+(498, 47, 'Dhanmondi', 'ধানমন্ডি', ''),
+(499, 47, 'Mohammadpur', 'মোহাম্মদপুর', ''),
+(500, 47, 'Sutrapur', 'সুত্রাপুর', ''),
+(501, 47, 'Tejgaon', 'তেজগাঁও', ''),
+(502, 47, 'Gulshan', 'গুলশান', ''),
+(503, 47, 'Lalbagh', 'লালবাগ', ''),
+(504, 47, 'Mirpur', 'মিরপুর', ''),
+(505, 47, 'Pallabi', 'পল্লবী ', ''),
+(506, 47, 'Sabujbag', 'সবুজবাগ', ''),
+(507, 47, 'Cantonment', 'ক্যান্টনমেন্ট', ''),
+(508, 47, 'Demra', 'ডেমরা', ''),
+(509, 47, 'Hazaribagh', 'হাজারীবাগ', ''),
+(510, 47, 'Shyampur', 'শ্যামপুর', ''),
+(511, 47, 'Badda', 'বাড্ডা', ''),
+(512, 47, 'Kafrul', 'কাফরুল', ''),
+(513, 47, 'Khilgaon', 'খিলগাঁও', ''),
+(514, 47, 'Uttara', 'উত্তরা', ''),
+(515, 47, 'Shah Ali', 'শাহ আলী', ''),
+(516, 47, 'Biman Bandar', 'বিমান বন্দর', ''),
+(517, 47, 'Paltan', 'পল্টন', ''),
+(518, 47, 'Adabar', 'আদাবর', ''),
+(519, 47, 'Darus Salam', 'দারুস সালাম', ''),
+(520, 47, 'Uttarkhan', 'উত্তরখান', ''),
+(521, 47, 'Kamrangirchar', 'কামরাঙ্গীরচর', ''),
+(522, 47, 'Kadamtoli', 'কদমতলী', ''),
+(523, 47, 'Gendaria', 'গেন্ডারিয়া', ''),
+(524, 47, 'Chalkbazar', 'চকবাজার', ''),
+(525, 47, 'Tejgaon Industrial', 'তেজগাঁও শিল্পাঞ্চল', ''),
+(526, 47, 'Turag', 'তুরাগ', ''),
+(527, 47, 'Dakhinkhan', 'দক্ষিণখান', ''),
+(528, 47, 'Bangshal', 'বংশাল', ''),
+(529, 47, 'Bhashantek', 'ভাষানটেক ', ''),
+(530, 47, 'Bhatara', 'ভাটারা', ''),
+(531, 47, 'Jatrabari', 'যাত্রাবাড়ী', ''),
+(532, 47, 'Rampura', 'রামপুরা', ''),
+(533, 47, 'Rupnagar', 'রূপনগর', ''),
+(534, 47, 'Sherebangla Nagar', 'শেরেবাংলা নগর', ''),
+(535, 47, 'Shahjahanpur ', 'শাহজাহানপুর', '');
 
 -- --------------------------------------------------------
 
@@ -8656,7 +8697,7 @@ ALTER TABLE `unions`
 -- AUTO_INCREMENT for table `upazilas`
 --
 ALTER TABLE `upazilas`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=495;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=536;
 
 --
 -- AUTO_INCREMENT for table `users`

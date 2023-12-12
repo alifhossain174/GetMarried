@@ -36,14 +36,17 @@
                                                         @elseif ($biodata && $biodata->biodata_type_id == 2 && !$biodata->image && !file_exists(public_path($biodata->image)))
                                                             <img src="{{ url('frontend_assets') }}/assets/images/icons/woman.svg" alt="Image" />
                                                         @else
-                                                            @if($biodata->image && file_exists(public_path($biodata->image)))
+                                                            @if($biodata && $biodata->image && file_exists(public_path($biodata->image)))
                                                             <img src="{{ url($biodata->image) }}" alt="Image" />
                                                             @endif
                                                         @endif
-                                                        @if($biodata->show_image)
-                                                        <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--secondary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Public</span>
-                                                        @else
-                                                        <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--primary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Private</span>
+
+                                                        @if($biodata)
+                                                            @if($biodata->show_image)
+                                                            <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--secondary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Public</span>
+                                                            @else
+                                                            <span style="position: absolute; top: 0; left: 57%; display: inline-block; background: var(--primary-color); color: var(--white-color);; border-radius: 4px; font-size:12px; padding: 0px 8px">Private</span>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                     <div class="biodata-general-head-info">
