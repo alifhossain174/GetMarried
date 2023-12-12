@@ -293,7 +293,7 @@
                                 <input type="hidden" name="biodata_type" value="">
                                 <input type="hidden" name="marital_status" value="">
                                 <input type="hidden" name="district" value="">
-                                <button type="submit"><i class="fi fi-rr-portrait"></i><span>Biodata</span></button>
+                                <button class="{{ str_contains(Request::path(), 'search/results') ? 'active' : '' }}" type="submit"><i class="fi fi-rr-portrait"></i><span>Biodata</span></button>
                             </form>
                         </li>
                         <li>
