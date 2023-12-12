@@ -24,9 +24,11 @@
         <link rel="icon" href="{{ url('frontend_assets') }}/assets/images/favicon.svg" />
     @endif
 
+
     {{-- google adsence --}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4349382925558068"
-        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4349382925558068" crossorigin="anonymous"></script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
 
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url('frontend_assets') }}/assets/plugins/css/animate.min.css" />
@@ -110,6 +112,12 @@
 </head>
 
 <body>
+
+    {{-- google adsence --}}
+    <amp-auto-ads type="adsense"
+            data-ad-client="ca-pub-4349382925558068">
+    </amp-auto-ads>
+
 
     <!-- Back to top start -->
     <div class="progress-wrap">

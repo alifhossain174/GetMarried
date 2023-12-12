@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 06:16 AM
+-- Generation Time: Dec 12, 2023 at 12:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -7361,7 +7361,7 @@ CREATE TABLE `upazilas` (
   `district_id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `bn_name` varchar(25) NOT NULL,
-  `url` varchar(50) NOT NULL
+  `url` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -7960,7 +7960,8 @@ INSERT INTO `users` (`id`, `name`, `provider_id`, `provider_name`, `email`, `con
 (61, 'Ismam', NULL, NULL, 'hewof86115@gyxmz.com', NULL, '866440', '2023-12-05 03:15:06', '$2y$12$GE70wKRax28qsPe7FlArou8MYd3asFNsLTJV1agYybAq.8cBpY/Sq', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:13:10', '2023-12-05 03:15:06'),
 (62, 'Anonna', NULL, NULL, 'losiye7025@getmola.com', NULL, '565190', '2023-12-05 03:29:40', '$2y$12$2NKgvRqikdlBaNUiyyaYIORK3JwOc7JRuZzdq3pc8.TPcIrLCjbha', 'Kurigram', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:29:06', '2023-12-05 03:29:40'),
 (63, 'Kamruzzaman', NULL, NULL, 'xarij20954@gearstag.com', NULL, '723297', '2023-12-05 03:40:58', '$2y$12$GKVM65faQahBqMfd9WmHkOXAn0SWR9TAXXF.ieoTtWIkaPPBr3cVe', 'Dhaka', 3, 1, 0, NULL, NULL, NULL, '2023-12-05 03:40:36', '2023-12-05 03:40:58'),
-(64, 'Test User', NULL, NULL, NULL, '01969884477', '310240', '2023-12-05 03:40:58', '$2y$12$V2niQvx2G.EbIy8xMfC8wuIpS9nB6gsEQ7sLG8MCBxf6P1sRuBhZa', 'Dhaka, Bangladesh', 3, 1, 10, NULL, NULL, NULL, '2023-12-10 09:19:12', '2023-12-10 09:19:12');
+(64, 'Test User', NULL, NULL, NULL, '01969884477', '310240', '2023-12-05 03:40:58', '$2y$12$V2niQvx2G.EbIy8xMfC8wuIpS9nB6gsEQ7sLG8MCBxf6P1sRuBhZa', 'Dhaka, Bangladesh', 3, 1, 10, NULL, NULL, NULL, '2023-12-10 09:19:12', '2023-12-10 09:19:12'),
+(65, 'Md. Fahim Hossain', '116750798120712918592', 'google', 'fahimmit06@gmail.com', NULL, NULL, '2023-12-12 05:18:37', '$2y$12$yskwHkBK3NEo03692x3KHeXw1ozBVT0rsD1Mo733eTp/m.npqLQNm', NULL, 3, 1, 10, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -8703,7 +8704,7 @@ ALTER TABLE `upazilas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `user_roles`

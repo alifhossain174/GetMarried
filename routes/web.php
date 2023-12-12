@@ -22,9 +22,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\BiodataComplainController;
 use App\Http\Controllers\InstructionController;
 
-
 Auth::routes();
-
 
 // backend routes
 Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
@@ -36,6 +34,14 @@ Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
     Route::post('update/google/recaptcha', [HomeController::class, 'updateGoogleRecaptcha'])->name('UpdateGoogleRecaptcha');
     Route::get('view/all/customers', [HomeController::class, 'viewAllCustomers'])->name('ViewAllCustomers');
     Route::get('download/registered/customer/excel', [HomeController::class, 'downloadCustomersExcel'])->name('DownloadCustomersExcel');
+
+
+    Route::get('view/all/upazilas', [HomeController::class, 'viewAllUpazilas'])->name('ViewAllUpazilas');
+    Route::post('save/upazila', [HomeController::class, 'saveUpazila'])->name('SaveUpazila');
+    Route::get('delete/upazila/{id}', [HomeController::class, 'deleteUpazila'])->name('DeleteUpazila');
+    Route::get('get/upazila/info/{id}', [HomeController::class, 'getUpazilaInfo'])->name('GetUpazilaInfo');
+    Route::post('update/upazila', [HomeController::class, 'updateUpazilaInfo'])->name('UpdateUpazilaInfo');
+
 
     // contact request
     Route::get('contact/requests', [HomeController::class, 'contactRequests'])->name('ContactRequests');
