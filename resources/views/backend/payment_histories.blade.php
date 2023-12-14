@@ -55,6 +55,21 @@
                         </thead>
                         <tbody>
                         </tbody>
+                        {{-- <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot> --}}
                     </table>
                     </div>
 
@@ -73,7 +88,8 @@
     <script src="{{url('dataTableBootstrap5')}}/DataTables/js/dataTables.bootstrap.min.js"></script>
     <script>
         var table = $('.yajra-datatable').DataTable({
-            processing: true,stateSave: true,
+            processing: true,
+            stateSave: true,
             serverSide: true,
             pageLength: 15,
             lengthMenu: [15, 25, 50, 100],
@@ -90,7 +106,19 @@
                 {data: 'bank_tran_id', name: 'bank_tran_id'},
                 {data: 'tran_date', name: 'tran_date'},
                 {data: 'status', name: 'status'},
-            ]
+            ],
+            // footerCallback: function (row, data, start, end, display) {
+
+            //     var api = this.api(), data;
+
+            //     // Total over all pages
+            //     var total = api.column('amount').data;
+            //     console.log(api.columns[0]('amount').data);
+
+            //     // Update footer
+            //     $(api.column('amount').footer()).html('Total: ' + total);
+
+            // },
         });
     </script>
 @endsection
