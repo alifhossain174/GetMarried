@@ -64,7 +64,6 @@
                                 </div>
                             </div>
 
-
                             @php
                                 $permissionRoutes1 = App\Models\PermissionRoutes::orderBy('id', 'desc')->orderBy('route', 'asc')->skip(0)->limit(80)->get();
                                 $permissionRoutes2 = App\Models\PermissionRoutes::orderBy('id', 'desc')->orderBy('route', 'asc')->skip(80)->limit(80)->get();
