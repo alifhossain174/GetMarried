@@ -23,14 +23,21 @@
             </div>
         </li>
         <li><a href="{{ url('/logo/favicon') }}"><i data-feather="image"></i><span> Logo, Icon & Banner </span></a></li>
-        <li><a href="{{ url('/website/theme/page') }}"><i class="bi bi-palette" style="font-size: 15px;"></i><span> Site Theme Color </span></a></li>
-        <li><a href="{{ url('/social/media/page') }}"><i class="bi bi-link-45deg" style="font-size: 18px;"></i><span> Social Media Links </span></a></li>
-        <li><a href="{{ url('/custom/css/js') }}"><i class="bi bi-code-slash" style="font-size: 16px;"></i><span> Custom CSS & JS </span></a></li>
+        <li><a href="{{ url('/website/theme/page') }}"><i class="bi bi-palette" style="font-size: 15px;"></i><span> Site
+                    Theme Color </span></a></li>
+        <li><a href="{{ url('/social/media/page') }}"><i class="bi bi-link-45deg" style="font-size: 18px;"></i><span>
+                    Social Media Links </span></a></li>
+        <li><a href="{{ url('/custom/css/js') }}"><i class="bi bi-code-slash" style="font-size: 16px;"></i><span> Custom
+                    CSS & JS </span></a></li>
         <li><a href="{{ url('/file-manager') }}"><i data-feather="folder-plus"></i><span> File Manager </span></a></li>
-        <li><a href="{{ url('/seo/homepage') }}"><i class="bi bi-search" style="font-size: 15px;"></i><span> Sitemap & SEO </span></a></li>
-        <li><a href="{{ url('/google/recaptcha') }}"><i class="bi bi-google" style="font-size: 15px;"></i><span> Google Recaptcha </span></a></li>
-        <li><a href="{{ url('/view/all/customers') }}"><i data-feather="users"></i><span> Registered Customers </span></a></li>
-        <li><a href="{{ url('/view/all/upazilas') }}"><i class="bi bi-pin-map" style="font-size: 15px;"></i><span> Upazila & Thana </span></a></li>
+        <li><a href="{{ url('/seo/homepage') }}"><i class="bi bi-search" style="font-size: 15px;"></i><span> Sitemap &
+                    SEO </span></a></li>
+        <li><a href="{{ url('/google/recaptcha') }}"><i class="bi bi-google" style="font-size: 15px;"></i><span> Google
+                    Recaptcha </span></a></li>
+        <li><a href="{{ url('/view/all/customers') }}"><i data-feather="users"></i><span> Registered Customers
+                </span></a></li>
+        <li><a href="{{ url('/view/all/upazilas') }}"><i class="bi bi-pin-map" style="font-size: 15px;"></i><span>
+                    Upazila & Thana </span></a></li>
 
 
         <li class="menu-title mt-2">Functional Modules</li>
@@ -50,8 +57,7 @@
             </a>
             <div class="collapse" id="sidebarBiodata">
                 <ul class="nav-second-level">
-                    <li><a href="{{ url('/view/pending/biodatas') }}">Pending Biodata <span
-                                style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a>
+                    <li><a href="{{ url('/view/pending/biodatas') }}">Pending Biodata <span style="color: skyblue">({{ App\Models\BioData::where('status', 0)->count() }})</span></a>
                     </li>
                     <li><a href="{{ url('/view/approved/biodatas') }}">Approved Biodata <span
                                 style="color: #00bd00">({{ App\Models\BioData::where('status', 1)->count() }})</span></a>
@@ -81,10 +87,18 @@
             </a>
             <div class="collapse" id="sidebarBiodataComplain">
                 <ul class="nav-second-level">
-                    <li><a href="{{ url('/view/pending/biodata/complains') }}">Pending Complains <span style="color: skyblue">({{ App\Models\BiodataComplain::where('status', 0)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/running/biodata/complains') }}">Running Complains <span style="color: goldenrod">({{ App\Models\BiodataComplain::where('status', 1)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/complete/biodata/complains') }}">Complete Complains <span style="color: #00bd00">({{ App\Models\BiodataComplain::where('status', 2)->count() }})</span></a></li>
-                    <li><a href="{{ url('/view/cancelled/biodata/complains') }}">Cancelled Complains <span style="color: red">({{ App\Models\BiodataComplain::where('status', 3)->count() }})</span></a></li>
+                    <li><a href="{{ url('/view/pending/biodata/complains') }}">Pending Complains <span
+                                style="color: skyblue">({{ App\Models\BiodataComplain::where('status', 0)->count() }})</span></a>
+                    </li>
+                    <li><a href="{{ url('/view/running/biodata/complains') }}">Running Complains <span
+                                style="color: goldenrod">({{ App\Models\BiodataComplain::where('status', 1)->count() }})</span></a>
+                    </li>
+                    <li><a href="{{ url('/view/complete/biodata/complains') }}">Complete Complains <span
+                                style="color: #00bd00">({{ App\Models\BiodataComplain::where('status', 2)->count() }})</span></a>
+                    </li>
+                    <li><a href="{{ url('/view/cancelled/biodata/complains') }}">Cancelled Complains <span
+                                style="color: red">({{ App\Models\BiodataComplain::where('status', 3)->count() }})</span></a>
+                    </li>
                 </ul>
             </div>
         </li>
