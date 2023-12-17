@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="biodata-general-each-item">
                                             <label>{{ __('label.date_of_birth') }}</label>
-                                            <p>{{ $biodata ? date('F, Y', strtotime($biodata->created_at)) : '' }}
+                                            <p>{{ $biodata ? date('F, Y', strtotime($biodata->birth_date)) : '' }}
                                             </p>
                                         </div>
                                         <div class="biodata-general-each-item">
