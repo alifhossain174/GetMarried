@@ -78,7 +78,6 @@ return [
                 'image/gif',
                 'image/svg+xml',
                 'image/webp'
-                
             ],
         ],
     ],

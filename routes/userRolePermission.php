@@ -6,7 +6,7 @@
     use App\Http\Controllers\UserController;
 
     // backend routes
-    Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
+    Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function () {
 
         // user managment
         Route::get('/view/system/users', [UserController::class, 'viewAllSystemUsers'])->name('ViewAllSystemUsers');

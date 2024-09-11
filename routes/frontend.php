@@ -55,7 +55,7 @@ Route::group(['middleware' => ['SetLocale', 'web']], function () {
         Route::post('/user/verify/check', [LoginController::class, 'userVerifyCheck'])->name('Frontend.UserVerifyCheck');
         Route::get('/user/verification/resend', [LoginController::class, 'userVerificationResend'])->name('Frontend.UserVerificationResend');
 
-        Route::group(['middleware' => ['CheckUserVerification']], function () {
+        Route::group(['middleware' => ['CheckUserVerification', 'DemoMode']], function () {
 
             Route::get('/user/dashboard', [UserDashboardController::class, 'userDashboard'])->name('Frontend.UserDashboard');
             Route::get('/user/settings', [UserDashboardController::class, 'userSettings'])->name('Frontend.UserSettings');

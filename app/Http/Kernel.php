@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'CheckCustomer' => \App\Http\Middleware\CheckCustomer::class,
         'SetLocale' => \App\Http\Middleware\SetLocale::class,
         'CheckUserVerification' => \App\Http\Middleware\CheckUserVerification::class,
+        'DemoMode' => \App\Http\Middleware\DemoMode::class,
     ];
 }

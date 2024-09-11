@@ -25,7 +25,7 @@ use App\Http\Controllers\InstructionController;
 Auth::routes();
 
 // backend routes
-Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
+Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('change/password/page', [HomeController::class, 'changePasswordPage'])->name('ChangePasswordPage');

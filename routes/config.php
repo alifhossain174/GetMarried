@@ -17,7 +17,7 @@ use App\Http\Controllers\ConfigController;
 
 
 // backend routes
-Route::group(['middleware' => ['auth', 'CheckUserType']], function () {
+Route::group(['middleware' => ['auth', 'CheckUserType', 'DemoMode']], function () {
 
     // file manager routes start
     Route::get('/file-manager', function () {
